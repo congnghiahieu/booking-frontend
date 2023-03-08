@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { DefaultLayout } from "./layout";
+import {
+  Login,
+  Register,
+  Home,
+  HotelSingle,
+  HotelBooking,
+  UserBooking,
+  UserEdit,
+  UserProfile,
+  Missing,
+} from "./pages";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className='App'>
+      <Routes>
+        {/* Default Layout */}
+        <Route path='/' element={<DefaultLayout />}>
+          {/* Public routes */}
+          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register />} />
+
+          {/* Protected Routes - required Login */}
+          <Route path='/' element={<Home />} />
+          <Route>
+            <Route path='hotel/view/:id' element={<HotelSingle />} />
+            <Route path='hotel/booking/:id' element={<HotelBooking />} />
+          </Route>
+          <Route>
+            <Route path='user/profile/:id' element={<UserProfile />} />
+            <Route path='user/edit/:id' element={<UserEdit />} />
+            <Route path='user/booking/:id' element={<UserBooking />} />
+          </Route>
+          {/* Missing route - 404 */}
+          <Route path='*' element={<Missing />} />
+        </Route>
+      </Routes>
+    </main>
   );
 }
 
