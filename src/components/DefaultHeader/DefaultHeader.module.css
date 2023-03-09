@@ -1,0 +1,7 @@
+.defaultHeader {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}

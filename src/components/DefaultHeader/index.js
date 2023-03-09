@@ -1,7 +1,7 @@
-import React from "react";
+import style from "./DefaultHeader.module.css";
 
 const DefaultHeader = () => {
-  return <div>DefaultHeader</div>;
+  return <div className={style.defaultHeader}>DefaultHeader</div>;
 };
 
 export default DefaultHeader;

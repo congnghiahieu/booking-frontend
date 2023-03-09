@@ -36,6 +36,14 @@
 - React Router DOM: dựng base router cho project (các đường link chuyển hướng trong website)
 - Project sẽ sử dụng **Redux** và **Redux Toolkit** để làm **State Management**
 
+## Tutorial
+
+[React Login](https://www.youtube.com/watch?v=brcHK3P6ChQ&list=PL0Zuz27SZ-6PRCpm9clX0WiBEMB70FWwd)
+
+[Redux, Redux Toolkit](https://www.youtube.com/watch?v=u3KlatzB7GM&list=PL0Zuz27SZ-6M1J5I1w2-uZx36Qp6qhjKo)
+
+[Redux, Redux Toolkit VN](https://www.youtube.com/watch?v=g_K1w8e0lLo&t=1s) và [Redux Thunk VN](https://www.youtube.com/watch?v=mXlpiV14AE4)
+
 ## Router
 
 Project sẽ có các router (ví dụ: `http://localhost:3000/login`) cơ bản sau:
