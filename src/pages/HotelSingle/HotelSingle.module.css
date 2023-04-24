@@ -421,3 +421,24 @@
   padding-bottom: 15px;
   border-bottom: 2px groove;
 }
+.feedback{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.subfeedBack{
+  width: 1080px;
+
+}
+
+.comment{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 20px;
+  
+}
+.subcomment{
+  width: 1080px;
+}

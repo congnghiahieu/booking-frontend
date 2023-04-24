@@ -1,0 +1,127 @@
+.feedback_content {
+  width: 1080px;
+  display: flex;
+  flex-direction: column;
+}
+.feedback_h1 {
+  display: block;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  height: fit-content;
+  margin-bottom: 20px;
+}
+.feedback_h2 {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  height: fit-content;
+  margin-bottom: 10px;
+  color: #7e7a79;
+}
+.point_list {
+  height: fit-content;
+  display: flex;
+  padding-bottom: 25px;
+  /* border-bottom:1px solid #7e7a79 ; */
+}
+
+.overall {
+  width: 25%;
+  display: flex;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+.overall_point {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 5px;
+  font-weight: 600;
+  border: 1px solid var(--btn-color);
+  padding: 10px;
+  border-radius: 50%;
+  background-color: var(--btn-color);
+  margin-right: 10px;
+}
+.overall_text {
+  font-size: 20px;
+  font-weight: 500;
+}
+.overall_subtext {
+  font-size: 12px;
+  color: #7e7a79;
+  margin-right: 5px;
+}
+
+.point_detail {
+  width: 25%;
+  display: flex;
+  padding-left: 16px;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px groove;
+}
+.detail_point {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--btn-color);
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.detail_type {
+  font-size: 18px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+.point {
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  border-bottom: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.agoda_point {
+  padding-top: 10px;
+  display: flex;
+  width: 20%;
+  height: fit-content;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+}
+.point_on10 {
+  color: var(--btn-color);
+  font-size: 40px;
+  display: flex;
+  margin-bottom: 10px;
+}
+.on10 {
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 5px;
+  display: flex;
+  align-items: end;
+}
+
+.agoda_listPoint {
+  display: flex;
+  width: 40%;
+}
+.icon_green {
+  padding-left: 0px;
+}
+.overall_subtext1 {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--btn-color);
+  font-weight: 500;
+  padding-bottom: 10px;
+}

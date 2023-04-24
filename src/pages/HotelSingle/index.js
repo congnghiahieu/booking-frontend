@@ -6,6 +6,8 @@ import {
   Member,
   NearBy,
   HotelSuggest,
+  FeedBack,
+  Comment,
 } from "../../components";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -337,6 +339,24 @@ const HotelSingle = () => {
             hotelPoint="8,8"
           />
         </div>
+      </div>
+      <div className={style.feedback}>
+        <div className={style.subfeedBack}>
+          <FeedBack hotelName="Căn hộ Nikko" hotelPoint="9,1" />
+
+        </div>
+      </div>
+      <div className={style.comment}>
+        <div className={style.subcomment}>
+        <Comment hotelPoint="9,9" userName="Trung" />
+        <Comment hotelPoint="9,9" userName="Trung" />
+
+        </div>
+        
+        {/* <Comment 
+        hotelPoint="9,9"
+        userName="Trung"
+        /> */}
       </div>
     </div>
   );
