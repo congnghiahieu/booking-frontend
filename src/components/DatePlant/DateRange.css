@@ -1,0 +1,38 @@
+.datePlant{
+    position: relative;
+    width: 100%;
+}
+
+.headerSearchText{
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* gap: 10px; */
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    box-shadow: none;
+    flex-direction: row;
+    min-width: 330px;
+    width: 100%;
+    height: 48px;
+    background-color: white;
+}
+
+.dateIn, .dateOut{
+    display: flex;
+    align-items: center;
+}
+.dateIn{
+    border-right-style: groove;
+    padding-right: 30px;
+}
+
+.day{
+    margin-top: 12px;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    min-width: 330px;
+    width: 330px;
+    position:absolute;
+    z-index: 3;
+}

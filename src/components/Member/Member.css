@@ -1,0 +1,55 @@
+.MemberItem{
+    display: flex;
+    flex-direction: row;
+    height: 48px;
+    align-self:center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: none;
+    border: 1px solid #dddfe2;
+   cursor: pointer;
+    padding-right: 10px;
+    position: relative;
+}
+.MemberText{
+    display: flex;
+    height: 48px;
+    align-items: center;
+    width: 100%;
+}
+.options{
+    display: flex;
+    width: 250px;
+    flex-direction: column;
+    margin-top:11px ;
+    border-radius: 8px;
+    box-shadow: none;
+    border: 1px solid #20274d;
+    position: absolute;
+    z-index: 3;
+}
+.optionItem{
+    width: 100%;
+    /* align-items: center;
+    justify-content: center;
+    text-align: center; */
+    display: flex; 
+    padding-left: 10px; 
+    position: relative;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.optionCounter{
+    display: flex;
+    position: absolute;
+    right: 10px;
+    gap:10px;
+    font-size: 18px;
+}
+
+.optionText{
+    font-size: 18px;
+    color: #20274d;
+    width: 60px;
+}

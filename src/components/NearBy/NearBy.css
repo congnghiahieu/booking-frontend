@@ -1,0 +1,18 @@
+.walk_nearby{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px groove;
+}
+
+.TileNear{
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.place_dis{
+    display: grid;
+    font-size: 12px;
+    font-weight: 400;
+    grid-template-columns: 2fr 0.5fr 0.5fr;
+    margin-top: 20px;
+}

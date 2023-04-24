@@ -1,7 +1,130 @@
+
 .defaultHeader {
   width: 100%;
-  height: 60px;
+  height: 62px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  /* justify-content: center;
+  align-items: center; */
+  background-color: var(--header-background-color);
+  min-width: 1200px;
+  font-size: 18px;
+  overflow: hidden;
 }
+
+.homefunction{
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+  height: 100%;
+  align-items: center;
+  overflow: hidden;
+}
+
+.functiondetail{
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40px;
+  line-height: 60px;
+  max-height: 60px;
+  text-overflow: ellipsis;
+  width: fit-content;
+}
+.functiondetail:hover{
+  color: var(--login-color);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.logo{
+  width: 62px;
+  height: 62px;
+  display: flex;
+  background-image: url(https://play-lh.googleusercontent.com/ahJtMe0vfOlAu1XJVQ6rcaGrQBgtrEZQefHy7SXB7jpijKhu1Kkox90XDuH8RmcBOXNn);
+  background-size: 100% 100%;
+  margin-right: 40px;
+}
+
+.homelogin{
+  /* display: flex;
+  justify-self:flex-end; */
+  display: flex;
+  justify-self: flex-start;
+  align-items: center;
+  overflow: hidden;
+  min-width: 250px;
+}
+.login{
+  display: inline-block;
+  margin-right: 40px;
+  line-height: 250%;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--login-color);
+  max-height: 62px;
+
+}
+.signup{
+  display: block;
+  line-height: 250%;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--login-color);
+
+  border: 1px solid var(--login-color);
+  border-radius: 4px;
+  max-height: 62px;
+  overflow: clip;
+}
+.login:hover {
+  background-color: var(--login-color);
+  color: var(--header-background-color);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.signup:hover{
+  background-color: var(--login-color);
+  color: var(--header-background-color);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.hidden_function{
+  display:inline-block;
+  height: 100%;
+  position: relative;
+  
+  /* left:-30px;
+  top:62px; */
+}
+.hidden{
+  /* display: none; */
+  /* display: block;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: hidden;
+  top:50px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1; */
+  position: absolute;
+    z-index: 1400;
+    will-change: transform;
+    top: 0px;
+    left: 0px;
+    /* transform: translate3d(877px, 46px, 0px); */
+    background-color: red;
+}
+.hidden_detail{
+  /* display: none; */
+  color: black;
+  /* padding: 12px 16px; */
+  text-decoration: none;
+  display: block;
+}
+
+
+

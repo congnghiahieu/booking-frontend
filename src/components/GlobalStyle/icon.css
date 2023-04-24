@@ -1,0 +1,13 @@
+.icon{
+    padding: 10px 14px;
+    font-size: 24px;
+    font-family: 200;
+    color: var(--home-tile-acti-color);
+    display: flex;
+}
+.free{
+    color: #32a923;
+}
+.notetext{
+    color: red;
+}
