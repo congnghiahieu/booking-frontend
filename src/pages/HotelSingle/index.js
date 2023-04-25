@@ -23,6 +23,7 @@ import {
 
 const HotelSingle = () => {
   return (
+    // asdasdasdsad
     <div className={style.HotelSingle}>
       <div className={style.head_search}>
         <div className={style.inputLength}>
