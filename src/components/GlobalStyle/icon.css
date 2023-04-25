@@ -5,6 +5,25 @@
     color: var(--home-tile-acti-color);
     display: flex;
 }
+.iconProfile{
+    padding: 5px 15px;
+    font-size: 20px;
+    font-family: 400;
+    display: flex;
+}
+.iconCircle{
+    /* padding: 5px 15px; */
+    font-size: 7px;
+    font-family: 400;
+    display: flex;
+}
+.famous{
+    padding: 0 4px 0 15px;
+}
+.star{
+    margin-left:5px;
+    color: orange;
+}
 .free{
     color: #32a923;
 }

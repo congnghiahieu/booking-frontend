@@ -7,3 +7,5 @@ export { default as UserBooking } from "./UserBooking";
 export { default as UserEdit } from "./UserEdit";
 export { default as UserProfile } from "./UserProfile";
 export { default as Missing } from "./Missing";
+export { default as SearchHotel } from "./SearchHotel";
+ 

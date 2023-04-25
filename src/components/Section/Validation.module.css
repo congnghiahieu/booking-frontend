@@ -1,0 +1,50 @@
+.form{
+    font-size: 15px;
+    height: 80%;
+    padding: 20px;   
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+}
+/* .Booking{
+    height: 20%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+}
+.Booking button{
+    margin-top: 15px;
+    padding: 10px 20px;
+    width:300px;
+    height:50px;
+    font-size: 20px;
+    background-color: rgb(83, 146, 249);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+    color:#fff;
+    border:none;
+    border-radius: 4px;
+} */
+button:hover{
+    background-color: rgba(83, 146, 249, 0.7);
+}
+.Information{
+    /* padding: 20px; */
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: space-evenly;
+}
+.informationElement{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.informationElement input{
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid rgb(206, 208, 212)
+}
+.informationElement input:focus{
+    border-color: rgb(83, 146, 249);
+    outline: 0px;
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset, rgb(83, 146, 249) 0px 0px 6px;
+}

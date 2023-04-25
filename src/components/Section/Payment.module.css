@@ -1,0 +1,50 @@
+.container{
+    font-size: 15px;
+    height: 80%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+}
+.header{
+    padding: 20px 20px;
+    background-color: rgb(83, 146, 249);
+    color:#fff;
+}
+.Body{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* gap:20px; */
+}
+.CardBody{
+    padding: 10px 0;
+    display: flex;
+    gap:40px;
+    align-items: center;
+    justify-content: space-between;
+}
+select{
+    height: 50px;
+    width: 100%;
+}
+.infoCard{
+    display: flex;
+    flex-direction: column;
+}
+.infoCard input{
+    height: 40px;
+    width: 360px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding-top: 10px;
+}
+.Security{
+    display: flex;
+    gap: 40px;
+}
+.Security input{
+    width: 160px;
+}
+
