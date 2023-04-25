@@ -10,6 +10,7 @@ import {
   UserEdit,
   UserProfile,
   Missing,
+  SearchHotel,
 } from "./pages";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route>
             <Route path='hotel/view/:id' element={<HotelSingle />} />
-            <Route path='hotel/booking/:id' element={<HotelBooking />} />
+            <Route path='search/:id' element={<SearchHotel/>}/>
           </Route>
           <Route>
             <Route path='user/profile/:id' element={<UserProfile />} />
@@ -35,6 +36,10 @@ function App() {
           </Route>
           {/* Missing route - 404 */}
           <Route path='*' element={<Missing />} />
+        </Route>
+
+        <Route path='/' >
+          <Route path='hotel/booking/:id' element={<HotelBooking />} />
         </Route>
       </Routes>
     </main>

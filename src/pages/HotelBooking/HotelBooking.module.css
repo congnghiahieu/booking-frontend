@@ -1,0 +1,103 @@
+.container{
+    margin: 20px 0px;
+    height:80%;
+    width: 100%;
+    display:flex;
+    padding: 0 20%;
+    gap:20px;
+}
+.header{
+    width: 100%;
+    height:100px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 8px 2px;
+    padding: 14px 14px 11px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.progress{
+    position: relative;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    
+}
+.progress::before{
+   content: "";
+    width: 70%;
+   background-color:red;
+   height: 10px;
+   position: absolute;
+   top:50%;
+   transform: translateY(-50%);
+    
+}
+.progressStep{
+    background-color: red;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.show{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    width: 100%;
+    
+}
+.Booking{
+    height: 20%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+}
+.Booking button{
+    margin-top: 15px;
+    padding: 10px 20px;
+    width:300px;
+    height:50px;
+    font-size: 20px;
+    background-color: rgb(83, 146, 249);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+    color:#fff;
+    border:none;
+    border-radius: 4px;
+}
+.Sidebar{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card{
+    background-color: #fff;
+    padding:10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+}
+.card h4{
+    padding: 10px 0;
+}
+.card img {
+    padding-bottom: 10px;
+}
+.info{
+    gap: 10px;
+    display: flex;
+}
+.cardBody{
+    padding: 10px 20px;
+}
+.priceSection{
+    gap:10px;
+    display: flex;
+    justify-content: space-between;
+}
+.footer{
+    width: 100%;
+    height:100px;
+    background-color: blue;
+}

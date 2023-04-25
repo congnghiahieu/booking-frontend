@@ -1,0 +1,184 @@
+.container {
+    display: flex;
+    padding: 0 20%;
+    width: 100vw;
+}
+
+.Sidebar {
+    background-color: #fff;
+    width: 25%;
+    box-shadow: 7px 0 8px #e9ebee;
+}
+.Sidebar a{
+    font-weight: 600;
+    padding: 20px 0px;
+    display: flex;
+    color: #5392f9;
+    text-decoration: none;
+    gap: 5px;
+    align-items: center;
+    letter-spacing: 1px;
+}
+.Sidebar a:hover{
+    background-color: #5392f9;
+    color: #fff;
+}
+.Sidebar hr{
+    background-color: #ededed;
+    height: 1px;
+    margin: 30px;
+}
+.profile{
+    padding: 20px 0px;
+    display: flex;
+    color:#333;
+    gap: 5px;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.Sidebar li{
+    list-style: none;
+    padding-left: 30px;
+    color: #5392f9;
+}
+
+
+.Show {
+    padding: 0 50px;
+    width: 75%;
+}
+
+.YourInfo,
+.YourPayment,
+.YourFollow {
+    padding-top: 30px;
+}
+
+.YourInfo h2,
+.YourPayment h2,
+.YourFollow h2 {
+    color: #333;
+    padding-bottom: 25px;
+    font-weight: 400;
+    line-height: .91;
+    letter-spacing: .9px;
+}
+
+.YourInfo .icon {
+    width: 56px;
+    height: 56px;
+    background-color: rgb(72, 139, 248);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 55px;
+    font-size: 2.8rem;
+    margin-right: 21px;
+}
+
+.avatar {
+    display: flex;
+}
+
+.name h2 {
+    font-size: 16px;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    justify-content: center;
+    gap: 10px;
+}
+
+.YourPayment .display h2,
+.YourFollow .display h2 {
+    font-size: 16px;
+    padding-bottom: 10px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display {
+    display: flex;
+    color: #5a5b5b;
+    margin-bottom: 10px;
+    height: 103px;
+    padding: 24px 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1);
+    justify-content: space-between;
+    gap:30px;
+}
+
+.display:hover {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .3);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
