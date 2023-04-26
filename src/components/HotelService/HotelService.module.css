@@ -1,0 +1,25 @@
+.svContainer {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1080px;
+  height: fit-content;
+  background-color: white;
+  margin-top: 10px;
+  /* height: -moz-fit-content; */
+}
+
+.header {
+  font-size: 26px;
+  font-weight: 500;
+  padding-bottom: 15px;
+  border-bottom: 2px groove;
+  align-self: flex-start;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
