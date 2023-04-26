@@ -2,7 +2,8 @@ import { useState } from "react";
 import style from "./HotelBooking.module.css"
 import Page1 from "../../components/Section/Validation.js"
 import Page2 from "../../components/Section/Payment.js"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck,faUserFriends} from "@fortawesome/free-solid-svg-icons"
 
 const HotelBooking = () => {
   const [page, setPage] = useState(0)
@@ -13,7 +14,7 @@ const HotelBooking = () => {
     emailVerification: '',
     phoneNumber: '',
   })
-  var nextStep = false;
+  // var nextStep = false;
   const PageDisplay = () => {
     if (page === 0) {
       return <Page1 formData={formData} setFormData={setFormData} />
@@ -22,22 +23,32 @@ const HotelBooking = () => {
     }
   }
   function nextPage() {
-    nextStep = true;
+    // nextStep = true;
     setPage((curPage) => curPage + 1);
   }
   function backPage() {
     setPage((curPage) => curPage - 1);
   }
 
-
   return (
     <>
       <div className={style.header}>
         <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fhaycafe.vn%2Fhinh-anh-hoat-hinh-de-thuong-cute%2F&psig=AOvVaw2lDAXvk2ipL0NBJiIjiobO&ust=1681805643891000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLCx37G8sP4CFQAAAAAdAAAAABAd" />
         <div className={style.progress}>
-          <div className={style.progressStep} style={{ backgroundColor: page == 1 ? 'blue' : 'red' }}>1</div>
-          <div className={style.progressStep}>2</div>
-          <div className={style.progressStep}>3</div>
+          <div className={style.progressStep}>
+            <div className={style.circle}>1</div>
+            <span></span>
+            <p>Thông tin khác hàng</p>
+          </div>
+          <div className={style.progressStep}>
+            <div className={style.circle}>2</div>
+            <span></span>
+            <p>Thông tin khác hàng</p>
+          </div>
+          <div className={style.progressStep}>
+            <div className={style.circle}>3</div>
+            {/* <p>Thông tin khác hàng</p> */}
+          </div>
         </div>
         <div>abc</div>
       </div>
@@ -68,12 +79,38 @@ const HotelBooking = () => {
           <div className={style.card}>
             <h4>21 tháng 4 2023 - 22 tháng 4 2023</h4>
             <h4>1 x Căn Hộ 1 Phòng Ngủ (One-Bedroom Apartment)</h4>
+            <div className={style.feedBack}>
+              <p className={style.point}>9</p>
+              <div className={style.comment}>
+                <p id={style.one}>Vô cùng sạch sẽ</p>
+                <p id={style.two}>Từ ... bài viết</p>
+              </div>
+            </div>
+            <hr/>
             <div className={style.info}>
               <img src="https://pix8.agoda.net/hotelImages/28445719/446868994/21a3e3bd464b525469f219bbbbeec544.jpg?ca=28&ce=0&s=1024x768" style={{ width: '120px' }} />
-              <span> 2 nguoi lon</span>
+              <div>
+                <p> 
+                <FontAwesomeIcon icon={faUserFriends} />
+                <span> Tối đa: 2 người lớn, 1 Trẻ em (0-12 tuổi)</span>
+                </p>
+                <p>
+                  <FontAwesomeIcon icon={faCheck} className="free" />
+                  <span> Cà phê & trà </span>
+                </p>
+                <p>
+                  <FontAwesomeIcon icon={faCheck} className="free"/>
+                  <span> Wifi miễn phí</span>
+                </p>
+                <p>
+                  <FontAwesomeIcon icon={faCheck} className="free"/>
+                  <span> Nước uống</span>
+                </p>
+              </div>
             </div>
-            <span style={{color:'#1aac5b'}}>Hủy KHÔNG CÓ RỦI RO</span>
-            <h4>Thanh toán tại nơi ở</h4>
+            <hr/>
+            <span style={{ color: '#1aac5b' }}>Hủy KHÔNG CÓ RỦI RO</span>
+            <p id={style.one}>Đặt phòng ngay hôm nay để nhận những ưu đãi mới nhất từ khách sạn</p>
           </div>
           <div className={style.card}>
             <div className={style.bookingInfo}>

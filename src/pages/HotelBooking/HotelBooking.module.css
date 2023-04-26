@@ -11,20 +11,20 @@
     height:100px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 8px 2px;
-    padding: 14px 14px 11px;
+    padding: 20px 20%;
     margin-bottom: 16px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .progress{
     position: relative;
     width: 70%;
     display: flex;
-    justify-content: space-around;
-    align-self: center;
+    align-items: center;
+    justify-content: center;
     
 }
-.progress::before{
+/* .progress::before{
    content: "";
     width: 70%;
    background-color:red;
@@ -32,16 +32,37 @@
    position: absolute;
    top:50%;
    transform: translateY(-50%);
-    
-}
+} */
 .progressStep{
-    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.progressStep p{
+    position: absolute;
+    bottom: -15px;
+    /* left: 5px; */
+}
+.progressStep span{
+    width: 200px;
+    height: 7px;
+    background-color: #bec2c9;
+}
+.circle{
+    display: flex;
+    justify-content: center;
+    background-color: #5392f9;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    text-align: center;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    color:#fff;
 }
 
+
+.active{
+    background-color: #5392f9;
+}
 .show{
     display: flex;
     flex-direction: column;
@@ -75,7 +96,7 @@
 }
 .card{
     background-color: #fff;
-    padding:10px 10px;
+    padding:10px 20px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
 }
 .card h4{
@@ -84,9 +105,51 @@
 .card img {
     padding-bottom: 10px;
 }
+.card hr {
+    border-color: #dddfe2;
+    margin: 20px 0;
+    border-top: 1px;
+}
+.card #one{
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding-top: 5px;
+}
+.feedBack {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.point{
+    display: flex;
+    background-color: #5392f9;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+}
+.comment #one{
+    color: #5392f9;
+    font-size: 14px;
+    font-weight: 500;
+}
+.comment #two{
+    font-size: 12px;
+}
 .info{
+    font-size: 14px;
     gap: 10px;
     display: flex;
+}
+.info p{
+    padding: 5px 0;
 }
 .cardBody{
     padding: 10px 20px;
