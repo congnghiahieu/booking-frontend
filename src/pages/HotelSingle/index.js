@@ -23,17 +23,32 @@ const HotelSingle = () => {
     <div className={style.HotelSingle}>
       <div className={style.head_search}>
         <div className={style.inputLength}>
-          <InputSearch placeholder='Căn hộ Nikko - Cuộc sống quý phái' />
+          <InputSearch placeholder="Căn hộ Nikko - Cuộc sống quý phái" />
         </div>
+
         <DatePlant />
         <Member />
         <button className={style.search_btn}>
           <span>TÌM</span>
         </button>
       </div>
-
-      <HotelIntro hotelId={hotelId} />
-
+      <div className={style.hotel_demo}>
+        <div className={style.hotel_image}>
+          <div className={style.big_image}></div>
+          <div className={style.small_image}>
+            <span></span>
+            <span></span>
+          </div>
+          <div className={style.small_image}>
+            <span></span>
+            <span></span>
+          </div>
+          <div className={style.small_image}>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
       <div className={style.hotel_option}>
         <div className={style.hotel_optionbar}>
           <div className={style.hotel_selectoption}>

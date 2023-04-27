@@ -3,7 +3,7 @@ import style from "./HotelBooking.module.css"
 import Page1 from "../../components/Section/Validation.js"
 import Page2 from "../../components/Section/Payment.js"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faUserFriends} from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faUserFriends,faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
 const HotelBooking = () => {
   const [page, setPage] = useState(0)
@@ -60,8 +60,14 @@ const HotelBooking = () => {
               <input type="checkbox" className="form-check-input" id="exampleCheck1" />
               <label className="form-check-label" htmlFor="exampleCheck1"> Nhận email khuyến mãi độc quyền từ chúng tôi</label>
             </div>
-            <button onClick={nextPage}>Kế tiếp</button>
-            <button onClick={backPage}>Quay lại</button>
+            <p>Thực hiện bước tiếp theo đồng nghĩa với việc bạn chấp nhận tuân theo Điều khoản sử dụng và Chính sách bảo mật của Agoda.</p>
+            <button onClick={nextPage}>Bước tiếp theo</button>
+            {(page==1 || page ==2) && <button onClick={backPage}>Quay lại bước trước</button>}
+            <hr />
+            <div>
+            <FontAwesomeIcon icon={faEnvelope} />
+              <span> Chúng tôi sẽ gửi xác nhận phòng qua địa chỉ email đã được cung cấp</span>
+            </div>
           </div>
         </div>
         <div className={style.Sidebar}>
@@ -86,46 +92,50 @@ const HotelBooking = () => {
                 <p id={style.two}>Từ ... bài viết</p>
               </div>
             </div>
-            <hr/>
+            <hr />
             <div className={style.info}>
               <img src="https://pix8.agoda.net/hotelImages/28445719/446868994/21a3e3bd464b525469f219bbbbeec544.jpg?ca=28&ce=0&s=1024x768" style={{ width: '120px' }} />
               <div>
-                <p> 
-                <FontAwesomeIcon icon={faUserFriends} />
-                <span> Tối đa: 2 người lớn, 1 Trẻ em (0-12 tuổi)</span>
+                <p>
+                  <FontAwesomeIcon icon={faUserFriends} />
+                  <span> Tối đa: 2 người lớn, 1 Trẻ em (0-12 tuổi)</span>
                 </p>
                 <p>
                   <FontAwesomeIcon icon={faCheck} className="free" />
                   <span> Cà phê & trà </span>
                 </p>
                 <p>
-                  <FontAwesomeIcon icon={faCheck} className="free"/>
+                  <FontAwesomeIcon icon={faCheck} className="free" />
                   <span> Wifi miễn phí</span>
                 </p>
                 <p>
-                  <FontAwesomeIcon icon={faCheck} className="free"/>
+                  <FontAwesomeIcon icon={faCheck} className="free" />
                   <span> Nước uống</span>
                 </p>
               </div>
             </div>
-            <hr/>
+            <hr />
             <span style={{ color: '#1aac5b' }}>Hủy KHÔNG CÓ RỦI RO</span>
             <p id={style.one}>Đặt phòng ngay hôm nay để nhận những ưu đãi mới nhất từ khách sạn</p>
           </div>
           <div className={style.card}>
             <div className={style.bookingInfo}>
-              <div className={style.priceSection}>
-                <p>Giá gốc:</p>
-                <p>1tr ₫</p>
+              <span>GIẢM 32% HÔM NAY</span>
+              <div>
+                <div className={style.priceSection}>
+                  <p>Giá gốc:</p>
+                  <p style={{ textDecoration: 'line-through' }}>1tr ₫</p>
+                </div>
+                <div className={style.priceSection}>
+                  <p>Giá ưu đãi:</p>
+                  <p>1tr ₫</p>
+                </div>
+                <div className={style.priceSection}>
+                  <p>Phí đặt trước:</p>
+                  <p style={{ color: '#488bf8' }}>MIỄN PHÍ</p>
+                </div>
               </div>
-              <div className={style.priceSection}>
-                <p>Giá ưu đãi:</p>
-                <p>1tr ₫</p>
-              </div>
-              <div className={style.priceSection}>
-                <p>Phí đặt trước:</p>
-                <p style={{ color: '#488bf8' }}>MIỄN PHÍ</p>
-              </div>
+              <hr />
               <div className={style.priceSection} style={{ fontWeight: '600' }}>
                 <p> Tổng chi phí phải thanh toán:</p>
                 <p> 1tr2 ₫</p>
