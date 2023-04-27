@@ -1,57 +1,12 @@
-.search {
-    width: 100%;
-    height: 70px;
-    padding: 11px 0px;
-    background-color: #20274d;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 5px;
-    position: sticky;
-    top: 0px;
-    z-index: 3;
-    /* margin-bottom: 10px; */
-}
-
-.searchButton {
-    min-width: 130px;
-    height: 48px;
-    padding: 11px 0;
-    font-size: 18px;
-    font-weight: 200;
-    color: white;
-    background-color: var(--btn-color);
-    border: none;
-    border-radius: 2px;
-
-}
-
 .container {
     /* padding-top:10px; */
     display: flex;
     background-color: #fff;
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     gap: 15px;
     padding: 0 20%;
-}
-
-.sideBar {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    background-color: white;
-}
-
-.filter {
-    gap: 10px;
-    padding: 30px 0;
-    border-top: 2px solid #dddfe2;
-    display: flex;
-    flex-direction: column;
-}
-.filter label{
-    padding-right: 5px;
+    /* overflow: auto; */
 }
 
 .show {
@@ -59,16 +14,15 @@
     flex-direction: column;
     gap: 15px;
     width: 75%;
+    padding: 20px 0;
 }
 
 .suggesstion {
     display: flex;
     background-color: #fff;
     border-radius: 5px;
-    /* padding-bottom: 10px; */
     border: 1px solid;
     border-color: #dddfe2;
-    /* padding: 10px 0; */
     height: 50px;
 }
 
@@ -109,152 +63,4 @@
 .card:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .3);
     background-color: #ebf0fc;
-}
-
-.card .image{
-    width: 30%;
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 75% 25%;
-    column-gap: 2px;
-}
-.image img{
-    width: 100%;
-    height: 100%;
-    grid-column: 1/5;
-}
-
-.card .hotelInfor {
-    display: flex;
-    flex-direction: column;
-    padding: 0px 20px;
-    width: 45%;
-    cursor: default;
-}
-
-.information{
-    display: flex;
-    flex-direction: column;
-    gap:7px;
-}
-.hotelInfor p {
-    font-size: 14px;
-}
-
-.hotelInfor h3 {
-    letter-spacing: 1px;
-}
-
-.hotelInfor #one {
-    color: rgb(49, 112, 231);
-}
-
-.hotelInfor #two {
-    color: rgb(225, 45, 45);
-    font-weight: 500;
-}
-
-.hotelInfor #three {
-    color: rgb(40, 135, 28);
-    font-weight: 500;
-}
-
-.hotelInfor #four {
-    background: rgb(216, 245, 213);
-    color: rgb(40, 135, 28);
-    font-weight: 500;
-    width: 150px;
-    padding: 4px 8px;
-}
-
-.famous {
-    display: flex;
-    padding: 5px;
-    /* justify-content: center; */
-    align-items: center;
-}
-
-.famous p {
-    font-weight: 600;
-    width: 80px;
-    font-size: 14px;
-}
-
-.famous hr {
-    width: 150px;
-    size: 1px;
-}
-
-.card .price {
-    display: flex;
-    flex-direction: column;
-    padding: 0 10px;
-    border-left: 1px solid;
-    border-color: #dddfe2;
-    width: 25%;
-    justify-content: space-between;
-}
-
-.feedBack {
-    padding-top: 10px;
-    display: flex;
-    gap: 5px;
-    justify-content: flex-end;
-}
-
-.comment {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    letter-spacing: 1px;
-}
-
-.comment span {
-    font-size: 13px;
-}
-
-.point {
-    font-size: 14px;
-    color: #fff;
-    background-color: #3e6cea;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    width: 35px;
-    height: 35px;
-    justify-content: center;
-}
-
-.discount {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
-}
-
-.discount p {
-    background-color: rgb(249, 216, 216);
-    color: rgb(180, 36, 36);
-    padding: 4px 8px;
-    border-radius: 2px;
-    font-weight: 600;
-    font-size: 12px;
-}
-
-.discount #orginalPrice {
-    font-weight: 600;
-    font-size: 18px;
-    color: #737373;
-    text-decoration: line-through;
-}
-
-.discount #discountPrice {
-    font-weight: 600;
-    font-size: 22px;
-}
-
-.discount .destroy {
-    color: rgb(40, 135, 28);
-    font-weight: 500;
-    letter-spacing: 0.5px;
 }

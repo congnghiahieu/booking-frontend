@@ -23,8 +23,9 @@ const HotelSingle = () => {
     <div className={style.HotelSingle}>
       <div className={style.head_search}>
         <div className={style.inputLength}>
-          <InputSearch placeholder='Căn hộ Nikko - Cuộc sống quý phái' />
+          <InputSearch placeholder="Căn hộ Nikko - Cuộc sống quý phái" />
         </div>
+
         <DatePlant />
         <Member />
         <button className={style.search_btn}>
