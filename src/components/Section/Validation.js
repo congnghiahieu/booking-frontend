@@ -16,7 +16,7 @@ const Page1 = ({formData, setFormData}) => {
     return (
         <>
             <div className={style.form}>
-                <h1>Vui lòng điền thông tin của bạn</h1> 
+                <h1>Thông tin liên lạc</h1> 
                 <form className={style.Information} onSubmit={handleValidation} >
                     <div className={style.informationElement}>
                         <label htmlFor="name" className="form-label">Họ và tên</label>

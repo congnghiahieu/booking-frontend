@@ -8,6 +8,7 @@ import {
   HotelSuggest,
   FeedBack,
   Comment,
+  SearchHeader
 } from "../../components";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -24,17 +25,7 @@ import {
 const HotelSingle = () => {
   return (
     <div className={style.HotelSingle}>
-      <div className={style.head_search}>
-        <div className={style.inputLength}>
-          <InputSearch placeholder="Căn hộ Nikko - Cuộc sống quý phái" />
-        </div>
-
-        <DatePlant />
-        <Member />
-        <button className={style.search_btn}>
-          <span>TÌM</span>
-        </button>
-      </div>
+      <SearchHeader placeholder="ádasd"/>
       <div className={style.hotel_demo}>
         <div className={style.hotel_image}>
           <div className={style.big_image}></div>
