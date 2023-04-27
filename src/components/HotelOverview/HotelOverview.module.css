@@ -1,0 +1,68 @@
+#Overview {
+  flex: 1;
+}
+
+.hotel_name {
+  border-radius: 4px;
+  border-color: rgb(221, 223, 226);
+  border-style: solid;
+  border-width: 1px;
+  padding: 16px;
+  box-shadow: none;
+  margin: 0px;
+  flex: 1;
+  height: 100%;
+}
+
+.name_header {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 4px;
+  border: 1px solid rgb(50, 169, 35);
+}
+.Accommodation_type_badge__homes_logo {
+  height: 16px;
+  width: 16px;
+  margin: 4px;
+}
+
+.header_script {
+  font-size: 14px;
+  color: rgb(50, 169, 35);
+  vertical-align: middle;
+  margin: 4px;
+  margin-bottom: 6px;
+}
+
+.hotel_text {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.hotel_header {
+  display: block;
+  font-size: 26px;
+  font-weight: 650;
+}
+.hotel_star {
+  display: block;
+  width: 12px;
+  background-color: #e2584f;
+  height: 12px;
+}
+
+.hotel_location {
+  margin-top: 5px;
+  height: 30px;
+  border-bottom-style: groove;
+  border-width: 2px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.hotel_decription {
+  flex: 1;
+  margin-top: 5px;
+  font-size: 18px;
+  line-height: 1.5;
+}

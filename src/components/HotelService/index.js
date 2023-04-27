@@ -13,7 +13,7 @@ const HotelService = ({ hotelId }) => {
   } = useGetServiceByHotelIdQuery({ hotelId });
 
   return (
-    <div className={style.svContainer}>
+    <div className={style.svContainer} id ="hotelSuggest">
       {isSvLoad && <Loading />}
       {!isSvLoad && isSvErr && <Error />}
       {!isSvLoad && isSvOk ? (
