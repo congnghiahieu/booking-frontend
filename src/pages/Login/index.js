@@ -54,30 +54,30 @@ const Login = () => {
   };
 
   return (
-    <div className='login-form'>
+    <div className='form-container'>
       {isLoading && <Loading />}
       {loginErr && <p>{loginErr}</p>}
       <h2>Login</h2>
-      <form
-        style={{
-          width: '20%',
-          display: 'flex',
-          flexDirection: 'column',
-        }}>
-        <label htmlFor='account'>Account</label>
-        <input id='account' type='text' ref={usernameRef} {...attrs} />
-
-        <label htmlFor='password'>Password</label>
-        <input id='password' type='password' onChange={e => setPassword(e.target.value)} />
-
-        <label htmlFor='persist'>Keep login session</label>
-        <input id='persist' type='checkbox' checked={persist} onChange={toggle} />
-
-        <button disabled={!canLogin} onClick={onLogin}>
-          Login
-        </button>
+      <form className='form'>
+        <div className='form-group'>
+          <label htmlFor='account'>Account</label>
+          <input id='account' type='text' ref={usernameRef} {...attrs} />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='password'>Password</label>
+          <input id='password' type='password' onChange={e => setPassword(e.target.value)} />
+        </div>
+        <div className='form-group-hor'>
+          <label htmlFor='persist'>Keep login session</label>
+          <input id='persist' type='checkbox' checked={persist} onChange={toggle} />
+        </div>
+        <div className='form-group'>
+          <button disabled={!canLogin} onClick={onLogin}>
+            Login
+          </button>
+        </div>
       </form>
-      <div>
+      <div className='form-redirect'>
         <p>Need an Account ?</p>
         <Link to='/register'>Register new Account</Link>
       </div>

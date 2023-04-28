@@ -26,6 +26,7 @@ const Register = () => {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [regisErr, setRegisErr] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const [regis, { isLoading }] = useRegisterMutation();
   const canRegis = validName && validMatch && !isLoading;
@@ -53,50 +54,70 @@ const Register = () => {
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
     if (!v1 || !v2) {
+      setRegisErr('Invalid Entry');
       return;
     }
     try {
       await regis({ user, pwd }).unwrap();
+      setSuccess(true);
+      setUser('');
+      setPwd('');
+      setMatchPwd('');
+      // navigate('/login');
     } catch (err) {
       if (!err.status) {
-        setLoginErr('No Server Response');
+        setRegisErr('No Server Response');
       } else if (err.status === 400) {
-        setLoginErr('Missing Username or Password');
+        setRegisErr('Missing Username or Password');
       } else if (err.status === 401) {
-        setLoginErr('Unauthorized');
+        setRegisErr('Unauthorized');
       } else {
-        setLoginErr(err.data?.message);
+        setRegisErr(err.data?.message);
       }
     }
   };
 
   return (
-    <div className='regis-form'>
-      {isLoading && <Loading />}
-      {regisErr && <p>{regisErr}</p>}
-      <h2>Register</h2>
-      <form
-        style={{
-          width: '20%',
-          display: 'flex',
-          flexDirection: 'column',
-        }}>
-        <label htmlFor='account'>Account</label>
-        <input id='account' type='text' ref={userRef} />
+    <>
+      {success ? (
+        <section>
+          <h1>Success!</h1>
+          <p>
+            <Link to='/login'>Sign in</Link>
+          </p>
+        </section>
+      ) : (
+        <div className='form-container'>
+          {isLoading && <Loading />}
+          {regisErr && <p>{regisErr}</p>}
+          <h2>Register</h2>
+          <form className='form'>
+            <div className='form-group'>
+              <label htmlFor='account'>Account</label>
+              <input id='account' type='text' ref={userRef} />
+            </div>
 
-        <label htmlFor='password'>Password</label>
-        <input id='password' type='password' />
-
-        <label htmlFor='confirm'>Confirm Password</label>
-        <input id='confirm' type='password' />
-
-        <button disabled={!canRegis}>Register</button>
-      </form>
-      <div>
-        <p>Already registered ?</p>
-        <Link to='/login'>Login</Link>
-      </div>
-    </div>
+            <div className='form-group'>
+              <label htmlFor='password'>Password</label>
+              <input id='password' type='password' />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='confirm'>Confirm Password</label>
+              <input id='confirm' type='password' />
+            </div>
+            <div className='form-group'>
+              <button disabled={!canRegis} onClick={onRegis}>
+                Register
+              </button>
+            </div>
+          </form>
+          <div className='form-redirect'>
+            <p>Already registered ?</p>
+            <Link to='/login'>Login</Link>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
