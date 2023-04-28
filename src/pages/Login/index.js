@@ -81,6 +81,9 @@ const Login = () => {
         <p>Need an Account ?</p>
         <Link to='/register'>Register new Account</Link>
       </div>
+      <div className='Google_login'>
+    <span>Google</span>
+      </div>
     </div>
   );
 };
