@@ -1,0 +1,51 @@
+.hotel_option {
+    display: flex;
+    height: 56px;
+    width: 100%;
+    margin: 16px 0px 0px;
+    justify-content: center;
+    scroll-behavior: smooth;
+  }
+.hotel_optionbar {
+    width: 1080px;
+    border-radius: 4px;
+    border-color: rgb(221, 223, 226);
+    border-style: solid;
+    border-width: 1px;
+    padding: 0px 4px 0px 16px;
+    box-shadow: none;
+    position: relative;
+    display: flex;
+    
+  }
+  
+  .hotel_selectoption {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+  .hotel_select {
+    display: flex;
+    width: fit-content;
+    margin-right: 30px;
+    height: 100%;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  .hotel_select:hover {
+    border-bottom-style: groove;
+    border-color: var(--btn-color);
+    color: var(--btn-color);
+  }
+  .hotel_price {
+    display: flex;
+    align-self: center;
+    position: absolute;
+    right: 10px;
+    color: #e2584f;
+    font-size: 26px;
+  }
+  

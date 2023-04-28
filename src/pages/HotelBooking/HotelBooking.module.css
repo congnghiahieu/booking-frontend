@@ -1,14 +1,15 @@
-.container{
+.container {
     margin: 20px 0px;
-    height:80%;
+    height: 80%;
     width: 100%;
-    display:flex;
+    display: flex;
     padding: 0 20%;
-    gap:20px;
+    gap: 20px;
 }
-.header{
+
+.header {
     width: 100%;
-    height:100px;
+    height: 100px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 8px 2px;
     padding: 20px 20%;
@@ -16,39 +17,35 @@
     display: flex;
     justify-content: space-evenly;
 }
-.progress{
+
+.progress {
     position: relative;
     width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
-/* .progress::before{
-   content: "";
-    width: 70%;
-   background-color:red;
-   height: 10px;
-   position: absolute;
-   top:50%;
-   transform: translateY(-50%);
-} */
-.progressStep{
+
+.progressStep {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.progressStep p{
+
+.progressStep p {
     position: absolute;
     bottom: -15px;
     /* left: 5px; */
 }
-.progressStep span{
+
+.progressStep span {
     width: 200px;
     height: 7px;
     background-color: #bec2c9;
 }
-.circle{
+
+.circle {
     display: flex;
     justify-content: center;
     background-color: #5392f9;
@@ -56,72 +53,94 @@
     width: 40px;
     height: 40px;
     align-items: center;
-    color:#fff;
+    color: #fff;
 }
 
 
-.active{
+.active {
     background-color: #5392f9;
 }
-.show{
+
+.show {
     display: flex;
     flex-direction: column;
-    gap:15px;
+    gap: 15px;
     width: 100%;
-    
 }
-.Booking{
+
+.Booking {
     height: 20%;
     padding: 20px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
 }
-.Booking button{
+
+.Booking button {
     margin-top: 15px;
     padding: 10px 20px;
-    width:300px;
-    height:50px;
+    width: 300px;
+    height: 50px;
     font-size: 20px;
     background-color: rgb(83, 146, 249);
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
-    color:#fff;
-    border:none;
+    color: #fff;
+    border: none;
     border-radius: 4px;
 }
-.Sidebar{
+.Booking p {
+    font-size: 12px;
+}
+.Booking hr{
+    margin-top:30px;   
+    margin-bottom: 10px;
+    /* padding: 0px 10px; */
+    height: 1px;
+}
+.Booking button:hover {
+    background-color: rgba(83, 146, 249, 0.7);
+}
+
+.Sidebar {
     width: 40%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.card{
+
+.card {
     background-color: #fff;
-    padding:10px 20px;
+    padding: 10px 20px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
 }
-.card h4{
+
+.card h4 {
     padding: 10px 0;
 }
+
 .card img {
     padding-bottom: 10px;
 }
+
 .card hr {
     border-color: #dddfe2;
     margin: 20px 0;
     border-top: 1px;
 }
-.card #one{
+
+.card #one {
     font-weight: 500;
     letter-spacing: 1px;
     font-size: 14px;
     padding-top: 5px;
 }
+
 .feedBack {
     display: flex;
     gap: 5px;
     align-items: center;
 }
-.point{
+
+.point {
     display: flex;
     background-color: #5392f9;
     color: #fff;
@@ -131,36 +150,66 @@
     align-items: center;
     border-radius: 50%;
 }
-.comment{
+
+.comment {
     display: flex;
     flex-direction: column;
 }
-.comment #one{
+
+.comment #one {
     color: #5392f9;
     font-size: 14px;
     font-weight: 500;
 }
-.comment #two{
+
+.comment #two {
     font-size: 12px;
 }
-.info{
+
+.info {
     font-size: 14px;
     gap: 10px;
     display: flex;
 }
-.info p{
+
+.info p {
     padding: 5px 0;
 }
-.cardBody{
+
+.cardBody {
     padding: 10px 20px;
 }
-.priceSection{
-    gap:10px;
+
+.bookingInfo {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bookingInfo span {
+    background-color: #e44746;
+    color: #fff;
+    padding: 7px;
+    font-size: 14px;
+    display: flex;
+    width: fit-content;
+    margin-left: 47%;
+}
+
+
+.priceSection {
+    gap: 10px;
     display: flex;
     justify-content: space-between;
 }
-.footer{
+
+.priceSection p {
+    font-size: 14px;
+}
+
+.footer {
     width: 100%;
-    height:100px;
+    height: 100px;
     background-color: blue;
 }

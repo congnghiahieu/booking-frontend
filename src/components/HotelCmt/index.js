@@ -17,7 +17,7 @@ const HotelComment = ({ hotelId }) => {
   const [page, setPage] = useState(1);
 
   return (
-    <div className={style.cmtContainer}>
+    <div className={style.cmtContainer} id="hotelCmt">
       {isCmtLoad && <Loading />}
       {!isCmtLoad && isCmtErr && <Error />}
       {!isCmtLoad && isCmtOk ? (

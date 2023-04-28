@@ -14,6 +14,7 @@ const HotelIntro = ({ hotelId }) => {
   } = useGetHotelByIdQuery(hotelId);
 
   return (
+    
     <div className={style.introContainer}>
       {isHtLoad && <Loading />}
       {!isHtLoad && isHtErr && <Error />}
