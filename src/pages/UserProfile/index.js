@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import style from './UserProfile.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCalendarCheck, faCaretDown, faCircle, faMessage } from "@fortawesome/free-solid-svg-icons"
 
 const UserProfile = () => {
+  const [check,setCheck] = useState(true);
   return (
     <>
       <div className={style.container}>
@@ -28,11 +29,11 @@ const UserProfile = () => {
             </a>
             <a>
               <FontAwesomeIcon icon={faCircle} className="iconCircle" />
-              <span>Thông tin người dùng</span>
+              <span>Phương thức thanh toán</span>
             </a>
             <a>
               <FontAwesomeIcon icon={faCircle} className="iconCircle"/>
-              <span>Thông tin người dùng</span>
+              <span>Theo dõi</span>
             </a>
           </li>
           <hr></hr>
@@ -62,7 +63,7 @@ const UserProfile = () => {
                 <h2>Số điện thoại</h2>
                 <span>0123123</span>
               </div>
-              <div className={style.edit}>Thêm</div>
+              <div className={style.edit}>Chỉnh sửa</div>
             </div>
             <div className={style.display}>
               <div className={style.name}>
@@ -92,7 +93,6 @@ const UserProfile = () => {
             <div className={style.display}>
               <div className={style.name}>
                 <h2>Bản tin</h2>
-
                 <span>
                   <input type="radio" id="Everyday" name="news" value="Everyday" />
                   <label htmlFor="Everyday">Hằng ngày</label>
@@ -109,7 +109,6 @@ const UserProfile = () => {
                   <input type="radio" id="Never" name="news" value="Never" />
                   <label htmlFor="Never">Không bao giờ</label>
                 </span>
-
               </div>
             </div>
 
@@ -138,7 +137,7 @@ const UserProfile = () => {
               <div className={style.edit}>
                 <span>CÓ</span>
                 <label className="switch">
-                  <input type="checkbox" checked />
+                  <input type="checkbox" checked={check} onChange={e => setCheck(prev => !prev)} />
                   <span className="slider round"></span>
                 </label>
               </div>

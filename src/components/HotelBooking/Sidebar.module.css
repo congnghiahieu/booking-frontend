@@ -1,0 +1,141 @@
+.Sidebar {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+}
+
+.card h4 {
+    padding: 10px 0;
+}
+
+.card img {
+    padding-bottom: 10px;
+}
+
+.card hr {
+    border-color: #dddfe2;
+    margin: 20px 0;
+    border-top: 1px;
+}
+
+.card #one {
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.feedBack {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.point {
+    display: flex;
+    background-color: #5392f9;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.comment #one {
+    color: #5392f9;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.comment #two {
+    font-size: 12px;
+}
+
+.info {
+    font-size: 14px;
+    gap: 10px;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.info img {
+    width: 80px;
+    height: 120px;
+    border-radius: 2px;
+}
+
+.info p {
+    /* padding: 5px 0; */
+}
+
+.cardBody {
+    position: relative;
+}
+.cardBody h3{
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+.cardBody p{
+    
+}
+.discount {
+    width: 80px;
+    background-color: rgb(225, 45, 45);
+    color: rgb(255, 255, 255);
+    padding: 2px 4px;
+    position: absolute;
+    top: -4px;
+    left: -125px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.discount p {
+    padding: 0;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.bookingInfo {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bookingInfo span {
+    background-color: #e44746;
+    color: #fff;
+    padding: 7px;
+    font-size: 14px;
+    display: flex;
+    width: fit-content;
+    margin-left: 47%;
+}
+
+
+.priceSection {
+    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.priceSection p {
+    font-size: 14px;
+}

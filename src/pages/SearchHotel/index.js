@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import style from "./SearchHotel.module.css"
 import { SearchHeader} from "../../components";
-// import sideBar from "../../components/SearchHotel/sideBar.js";
-// import sideBar from "../../components/SearchHotel/sideBar.js";
 import Sidebar from "../../components/SearchHotel/Sidebar.js"
 import HotelInfo from "../../components/SearchHotel/HotelInfo.js";
 import HotelPrice from "../../components/SearchHotel/HotelPrice";
