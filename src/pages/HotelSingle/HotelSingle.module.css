@@ -6,10 +6,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
   background-color: white;
   scroll-behavior: smooth;
 }
-
+.HotelSingle_main{
+  width: 1080px;
+}
 
 .hotel_demo {
   display: flex;
@@ -389,17 +393,6 @@
   padding-bottom: 15px;
   border-bottom: 2px groove;
 }
-.feedback{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.subfeedBack{
-  width: 1080px;
-
-}
-
 .comment{
   display: flex;
   width: 100%;

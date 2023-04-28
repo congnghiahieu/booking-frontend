@@ -11,6 +11,7 @@ export { default as HotelIntro } from './HotelIntro';
 export { default as HotelService } from './HotelService';
 export { default as HotelCmt } from './HotelCmt';
 export { default as ImageSlide } from './ImageSlide';
+export { default as SearchHeader } from './SearchHeader';
 export { default as FeedBack } from './FeedBack';
 export { default as Comment } from './Comment';
 export { default as Loading } from './Loading';
@@ -18,4 +19,5 @@ export { default as Error } from './Error';
 export { default as PagingNav } from './PagingNav';
 export { default as HotelOverview} from './HotelOverview';
 export { default as HotelOptionBar} from './HotelOptionBar';
+
 
