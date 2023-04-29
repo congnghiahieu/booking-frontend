@@ -1,4 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { useRegisterMutation } from '../../app/features/auth/authApiSlice';
 import useTitle from '../../hooks/useTitle';
@@ -10,7 +12,6 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const Register = () => {
   useTitle('Register');
 
-  const navigate = useNavigate();
   const userRef = useRef();
 
   const [user, setUser] = useState('');
@@ -29,7 +30,7 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
 
   const [regis, { isLoading }] = useRegisterMutation();
-  const canRegis = validName && validMatch && !isLoading;
+  const canRegis = validName && validPwd && validMatch && !isLoading;
 
   useEffect(() => {
     userRef.current.focus();
@@ -58,19 +59,18 @@ const Register = () => {
       return;
     }
     try {
-      await regis({ user, pwd }).unwrap();
+      await regis({ username: user, password: pwd }).unwrap();
       setSuccess(true);
       setUser('');
       setPwd('');
       setMatchPwd('');
-      // navigate('/login');
     } catch (err) {
       if (!err.status) {
         setRegisErr('No Server Response');
       } else if (err.status === 400) {
         setRegisErr('Missing Username or Password');
-      } else if (err.status === 401) {
-        setRegisErr('Unauthorized');
+      } else if (err.status === 409) {
+        setRegisErr('Username Taken');
       } else {
         setRegisErr(err.data?.message);
       }
@@ -81,9 +81,9 @@ const Register = () => {
     <>
       {success ? (
         <section>
-          <h1>Success!</h1>
+          <h1>Đăng kí tài khoản thành công</h1>
           <p>
-            <Link to='/login'>Sign in</Link>
+            <Link to='/login'>Chuyển tới trang đăng nhập</Link>
           </p>
         </section>
       ) : (
@@ -91,26 +91,106 @@ const Register = () => {
           {isLoading && <Loading />}
           {regisErr && <p>{regisErr}</p>}
           <h2>Register</h2>
+
           <form className='form'>
             <div className='form-group'>
-              <label htmlFor='account'>Account</label>
-              <input id='account' type='text' ref={userRef} />
+              <label htmlFor='account'>
+                Username:
+                <FontAwesomeIcon icon={faCheck} className={validName ? 'valid' : 'hide'} />
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={validName || !user ? 'hide' : 'invalid'}
+                />
+              </label>
+              <input
+                id='account'
+                type='text'
+                ref={userRef}
+                autoComplete='off'
+                onChange={e => setUser(e.target.value)}
+                value={user}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+              {/* Validation message */}
+              {/* TODO: Cần CSS */}
+              <p
+                id='uidnote'
+                className={userFocus && user && !validName ? 'instructions' : 'offscreen'}>
+                <FontAwesomeIcon icon={faInfoCircle} />
+                4 to 24 characters.
+                <br />
+                Must begin with a letter.
+                <br />
+                Letters, numbers, underscores, hyphens allowed.
+              </p>
             </div>
 
             <div className='form-group'>
-              <label htmlFor='password'>Password</label>
-              <input id='password' type='password' />
+              <label htmlFor='password'>
+                Password:
+                <FontAwesomeIcon icon={faCheck} className={validPwd ? 'valid' : 'hide'} />
+                <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? 'hide' : 'invalid'} />
+              </label>
+              <input
+                id='password'
+                type='password'
+                onChange={e => setPwd(e.target.value)}
+                value={pwd}
+                required
+                onFocus={() => setPwdFocus(true)}
+                onBlur={() => setPwdFocus(false)}
+              />
+              <p id='pwdnote' className={pwdFocus && !validPwd ? 'instructions' : 'offscreen'}>
+                <FontAwesomeIcon icon={faInfoCircle} />
+                8 to 24 characters.
+                <br />
+                Must include uppercase and lowercase letters, a number and a special character.
+                <br />
+                Allowed special characters: <span aria-label='exclamation mark'>!</span>{' '}
+                <span aria-label='at symbol'>@</span> <span aria-label='hashtag'>#</span>{' '}
+                <span aria-label='dollar sign'>$</span> <span aria-label='percent'>%</span>
+              </p>
             </div>
+
             <div className='form-group'>
-              <label htmlFor='confirm'>Confirm Password</label>
-              <input id='confirm' type='password' />
+              <label htmlFor='confirm'>
+                Confirm Password:
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className={validMatch && matchPwd ? 'valid' : 'hide'}
+                />
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={validMatch || !matchPwd ? 'hide' : 'invalid'}
+                />
+              </label>
+              <input
+                id='confirm'
+                type='password'
+                onChange={e => setMatchPwd(e.target.value)}
+                value={matchPwd}
+                required
+                onFocus={() => setMatchFocus(true)}
+                onBlur={() => setMatchFocus(false)}
+              />
+              <p
+                id='confirmnote'
+                className={matchFocus && !validMatch ? 'instructions' : 'offscreen'}>
+                <FontAwesomeIcon icon={faInfoCircle} />
+                Must match the first password input field.
+              </p>
             </div>
+
+            {/* TODO: CSS cả lúc button bị disabled */}
             <div className='form-group'>
               <button disabled={!canRegis} onClick={onRegis}>
                 Register
               </button>
             </div>
           </form>
+
           <div className='form-redirect'>
             <p>Already registered ?</p>
             <Link to='/login'>Login</Link>

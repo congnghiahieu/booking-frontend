@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../app/features/auth/authSlice';
 import { useLoginMutation } from '../../app/features/auth/authApiSlice';
@@ -13,11 +13,15 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const usernameRef = useRef(null);
+
   const [username, attrs, reset] = useLocalInput('username', '');
   const [password, setPassword] = useState('');
   const [persist, toggle] = useLocalCheckbox('persist-login', false);
+
   const [loginErr, setLoginErr] = useState('');
 
   const [login, { isLoading }] = useLoginMutation();
@@ -39,7 +43,7 @@ const Login = () => {
       dispatch(setCredentials({ accessToken }));
       reset();
       setPassword();
-      // navigate('/dash');
+      navigate(from, { replace: true });
     } catch (err) {
       if (!err.status) {
         setLoginErr('No Server Response');
@@ -71,6 +75,7 @@ const Login = () => {
           <label htmlFor='persist'>Keep login session</label>
           <input id='persist' type='checkbox' checked={persist} onChange={toggle} />
         </div>
+        {/* TODO: CSS cả lúc button bị disabled */}
         <div className='form-group'>
           <button disabled={!canLogin} onClick={onLogin}>
             Login
@@ -82,7 +87,7 @@ const Login = () => {
         <Link to='/register'>Register new Account</Link>
       </div>
       <div className='Google_login'>
-    <span>Google</span>
+        <span>Google</span>
       </div>
     </div>
   );
