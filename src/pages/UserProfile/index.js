@@ -1,38 +1,50 @@
-import React, { useState } from "react";
-import style from './UserProfile.module.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faCalendarCheck, faCaretDown, faCircle, faMessage } from "@fortawesome/free-solid-svg-icons"
+import React, { useState } from 'react';
+import style from './UserProfile.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUser,
+  faCalendarCheck,
+  faCaretDown,
+  faCircle,
+  faMessage,
+} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { useGetUserByIdQuery, useGetUserByUsernameQuery } from '../../app/features/api/usersSlice';
+import useAuth from '../../hooks/useAuth';
 
 const UserProfile = () => {
-  const [check,setCheck] = useState(true);
+  // const { username } = useAuth();
+  // const { data: user, isLoading, isSuccess, isError } = useGetUserByUsernameQuery(username);
+
+  const [check, setCheck] = useState(true);
   return (
     <>
       <div className={style.container}>
         <div className={style.Sidebar}>
-          <a href="/user/booking/a">
-            <FontAwesomeIcon icon={faCalendarCheck} className="iconProfile" />
+          <Link to='/user/booking/a'>
+            <FontAwesomeIcon icon={faCalendarCheck} className='iconProfile' />
             <span>Đơn đặt chỗ của tôi</span>
-          </a>
-          <a href="/user/comments/a">
-          <FontAwesomeIcon icon={faMessage} className="iconProfile"/>
+          </Link>
+          <Link to='/user/comments/a'>
+            <FontAwesomeIcon icon={faMessage} className='iconProfile' />
             <span>Nhận xét</span>
-          </a>
+          </Link>
           <div className={style.profile}>
-            <FontAwesomeIcon icon={faUser} className="iconProfile" />
+            <FontAwesomeIcon icon={faUser} className='iconProfile' />
             <span>Hồ sơ</span>
-            <FontAwesomeIcon icon={faCaretDown} className="iconProfile" />
+            <FontAwesomeIcon icon={faCaretDown} className='iconProfile' />
           </div>
           <li>
             <a>
-              <FontAwesomeIcon icon={faCircle} className="iconCircle"/>
+              <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Thông tin người dùng</span>
             </a>
             <a>
-              <FontAwesomeIcon icon={faCircle} className="iconCircle" />
+              <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Phương thức thanh toán</span>
             </a>
             <a>
-              <FontAwesomeIcon icon={faCircle} className="iconCircle"/>
+              <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Theo dõi</span>
             </a>
           </li>
@@ -80,9 +92,9 @@ const UserProfile = () => {
               <h2>Lưu thông tin thẻ tín dụng của tôi</h2>
               <div className={style.edit}>
                 <span>CÓ</span>
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round"></span>
+                <label className='switch'>
+                  <input type='checkbox' />
+                  <span className='slider round'></span>
                 </label>
               </div>
             </div>
@@ -94,20 +106,20 @@ const UserProfile = () => {
               <div className={style.name}>
                 <h2>Bản tin</h2>
                 <span>
-                  <input type="radio" id="Everyday" name="news" value="Everyday" />
-                  <label htmlFor="Everyday">Hằng ngày</label>
+                  <input type='radio' id='Everyday' name='news' value='Everyday' />
+                  <label htmlFor='Everyday'>Hằng ngày</label>
                 </span>
                 <span>
-                  <input type="radio" id="2times/week" name="news" value="2times/week" />
-                  <label htmlFor="2times/week">Hai lần một tuần</label>
+                  <input type='radio' id='2times/week' name='news' value='2times/week' />
+                  <label htmlFor='2times/week'>Hai lần một tuần</label>
                 </span>
                 <span>
-                  <input type="radio" id="Everyweek" name="news" value="Everyweek" />
-                  <label htmlFor="Everyweek">Hằng tuần</label>
+                  <input type='radio' id='Everyweek' name='news' value='Everyweek' />
+                  <label htmlFor='Everyweek'>Hằng tuần</label>
                 </span>
                 <span>
-                  <input type="radio" id="Never" name="news" value="Never" />
-                  <label htmlFor="Never">Không bao giờ</label>
+                  <input type='radio' id='Never' name='news' value='Never' />
+                  <label htmlFor='Never'>Không bao giờ</label>
                 </span>
               </div>
             </div>
@@ -116,9 +128,9 @@ const UserProfile = () => {
               <h2>Bạn muốn nhận thông tin nhắc nhở hỗ trợ đặt phòng</h2>
               <div className={style.edit}>
                 <span>KHÔNG</span>
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round"></span>
+                <label className='switch'>
+                  <input type='checkbox' />
+                  <span className='slider round'></span>
                 </label>
               </div>
             </div>
@@ -126,9 +138,9 @@ const UserProfile = () => {
               <h2>Tôi muốn nhận email về khuyến mãi</h2>
               <div className={style.edit}>
                 <span>KHÔNG</span>
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round"></span>
+                <label className='switch'>
+                  <input type='checkbox' />
+                  <span className='slider round'></span>
                 </label>
               </div>
             </div>
@@ -136,18 +148,17 @@ const UserProfile = () => {
               <h2>Tôi muốn biết thông tin và ưu đãi liên quan đến chuyến đi sắp tới của mình</h2>
               <div className={style.edit}>
                 <span>CÓ</span>
-                <label className="switch">
-                  <input type="checkbox" checked={check} onChange={e => setCheck(prev => !prev)} />
-                  <span className="slider round"></span>
+                <label className='switch'>
+                  <input type='checkbox' checked={check} onChange={e => setCheck(prev => !prev)} />
+                  <span className='slider round'></span>
                 </label>
               </div>
             </div>
           </div>
-
         </div>
-      </div >
+      </div>
     </>
-  )
+  );
 };
 
 export default UserProfile;

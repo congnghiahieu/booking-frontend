@@ -4,8 +4,6 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useRef, memo } from 'react';
 import { getRan, getDiscount } from '../../utils/random';
 import { PointBar } from '../../components';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useRef } from 'react';
 
 function FeedBack({ hotelName, hotelPoint }) {
   var comment = '';

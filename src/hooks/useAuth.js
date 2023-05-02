@@ -2,6 +2,10 @@ import { useSelector } from 'react-redux';
 import { selectCurrentToken } from '../app/features/auth/authSlice';
 import jwtDecode from 'jwt-decode';
 
+/**
+ *
+ * @returns {{username: string, name: string, roles: Array, id: String, fav: Array, cart: Array}}
+ */
 const useAuth = () => {
   const token = useSelector(selectCurrentToken);
 
@@ -12,6 +16,6 @@ const useAuth = () => {
     return { username, name, roles, id, fav, cart };
   }
 
-  return {};
+  return { username: '', name: '', roles: null, id: '', fav: null, cart: null };
 };
 export default useAuth;

@@ -61,7 +61,7 @@ function HotelSuggest({ service }) {
               alt='service preview'
             /> */}
           </div>
-          <a href='https://www.facebook.com/' className='more'>
+          <a href='https://www.facebook.com/' target='_blank' className='more'>
             Xem ảnh và chi tiết
           </a>
           {/* TODO service image */}

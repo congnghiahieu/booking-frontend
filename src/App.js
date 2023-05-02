@@ -11,6 +11,7 @@ import {
   UserProfile,
   SearchHotel,
 } from './pages';
+import BookingProvider from './context/BookingContext';
 
 function App() {
   return (
@@ -29,15 +30,23 @@ function App() {
             <Route path='search' element={<SearchHotel />} />
           </Route>
           <Route>
-            <Route path='user/profile/:id' element={<UserProfile />} />
-            <Route path='user/edit/:id' element={<UserEdit />} />
-            <Route path='user/booking/:id' element={<UserBooking />} />
+            <Route path='user/profile' element={<UserProfile />} />
+            <Route path='user/edit' element={<UserEdit />} />
+            <Route path='user/booking' element={<UserBooking />} />
+            <Route path='user/comments' element={<UserBooking />} />
           </Route>
           {/* <Route path='*' element={<Missing />} /> */}
         </Route>
 
         <Route path='/'>
-          <Route path='hotel/booking/:id' element={<HotelBooking />} />
+          <Route
+            path='hotel/booking/:id'
+            element={
+              <BookingProvider>
+                <HotelBooking />
+              </BookingProvider>
+            }
+          />
         </Route>
 
         {/* Catch all - replace with 404 component if you want */}

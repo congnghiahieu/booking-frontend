@@ -6,7 +6,7 @@ import {
   faHouseCircleCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
 
 const DefaultHeader = () => {
   // const [hotels, setHotels] = useState([]);
@@ -33,7 +33,7 @@ const DefaultHeader = () => {
       <div className={style.homefunction}>
         <div className={style.logo}></div>
         <div className={style.functiondetail}>
-          <Link to={'/'}>Home</Link>
+          <NavLink to={'/'}>Home</NavLink>
         </div>
         <div className={style.functiondetail}>Máy bay + K.sạn</div>
         <div className={style.functiondetail}>Chỗ ở</div>

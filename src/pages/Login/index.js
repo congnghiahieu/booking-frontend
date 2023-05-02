@@ -6,7 +6,6 @@ import { useLoginMutation } from '../../app/features/auth/authApiSlice';
 import useLocalCheckbox from '../../hooks/useLocalCheckbox';
 import useLocalInput from '../../hooks/useLocalInput';
 import useTitle from '../../hooks/useTitle';
-import { Loading } from '../../components';
 import { Loading, GoogleIcon } from '../../components';
 
 const Login = () => {

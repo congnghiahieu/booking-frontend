@@ -33,7 +33,7 @@
 .comment {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
 }
 .comment .text1 {
   font-family: 18px;
@@ -70,7 +70,7 @@
 .room_type {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .room_price {
@@ -194,7 +194,7 @@
 }
 .icon_people {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   padding-left: 10px;
 }
 .icon_couple {
@@ -255,8 +255,8 @@
   display: flex;
   flex-direction: column;
   height: fit-content;
-  justify-content: end;
-  align-items: end;
+  justify-content: flex-end;
+  align-items: flex-end;
   cursor: pointer;
 }
 

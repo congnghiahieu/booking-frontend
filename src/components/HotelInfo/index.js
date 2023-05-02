@@ -206,7 +206,9 @@ const HotelInfo = ({ hotel }) => {
                 distance6='6,0 km'
               />
               <div className={style.more}>
-                <a href='https://vinpearl.com/vi/20-dia-diem-du-lich-viet-nam-noi-tieng-nhat-dinh-nen-den-mot-lan'>
+                <a
+                  href='https://vinpearl.com/vi/20-dia-diem-du-lich-viet-nam-noi-tieng-nhat-dinh-nen-den-mot-lan'
+                  target='_blank'>
                   Đừng bấm vào đây
                 </a>
               </div>

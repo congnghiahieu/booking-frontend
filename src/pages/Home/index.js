@@ -25,7 +25,7 @@ import { HomeSuggest } from '../../components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import provinvesMap from '../../utils/VI_PROVINCES_MAPPING.json';
 import { rmWs, normalizeStr } from '../../utils/normalizeStr';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, NavLink } from 'react-router-dom';
 
 const Home = () => {
   useTitle('Wygo.com | Official Website');
@@ -51,7 +51,6 @@ const Home = () => {
   const onSearch = () => {
     if (!rmWs(search)) return setSearchErr('Vui lòng nhập tên tỉnh thành / thành phố bạn muốn đến');
 
-    console.log(norSearchVal);
     if (!Object.keys(provinvesMap).includes(norSearchVal)) {
       return setSearchErr('Hiện tại chúng tôi chỉ hỗ trỡ tìm kiếm các tỉnh thành ở VN');
     }

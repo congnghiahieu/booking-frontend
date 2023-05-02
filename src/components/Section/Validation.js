@@ -1,75 +1,78 @@
-import React, { useState } from 'react';
 import style from './Validation.module.css';
-import Validation from '../Validation.js';
+import useBookingContext from '../../hooks/useBookingContext';
+import FormInput from '../FormInput';
 
-const Page1 = ({ formData, setFormData }) => {
-  const [errors, setErrors] = useState({});
-  function handleInput(event) {
-    const newObj = { ...formData, [event.target.name]: event.target.value };
-    // setValues(newObj)
-    setFormData(newObj);
-  }
-  function handleValidation(event) {
-    event.preventDefault();
-    setErrors(Validation(formData));
-  }
+const Page1 = () => {
+  const { formData, onDataChange } = useBookingContext();
+
+  const inputs = [
+    {
+      id: 'cusName',
+      name: 'cusName',
+      type: 'text',
+      placeholder: 'Vui lòng nhập họ và tên',
+      label: 'Họ và tên',
+      // pattern: '^[a-zA-Z]+( [a-zA-Z]+)+$',
+      required: true,
+      maxLength: 128,
+      title: 'Vui lòng nhập tên',
+      autoComplete: 'name',
+      error: 'Họ và tên không hợp lệ',
+    },
+    {
+      id: 'cusEmail',
+      name: 'cusEmail',
+      type: 'email',
+      placeholder: 'Vui lòng nhập chính xác',
+      label: 'Email',
+      // pattern: '^[\\w-.]+@([\\w-]+.)+[\\w-]{2,4}$',
+      required: true,
+      title:
+        'Vui lòng nhập địa chỉ email hợp lệ để chúng tôi có thể gửi xác nhận đặt phòng cho bạn.',
+      maxLength: 254,
+      autoComplete: 'email',
+      error: 'Vui lòng kiểm tra thông tin trong "Email".',
+    },
+    {
+      id: 'cusEmailVerification',
+      name: 'cusEmailVerification',
+      type: 'email',
+      placeholder: 'Vui lòng nhập chính xác',
+      label: 'Nhập lại Email',
+      pattern: formData.cusEmail.value,
+      required: true,
+      autoComplete: 'retypeEmail',
+      maxLength: '254',
+      disablePaste: true, // experimental
+      title: 'Vui lòng kiểm tra thông tin trong "Email" và "Nhập lại email" trùng khớp.',
+      error: 'Vui lòng kiểm tra thông tin trong "Email" và "Nhập lại email" trùng khớp.',
+    },
+    {
+      id: 'cusPhone',
+      name: 'cusPhone',
+      type: 'text',
+      placeholder: 'Nhập số điện thoại',
+      label: 'Số điện thoại',
+      pattern: '(84|0[3|5|7|8|9])+([0-9]{8})\\b',
+      required: true,
+      autoComplete: 'tel',
+      error: 'Số điện thoại không hợp lệ',
+    },
+  ];
+
   return (
     <>
       <div className={style.form}>
         <h1>Thông tin liên lạc</h1>
-        <form className={style.Information} onSubmit={handleValidation}>
-          <div className={style.informationElement}>
-            <label htmlFor='name' className='form-label'>
-              Họ và tên
-            </label>
-            <input
-              type='text'
-              className='form-control'
-              name='name'
-              onChange={handleInput}
-              value={formData.name}
+        <form className={style.Information}>
+          {inputs.map(input => (
+            <FormInput
+              key={input.id}
+              input={input}
+              formData={formData}
+              onDataChange={onDataChange}
             />
-            {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
-          </div>
-          <div className={style.informationElement}>
-            <label htmlFor='email' className='form-label'>
-              Email
-            </label>
-            <input
-              type='email'
-              className='form-control'
-              name='email'
-              onChange={handleInput}
-              value={formData.email}
-            />
-            {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
-          </div>
-          <div className={style.informationElement}>
-            <label htmlFor='emailVerification' className='form-label'>
-              Nhập lại email
-            </label>
-            <input
-              type='email'
-              className='form-control'
-              name='emailVerification'
-              onChange={handleInput}
-              value={formData.emailVerification}
-            />
-            {errors.emailVerification && <p style={{ color: 'red' }}>{errors.emailVerification}</p>}
-          </div>
-          <div className={style.informationElement}>
-            <label htmlFor='phoneNumber' className='form-label'>
-              Số điện thoại{' '}
-            </label>
-            <input
-              type='text'
-              className='form-control'
-              name='phoneNumber'
-              onChange={handleInput}
-              value={formData.phoneNumber}
-            />
-            {errors.phoneNumber && <p style={{ color: 'red' }}>{errors.phoneNumber}</p>}
-          </div>
+          ))}
           <span>
             Nếu quý khách nhập địa chỉ thư điện tử và không hoàn thành việc đặt phòng thì chúng tôi
             có thể nhắc nhở để giúp quý khách tiếp tục đặt phòng.
@@ -81,15 +84,7 @@ const Page1 = ({ formData, setFormData }) => {
               Đặt phòng này cho người khác
             </label>
           </div>
-          {/* <button>ABC</button> */}
         </form>
-        {/* <div className={style.Booking}>
-                    <div >
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                        <label className="form-check-label" htmlFor="exampleCheck1"> Nhận email khuyến mãi độc quyền từ chúng tôi</label>
-                    </div>
-                    <button>Kế tiếp</button>
-                </div> */}
       </div>
     </>
   );

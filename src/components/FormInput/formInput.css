@@ -1,0 +1,48 @@
+:root {
+  --valid-color: #98d491;
+  --invalid-color: #e12d2d;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-input input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid rgb(206, 208, 212);
+}
+.form-input input:focus {
+  border-color: rgb(83, 146, 249);
+  outline: 0px;
+  box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset, rgb(83, 146, 249) 0px 0px 6px;
+}
+
+.form-input span {
+  font-size: 12px;
+  padding: 3px;
+  color: red;
+}
+
+.form-input input.valid-input {
+  border-color: var(--valid-color);
+  box-shadow: none;
+}
+
+.form-input input.invalid-input {
+  border-color: var(--invalid-color);
+  box-shadow: none;
+}
+
+.form-icon {
+  margin-left: 20px;
+  font-size: inherit;
+}
+
+.form-icon.form-icon-valid {
+  color: var(--valid-color);
+}
+.form-icon.form-icon-invalid {
+  color: var(--invalid-color);
+}

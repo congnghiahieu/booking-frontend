@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import style from './HotelBooking.module.css';
-import Page1 from '../../components/Section/Validation.js';
-import Page2 from '../../components/Section/Payment.js';
-import Page3 from '../../components/Section/Confirm';
+import PageDisplay from '../../components/Section/PageDisplay';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faUserFriends, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Sidebar from '../../components/HotelBooking/Sidebar';
 import ProgressStep from '../../components/HotelBooking/ProgressStep';
+import useBookingContext from '../../hooks/useBookingContext';
+import { useAddBookMutation } from '../../app/features/api/booksSlice';
+import { useParams } from 'react-router-dom';
 
 const hotel = {
   name: 'Khách sạn Mường Thanh Sài Gòn Center',
@@ -22,44 +22,47 @@ const hotel = {
 };
 
 const HotelBooking = () => {
-  const [page, setPage] = useState(0);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    emailVerification: '',
-    phoneNumber: '',
-    cardName: '',
-    cardSeries: '',
-    cardOutdate: '',
-    cardCvc: '',
-  });
-  // var nextStep = false;
-  const PageDisplay = () => {
-    if (page === 0) {
-      return <Page1 formData={formData} setFormData={setFormData} />;
-    } else if (page === 1) {
-      return <Page2 />;
-    } else {
-      return <Page3 />;
-    }
+  const { hotelId, serviceId } = useParams();
+  const {
+    page,
+    setPage,
+    disablePrev,
+    disableNext,
+    prevHide,
+    nextHide,
+    canSubmit,
+    submitHide,
+    formData,
+  } = useBookingContext();
+  const [addBook, { isLoading, isSuccess, isError }] = useAddBookMutation();
+
+  const prevPage = () => setPage(curPage => curPage - 1);
+  const nextPage = () => setPage(curPage => curPage + 1);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    console.log(formData);
   };
-  function nextPage() {
-    // nextStep = true;
-    setPage(curPage => curPage + 1);
-  }
-  function backPage() {
-    setPage(curPage => curPage - 1);
-  }
+
   return (
     <>
-      <ProgressStep page={page} />
+      {/* Progress */}
+      <ProgressStep />
+      {/* Main form */}
       <div className={style.container}>
         <div className={style.show}>
-          {PageDisplay()}
+          {/* Multipage form */}
+          <PageDisplay />
+          {/* Redirect button */}
           {page != 2 && (
             <div className={style.Booking}>
               <div>
-                <input type='checkbox' className='form-check-input' id='exampleCheck2' />
+                <input
+                  type='checkbox'
+                  className='form-check-input'
+                  id='exampleCheck2'
+                  onChange={e => e.target}
+                />
                 <label className='form-check-label' htmlFor='exampleCheck2'>
                   {' '}
                   Nhận email khuyến mãi độc quyền từ chúng tôi
@@ -69,18 +72,46 @@ const HotelBooking = () => {
                 Thực hiện bước tiếp theo đồng nghĩa với việc bạn chấp nhận tuân theo Điều khoản sử
                 dụng và Chính sách bảo mật của Agoda.
               </p>
-              {(page == 0 || page == 1) && <button onClick={nextPage}>Bước tiếp theo</button>}
-              {(page == 1 || page == 2) && <button onClick={backPage}>Quay lại bước trước</button>}
-              <hr />
-              <div>
-                <FontAwesomeIcon icon={faEnvelope} />
-                <span> Chúng tôi sẽ gửi xác nhận phòng qua địa chỉ email đã được cung cấp</span>
-              </div>
+              <button
+                onClick={prevPage}
+                type='button'
+                className={`button ${prevHide}`}
+                disabled={disablePrev}>
+                Quay lại bước trước
+              </button>
+              <button
+                onClick={nextPage}
+                type='button'
+                className={`button ${nextHide}`}
+                disabled={disableNext}>
+                {!disableNext ? 'Bước tiếp theo' : 'Vui lòng hoàn thiện thông tin'}
+              </button>
+              <button
+                onClick={onSubmit}
+                type='button'
+                className={`button ${submitHide}`}
+                disabled={!canSubmit}>
+                {canSubmit ? 'Đặt phòng' : 'Vui lòng hoàn thiện thông tin'}
+              </button>
+              {formData.cusEmail.value && page == 1 && (
+                <div>
+                  <hr />
+                  <FontAwesomeIcon icon={faEnvelope} />
+
+                  <span>
+                    {' '}
+                    Chúng tôi sẽ gửi xác nhận phòng qua địa chỉ email{' '}
+                    <strong>{formData.cusEmail.value}</strong>
+                  </span>
+                </div>
+              )}
             </div>
           )}
         </div>
-        <Sidebar hotel={hotel} />
+        {/* Fixed Sidebar */}
+        <Sidebar hotel={hotel} hotelId={hotelId} serviceId={serviceId} />
       </div>
+      {/* Footer */}
       <div className={style.footer}>footer</div>
     </>
   );

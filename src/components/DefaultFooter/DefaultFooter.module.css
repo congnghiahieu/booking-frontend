@@ -8,7 +8,7 @@
   background-color: var(--footer-background-color);
 }
 
-.footer_content{
+.footer_content {
   display: flex;
   flex-direction: column;
   /* column-gap: 70px; */
@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-.footer_script{
+.footer_script {
   width: 100%;
   text-align: center;
   margin-top: 80px;
@@ -24,7 +24,7 @@
   margin-bottom: 20px;
   font-size: 18px;
 }
-.sponsor_co{
+.sponsor_co {
   display: flex;
   width: 100%;
   height: 48px;
@@ -34,19 +34,18 @@
   justify-content: center;
 }
 
-.company{
+.company {
   display: grid;
   width: 60%;
   grid-template-columns: 150px 150px 150px 150px 150px 150px;
-  gap:70px;
+  gap: 70px;
 }
 
-
-.company_name1{
+.company_name1 {
   background-image: url(./agoda-logo-black-removebg-preview.png);
   background-size: 100% 100%;
 }
-.company_name2{
+.company_name2 {
   background-image: url(./tải_xuống__1_-removebg-preview.png);
   margin-top: 10px;
   background-size: 100% 70%;
@@ -54,34 +53,33 @@
   align-content: center;
 }
 
-.company_name3{
+.company_name3 {
   background-image: url(./Kayak-Logo-removebg-preview.png);
   margin-top: -20px;
   background-size: 100% 135%;
   background-repeat: no-repeat;
 }
-.company_name4{
+.company_name4 {
   background-image: url(./rentalcarscom2723-removebg-preview.png);
   margin-top: -30px;
   background-size: 100% 140%;
   background-repeat: no-repeat;
   align-content: center;
 }
-.company_name5{
+.company_name5 {
   background-image: url(./Booking.Com-logo-removebg-preview.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   align-content: center;
 }
-.company_name6{
+.company_name6 {
   background-image: url(./opentable-vector-logo-removebg-preview.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   align-content: center;
 }
 
-
-.the_end{
+.the_end {
   display: block;
   position: relative;
   width: 100%;
@@ -90,28 +88,30 @@
   font-size: 18px;
   margin-top: 20px;
   bottom: 0px;
-  align-items: end;
+  align-items: flex-end;
   color: var(--footer-color);
 }
 
-@media (max-width:1400px) {
-  .company{
+@media (max-width: 1400px) {
+  .company {
     display: grid;
     grid-template-columns: 150px 150px 150px;
   }
 
-
-  .company_name4, .company_name5, .company_name6{
+  .company_name4,
+  .company_name5,
+  .company_name6 {
     display: none;
   }
 }
 
-@media (max-width:800px){
-  .company_name4, .company_name5, .company_name6{
+@media (max-width: 800px) {
+  .company_name4,
+  .company_name5,
+  .company_name6 {
     display: none;
   }
-  .footer_script{
+  .footer_script {
     color: var(--footer-background-color);
   }
 }
-

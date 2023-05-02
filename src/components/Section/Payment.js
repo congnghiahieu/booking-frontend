@@ -1,9 +1,70 @@
-import React, { useState } from 'react';
 import style from './Payment.module.css';
+import useBookingContext from '../../hooks/useBookingContext';
+import FormInput from '../FormInput';
 
 const MethodsOfPayment = ['THẺ TÍN DỤNG/GHI NỢ', 'THANH TOÁN ĐIỆN TỬ'];
 
-const Page2 = ({ formData, setFormData }) => {
+const Page2 = () => {
+  const { formData, onDataChange } = useBookingContext();
+
+  const inputs = [
+    {
+      id: 'cardName',
+      name: 'cardName',
+      type: 'text',
+      placeholder: 'Vui lòng nhập họ tên chủ thẻ',
+      title: 'Xin vui lòng điền họ tên chủ thẻ.',
+      label: 'Tên chủ thẻ',
+      // pattern: '^[a-zA-Z]+( [a-zA-Z]+)+$',
+      required: true,
+      maxLength: 64,
+      autoComplete: 'cardholder-name',
+      error: 'Xin vui lòng điền họ tên chủ thẻ',
+    },
+    {
+      id: 'cardSeries',
+      name: 'cardSeries',
+      type: 'tel',
+      placeholder: 'Vui lòng nhập chính xác',
+      label: 'Số thẻ tín dụng / Thẻ ghi nợ',
+      inputMode: 'numeric',
+      pattern: '[0-9]{1,16}',
+      required: true,
+      title: 'Vui lòng nhập số thẻ tín dụng hợp lệ.',
+      maxLength: 16,
+      autoComplete: 'cc-number',
+      error: 'Vui lòng nhập số thẻ tín dụng hợp lệ.',
+    },
+    {
+      id: 'cardExpiredate',
+      name: 'cardExpiredate',
+      type: 'text',
+      placeholder: 'MM/YY',
+      label: 'Ngày hết hạn',
+      inputMode: 'numeric',
+      required: true,
+      pattern: '[0-9]{4}',
+      autoComplete: 'cc-expiry',
+      maxLength: 4,
+      title: 'Vui lòng nhập ngày hết hạn thẻ tín dụng hợp lệ',
+      error: 'Vui lòng nhập ngày hết hạn thẻ tín dụng hợp lệ',
+    },
+    {
+      id: 'cardCvc',
+      name: 'cardCvc',
+      type: 'password',
+      placeholder: '***',
+      label: 'Mã bảo mật CVC',
+      pattern: '\\d*',
+      required: true,
+      autoComplete: 'off',
+      inputMode: 'numeric',
+      maxLength: 3,
+      title: 'Vui lòng nhập mã CVC hợp lệ (3 hoặc 4 con số tùy thuộc vào thẻ tín dụng của bạn).',
+      error: 'Vui lòng nhập mã CVC hợp lệ (3 hoặc 4 con số tùy thuộc vào thẻ tín dụng của bạn).',
+    },
+  ];
+
   return (
     <>
       <div className={style.container}>
@@ -21,21 +82,25 @@ const Page2 = ({ formData, setFormData }) => {
           <div className={style.CardBody}>
             <div className={style.infoCard}>
               <div className={style.info}>
-                <label htmlFor='CardName'>Tên trên thẻ</label>
-                <input name='CardName'></input>
+                {/* <label htmlFor='CardName'>Tên trên thẻ</label>
+                <input name='CardName'></input> */}
+                <FormInput input={inputs[0]} formData={formData} onDataChange={onDataChange} />
               </div>
               <div className={style.info}>
-                <label htmlFor='CardNumber'>Số thẻ tín dụng/thẻ ghi nợ</label>
-                <input name='CardNumber'></input>
+                {/* <label htmlFor='CardNumber'>Số thẻ tín dụng/thẻ ghi nợ</label>
+                <input name='CardNumber'></input> */}
+                <FormInput input={inputs[1]} formData={formData} onDataChange={onDataChange} />
               </div>
               <div className={style.Security}>
                 <div className={style.info}>
-                  <label htmlFor='TimeDate'>Ngày hết hạn</label>
-                  <input name='TimeDate'></input>
+                  {/* <label htmlFor='TimeDate'>Ngày hết hạn</label>
+                  <input name='TimeDate'></input> */}
+                  <FormInput input={inputs[2]} formData={formData} onDataChange={onDataChange} />
                 </div>
                 <div className={style.info}>
-                  <label htmlFor='CVC'>Mã bảo mật CVC</label>
-                  <input name='CVC'></input>
+                  {/* <label htmlFor='CVC'>Mã bảo mật CVC</label>
+                  <input name='CVC'></input> */}
+                  <FormInput input={inputs[3]} formData={formData} onDataChange={onDataChange} />
                 </div>
               </div>
             </div>
