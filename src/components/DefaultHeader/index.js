@@ -1,11 +1,12 @@
-import style from "./DefaultHeader.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import style from './DefaultHeader.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faMagnifyingGlass,
   faEllipsis,
   faHouseCircleCheck,
-} from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+} from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const DefaultHeader = () => {
   // const [hotels, setHotels] = useState([]);
@@ -31,7 +32,9 @@ const DefaultHeader = () => {
       } */}
       <div className={style.homefunction}>
         <div className={style.logo}></div>
-        <div className={style.functiondetail}>Home</div>
+        <div className={style.functiondetail}>
+          <Link to={'/'}>Home</Link>
+        </div>
         <div className={style.functiondetail}>Máy bay + K.sạn</div>
         <div className={style.functiondetail}>Chỗ ở</div>
         <div className={style.functiondetail}>Phiếu giảm giá và ưu đãi</div>

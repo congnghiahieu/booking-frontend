@@ -1,4 +1,5 @@
 import { useGetServiceByHotelIdQuery } from '../../app/features/api/servicesSlice';
+import { memo } from 'react';
 import style from './HotelService.module.css';
 import HotelSuggest from '../HotelSuggest';
 import Error from '../Error';
@@ -13,7 +14,7 @@ const HotelService = ({ hotelId }) => {
   } = useGetServiceByHotelIdQuery({ hotelId });
 
   return (
-    <div className={style.svContainer} id ="hotelSuggest">
+    <div className={style.svContainer} id='hotelSuggest'>
       {isSvLoad && <Loading />}
       {!isSvLoad && isSvErr && <Error />}
       {!isSvLoad && isSvOk ? (
@@ -37,4 +38,4 @@ const HotelService = ({ hotelId }) => {
   );
 };
 
-export default HotelService;
+export default memo(HotelService);

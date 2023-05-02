@@ -1,32 +1,37 @@
-import React from "react";
-import  style from "./HotelPrice.module.css";
+import { useRef, memo } from 'react';
+import style from './HotelPrice.module.css';
+import { getRan, getDiscount, getReview } from '../../utils/random';
+import { numFormatter } from '../../utils/formatter';
 
-const reviews = ['Trên cả tuyệt vời', 'Tuyệt vời', 'Rất tốt', 'Tốt', 'Điểm nhận xét']
-const HotelPrice = ({hotel}) => {
-    var review = Math.floor(10 - hotel.point);
-    if(review > 4) {review = 4};
-    return (
-        <>
-            <div className={style.price}>
-                <div className={style.feedBack}>
-                    <div className={style.comment}>
-                        <h4>{reviews[review]}</h4>
-                        <span>{hotel.numOfComments} Nhận xét</span>
-                    </div>
-                    <div className={style.point}>{hotel.point}</div>
-                </div>
+const HotelPrice = ({ hotel }) => {
+  const point = useRef(getRan(7, 10, 1));
+  const review = useRef(getReview(point.current));
+  const discount = useRef(getDiscount());
+  let cheapestPrice = useRef(getRan(300000, 1000000, 0));
+  let orginalPrice = useRef((cheapestPrice.current * 100) / discount.current);
+  cheapestPrice.current = numFormatter.format(cheapestPrice.current);
+  orginalPrice.current = numFormatter.format(orginalPrice.current);
+  const cmtsSum = useRef(getRan(300, 500, 0));
+  return (
+    <>
+      <div className={style.price}>
+        <div className={style.feedBack}>
+          <div className={style.comment}>
+            <h4>{review.current}</h4>
+            <span>{cmtsSum.current} Nhận xét</span>
+          </div>
+          <div className={style.point}>{point.current}</div>
+        </div>
 
-                <div className={style.discount}>
-                    {hotel.discount != 0 && <p>Còn 1 phòng GIẢM {hotel.discount}</p>}
-                    <span>Giá mỗi đêm rẻ nhất từ</span>
-                    <span id={style.orginalPrice}>{hotel.orginalPrice}</span>
-                    <span id={style.discountPrice}>{hotel.discountPrice}</span>
-                    <span className={style.destroy}>+ Hủy miễn phí</span>
-
-                </div>
-
-            </div>
-        </>
-    )
-}
-export default HotelPrice;
+        <div className={style.discount}>
+          <p>GIẢM {discount.current}%</p>
+          <span>Giá mỗi đêm rẻ nhất từ</span>
+          <span id={style.orginalPrice}>{orginalPrice.current}</span>
+          <span id={style.discountPrice}>{cheapestPrice.current}</span>
+          <span className={style.destroy}>+ Hủy miễn phí</span>
+        </div>
+      </div>
+    </>
+  );
+};
+export default memo(HotelPrice);

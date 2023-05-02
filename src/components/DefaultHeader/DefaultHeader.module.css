@@ -1,4 +1,3 @@
-
 .defaultHeader {
   width: 100%;
   height: 62px;
@@ -11,7 +10,7 @@
   overflow: hidden;
 }
 
-.homefunction{
+.homefunction {
   display: flex;
   justify-content: flex-start;
   width: 80%;
@@ -20,7 +19,7 @@
   overflow: hidden;
 }
 
-.functiondetail{
+.functiondetail {
   display: inline-block;
   align-items: center;
   justify-content: center;
@@ -30,21 +29,22 @@
   text-overflow: ellipsis;
   width: fit-content;
 }
-.functiondetail:hover{
+.functiondetail:hover {
   color: var(--login-color);
-    cursor: pointer;
-    transition: 0.3s;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.logo{
+.logo {
   width: 62px;
   height: 62px;
   display: flex;
-  background-image: url(https://play-lh.googleusercontent.com/ahJtMe0vfOlAu1XJVQ6rcaGrQBgtrEZQefHy7SXB7jpijKhu1Kkox90XDuH8RmcBOXNn);
+  /* background-image: url(https://play-lh.googleusercontent.com/ahJtMe0vfOlAu1XJVQ6rcaGrQBgtrEZQefHy7SXB7jpijKhu1Kkox90XDuH8RmcBOXNn); */
+  background-image: url('./apple-touch-icon.png');
   background-size: 100% 100%;
   margin-right: 40px;
 }
 
-.homelogin{
+.homelogin {
   /* display: flex;
   justify-self:flex-end; */
   display: flex;
@@ -53,7 +53,7 @@
   overflow: hidden;
   min-width: 250px;
 }
-.login{
+.login {
   display: inline-block;
   margin-right: 40px;
   line-height: 250%;
@@ -61,9 +61,8 @@
   padding-right: 10px;
   color: var(--login-color);
   max-height: 62px;
-
 }
-.signup{
+.signup {
   display: block;
   line-height: 250%;
   padding-left: 10px;
@@ -83,7 +82,7 @@
   transition: 0.3s;
   cursor: pointer;
 }
-.signup:hover{
+.signup:hover {
   background-color: var(--login-color);
   color: var(--header-background-color);
   cursor: pointer;
@@ -92,15 +91,15 @@
   cursor: pointer;
 }
 
-.hidden_function{
-  display:inline-block;
+.hidden_function {
+  display: inline-block;
   height: 100%;
   position: relative;
-  
+
   /* left:-30px;
   top:62px; */
 }
-.hidden{
+.hidden {
   /* display: none; */
   /* display: block;
   position: absolute;
@@ -111,20 +110,17 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1; */
   position: absolute;
-    z-index: 1400;
-    will-change: transform;
-    top: 0px;
-    left: 0px;
-    /* transform: translate3d(877px, 46px, 0px); */
-    background-color: red;
+  z-index: 1400;
+  will-change: transform;
+  top: 0px;
+  left: 0px;
+  /* transform: translate3d(877px, 46px, 0px); */
+  background-color: red;
 }
-.hidden_detail{
+.hidden_detail {
   /* display: none; */
   color: black;
   /* padding: 12px 16px; */
   text-decoration: none;
   display: block;
 }
-
-
-

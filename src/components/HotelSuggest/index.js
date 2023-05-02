@@ -14,20 +14,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useRef } from 'react';
 import { BACKEND_ADDRESS } from '../../utils/constants';
-import SlideImage from '../SlideImage/SlideImage';  
-
-const getPoint = () => 8 + Math.round(Math.random() * (10 - 8) * 10) / 10;
-const getDiscount = () => 50 + Math.round(Math.random() * 20);
+import SlideImage from '../SlideImage/SlideImage';
+import { getRan, getDiscount } from '../../utils/random';
+import { numFormatter } from '../../utils/formatter';
 
 function HotelSuggest({ service }) {
   console.log(service);
-  const hotelPoint = useRef(getPoint());
+  const hotelPoint = useRef(getRan());
   const comment = hotelPoint.current >= 9 ? 'Trên cả tuyệt vời' : 'Tuyệt vời';
-  const numFormatter = new Intl.NumberFormat('vi-VN', {
-    currency: 'VND',
-    style: 'currency',
-  });
-
   const discoutRate = useRef(getDiscount());
   let oldPrice = useRef(service.prices * Math.PI);
   let newPrice = useRef(numFormatter.format((oldPrice.current * discoutRate.current) / 100));
@@ -60,12 +54,12 @@ function HotelSuggest({ service }) {
             </div>
           </div> */}
           <div className='room_image'>
-            <SlideImage/>
-            <img
+            <SlideImage />
+            {/* <img
               className='service_image'
               src={`${BACKEND_ADDRESS}/${service.images[0]}`}
               alt='service preview'
-            />
+            /> */}
           </div>
           <a href='https://www.facebook.com/' className='more'>
             Xem ảnh và chi tiết

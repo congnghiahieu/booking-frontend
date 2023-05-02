@@ -1,10 +1,11 @@
-import HotelInfo from "../HotelInfo";
-import ImageSlide from "../ImageSlide";
-import style from "./HotelIntro.module.css";
-import { useGetHotelByIdQuery } from "../../app/features/api/hotelsSlice";
-import Loading from "../Loading";
-import Error from "../Error";
-import SlideImage from "../SlideImage/SlideImage1";
+import HotelInfo from '../HotelInfo';
+import ImageSlide from '../ImageSlide';
+import style from './HotelIntro.module.css';
+import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
+import Loading from '../Loading';
+import Error from '../Error';
+import SlideImage from '../SlideImage/SlideImage1';
+import { memo } from 'react';
 
 const HotelIntro = ({ hotelId }) => {
   const {
@@ -32,4 +33,4 @@ const HotelIntro = ({ hotelId }) => {
   );
 };
 
-export default HotelIntro;
+export default memo(HotelIntro);

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import style from "./Home.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from 'react';
+import style from './Home.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHotel,
   faHouseChimneyWindow,
@@ -11,24 +11,51 @@ import {
   faMagnifyingGlass,
   faCalendarCheck,
   faCalendarDay,
-} from "@fortawesome/free-solid-svg-icons";
-import { DatePlant, InputSearch, Member } from "../../components";
+} from '@fortawesome/free-solid-svg-icons';
+import { DatePlant, InputSearch, Member, SearchSuggestPlaces } from '../../components';
+import useTitle from '../../hooks/useTitle';
+import { HomeSuggest } from '../../components';
+import { createSearchParams, useNavigate } from 'react-router-dom';
+import provinvesMap from '../../utils/VI_PROVINCES_MAPPING.json';
+import { rmWs, normalizeStr } from '../../utils/normalizeStr';
 
 const Home = () => {
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch("url");
-      Array.apply();
-    };
+  useTitle('Wygo.com | Official Website');
+  const navigate = useNavigate();
+  const [search, setSearch] = useState('');
+  const [focus, setFocus] = useState(false);
+  const [searchErr, setSearchErr] = useState('');
+  const [norSearchVal, setNorSearchVal] = useState('');
+  const [sugPlaces, setSugPlaces] = useState([]);
 
-    // fetchData()
-  }, []);
-  // const [place, setplace]=useState('')
-  // const [places,setplaces]=useState([])
-  const handle = () => {
-    // setplaces(prev=>[...prev,place]);
-    // console.log(setplaces)
-    var tilecontainer = document.getElementsByClassName(tilecontainer);
+  useEffect(() => {
+    setNorSearchVal(normalizeStr(rmWs(search)));
+    setSearchErr('');
+    setSugPlaces(() => {
+      const places = [];
+      Object.keys(provinvesMap).forEach(key => {
+        if (key.includes(normalizeStr(rmWs(search)))) places.push(provinvesMap[key]);
+      });
+      return places;
+    });
+  }, [search]);
+
+  const onSearch = () => {
+    if (!rmWs(search)) return setSearchErr('Vui lòng nhập tên tỉnh thành / thành phố bạn muốn đến');
+
+    console.log(norSearchVal);
+    if (!Object.keys(provinvesMap).includes(norSearchVal)) {
+      return setSearchErr('Hiện tại chúng tôi chỉ hỗ trỡ tìm kiếm các tỉnh thành ở VN');
+    }
+
+    navigate({
+      pathname: '/search',
+      search: createSearchParams({
+        city: provinvesMap[norSearchVal],
+        start: new Date().valueOf(),
+        end: new Date().valueOf(),
+      }).toString(),
+    });
   };
 
   return (
@@ -93,8 +120,21 @@ const Home = () => {
                   </div>
                   <div className={style.search_bar_wrapper}>
                     <div className={style.input_length}>
-                      <InputSearch placeholder="Nhập điểm du lịch hoặc tên khách sạn" />
+                      <InputSearch
+                        search={search}
+                        setSearch={setSearch}
+                        setFocus={setFocus}
+                        placeholder='Nhập điểm du lịch hoặc tên khách sạn'
+                      />
                     </div>
+                    <div className={style.searchErr}>{searchErr}</div>
+                    {focus && (
+                      <ul style={{ backgroundColor: '#ddd' }}>
+                        {sugPlaces.slice(0, 6).map(place => (
+                          <SearchSuggestPlaces key={place} place={place} setSearch={setSearch} />
+                        ))}
+                      </ul>
+                    )}
                     <div className={style.select_option}>
                       <div className={style.date_option}>
                         <DatePlant />
@@ -107,15 +147,16 @@ const Home = () => {
                 </div>
               </div>
               <div className={style.search_box}>
-                <button className={style.search_btn}>
+                <button className={style.search_btn} onClick={onSearch}>
                   <span>TÌM</span>
                 </button>
               </div>
             </div>
           </div>
         </section>
+
         <div className={style.homebody}>
-          
+          <HomeSuggest />
         </div>
       </div>
     </div>

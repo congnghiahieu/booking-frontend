@@ -1,19 +1,17 @@
-import style from "./FeedBack.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { useRef } from "react";
-
-const getPoint = () => 8 + Math.round(Math.random() * (10 - 8) * 10) / 10;
-const getDiscount = () => 50 + Math.round(Math.random() * 20);
+import style from './FeedBack.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useRef, memo } from 'react';
+import { getRan, getDiscount } from '../../utils/random';
 
 function FeedBack({ hotelName, hotelPoint }) {
-  var comment = "";
-  if (hotelPoint > "9") {
-    comment = "Trên cả tuyệt vời";
-  } else if (hotelPoint > "8") {
-    comment = "Tuyệt vời";
+  var comment = '';
+  if (hotelPoint > '9') {
+    comment = 'Trên cả tuyệt vời';
+  } else if (hotelPoint > '8') {
+    comment = 'Tuyệt vời';
   }
-  const point = useRef(getPoint());
+  const point = useRef(getRan());
 
   return (
     <div className={style.feedback}>
@@ -31,31 +29,21 @@ function FeedBack({ hotelName, hotelPoint }) {
               <p className={style.overall_text}>{comment}</p>
               <p className={style.overall_subtext}>
                 Dựa trên 515 bài đánh giá
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  color="#59a923"
-                  className={style.icon_green}
-                />
+                <FontAwesomeIcon icon={faCheck} color='#59a923' className={style.icon_green} />
               </p>
             </div>
           </div>
           <div className={style.point_detail}>
             <p className={style.detail_point}>9,8</p>
-            <span className={style.detail_type}>
-              Sự thoải mái và chất lượng phòng
-            </span>
+            <span className={style.detail_type}>Sự thoải mái và chất lượng phòng</span>
           </div>
           <div className={style.point_detail}>
             <p className={style.detail_point}>9,8</p>
-            <span className={style.detail_type}>
-              Sự thoải mái và chất lượng phòng
-            </span>
+            <span className={style.detail_type}>Sự thoải mái và chất lượng phòng</span>
           </div>
           <div className={style.point_detail}>
             <p className={style.detail_point}>9,8</p>
-            <span className={style.detail_type}>
-              Sự thoải mái và chất lượng phòng
-            </span>
+            <span className={style.detail_type}>Sự thoải mái và chất lượng phòng</span>
           </div>
         </div>
         <div className={style.point}>
@@ -67,11 +55,7 @@ function FeedBack({ hotelName, hotelPoint }) {
             </p>
             <p className={style.overall_text}>{comment}</p>
             <p className={style.overall_subtext1}>
-              <FontAwesomeIcon
-                icon={faCheck}
-                color="#59a923"
-                className={style.icon_green}
-              />
+              <FontAwesomeIcon icon={faCheck} color='#59a923' className={style.icon_green} />
               Dựa trên 515 bài đánh giá
             </p>
           </div>
@@ -81,10 +65,9 @@ function FeedBack({ hotelName, hotelPoint }) {
                 <div className={style.point_bar}>
                   <div
                     className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}
-                  ></div>
+                    style={{ width: `${point.current * 10}%` }}></div>
                 </div>
-                <div className={style.point_script} >
+                <div className={style.point_script}>
                   <span className={style.point_text}>Độ sạch sẽ</span>
                   <span className={style.point_recent}>{point.current}</span>
                 </div>
@@ -93,10 +76,9 @@ function FeedBack({ hotelName, hotelPoint }) {
                 <div className={style.point_bar}>
                   <div
                     className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}
-                  ></div>
+                    style={{ width: `${point.current * 10}%` }}></div>
                 </div>
-                <div className={style.point_script} >
+                <div className={style.point_script}>
                   <span className={style.point_text}>Vị trí</span>
                   <span className={style.point_recent}>{point.current}</span>
                 </div>
@@ -105,10 +87,9 @@ function FeedBack({ hotelName, hotelPoint }) {
                 <div className={style.point_bar}>
                   <div
                     className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}
-                  ></div>
+                    style={{ width: `${point.current * 10}%` }}></div>
                 </div>
-                <div className={style.point_script} >
+                <div className={style.point_script}>
                   <span className={style.point_text}>Đáng giá tiền</span>
                   <span className={style.point_recent}>{point.current}</span>
                 </div>
@@ -119,10 +100,9 @@ function FeedBack({ hotelName, hotelPoint }) {
                 <div className={style.point_bar}>
                   <div
                     className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}
-                  ></div>
+                    style={{ width: `${point.current * 10}%` }}></div>
                 </div>
-                <div className={style.point_script} >
+                <div className={style.point_script}>
                   <span className={style.point_text}>Tiện nghi</span>
                   <span className={style.point_recent}>{point.current}</span>
                 </div>
@@ -131,10 +111,9 @@ function FeedBack({ hotelName, hotelPoint }) {
                 <div className={style.point_bar}>
                   <div
                     className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}
-                  ></div>
+                    style={{ width: `${point.current * 10}%` }}></div>
                 </div>
-                <div className={style.point_script} >
+                <div className={style.point_script}>
                   <span className={style.point_text}>Dịch vụ</span>
                   <span className={style.point_recent}>{point.current}</span>
                 </div>
@@ -146,4 +125,4 @@ function FeedBack({ hotelName, hotelPoint }) {
     </div>
   );
 }
-export default FeedBack;
+export default memo(FeedBack);

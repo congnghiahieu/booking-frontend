@@ -1,12 +1,12 @@
-import { useState } from "react";
-import style from "./HotelBooking.module.css"
-import Page1 from "../../components/Section/Validation.js"
-import Page2 from "../../components/Section/Payment.js"
-import Page3 from "../../components/Section/Confirm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faUserFriends, faEnvelope } from "@fortawesome/free-solid-svg-icons"
-import Sidebar from "../../components/HotelBooking/Sidebar";
-import ProgressStep from "../../components/HotelBooking/ProgressStep";
+import { useState } from 'react';
+import style from './HotelBooking.module.css';
+import Page1 from '../../components/Section/Validation.js';
+import Page2 from '../../components/Section/Payment.js';
+import Page3 from '../../components/Section/Confirm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faUserFriends, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import Sidebar from '../../components/HotelBooking/Sidebar';
+import ProgressStep from '../../components/HotelBooking/ProgressStep';
 
 const hotel = {
   name: 'Khách sạn Mường Thanh Sài Gòn Center',
@@ -19,32 +19,36 @@ const hotel = {
   discount: '30%',
   point: 9.5,
   numOfComments: '500',
-}
+};
 
 const HotelBooking = () => {
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     emailVerification: '',
     phoneNumber: '',
-  })
+    cardName: '',
+    cardSeries: '',
+    cardOutdate: '',
+    cardCvc: '',
+  });
   // var nextStep = false;
   const PageDisplay = () => {
     if (page === 0) {
-      return <Page1 formData={formData} setFormData={setFormData} />
+      return <Page1 formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
-      return <Page2 />
+      return <Page2 />;
     } else {
-      return <Page3 />
+      return <Page3 />;
     }
-  }
+  };
   function nextPage() {
     // nextStep = true;
-    setPage((curPage) => curPage + 1);
+    setPage(curPage => curPage + 1);
   }
   function backPage() {
-    setPage((curPage) => curPage - 1);
+    setPage(curPage => curPage - 1);
   }
   return (
     <>
@@ -52,27 +56,34 @@ const HotelBooking = () => {
       <div className={style.container}>
         <div className={style.show}>
           {PageDisplay()}
-          {page != 2 && <div className={style.Booking}>
-            <div >
-              <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-              <label className="form-check-label" htmlFor="exampleCheck1"> Nhận email khuyến mãi độc quyền từ chúng tôi</label>
+          {page != 2 && (
+            <div className={style.Booking}>
+              <div>
+                <input type='checkbox' className='form-check-input' id='exampleCheck2' />
+                <label className='form-check-label' htmlFor='exampleCheck2'>
+                  {' '}
+                  Nhận email khuyến mãi độc quyền từ chúng tôi
+                </label>
+              </div>
+              <p>
+                Thực hiện bước tiếp theo đồng nghĩa với việc bạn chấp nhận tuân theo Điều khoản sử
+                dụng và Chính sách bảo mật của Agoda.
+              </p>
+              {(page == 0 || page == 1) && <button onClick={nextPage}>Bước tiếp theo</button>}
+              {(page == 1 || page == 2) && <button onClick={backPage}>Quay lại bước trước</button>}
+              <hr />
+              <div>
+                <FontAwesomeIcon icon={faEnvelope} />
+                <span> Chúng tôi sẽ gửi xác nhận phòng qua địa chỉ email đã được cung cấp</span>
+              </div>
             </div>
-            <p>Thực hiện bước tiếp theo đồng nghĩa với việc bạn chấp nhận tuân theo Điều khoản sử dụng và Chính sách bảo mật của Agoda.</p>
-            {(page == 0 || page == 1) && <button onClick={nextPage}>Bước tiếp theo</button>}
-            {(page == 1 || page == 2) && <button onClick={backPage}>Quay lại bước trước</button>}
-            <hr />
-            <div>
-              <FontAwesomeIcon icon={faEnvelope} />
-              <span> Chúng tôi sẽ gửi xác nhận phòng qua địa chỉ email đã được cung cấp</span>
-            </div>
-          </div>}
-
+          )}
         </div>
         <Sidebar hotel={hotel} />
       </div>
       <div className={style.footer}>footer</div>
     </>
-  )
+  );
 };
 
 export default HotelBooking;

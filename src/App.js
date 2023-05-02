@@ -26,7 +26,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route>
             <Route path='hotel/view/:hotelId' element={<HotelSingle />} />
-            <Route path='search/:id' element={<SearchHotel />} />
+            <Route path='search' element={<SearchHotel />} />
           </Route>
           <Route>
             <Route path='user/profile/:id' element={<UserProfile />} />

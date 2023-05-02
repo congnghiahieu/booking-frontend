@@ -4,7 +4,7 @@ import { PagingNav } from '../../components';
 import { useGetCmtsByHotelIdQuery } from '../../app/features/api/cmtsSlice';
 import Error from '../Error';
 import Loading from '../Loading';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 const HotelComment = ({ hotelId }) => {
   const {
@@ -17,7 +17,7 @@ const HotelComment = ({ hotelId }) => {
   const [page, setPage] = useState(1);
 
   return (
-    <div className={style.cmtContainer} id="hotelCmt">
+    <div className={style.cmtContainer} id='hotelCmt'>
       {isCmtLoad && <Loading />}
       {!isCmtLoad && isCmtErr && <Error />}
       {!isCmtLoad && isCmtOk ? (
@@ -46,4 +46,4 @@ const HotelComment = ({ hotelId }) => {
   );
 };
 
-export default HotelComment;
+export default memo(HotelComment);

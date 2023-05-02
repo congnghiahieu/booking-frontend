@@ -1,25 +1,21 @@
-import React from "react";  
-import  {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { memo } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faStar, faPersonWalking, faCar } from '@fortawesome/free-solid-svg-icons';
-import style from "./HotelInfo.module.css"
-import {
-  NearBy,
-  HotelOverview,
-  HotelOptionBar
-} from '../../components';
+import style from './HotelInfo.module.css';
+import { NearBy, HotelOverview, HotelOptionBar } from '../../components';
 import { Link, useParams } from 'react-router-dom';
 
-const HotelInfo = ({hotel}) => {
+const HotelInfo = ({ hotel }) => {
   console.log(hotel);
   return (
     <div>
       <div>
-        <HotelOptionBar/>
+        <HotelOptionBar />
       </div>
       <div className={style.hotel_overview}>
         <div className={style.hotel_overview1}>
           <div className={style.hotel_content1}>
-            <HotelOverview hotel={hotel}/>
+            <HotelOverview hotel={hotel} />
             <div className={style.hotel_highlight}>
               <p className={style.highlight_script}>Điểm nổi bật nhất</p>
               <div className={style.highlight_example}>
@@ -211,7 +207,7 @@ const HotelInfo = ({hotel}) => {
               />
               <div className={style.more}>
                 <a href='https://vinpearl.com/vi/20-dia-diem-du-lich-viet-nam-noi-tieng-nhat-dinh-nen-den-mot-lan'>
-                  Đừng bấm vào đây 
+                  Đừng bấm vào đây
                 </a>
               </div>
             </div>
@@ -222,4 +218,4 @@ const HotelInfo = ({hotel}) => {
   );
 };
 
-export default HotelInfo;
+export default memo(HotelInfo);

@@ -19,3 +19,5 @@ export { default as Error } from './Error';
 export { default as PagingNav } from './PagingNav';
 export { default as HotelOverview } from './HotelOverview';
 export { default as HotelOptionBar } from './HotelOptionBar';
+export { default as HomeSuggest } from './HomeSuggest';
+export { default as SearchSuggestPlaces } from './SearchSuggestPlaces';
