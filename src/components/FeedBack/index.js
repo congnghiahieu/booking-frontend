@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useRef, memo } from 'react';
 import { getRan, getDiscount } from '../../utils/random';
+import { PointBar } from '../../components';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useRef } from 'react';
 
 function FeedBack({ hotelName, hotelPoint }) {
   var comment = '';
@@ -61,63 +64,14 @@ function FeedBack({ hotelName, hotelPoint }) {
           </div>
           <ul className={style.agoda_listPoint}>
             <div className={style.list_column1}>
-              <li>
-                <div className={style.point_bar}>
-                  <div
-                    className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}></div>
-                </div>
-                <div className={style.point_script}>
-                  <span className={style.point_text}>Độ sạch sẽ</span>
-                  <span className={style.point_recent}>{point.current}</span>
-                </div>
-              </li>
-              <li>
-                <div className={style.point_bar}>
-                  <div
-                    className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}></div>
-                </div>
-                <div className={style.point_script}>
-                  <span className={style.point_text}>Vị trí</span>
-                  <span className={style.point_recent}>{point.current}</span>
-                </div>
-              </li>
-              <li>
-                <div className={style.point_bar}>
-                  <div
-                    className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}></div>
-                </div>
-                <div className={style.point_script}>
-                  <span className={style.point_text}>Đáng giá tiền</span>
-                  <span className={style.point_recent}>{point.current}</span>
-                </div>
-              </li>
+              <PointBar name='Độ sạch sẽ' />
+              <PointBar name='Vị trí' />
+              <PointBar name='Đáng giá tiền' />
             </div>
             <div className={style.list_column2}>
-              <li>
-                <div className={style.point_bar}>
-                  <div
-                    className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}></div>
-                </div>
-                <div className={style.point_script}>
-                  <span className={style.point_text}>Tiện nghi</span>
-                  <span className={style.point_recent}>{point.current}</span>
-                </div>
-              </li>
-              <li>
-                <div className={style.point_bar}>
-                  <div
-                    className={style.point_barfilled}
-                    style={{ width: `${point.current * 10}%` }}></div>
-                </div>
-                <div className={style.point_script}>
-                  <span className={style.point_text}>Dịch vụ</span>
-                  <span className={style.point_recent}>{point.current}</span>
-                </div>
-              </li>
+              <PointBar name='Tiện nghi' />
+              <PointBar name='Dịch vụ' />
+              <PointBar name='Không gian' />
             </div>
           </ul>
         </div>

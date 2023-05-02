@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { useRegisterMutation } from '../../app/features/auth/authApiSlice';
 import useTitle from '../../hooks/useTitle';
-import { Loading } from '../../components';
+import { Loading, GoogleIcon } from '../../components';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -194,6 +194,21 @@ const Register = () => {
           <div className='form-redirect'>
             <p>Already registered ?</p>
             <Link to='/login'>Login</Link>
+          </div>
+          <div className='Google_login'>
+            <span className='Google_Icon'>
+              <div className='G_icon'>
+                <GoogleIcon />
+              </div>
+              Google
+            </span>
+          </div>
+          <div className='HadAccount'>
+            <p>Bạn đã có tài khoản?</p>
+            <Link to='/login'>Đăng nhập</Link>
+          </div>
+          <div className='license'>
+            Khi đăng nhập, tôi đồng ý với các Điều khoản sử dụng và Chính sách bảo mật của Agoda.
           </div>
         </div>
       )}

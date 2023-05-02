@@ -1,0 +1,56 @@
+.GoogleIcon {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #efefef;
+}
+.logo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /*border: 1px solid #000;*/
+  background-image: linear-gradient(to bottom, #efefef 43%, #3876f8 43%);
+}
+
+.colors {
+    position: absolute;
+    top: -20%;
+    left: -40%;
+    height: 0;
+    width: 0;
+    border-top: 20px solid #f3001c;
+    border-bottom: 20px solid #00c449;
+    border-right: 20px dashed rgba(0, 0, 0, 0) /*#3876f8*/;
+    border-left: 20px solid #ffc500;
+  /*opacity: .5;*/
+}
+
+.circle {
+  background: #efefef;
+  border-radius: 50%;
+  width: 65%;
+  height: 65%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
+}
+
+.bar {
+  width: 52%;
+  height: 17%;
+  background: #3876f8;
+  position: absolute;
+  top: 43%;
+  right: 2%;
+  z-index: 3;
+}

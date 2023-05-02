@@ -1,0 +1,40 @@
+.HomeStay{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    cursor: pointer;
+}
+.HomeStay_img{
+    width: 100%;
+    height: 200px;
+    background-image: url(https://pix8.agoda.net/hotelImages/8740563/-1/135c5b83fa02bafe017dfabb984d17de.jpg?ce=0);
+    background-size: 100% 100%;
+    position: relative;
+}
+.HomeStay_name{
+    font-size: 14px;
+    font-weight: 500;
+}
+.HomeStay_location{
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--btn-color);
+}
+.HomeStay_price{
+    font-size: 16px;
+    font-weight: 500;
+    color: #e1324b ;
+
+}
+.HomeStay_point{
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    border-radius: 50%;
+    background-color: var(--btn-color);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
