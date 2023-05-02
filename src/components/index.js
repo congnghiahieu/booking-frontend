@@ -19,3 +19,10 @@ export { default as Error } from './Error';
 export { default as PagingNav } from './PagingNav';
 export { default as HotelOverview } from './HotelOverview';
 export { default as HotelOptionBar } from './HotelOptionBar';
+export { default as GoogleIcon } from './GoogleIcon';
+export { default as HighLightPlace } from './HighLightPlace';
+export { default as HomeStay } from './HomeStay';
+export { default as PointBar } from './PointBar';
+
+
+

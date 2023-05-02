@@ -1,0 +1,33 @@
+
+
+.point_bar {
+  width: 200px;
+  height: 5px;
+  border-radius: 4px;
+  background-color: #e9ebee;
+  position: relative;
+}
+.point_barfilled {
+  background-color: #66be5b;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.point_script {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.point_text,
+.point_recent {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.point_text {
+  color: #4e4e4e;
+}
+.point_recent {
+  color: #66be5b;
+}

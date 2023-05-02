@@ -1,8 +1,7 @@
-.feedback{
+.feedback {
   display: flex;
   width: 100%;
   margin-bottom: 20px;
-
 }
 
 .feedback_content {
@@ -121,7 +120,6 @@
   align-items: end;
 }
 
-
 .icon_green {
   padding-left: 0px;
 }
@@ -140,40 +138,11 @@
   gap: 40px;
   padding-bottom: 10px;
 }
-.point_bar{
-  width: 200px;
-  height: 5px;
-  border-radius: 4px;
-  background-color: #e9ebee;
-  position: relative;
-}
-.point_barfilled{
-  background-color: #66be5b;
-  height: 100%;
-}
-
-.list_column1, .list_column2{
+.list_column1,
+.list_column2 {
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-top: 30px;
-}
-
-.point_script{
-  margin-top: 5px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.point_text, .point_recent{
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
-.point_text{
-  color: #4e4e4e ;
-}
-.point_recent{
-  color: #66be5b;
 }
