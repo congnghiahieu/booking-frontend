@@ -36,7 +36,7 @@ function Member({}) {
       {openOptions && (
           <div className="options">
             <div className="optionItem">
-              <span className="optionText">Adult</span>
+              <span className="optionText">Nguời lớn</span>
               <div className="optionCounter">
                 <button
                   disabled={options.adult <= 1}
@@ -55,7 +55,7 @@ function Member({}) {
               </div>
             </div>
             <div className="optionItem">
-              <span className="optionText">Children</span>
+              <span className="optionText">Trẻ em</span>
               <div className="optionCounter">
                 <button
                   disabled={options.children <= 0}
@@ -74,7 +74,7 @@ function Member({}) {
               </div>
             </div>
             <div className="optionItem">
-              <span className="optionText">Room</span>
+              <span className="optionText">Số phòng</span>
               <div className="optionCounter">
                 <button
                   disabled={options.room <= 1}

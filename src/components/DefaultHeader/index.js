@@ -33,7 +33,7 @@ const DefaultHeader = () => {
       } */}
       <div className={style.homefunction}>
         <div className={style.logo}></div>
-        <Link to="" className={style.functiondetail}>Home</Link>
+        <Link to="/" className={style.functiondetail}>Home</Link>
         <div className={style.functiondetail}>Máy bay + K.sạn</div>
         <div className={style.functiondetail}>Chỗ ở</div>
         <div className={style.functiondetail}>Phiếu giảm giá và ưu đãi</div>

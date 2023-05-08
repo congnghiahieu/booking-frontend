@@ -18,6 +18,7 @@ import {
   Member,
   HighLightPlace,
   HomeStay,
+  VNHighLight,
 } from "../../components";
 import {} from "../Home";
 import { Link, useParams } from "react-router-dom";
@@ -38,6 +39,9 @@ const Home = () => {
     // console.log(setplaces)
     var tilecontainer = document.getElementsByClassName(tilecontainer);
   };
+  const places = ["Hồ Chí Minh", "Hà Nội", "Hải Phòng", "Vũng Tàu", "Đà Nẵng"];
+  const [type, setType] = useState("Hồ Chí Minh");
+  const [show, setShow] = useState(false);
 
   return (
     <div className={style.HOME} id="Home">
@@ -110,18 +114,36 @@ const Home = () => {
             Các điểm đến thu hút nhất Việt Nam
           </div>
           <div className={style.highlight_place}>
-            <HighLightPlace placeName="Hồ Chí Minh" />
-            <HighLightPlace placeName="Vũng Tàu" />
-            <HighLightPlace placeName="Đà Nẵng" />
-            <HighLightPlace placeName="Hà Nội" />
-            <HighLightPlace placeName="Đà Lạt" />
-            <HighLightPlace placeName="Nha Trang" />
+            <VNHighLight placeName="Hồ Chí Minh" />
+            <VNHighLight placeName="Vũng Tàu" />
+            <VNHighLight placeName="Đà Nẵng" />
+            <VNHighLight placeName="Hà Nội" />
+            <VNHighLight placeName="Đà Lạt" />
+            <VNHighLight placeName="Nha Trang" />
           </div>
         </div>
         <div className={style.highlight_homeStay}>
           <div className={style.text_script}>
             Những chỗ nghỉ nổi bật khuyến nghị cho bạn:
           </div>
+          <div className={style.suggesstion}>
+            {places.map((tab) => {
+              return (
+                <div
+                  key={tab}
+                  className={style.options}
+                  style={
+                    tab == type
+                      ? { borderBottom: "2px solid #5392f9", color:"#5392f9" }
+                      : { backgroundColor: "white" }
+                  }
+                  onClick={() => setType(tab)}
+                >
+                  {tab}
+                </div>
+              );
+            })}
+          </div>
           <div className={style.homeStay_list}>
             <HomeStay HomeStayName="Căn hộ dịch vụ NTA (NTA Serviced Apartments)" />
             <HomeStay HomeStayName="Căn hộ dịch vụ NTA (NTA Serviced Apartments)" />
@@ -135,6 +157,7 @@ const Home = () => {
             <HomeStay HomeStayName="Căn hộ dịch vụ NTA (NTA Serviced Apartments)" />
           </div>
         </div>
+
         <div className={style.highlight}>
           <div className={style.text_script}>
             Các điểm đến nổi tiếng ngoài Việt Nam
@@ -167,7 +190,6 @@ const Home = () => {
             <li>Báo chí</li>
             <li>Nhật ký Mạng</li>
             <li>PointsMax</li>
-            
           </div>
           <div className={style.footer_func}>
             <span className={style.footer_header}>Điểm du lịch</span>

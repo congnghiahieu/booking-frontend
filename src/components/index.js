@@ -14,7 +14,7 @@ export { default as ImageSlide } from './ImageSlide';
 export { default as SearchHeader } from './SearchHeader';
 export { default as FeedBack } from './FeedBack';
 export { default as Comment } from './Comment';
-export { default as Loading } from './Loading';
+export { default as Loading } from './Loading/Loading';
 export { default as Error } from './Error';
 export { default as PagingNav } from './PagingNav';
 export { default as HotelOverview } from './HotelOverview';
@@ -23,6 +23,8 @@ export { default as GoogleIcon } from './GoogleIcon';
 export { default as HighLightPlace } from './HighLightPlace';
 export { default as HomeStay } from './HomeStay';
 export { default as PointBar } from './PointBar';
+export { default as VNHighLight } from './VNHighLight';
+
 
 
 

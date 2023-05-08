@@ -93,7 +93,7 @@ const Register = () => {
           <h2>Register</h2>
           <form className="form">
             <div className="form-group">
-              <label htmlFor="account">Account</label>
+              <label htmlFor="account">Tên Đăng Nhập</label>
               <input
                 placeholder="Email"
                 id="account"
@@ -103,11 +103,11 @@ const Register = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Mật Khẩu</label>
               <input placeholder="Password" id="password" type="password" />
             </div>
             <div className="form-group">
-              <label htmlFor="confirm">Confirm Password</label>
+              <label htmlFor="confirm">Xác Nhận Mật Khẩu</label>
               <input
                 placeholder="Confirm Password"
                 id="confirm"

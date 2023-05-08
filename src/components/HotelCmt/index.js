@@ -3,8 +3,11 @@ import style from './HotelCmt.module.css';
 import { PagingNav } from '../../components';
 import { useGetCmtsByHotelIdQuery } from '../../app/features/api/cmtsSlice';
 import Error from '../Error';
-import Loading from '../Loading';
+import Loading from '../Loading/Loading';
 import { useState } from 'react';
+import LoadingImg from '../Loading/LoadingImg';
+import LoadingCmt from '../Loading/LoadingCmt';
+
 
 const HotelComment = ({ hotelId }) => {
   const {
@@ -18,7 +21,8 @@ const HotelComment = ({ hotelId }) => {
 
   return (
     <div className={style.cmtContainer} id="hotelCmt">
-      {isCmtLoad && <Loading />}
+      {/* {<LoadingCmt/>} */}
+      {isCmtLoad && <LoadingCmt />}
       {!isCmtLoad && isCmtErr && <Error />}
       {!isCmtLoad && isCmtOk ? (
         <>

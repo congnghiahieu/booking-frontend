@@ -24,9 +24,11 @@
     margin-top:11px ;
     border-radius: 8px;
     box-shadow: none;
-    border: 1px solid #20274d;
+    
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 6px 2px;
     position: absolute;
     z-index: 3;
+    background-color: white;
 }
 .optionItem{
     width: 100%;
@@ -49,7 +51,8 @@
 }
 
 .optionText{
-    font-size: 18px;
+    font-size: 16px;
     color: #20274d;
-    width: 60px;
+    width: fit-content;
+    font-weight: 600;
 }
