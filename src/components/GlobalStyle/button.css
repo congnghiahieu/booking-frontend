@@ -1,17 +1,20 @@
-
 .btn {
-    width: 20px;
-    height: 20px;
-    color: white;
-    background-color:#20274d;
-    border-radius: 50%;
+  /* color: #20274d; */
+  background-color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 21px;
+  height: 21px;
+  border: 1px solid #20274d;
+  border-radius: 50%;
+ 
 
 }
 
 .primary {
-
 }
 
 .small {
-    
 }

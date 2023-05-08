@@ -1,0 +1,23 @@
+.place{
+    width: 125px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.place_img{
+    background-color: black;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+.place_img:hover{
+    background-color: var(--btn-color);
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+.place_name{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}

@@ -69,11 +69,11 @@ const Login = () => {
       <h2>Login</h2>
       <form className='form'>
         <div className='form-group'>
-          <label htmlFor='account'>Account</label>
+          <label htmlFor='account'>Tên đăng nhập</label>
           <input placeholder='Email' id='account' type='text' ref={usernameRef} {...attrs} />
         </div>
         <div className='form-group'>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='password'>Mật Khẩu</label>
           <input
             id='password'
             type='password'
@@ -87,7 +87,7 @@ const Login = () => {
         </div>
         <div className='form-group'>
           <button disabled={!canLogin} onClick={onLogin}>
-            Login
+            Đăng nhập
           </button>
         </div>
       </form>

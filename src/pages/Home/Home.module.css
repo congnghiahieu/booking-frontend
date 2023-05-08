@@ -17,6 +17,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 50px;
+  position: relative;
 }
 .tile_script {
   margin-top: 20px;
@@ -37,6 +38,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
+  position: relative;
 }
 
 .search_option {
@@ -113,14 +115,13 @@
   width: 400px;
   height: 48px;
   position: relative;
-  z-index: 2;
-  margin-top: -24px;
+  z-index: 0;
   border: none;
+  margin-top: 10px;
   background-color: var(--btn-color);
   color: white;
   font-size: 24px;
   letter-spacing: 1px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 6px 2px;
   border-radius: 8px;
 }
 .search_btn:hover {
@@ -149,6 +150,19 @@
   justify-content: center;
   padding-bottom: 8px;
 }
+.suggesstion{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.options{
+  padding: 10px;
+  border-bottom: 1px solid #e9ebec;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 
 .highlight_place{
   width: 100%;

@@ -3,7 +3,9 @@ import { memo } from 'react';
 import style from './HotelService.module.css';
 import HotelSuggest from '../HotelSuggest';
 import Error from '../Error';
-import Loading from '../Loading';
+import Loading from '../Loading/Loading';
+import LoadingPost from '../Loading/LoadingPost';
+import LoadingImg from '../Loading/LoadingImg';
 
 const HotelService = ({ hotelId }) => {
   const {
@@ -15,7 +17,8 @@ const HotelService = ({ hotelId }) => {
 
   return (
     <div className={style.svContainer} id='hotelSuggest'>
-      {isSvLoad && <Loading />}
+      {<LoadingImg />}
+      {/* {isSvLoad && <LoadingPost />} */}
       {!isSvLoad && isSvErr && <Error />}
       {!isSvLoad && isSvOk ? (
         <>
