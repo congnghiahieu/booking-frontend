@@ -11,7 +11,9 @@ import {
   UserProfile,
   SearchHotel,
 } from './pages';
+import { NotAuth } from './components';
 import BookingProvider from './context/BookingContext';
+import LoginSuccess from './pages/Login/LoginSuccess';
 
 function App() {
   return (
@@ -20,9 +22,11 @@ function App() {
         {/* Default Layout */}
         <Route path='/' element={<DefaultLayout />}>
           {/* Public routes */}
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Register />} />
-
+          <Route element={<NotAuth />}>
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+          </Route>
+          <Route path='login/success' element={<LoginSuccess />} />
           {/* Protected Routes - required Login */}
           <Route path='/' element={<Home />} />
           <Route>

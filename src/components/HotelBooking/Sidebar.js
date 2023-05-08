@@ -1,8 +1,10 @@
 import style from './Sidebar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faUserFriends, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import useBookingContext from '../../hooks/useBookingContext';
 import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
 import { useGetServiceByIdQuery } from '../../app/features/api/servicesSlice';
+import { useEffect } from 'react';
 
 const Sidebar = ({ hotel: hotelFake, hotelId, serviceId }) => {
   //   const {
@@ -11,12 +13,20 @@ const Sidebar = ({ hotel: hotelFake, hotelId, serviceId }) => {
   //     isSuccess: isHtOk,
   //     isError: isHtErr,
   //   } = useGetHotelByIdQuery(hotelId);
-  //   const {
-  //     data: service,
-  //     isLoading: isSvLoad,
-  //     isSuccess: isSvOk,
-  //     isError: isSvErr,
-  //   } = useGetServiceByIdQuery(serviceId);
+  // const {
+  //   data: service,
+  //   isLoading: isSvLoad,
+  //   isSuccess: isSvOk,
+  //   isError: isSvErr,
+  // } = useGetServiceByIdQuery(serviceId);
+
+  // const { setValue } = useBookingContext();
+
+  // useEffect(() => {
+  //   if (service) {
+  //     setValue(service.prices);
+  //   }
+  // }, [service]);
 
   return (
     <>

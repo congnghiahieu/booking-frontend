@@ -25,3 +25,4 @@ export { default as GoogleIcon } from './GoogleIcon';
 export { default as HighLightPlace } from './HighLightPlace';
 export { default as HomeStay } from './HomeStay';
 export { default as PointBar } from './PointBar';
+export { default as NotAuth } from './NotAuth';

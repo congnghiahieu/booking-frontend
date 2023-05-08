@@ -3,6 +3,11 @@ import useBookingContext from '../../hooks/useBookingContext';
 import FormInput from '../FormInput';
 
 const MethodsOfPayment = ['THẺ TÍN DỤNG/GHI NỢ', 'THANH TOÁN ĐIỆN TỬ'];
+const AMEX_CARD_REGEX = '^3[47][0-9]{13}$';
+const JCB_CARD_REGEX = '^(?:2131|1800|35\\d{3})\\d{11}$';
+const MASTER_CARD_REGEX =
+  '^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$';
+const VISA_CARD_REGEX = '^4[0-9]{12}(?:[0-9]{3})?$';
 
 const Page2 = () => {
   const { formData, onDataChange } = useBookingContext();
@@ -17,7 +22,7 @@ const Page2 = () => {
       label: 'Tên chủ thẻ',
       // pattern: '^[a-zA-Z]+( [a-zA-Z]+)+$',
       required: true,
-      maxLength: 64,
+      maxLength: 128,
       autoComplete: 'cardholder-name',
       error: 'Xin vui lòng điền họ tên chủ thẻ',
     },
@@ -28,7 +33,8 @@ const Page2 = () => {
       placeholder: 'Vui lòng nhập chính xác',
       label: 'Số thẻ tín dụng / Thẻ ghi nợ',
       inputMode: 'numeric',
-      pattern: '[0-9]{1,16}',
+      // pattern: '[0-9]{1,16}',
+      pattern: `(${AMEX_CARD_REGEX})|(${JCB_CARD_REGEX})|(${MASTER_CARD_REGEX})|(${VISA_CARD_REGEX})`,
       required: true,
       title: 'Vui lòng nhập số thẻ tín dụng hợp lệ.',
       maxLength: 16,
@@ -55,7 +61,7 @@ const Page2 = () => {
       type: 'password',
       placeholder: '***',
       label: 'Mã bảo mật CVC',
-      pattern: '\\d*',
+      pattern: '\\d{3}',
       required: true,
       autoComplete: 'off',
       inputMode: 'numeric',

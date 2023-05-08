@@ -3,6 +3,10 @@ import { createContext, useState } from 'react';
 export const BookingContext = createContext({});
 
 const TOTAL_PAGE = 3;
+const starter = {
+  0: 'cus',
+  1: 'card',
+};
 
 const BookingProvider = ({ children }) => {
   const [page, setPage] = useState(0);
@@ -40,6 +44,8 @@ const BookingProvider = ({ children }) => {
       value: '',
     },
   });
+  // Value of transaction = prices of service
+  const [value, setValue] = useState(0);
 
   /**
    *
@@ -92,11 +98,6 @@ const BookingProvider = ({ children }) => {
     canSubmit = Object.values(formData).every(v => v.valid);
   }
 
-  const starter = {
-    0: 'cus',
-    1: 'card',
-  };
-
   const canNextPage = Object.keys(formData)
     .filter(key => key.startsWith(starter[page]))
     .map(key => formData[key].valid)
@@ -119,6 +120,8 @@ const BookingProvider = ({ children }) => {
         setPage,
         formData,
         setFormData,
+        value,
+        setValue,
         onDataChange,
         canSubmit,
         disablePrev,

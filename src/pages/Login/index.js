@@ -7,6 +7,7 @@ import useLocalCheckbox from '../../hooks/useLocalCheckbox';
 import useLocalInput from '../../hooks/useLocalInput';
 import useTitle from '../../hooks/useTitle';
 import { Loading, GoogleIcon } from '../../components';
+import { GOOGLE_AUTH_LINK } from '../../utils/constants';
 
 const Login = () => {
   useTitle('Login');
@@ -57,6 +58,10 @@ const Login = () => {
     }
   };
 
+  const onGoogleLogin = async () => {
+    window.open(GOOGLE_AUTH_LINK, '_self');
+  };
+
   return (
     <div className='form-container'>
       {isLoading && <Loading />}
@@ -76,15 +81,10 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
           />
         </div>
-        {/* <div className="form-group-hor">
-          <label htmlFor="persist">Keep login session</label>
-          <input
-            id="persist"
-            type="checkbox"
-            checked={persist}
-            onChange={toggle}
-          />
-        </div> */}
+        <div className='form-group-hor'>
+          <label htmlFor='persist'>Keep login session</label>
+          <input id='persist' type='checkbox' checked={persist} onChange={toggle} />
+        </div>
         <div className='form-group'>
           <button disabled={!canLogin} onClick={onLogin}>
             Login
@@ -95,7 +95,7 @@ const Login = () => {
         <p>Need an Account ?</p>
         <Link to='/register'>Register new Account</Link>
       </div>
-      <div className='Google_login'>
+      <div className='Google_login' onClick={onGoogleLogin}>
         <span className='Google_Icon'>
           <div className='G_icon'>
             <GoogleIcon />

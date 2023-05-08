@@ -16,8 +16,8 @@ const InputSearch = ({ search, setSearch, placeholder, setFocus }) => {
           required
           value={search}
           onChange={e => setSearch(e.target.value)}
-          onBlur={() => setFocus(false)}
-          onFocus={() => setFocus(true)}
+          // onBlur={() => setFocus(false)}
+          // onFocus={() => setFocus(true)}
           placeholder={placeholder}
         />
       </div>

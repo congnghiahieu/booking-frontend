@@ -4,18 +4,19 @@ import jwtDecode from 'jwt-decode';
 
 /**
  *
- * @returns {{username: string, name: string, roles: Array, id: String, fav: Array, cart: Array}}
+ * @returns {{username: string, name: string, email: string, address: Object, roles: Array, id: String}}
  */
 const useAuth = () => {
   const token = useSelector(selectCurrentToken);
 
   if (token) {
     const decoded = jwtDecode(token);
-    const { username, name, roles, id, fav, cart } = decoded.UserInfo;
+    const { username, name, email, address, roles, id } = decoded.UserInfo;
 
-    return { username, name, roles, id, fav, cart };
+    return { username, name, email, address, roles, id };
   }
 
-  return { username: '', name: '', roles: null, id: '', fav: null, cart: null };
+  return { username: '', name: '', email: '', address: {}, roles: null, id: '' };
 };
+
 export default useAuth;

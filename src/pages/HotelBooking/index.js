@@ -2,11 +2,14 @@ import style from './HotelBooking.module.css';
 import PageDisplay from '../../components/Section/PageDisplay';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faUserFriends, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { TRANS_TYPES } from '../../utils/constants';
 import Sidebar from '../../components/HotelBooking/Sidebar';
 import ProgressStep from '../../components/HotelBooking/ProgressStep';
+import { Loading } from '../../components';
 import useBookingContext from '../../hooks/useBookingContext';
 import { useAddBookMutation } from '../../app/features/api/booksSlice';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const hotel = {
   name: 'Khách sạn Mường Thanh Sài Gòn Center',
@@ -23,9 +26,15 @@ const hotel = {
 
 const HotelBooking = () => {
   const { hotelId, serviceId } = useParams();
+  const [searchParams] = useSearchParams();
+  const start = searchParams.get('start');
+  const end = searchParams.get('end');
+  const { id } = useAuth();
+
   const {
     page,
     setPage,
+    value,
     disablePrev,
     disableNext,
     prevHide,
@@ -34,14 +43,46 @@ const HotelBooking = () => {
     submitHide,
     formData,
   } = useBookingContext();
-  const [addBook, { isLoading, isSuccess, isError }] = useAddBookMutation();
+  const [addBook, { isLoading }] = useAddBookMutation();
 
   const prevPage = () => setPage(curPage => curPage - 1);
   const nextPage = () => setPage(curPage => curPage + 1);
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     console.log(formData);
+    try {
+      // Get customer info and card info
+      let cusInfo;
+      let cardInfo;
+      Object.keys(formData).forEach(key => {
+        if (key.startsWith('cus')) {
+          cusInfo[key] = formData[key].value;
+        } else {
+          cardInfo[key] = formData[key].value;
+        }
+      });
+      const submitData = {
+        userId: id,
+        cusInfo,
+        hotelId: hotelId,
+        serviceId: serviceId,
+        start: start,
+        end: end,
+        card: cardInfo,
+        value,
+        transType: TRANS_TYPES.BOOKING,
+      };
+      console.log(submitData);
+
+      // await addBook(submitData).unwrap();
+      // setPage(2);
+    } catch (err) {
+      console.log(err);
+      if (!err.status) {
+        console.log('No Server Response');
+      }
+    }
   };
 
   return (
@@ -52,6 +93,7 @@ const HotelBooking = () => {
       <div className={style.container}>
         <div className={style.show}>
           {/* Multipage form */}
+          {isLoading && <Loading />}
           <PageDisplay />
           {/* Redirect button */}
           {page != 2 && (

@@ -3,14 +3,14 @@ import style from './UserBooking.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCalendarCheck, faMessage } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { useGetUserByIdQuery, useGetUserByUsernameQuery } from '../../app/features/api/usersSlice';
+import { useGetUserByIdQuery } from '../../app/features/api/usersSlice';
 import useAuth from '../../hooks/useAuth';
 
 const BookingState = ['Sắp tới', 'Hoàn tất', 'Đã hủy'];
 const UserBooking = () => {
   const [state, setState] = useState('Sắp tới');
-  // const { username } = useAuth();
-  // const { data: user, isLoading, isSuccess, isError } = useGetUserByUsernameQuery(username);
+  // const { id } = useAuth();
+  // const { data: user, isLoading, isSuccess, isError } = useGetUserByIdQuery(id);
 
   return (
     <>

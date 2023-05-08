@@ -9,12 +9,12 @@ import {
   faMessage,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { useGetUserByIdQuery, useGetUserByUsernameQuery } from '../../app/features/api/usersSlice';
+import { useGetUserByIdQuery } from '../../app/features/api/usersSlice';
 import useAuth from '../../hooks/useAuth';
 
 const UserProfile = () => {
-  // const { username } = useAuth();
-  // const { data: user, isLoading, isSuccess, isError } = useGetUserByUsernameQuery(username);
+  // const { id } = useAuth();
+  // const { data: user, isLoading, isSuccess, isError } = useGetUserByIdQuery(id);
 
   const [check, setCheck] = useState(true);
   return (

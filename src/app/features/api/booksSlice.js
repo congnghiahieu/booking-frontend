@@ -12,7 +12,7 @@ export const booksApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getBooksByUserId: builder.query({
       query: ({ userId, page = QUERY.DEFAULT_PAGE, perPage = QUERY.DEFAULT_PER_PAGE }) =>
-        `/v1/books?user_id=${userId}&page=${page}&per_page=${perPage}`,
+        `/v1/books?user_id=${userId}&page=${page}&per_page=${perPage}&populate=true`,
       transformResponse: response => {
         const modifiedData = response.data.map(dt => {
           const modified = {
@@ -48,37 +48,18 @@ export const booksApiSlice = apiSlice.injectEndpoints({
       ],
     }),
     updateBookById: builder.mutation({
-      query: ({ id, cancelFlag }) => ({
+      query: ({ id, flag }) => ({
         url: `/v1/books/update_info`,
         method: 'PUT',
         body: {
           id,
-          cancelFlag: cancelFlag,
+          flag,
         },
       }),
       invalidatesTags: (result, error, arg) => [{ type: 'Book', id: arg.id }],
     }),
-    deleteBookById: builder.mutation({
-      query: bookId => ({
-        url: `/v1/books?book_id=${bookId}`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: (result, error, arg) => [{ type: 'Book', id: arg }],
-    }),
-    deleteBookByUserId: builder.mutation({
-      query: userId => ({
-        url: `/v1/books?user_id=${userId}`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: (result, error, arg) => [{ type: 'Book', id: arg }],
-    }),
   }),
 });
 
-export const {
-  useGetBooksByUserIdQuery,
-  useAddBookMutation,
-  useUpdateBookByIdMutation,
-  useDeleteBookByIdMutation,
-  useDeleteBookByUserIdMutation,
-} = booksApiSlice;
+export const { useGetBooksByUserIdQuery, useAddBookMutation, useUpdateBookByIdMutation } =
+  booksApiSlice;

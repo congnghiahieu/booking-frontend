@@ -15,7 +15,7 @@ const getRan = (lo = 8, hi = 10, round = 1) =>
  * @param {Number} range range
  * @returns {Number}
  */
-const getDiscount = (lo = 50, range = 20) => lo + Math.round(Math.random() * range);
+const getDiscount = (lo = 30, hi = 50) => lo + Math.round(Math.random() * (hi - lo));
 
 /**
  *
