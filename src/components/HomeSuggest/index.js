@@ -2,7 +2,7 @@ import { useState, memo } from 'react';
 import { useGetAllHotelsQuery } from '../../app/features/api/hotelsSlice';
 import HomeSuggestPlace from '../HomeSuggestPlace';
 import HomeSuggestHotel from '../HomeSuggestHotel';
-import Loading from '../Loading';
+import Loading from '../Loading/Loading';
 import Error from '../Error';
 
 const places = ['Hồ Chí Minh', 'Vũng Tàu', 'Đà Nẵng', 'Hà Nội', 'Đà Lạt'];
