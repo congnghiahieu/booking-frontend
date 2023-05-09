@@ -14,8 +14,8 @@ export const hotelsApiSlice = apiSlice.injectEndpoints({
       query: ({
         page = QUERY.DEFAULT_PAGE,
         perPage = QUERY.DEFAULT_PER_PAGE,
-        city = 'Hồ Chí Minh',
-      }) => `/v1/hotels?page=${page}&per_page=${perPage}&city=${city}`,
+        province = 'Hồ Chí Minh',
+      }) => `/v1/hotels?page=${page}&per_page=${perPage}&province=${province}`,
       transformResponse: response => {
         const modifiedData = response.data.map(dt => {
           const modified = {

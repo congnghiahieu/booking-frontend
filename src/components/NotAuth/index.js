@@ -5,7 +5,6 @@ import { selectCurrentToken } from '../../app/features/auth/authSlice';
 const NotAuth = () => {
   const location = useLocation();
   const token = useSelector(selectCurrentToken);
-  console.log(token);
 
   return !token ? <Outlet /> : <Navigate to='/' state={{ from: location }} replace />;
 };

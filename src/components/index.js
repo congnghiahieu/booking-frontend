@@ -27,3 +27,6 @@ export { default as HomeStay } from './HomeStay';
 export { default as PointBar } from './PointBar';
 export { default as NotAuth } from './NotAuth';
 export { default as VNHighLight } from './VNHighLight';
+export { default as HomeSubFooter } from './HomeSubFooter';
+export { default as HomeAttrVN } from './HomeAttrVN';
+export { default as HomeAttrForeign } from './HomeAttrForeign';

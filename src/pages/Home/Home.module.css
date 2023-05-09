@@ -150,34 +150,14 @@
   justify-content: center;
   padding-bottom: 8px;
 }
-.suggesstion{
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-.options{
-  padding: 10px;
-  border-bottom: 1px solid #e9ebec;
-  font-size: 16px;
-  cursor: pointer;
-}
 
-
-.highlight_place{
+.highlight_place {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
 }
-.homeStay_list{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 10px;
-  margin-top: 10px;
-}
-.footer1_wrapper{
+.footer1_wrapper {
   margin-top: 30px;
   width: 100%;
   height: 270px;
@@ -185,29 +165,29 @@
   background-color: #e9ebee;
   justify-content: center;
 }
-.footer1{
+.footer1 {
   width: 1080px;
   display: flex;
   justify-content: space-between;
 }
-.footer_func{
+.footer_func {
   display: flex;
   flex-direction: column;
-  padding-top:40px ;
+  padding-top: 40px;
   cursor: pointer;
 }
 
-.footer_header{
+.footer_header {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 30px;
 }
-.footer_func li{
+.footer_func li {
   list-style-type: none;
   font-size: 14px;
   padding: 1px 0;
   width: fit-content;
 }
-.footer_func li:hover{
-  border-bottom: 1px solid black ;
+.footer_func li:hover {
+  border-bottom: 1px solid black;
 }

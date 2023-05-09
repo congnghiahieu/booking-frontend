@@ -1,13 +1,13 @@
-import style from './HighLightPlace.module.css'
+import style from './HighLightPlace.module.css';
+import { getViewLinkGG } from '../../utils/getViewLinkGG';
 
-function HighLightPlace({placeName}) {
-
-    return (
-        <div className={style.place}>
-            <div className={style.place_img}></div>
-            <div className={style.place_name}>{placeName}</div>
-        </div>
-    );
+function HighLightPlace({ place }) {
+  return (
+    <div className={style.place}>
+      <img className={style.place_img} src={`${getViewLinkGG(place.img)}`} />
+      <div className={style.place_name}>{place.name}</div>
+    </div>
+  );
 }
 
-export default HighLightPlace
+export default HighLightPlace;

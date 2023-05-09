@@ -1,13 +1,14 @@
+import style from './HomeSuggest.module.css';
 import { useState, memo } from 'react';
 import { useGetAllHotelsQuery } from '../../app/features/api/hotelsSlice';
-import HomeSuggestPlace from '../HomeSuggestPlace';
-import HomeSuggestHotel from '../HomeSuggestHotel';
+import HomeStay from '../HomeStay';
 import Loading from '../Loading/Loading';
 import Error from '../Error';
 
-const places = ['Hồ Chí Minh', 'Vũng Tàu', 'Đà Nẵng', 'Hà Nội', 'Đà Lạt'];
+const HIGHLIGHT_VN = ['Hồ Chí Minh', 'Hà Nội', 'Hải Phòng', 'Vũng Tàu', 'Đà Nẵng'];
+
 const HomeSuggest = () => {
-  const [curCity, setCurCity] = useState(places[0]);
+  const [curProvince, setCurProvince] = useState(HIGHLIGHT_VN[0]);
   const [errMsg, setErrMsg] = useState('');
   const {
     data: hotels,
@@ -15,36 +16,39 @@ const HomeSuggest = () => {
     isFetching,
     isSuccess,
     isError,
-  } = useGetAllHotelsQuery({ page: 1, perPage: 8, city: curCity });
+  } = useGetAllHotelsQuery({ page: 1, perPage: 8, province: curProvince });
 
   const isQueryData = isLoading || isFetching;
 
   return (
-    // Đặt tên class để phân biệt, mới chỉ CSS inline tạm thời
-    <div
-      className='suggest-container'
-      style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '200px' }}>
-      <h3>Những chỗ nghỉ nổi bật khuyến nghị cho bạn:</h3>
-      <ul className='suggest-places' style={{ display: 'flex', flexDirection: 'row', gap: '20px' }}>
-        {places.map(place => (
-          <HomeSuggestPlace key={place} place={place} setCurPlace={setCurCity}>
-            {place}
-          </HomeSuggestPlace>
-        ))}
-      </ul>
+    <div className={style.highlight_homeStay}>
+      <div className={style.text_script}>Những chỗ nghỉ nổi bật khuyến nghị cho bạn:</div>
+      <div className={style.suggesstion}>
+        {HIGHLIGHT_VN.map(city => {
+          return (
+            <div
+              key={city}
+              className={style.options}
+              style={
+                city == curProvince
+                  ? { borderBottom: '2px solid #5392f9', color: '#5392f9' }
+                  : { backgroundColor: 'white' }
+              }
+              onClick={() => setCurProvince(city)}>
+              {city}
+            </div>
+          );
+        })}
+      </div>
       {isQueryData && <Loading />}
       {!isQueryData && isError && <Error />}
       {!isQueryData && isSuccess ? (
-        <div className='hotels-container'>
+        <div className={style.homeStay_list}>
           {/* Layout Grid 4 x 2 */}
-          <ul
-            className='suggest-list'
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
-            {hotels.ids.map(id => {
-              const hotel = hotels.entities[id];
-              return <HomeSuggestHotel key={id} hotel={hotel} />;
-            })}
-          </ul>
+          {hotels.ids.map(id => {
+            const hotel = hotels.entities[id];
+            return <HomeStay key={id} hotel={hotel} />;
+          })}
         </div>
       ) : (
         <></>
