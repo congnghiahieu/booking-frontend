@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { DefaultLayout } from './layout';
+import { DefaultLayout,BookingLayout} from './layout';
 import {
   Login,
   Register,
@@ -7,7 +7,7 @@ import {
   HotelSingle,
   HotelBooking,
   UserBooking,
-  UserEdit,
+  UserComments,
   UserProfile,
   SearchHotel,
 } from './pages';
@@ -35,14 +35,15 @@ function App() {
           </Route>
           <Route>
             <Route path='user/profile' element={<UserProfile />} />
-            <Route path='user/edit' element={<UserEdit />} />
+            <Route path='user/comments' element={<UserComments />} />
             <Route path='user/booking' element={<UserBooking />} />
-            <Route path='user/comments' element={<UserBooking />} />
+            {/* <Route path='user/comments' element={<UserBooking />} /> */}
           </Route>
           {/* <Route path='*' element={<Missing />} /> */}
         </Route>
 
-        <Route path='/'>
+
+        <Route path='/' element={<BookingLayout/>}>
           <Route
             path='hotel/booking/:hotelSlug/:serviceSlug/:hotelId/:serviceId'
             element={

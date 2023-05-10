@@ -1,7 +1,8 @@
 .container {
     display: flex;
-    padding: 0 20%;
+    padding: 0 15%;
     width: 100vw;
+    height: 100%;
 }
 
 .Sidebar {
@@ -9,8 +10,7 @@
     width: 25%;
     box-shadow: 7px 0 8px #e9ebee;
 }
-
-.Sidebar a {
+.Sidebar a{
     font-weight: 600;
     padding: 20px 0px;
     display: flex;
@@ -20,36 +20,33 @@
     align-items: center;
     letter-spacing: 1px;
 }
-
-.Sidebar a:hover {
+.Sidebar a:hover{
     background-color: #5392f9;
     color: #fff;
 }
-
-.Sidebar hr {
+.Sidebar hr{
     background-color: #ededed;
     height: 1px;
     margin: 30px;
 }
-
-.profile {
+.profile{
     padding: 20px 0px;
     display: flex;
-    color: #333;
+    color:#333;
     gap: 5px;
     align-items: center;
     font-weight: 600;
     letter-spacing: 1px;
 }
-
-.Sidebar li {
+.Sidebar li{
     list-style: none;
+    /* padding-left: 30px; */
     color: #5392f9;
 }
-
-
-.Show {
+.Show{
     padding: 0 50px;
     width: 75%;
 }
-
+.Show .yourComment {
+    padding: 30px 0;
+}

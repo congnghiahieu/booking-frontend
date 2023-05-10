@@ -1,5 +1,5 @@
 import './Member.css';
-import { useState, memo } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPerson } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -23,6 +23,20 @@ const Member = () => {
 
   const [openOptions, setOpenOptions] = useState(false);
 
+  // const navigate = useNavigate();
+  let menuRef = useRef();
+  useEffect(() => {
+    let handler = e => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpenOptions(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  });
+
   return (
     <div>
       <div className='MemberItem'>
@@ -34,7 +48,7 @@ const Member = () => {
           className='MemberText'>{`${adult} adult · ${children} children · ${room} room`}</div>
       </div>
       {openOptions && (
-        <div className='options'>
+        <div className='options' ref={menuRef}>
           <div className='optionItem'>
             <span className='optionText'>Số phòng</span>
             <div className='optionCounter'>

@@ -1,9 +1,30 @@
-import { useMemo } from 'react';
+import { forwardRef, useMemo, useState,useRef,useEffect } from 'react';
 import style from './Progress.module.css';
 import useBookingContext from '../../hooks/useBookingContext';
+import Avatar from 'react-avatar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown, faSignOut } from '@fortawesome/free-solid-svg-icons'
+import DropDownItem from '../DropdownItem';
 
 const ProgressStep = () => {
   const { page } = useBookingContext();
+  const [open, setOpen] = useState(false);
+  function handleClick() {
+    setOpen(prev => !prev)
+  }
+  let menuRef = useRef();
+  useEffect(()=> {
+    let handler = (e) => {
+      if(!menuRef.current.contains(e.target)){
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return() => {
+      document.removeEventListener("mousedown", handler);
+    }
+  });
+
   return useMemo(() => {
     return (
       <>
@@ -25,10 +46,21 @@ const ProgressStep = () => {
               <p id={style.two}>Đã xác nhận đặt phòng!</p>
             </div>
           </div>
-          <div>abc</div>
+          <div className={style.dropdown} ref={menuRef}>
+            <button className={style.avatar} onClick={handleClick} >
+              <Avatar name="Duy Ngo" size='40px' round='50px' maxInitials='1' />
+              <p>Ten</p>
+              <FontAwesomeIcon icon={faCaretDown} />
+            </button>
+            {open && <div className={style.menu}>
+              <ul >
+                <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
+              </ul>
+            </div>}
+          </div>
         </div>
       </>
     );
-  }, [page]);
+  }, [page, open]);
 };
 export default ProgressStep;

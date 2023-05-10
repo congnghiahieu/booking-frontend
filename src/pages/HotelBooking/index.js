@@ -97,6 +97,7 @@ const HotelBooking = () => {
     }
   };
 
+  // const [open, setOpen] = useState(false);
   return (
     <>
       {isHtLoad || (isSvLoad && <LoadingImg />)}

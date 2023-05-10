@@ -12,6 +12,10 @@
     display: flex;
     flex-direction: column;
 }
+.filter span{
+    /* display: flex; */
+    /* align-items: flex-end; */
+}
 .filter label{
     padding-right: 5px;
 }

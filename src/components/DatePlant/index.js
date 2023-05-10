@@ -1,4 +1,5 @@
-import { useState, memo } from 'react';
+import { addDays } from 'date-fns';
+import { useState, memo, useEffect, useRef } from 'react';
 import './DateRange.css';
 // import { DateRangePicker } from 'react-date-range';x x
 import 'react-date-range/dist/styles.css'; // main css file
@@ -17,14 +18,24 @@ function DatePlant() {
   const [openDate, setOpenDate] = useState(false);
   const date = [{ startDate: new Date(start), endDate: new Date(end), key: 'selection' }];
 
+  let menuRef = useRef();
+  useEffect(() => {
+    let handler = e => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpenDate(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  });
+
   return (
     <div>
       <div className='datePlant'>
         <label htmlFor='headerSearchText'></label>
-        <div
-          onClick={() => setOpenDate(!openDate)}
-          // className={style.headerSearchText}
-          className='headerSearchText'>
+        <div onClick={() => setOpenDate(!openDate)} className='headerSearchText'>
           <div className='dateIn'>
             <span className='icon'>
               <FontAwesomeIcon icon={faCalendarCheck} />
@@ -43,18 +54,20 @@ function DatePlant() {
           </div>
         </div>
         {openDate && (
-          <DateRange
-            editableDateInputs={true}
-            onChange={({ selection }) => {
-              dispatch(setStart(selection.startDate.valueOf()));
-              dispatch(setEnd(selection.endDate.valueOf()));
-            }}
-            moveRangeOnFirstSelection={false}
-            ranges={date}
-            className='day'
-            minDate={new Date()}
-            maxDate={add(new Date(), { days: 90 })}
-          />
+          <div ref={menuRef}>
+            <DateRange
+              editableDateInputs={true}
+              onChange={({ selection }) => {
+                dispatch(setStart(selection.startDate.valueOf()));
+                dispatch(setEnd(selection.endDate.valueOf()));
+              }}
+              moveRangeOnFirstSelection={false}
+              ranges={date}
+              className='day'
+              minDate={new Date()}
+              maxDate={add(new Date(), { days: 90 })}
+            />
+          </div>
         )}
       </div>
     </div>
