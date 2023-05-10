@@ -18,7 +18,7 @@ import Follow from '../../components/UserProfile/Follow';
 const UserProfile = () => {
   // const { id } = useAuth();
   // const { data: user, isLoading, isSuccess, isError } = useGetUserByIdQuery(id);
-  
+
 
   return (
     <>
@@ -54,9 +54,9 @@ const UserProfile = () => {
           <hr></hr>
         </div>
         <div className={style.Show}>
-          <Information/>       
-          <Payment/>
-          <Follow/>
+          <Information />
+          <Payment />
+          <Follow />
         </div>
       </div>
     </>

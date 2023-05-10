@@ -39,23 +39,8 @@
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-  position: relative;
+  
 }
-
-.search_option {
-  display: flex;
-  flex-direction: row;
-  width: 900px;
-  height: 48px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 6px 2px;
-  border-radius: 8px;
-  position: relative;
-  z-index: 2;
-  list-style-type: none;
-  justify-content: space-evenly;
-}
-
 .tab_content {
   display: flex;
   width: 1080px;
@@ -63,34 +48,18 @@
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 6px 2px;
   border-radius: 16px;
-  position: relative;
-  z-index: 1;
   margin-top: -20px;
   padding: 32px 48px;
   flex-direction: column;
   gap: 10px;
-}
-.detail_list {
-  width: fit-content;
-  color: #24262c;
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 400;
-}
-.detail_list:hover {
-  color: var(--btn-color);
-  cursor: pointer;
-  border-bottom: 2px solid var(--btn-color);
-}
-.tile_icon {
-  margin-right: 4px;
 }
 .input_length {
   height: 48px;
 }
 .DN_select {
   display: flex;
+  position: relative;
+  z-index: 1;
 }
 .day_select,
 .night_select {
@@ -100,6 +69,9 @@
   color: #24262c;
   font-size: 14px;
   margin-right: 10px;
+  position: relative;
+  z-index: 2;
+
 }
 .day_select:hover,
 .night_select:hover {

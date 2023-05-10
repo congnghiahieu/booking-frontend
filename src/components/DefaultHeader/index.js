@@ -23,6 +23,7 @@ const DefaultHeader = () => {
   let menuRef = useRef();
   useEffect(() => {
     let handler = (e) => {
+      console.log(menuRef.current)
       if (!menuRef.current.contains(e.target)) {
         setOpen(false);
       }
@@ -39,10 +40,10 @@ const DefaultHeader = () => {
         <nav className={style.functiondetail}>
           <NavLink
             to={'/'}
-            className={({ isActive }) => 
-            isActive ? `${style.active}`: ""
+            className={({ isActive }) =>
+              isActive ? `${style.active}` : ""
             }
-            >Home</NavLink>
+          >Home</NavLink>
         </nav>
         <div className={style.functiondetail}>Máy bay + K.sạn</div>
         <div className={style.functiondetail}>Chỗ ở</div>
@@ -67,15 +68,15 @@ const DefaultHeader = () => {
           <FontAwesomeIcon icon={faCaretDown} />
         </button>
         {open && (
-        <div className={style.menu}>
-          <ul >
-            <p className={style.user}>TÀI KHOẢN CỦA TÔI</p>
-            <Link to='/user/booking'><DropDownItem value={'Đơn đặt chỗ của tôi'} icon={faCalendarCheck} /></Link>
-            <Link to='user/comments'><DropDownItem value={'Nhận xét của tôi'} icon={faMessage} /></Link>
-            <Link to='user/profile'><DropDownItem value={'Hồ sơ của tôi của tôi'} icon={faUser} /></Link>
-            <Link to='/'><DropDownItem value={'Đăng xuất'} icon={faSignOut} /></Link>
-          </ul>
-        </div>
+          <div className={style.menu}>
+            <ul >
+              <p className={style.user}>TÀI KHOẢN CỦA TÔI</p>
+              <Link to='/user/booking'><DropDownItem value={'Đơn đặt chỗ của tôi'} icon={faCalendarCheck} /></Link>
+              <Link to='user/comments'><DropDownItem value={'Nhận xét của tôi'} icon={faMessage} /></Link>
+              <Link to='user/profile'><DropDownItem value={'Hồ sơ của tôi của tôi'} icon={faUser} /></Link>
+              <Link to='/'><DropDownItem value={'Đăng xuất'} icon={faSignOut} /></Link>
+            </ul>
+          </div>
         )}
       </div>
     </div>

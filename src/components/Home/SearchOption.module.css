@@ -1,0 +1,30 @@
+.search_option {
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    height: 48px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 6px 2px;
+    border-radius: 8px;
+    position: relative;
+    list-style-type: none;
+    justify-content: space-evenly;
+}
+
+.detail_list {
+    width: fit-content;
+    color: #24262c;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.detail_list:hover {
+    color: var(--btn-color);
+    cursor: pointer;
+    border-bottom: 2px solid var(--btn-color);
+}
+.tile_icon {
+    margin-right: 4px;
+  }

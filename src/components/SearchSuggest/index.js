@@ -29,16 +29,20 @@ const SearchSuggest = () => {
       });
     }
   }, [searchValue]);
-  return (
-    (
+  
+ 
+  return focus && <>
+      <div className='overly'></div> 
       <ul className='PlaceList'>
         {sugPlaces.slice(0, 15).map(v => (
           // <li key={v} >{v}</li>
-          <SuggestItem key={v} placename={v}/>
+          <SuggestItem key={v} placename={v} />
         ))}
-      </ul>
-    )
-  );
+      </ul></>
+      
+
+
+  ;
 };
 
 export default SearchSuggest;

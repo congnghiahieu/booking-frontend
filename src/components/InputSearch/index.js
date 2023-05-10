@@ -18,7 +18,6 @@ const InputSearch = () => {
 
   return (
     <div className='search_bar'>
-      
         <select
           className='search_select'
           onChange={e => dispatch(setField(e.target.value))}
@@ -29,7 +28,6 @@ const InputSearch = () => {
             </option>
           ))}
         </select>
-    
       <div className='search_input'>
         <input
           id='user_input'
