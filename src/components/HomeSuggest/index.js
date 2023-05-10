@@ -5,11 +5,11 @@ import HomeStay from '../HomeStay';
 import Loading from '../Loading/Loading';
 import Error from '../Error';
 
-const HIGHLIGHT_VN = ['Hồ Chí Minh', 'Hà Nội', 'Hải Phòng', 'Vũng Tàu', 'Đà Nẵng'];
+const HIGHLIGHT_VN = ['Hà Nội', 'Hồ Chí Minh', 'Hải Phòng', 'Vũng Tàu', 'Đà Nẵng'];
 
 const HomeSuggest = () => {
   const [curProvince, setCurProvince] = useState(HIGHLIGHT_VN[0]);
-  const [errMsg, setErrMsg] = useState('');
+
   const {
     data: hotels,
     isLoading,

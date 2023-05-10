@@ -1,12 +1,7 @@
 import './Comment.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSuitcase, faBed, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
-
-const dtFormat = new Intl.DateTimeFormat('vi-VN', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-});
+import { dtFormat } from '../../utils/formatter';
 
 function Comment({ cmt }) {
   return (

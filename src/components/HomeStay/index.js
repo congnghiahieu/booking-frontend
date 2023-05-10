@@ -3,6 +3,7 @@ import { getViewLinkGG } from '../../utils/getViewLinkGG';
 import { faStar, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
+import { numFormatter } from '../../utils/formatter';
 
 function HomeStay({ hotel }) {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ function HomeStay({ hotel }) {
         </div>
       </div>
       <span className={style.price_text}>Giá mỗi đêm rẻ nhất từ</span>
-      <div className={style.HomeStay_price}>VND {hotel.cheapest || '500.000'}</div>
+      <div className={style.HomeStay_price}>{numFormatter.format(hotel.cheapest || 500000)}</div>
     </div>
   );
 }

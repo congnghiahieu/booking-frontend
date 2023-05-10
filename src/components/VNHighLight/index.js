@@ -9,7 +9,7 @@ function VNHighLight({ place }) {
     navigate({
       pathname: '/search',
       search: createSearchParams({
-        city: place.name,
+        province: place.name,
         start: new Date().valueOf(),
         end: new Date().valueOf(),
       }).toString(),

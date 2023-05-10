@@ -12,13 +12,20 @@ import {
   faChildren,
   faChildReaching,
 } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useRef, memo } from 'react';
 import SlideImage from '../SlideImage/SlideImage';
 import { getRan, getDiscount, getReview } from '../../utils/random';
 import { numFormatter } from '../../utils/formatter';
 
 function Service({ service }) {
-  // console.log(service);
+  const navigate = useNavigate();
+  const { hotelSlug, hotelId } = useParams();
+  const onAddToCart = async () => {};
+
+  const onDirectToBook = () => {
+    navigate(`/hotel/booking/${hotelSlug}/${service.slug}/${hotelId}/${service.id}`);
+  };
 
   const review = getReview(service.point);
 
@@ -56,9 +63,7 @@ function Service({ service }) {
               alt='service preview'
             /> */}
           </div>
-          <a href='https://www.facebook.com/' target='_blank' className='more'>
-            Xem ảnh và chi tiết
-          </a>
+          <span className='more'>Xem ảnh và chi tiết</span>
           {/* TODO service image */}
           <ul className='room_list'>
             <li className='list_things'>
@@ -146,18 +151,14 @@ function Service({ service }) {
                 <span className='subtext'>Hủy bỏ</span>
                 <div className='p_c1'>
                   <FontAwesomeIcon icon={faCheck} color='#59a923' className='icon_green' />
-                  <a href='' className='more'>
-                    Chính sách hủy
-                  </a>
+                  <span className='more'>Chính sách hủy</span>
                 </div>
               </div>
               <div className='p_c'>
                 <span className='subtext'>Thanh toán</span>
                 <div className='p_c1'>
                   <FontAwesomeIcon icon={faCheck} color='#59a923' className='icon_green' />
-                  <a href='' className='more'>
-                    Thanh toán ngay
-                  </a>
+                  <span className='more'>Thanh toán ngay</span>
                 </div>
               </div>
             </div>
@@ -170,7 +171,9 @@ function Service({ service }) {
                 <span className='new_price'>{numFormatter.format(service.prices)}</span>
               </div>
               <div className='book'>
-                <button className='booking'>Đặt trước</button>
+                <button className='booking' onClick={onDirectToBook}>
+                  Đặt trước
+                </button>
                 <button className='push_list'>Thêm vào giỏ hàng</button>
               </div>
             </div>

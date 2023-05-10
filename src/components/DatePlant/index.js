@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { setStart, setEnd, selectTime } from '../../app/features/search/searchSlice';
+import { DAY_VN } from '../../utils/constants';
 
 function DatePlant() {
   const dispatch = useDispatch();
@@ -29,12 +30,16 @@ function DatePlant() {
               <FontAwesomeIcon icon={faCalendarCheck} />
             </span>
             <span className='dayselect'>{`${format(date[0].startDate, 'dd/MM/yyyy')}`}</span>
+            {/* Thứ */}
+            <span>{DAY_VN[new Date(start).getDay()]}</span>
           </div>
           <div className='dateOut'>
             <span className='icon'>
               <FontAwesomeIcon icon={faCalendarDay} />
             </span>
             <span className='dayselect'>{`${format(date[0].endDate, 'dd/MM/yyyy')}`}</span>
+            {/* Thứ */}
+            <span>{DAY_VN[new Date(end).getDay()]}</span>
           </div>
         </div>
         {openDate && (

@@ -5,36 +5,27 @@ import { faCheck, faUserFriends, faEnvelope } from '@fortawesome/free-solid-svg-
 import { TRANS_TYPES } from '../../utils/constants';
 import Sidebar from '../../components/HotelBooking/Sidebar';
 import ProgressStep from '../../components/HotelBooking/ProgressStep';
-import { Loading } from '../../components';
-import useBookingContext from '../../hooks/useBookingContext';
+import LoadingImg from '../../components/Loading/LoadingImg';
 import { useAddBookMutation } from '../../app/features/api/booksSlice';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-
-const hotel = {
-  name: 'Khách sạn Mường Thanh Sài Gòn Center',
-  address: 'Sài Gòn',
-  location: 'Cách trung tâm 2km',
-  star: 2,
-  orginalPrice: '1.000.000 $',
-  discountPrice: '800.000 $',
-  img: 'https://pix8.agoda.net/hotelImages/1032041/-1/39ff37f5b391961283f9ade4c1f2ef68.jpg?ca=17&ce=1&s=450x450',
-  discount: '30%',
-  point: 9.5,
-  numOfComments: '500',
-};
+import { useEffect } from 'react';
+import useBookingContext from '../../hooks/useBookingContext';
+import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
+import { useGetServiceByIdQuery } from '../../app/features/api/servicesSlice';
+import { useSelector } from 'react-redux';
+import { selectTime } from '../../app/features/search/searchSlice';
+import { differenceInDays } from 'date-fns';
 
 const HotelBooking = () => {
-  const { hotelId, serviceId } = useParams();
-  const [searchParams] = useSearchParams();
-  const start = searchParams.get('start');
-  const end = searchParams.get('end');
   const { id } = useAuth();
-
+  const { hotelId, serviceId } = useParams();
+  const [start, end] = useSelector(selectTime);
   const {
     page,
     setPage,
     value,
+    setValue,
     disablePrev,
     disableNext,
     prevHide,
@@ -43,7 +34,28 @@ const HotelBooking = () => {
     submitHide,
     formData,
   } = useBookingContext();
-  const [addBook, { isLoading }] = useAddBookMutation();
+
+  const {
+    data: hotel,
+    isLoading: isHtLoad,
+    isSuccess: isHtOk,
+    isError: isHtErr,
+  } = useGetHotelByIdQuery(hotelId);
+
+  const {
+    data: service,
+    isLoading: isSvLoad,
+    isSuccess: isSvOk,
+    isError: isSvErr,
+  } = useGetServiceByIdQuery(serviceId);
+
+  useEffect(() => {
+    if (service) {
+      setValue(service.prices * differenceInDays(end, start));
+    }
+  }, [service]);
+
+  const [addBook, { isLoading: isAddLoad }] = useAddBookMutation();
 
   const prevPage = () => setPage(curPage => curPage - 1);
   const nextPage = () => setPage(curPage => curPage + 1);
@@ -87,74 +99,79 @@ const HotelBooking = () => {
 
   return (
     <>
-      {/* Progress */}
-      <ProgressStep />
-      {/* Main form */}
-      <div className={style.container}>
-        <div className={style.show}>
-          {/* Multipage form */}
-          {isLoading && <Loading />}
-          <PageDisplay />
-          {/* Redirect button */}
-          {page != 2 && (
-            <div className={style.Booking}>
-              <div>
-                <input
-                  type='checkbox'
-                  className='form-check-input'
-                  id='exampleCheck2'
-                  onChange={e => e.target}
-                />
-                <label className='form-check-label' htmlFor='exampleCheck2'>
-                  {' '}
-                  Nhận email khuyến mãi độc quyền từ chúng tôi
-                </label>
-              </div>
-              <p>
-                Thực hiện bước tiếp theo đồng nghĩa với việc bạn chấp nhận tuân theo Điều khoản sử
-                dụng và Chính sách bảo mật của Wygo.
-              </p>
-              <button
-                onClick={prevPage}
-                type='button'
-                className={`button ${prevHide}`}
-                disabled={disablePrev}>
-                Quay lại bước trước
-              </button>
-              <button
-                onClick={nextPage}
-                type='button'
-                className={`button ${nextHide}`}
-                disabled={disableNext}>
-                {!disableNext ? 'Bước tiếp theo' : 'Vui lòng hoàn thiện thông tin'}
-              </button>
-              <button
-                onClick={onSubmit}
-                type='button'
-                className={`button ${submitHide}`}
-                disabled={!canSubmit}>
-                {canSubmit ? 'Đặt phòng' : 'Vui lòng hoàn thiện thông tin'}
-              </button>
-              {formData.cusEmail.value && page == 1 && (
-                <div>
-                  <hr />
-                  <FontAwesomeIcon icon={faEnvelope} />
+      {isHtLoad || (isSvLoad && <LoadingImg />)}
+      {isHtErr || (isSvErr && <p>Fetch lỗi</p>)}
+      {isHtOk && isSvOk && (
+        <>
+          {/* Progress */}
+          <ProgressStep />
+          {/* Main form */}
+          <div className={style.container}>
+            <div className={style.show}>
+              {/* Multipage form */}
+              <PageDisplay />
+              {/* Redirect button */}
+              {page != 2 && (
+                <div className={style.Booking}>
+                  <div>
+                    <input
+                      type='checkbox'
+                      className='form-check-input'
+                      id='exampleCheck2'
+                      onChange={e => e.target}
+                    />
+                    <label className='form-check-label' htmlFor='exampleCheck2'>
+                      {' '}
+                      Nhận email khuyến mãi độc quyền từ chúng tôi
+                    </label>
+                  </div>
+                  <p>
+                    Thực hiện bước tiếp theo đồng nghĩa với việc bạn chấp nhận tuân theo Điều khoản
+                    sử dụng và Chính sách bảo mật của Wygo.
+                  </p>
+                  <button
+                    onClick={prevPage}
+                    type='button'
+                    className={`button ${prevHide}`}
+                    disabled={disablePrev}>
+                    Quay lại bước trước
+                  </button>
+                  <button
+                    onClick={nextPage}
+                    type='button'
+                    className={`button ${nextHide}`}
+                    disabled={disableNext}>
+                    {!disableNext ? 'Bước tiếp theo' : 'Vui lòng hoàn thiện thông tin'}
+                  </button>
+                  <button
+                    onClick={onSubmit}
+                    type='button'
+                    className={`button ${submitHide}`}
+                    disabled={!canSubmit}>
+                    {canSubmit ? 'Đặt phòng' : 'Vui lòng hoàn thiện thông tin'}
+                  </button>
+                  {formData.cusEmail.value && page == 1 && (
+                    <div>
+                      <hr />
+                      <FontAwesomeIcon icon={faEnvelope} />
 
-                  <span>
-                    {' '}
-                    Chúng tôi sẽ gửi xác nhận phòng qua địa chỉ email{' '}
-                    <strong>{formData.cusEmail.value}</strong>
-                  </span>
+                      <span>
+                        {' '}
+                        Chúng tôi sẽ gửi xác nhận phòng qua địa chỉ email{' '}
+                        <strong>{formData.cusEmail.value}</strong>
+                      </span>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
-          )}
-        </div>
-        {/* Fixed Sidebar */}
-        <Sidebar hotel={hotel} hotelId={hotelId} serviceId={serviceId} />
-      </div>
-      {/* Footer */}
-      <div className={style.footer}>footer</div>
+            {/* Fixed Sidebar */}
+            <Sidebar hotel={hotel} service={service} />
+          </div>
+          {/* Footer */}
+          {/* <div className={style.footer}>footer</div>; */}
+        </>
+      )}
     </>
   );
 };

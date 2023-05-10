@@ -30,7 +30,7 @@ function App() {
           {/* Protected Routes - required Login */}
           <Route path='/' element={<Home />} />
           <Route>
-            <Route path='hotel/view/:slug/:hotelId' element={<HotelSingle />} />
+            <Route path='hotel/view/:hotelSlug/:hotelId' element={<HotelSingle />} />
             <Route path='search' element={<SearchHotel />} />
           </Route>
           <Route>
@@ -44,7 +44,7 @@ function App() {
 
         <Route path='/'>
           <Route
-            path='hotel/booking/:id'
+            path='hotel/booking/:hotelSlug/:serviceSlug/:hotelId/:serviceId'
             element={
               <BookingProvider>
                 <HotelBooking />
