@@ -1,0 +1,21 @@
+.SuggestItem{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    color: white;
+}
+img{
+    width: 50px;
+    height: 30px;
+    
+}
+.province{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 14px;
+}
+.SuggestItem:hover{
+    color: var(--btn-color);
+    cursor: pointer;
+}
