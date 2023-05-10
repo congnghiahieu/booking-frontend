@@ -1,40 +1,52 @@
-.icon{
-    padding: 10px 14px;
-    font-size: 24px;
-    font-family: 200;
-    color: var(--home-tile-acti-color);
-    display: flex;
+.icon {
+  padding: 10px 14px;
+  font-size: 24px;
+  font-family: 200;
+  color: var(--home-tile-acti-color);
+  display: flex;
 }
-.iconProfile{
-    padding: 5px 15px;
-    font-size: 20px;
-    font-family: 400;
-    display: flex;
+.iconProfile {
+  padding: 5px 15px;
+  font-size: 20px;
+  font-family: 400;
+  display: flex;
 }
-.iconCircle{
-    /* padding: 5px 15px; */
-    font-size: 7px;
-    font-family: 400;
-    display: flex;
-    padding-left: 30px;
+.iconCircle {
+  /* padding: 5px 15px; */
+  font-size: 7px;
+  font-family: 400;
+  display: flex;
+  padding-left: 30px;
 }
-.famous{
-    padding: 0 4px 0 15px;
+.famous {
+  padding: 0 4px 0 15px;
 }
-.star{
-    margin-left:5px;
-    color: orange;
+.star {
+  margin-left: 5px;
+  color: orange;
 }
-.free{
-    color: #32a923;
+.free {
+  color: #32a923;
 }
-.success{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100px;
-    padding: 10px 0;
+.success {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  padding: 10px 0;
 }
-.notetext{
-    color: red;
+.notetext {
+  color: red;
+}
+.bronze {
+  color: #cf7d4e;
+}
+.sliver {
+  color: #bec2c9;
+}
+.gold {
+  color: #ecc43a;
+}
+.plantinum {
+  color: #7488e3;
 }

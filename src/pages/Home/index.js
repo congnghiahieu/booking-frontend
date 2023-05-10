@@ -22,6 +22,7 @@ import {
   HomeSuggest,
   HomeAttrVN,
   HomeAttrForeign,
+  WelcomeBack
 } from '../../components';
 import useTitle from '../../hooks/useTitle';
 import { createSearchParams, useNavigate } from 'react-router-dom';
@@ -135,6 +136,7 @@ const Home = () => {
         </div>
       </div>
       <div className={style.home_body}>
+        <WelcomeBack/>
         <HomeAttrVN />
         <HomeSuggest />
         <HomeAttrForeign />
