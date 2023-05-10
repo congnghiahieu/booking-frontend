@@ -43,6 +43,7 @@
 
 .search_option {
   display: flex;
+  flex-direction: row;
   width: 900px;
   height: 48px;
   background-color: white;
@@ -73,6 +74,8 @@
   color: #24262c;
   display: flex;
   align-items: center;
+  font-size: 16px;
+  font-weight: 400;
 }
 .detail_list:hover {
   color: var(--btn-color);
@@ -133,6 +136,7 @@
   width: 1080px;
   height: fit-content;
   flex-direction: column;
+  gap: 40px;
 }
 .highlight {
   display: flex;

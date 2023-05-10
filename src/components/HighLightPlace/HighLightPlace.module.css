@@ -12,7 +12,7 @@
 }
 .place_img {
   background-color: rgb(199, 199, 199);
-  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) 0.8s;
+  animation: pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1) 0.5s;
   width: 125px;
   height: 125px;
   border-radius: 50%;
