@@ -8,41 +8,25 @@ import {
   faCalendarCheck,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef, memo } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import DropDownItem from '../DropdownItem';
-
+import useClickout from '../../hooks/useClickout';
 
 const DefaultHeader = () => {
   const [open, setOpen] = useState(false);
-  function handleClick() {
-    console.log('123')
-    setOpen(prev => !prev)
-  }
   let menuRef = useRef();
-  useEffect(() => {
-    let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    }
-  });
+  useClickout(menuRef, setOpen);
+
   return (
     <div className={style.defaultHeader}>
       <div className={style.homefunction}>
         <div className={style.logo}></div>
         <nav className={style.functiondetail}>
-          <NavLink
-            to={'/'}
-            className={({ isActive }) => 
-            isActive ? `${style.active}`: ""
-            }
-            >Home</NavLink>
+          <NavLink to={'/'} className={({ isActive }) => (isActive ? `${style.active}` : '')}>
+            Home
+          </NavLink>
         </nav>
         <div className={style.functiondetail}>Máy bay + K.sạn</div>
         <div className={style.functiondetail}>Chỗ ở</div>
@@ -51,8 +35,7 @@ const DefaultHeader = () => {
           <FontAwesomeIcon icon={faHouseCircleCheck} />
           Căn hộ
         </div>
-        <div className={style.functiondetail}>
-        </div>
+        <div className={style.functiondetail}></div>
       </div>
 
       {/* <div className={style.homelogin}>
@@ -61,26 +44,33 @@ const DefaultHeader = () => {
       </div> */}
 
       <div className={style.dropdown} ref={menuRef}>
-        <button className={style.avatar} onClick={handleClick} >
-          <Avatar name="Duy Ngo" size='40px' round='50px' maxInitials={1} />
+        <button className={style.avatar} onClick={() => setOpen(prev => !prev)}>
+          <Avatar name='Duy Ngo' size='40px' round='50px' maxInitials={1} />
           <p>Ten</p>
           <FontAwesomeIcon icon={faCaretDown} />
         </button>
         {open && (
-        <div className={style.menu}>
-          <ul >
-            <p className={style.user}>TÀI KHOẢN CỦA TÔI</p>
-            <Link to='/user/booking'><DropDownItem value={'Đơn đặt chỗ của tôi'} icon={faCalendarCheck} /></Link>
-            <Link to='user/comments'><DropDownItem value={'Nhận xét của tôi'} icon={faMessage} /></Link>
-            <Link to='user/profile'><DropDownItem value={'Hồ sơ của tôi của tôi'} icon={faUser} /></Link>
-            <Link to='/'><DropDownItem value={'Đăng xuất'} icon={faSignOut} /></Link>
-          </ul>
-        </div>
+          <div className={style.menu}>
+            <ul>
+              <p className={style.user}>TÀI KHOẢN CỦA TÔI</p>
+              <Link to='/user/booking'>
+                <DropDownItem value={'Đơn đặt chỗ của tôi'} icon={faCalendarCheck} />
+              </Link>
+              <Link to='user/comments'>
+                <DropDownItem value={'Nhận xét của tôi'} icon={faMessage} />
+              </Link>
+              <Link to='user/profile'>
+                <DropDownItem value={'Hồ sơ của tôi của tôi'} icon={faUser} />
+              </Link>
+              <Link to='/'>
+                <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
+              </Link>
+            </ul>
+          </div>
         )}
       </div>
     </div>
-
   );
 };
 
-export default DefaultHeader;
+export default memo(DefaultHeader);

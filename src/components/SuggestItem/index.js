@@ -1,11 +1,12 @@
-import style from "./SuggestItem.module.css";
+import style from './SuggestItem.module.css';
+import { getViewLinkGG } from '../../utils/getViewLinkGG';
 
-import React from "react";
+const SuggestItem = ({ placename, hotel }) => {
+  const imgLink = hotel ? getViewLinkGG(hotel.imgsGG[0]) : '';
 
-const SuggestItem = ({ placename }) => {
   return (
     <div className={style.SuggestItem}>
-      <img></img>
+      <img src={imgLink} />
       <span className={style.province}>{placename}</span>
     </div>
   );

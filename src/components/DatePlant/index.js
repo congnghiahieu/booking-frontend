@@ -1,5 +1,4 @@
-import { addDays } from 'date-fns';
-import { useState, memo, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import './DateRange.css';
 // import { DateRangePicker } from 'react-date-range';x x
 import 'react-date-range/dist/styles.css'; // main css file
@@ -11,67 +10,64 @@ import { faCalendarCheck, faCalendarDay } from '@fortawesome/free-solid-svg-icon
 import { useDispatch, useSelector } from 'react-redux';
 import { setStart, setEnd, selectTime } from '../../app/features/search/searchSlice';
 import { DAY_VN } from '../../utils/constants';
+import useClickout from '../../hooks/useClickout';
 
 function DatePlant() {
   const dispatch = useDispatch();
   const [start, end] = useSelector(selectTime);
+  const [date, setDate] = useState([
+    { startDate: new Date(start), endDate: new Date(end), key: 'selection' },
+  ]);
+
   const [openDate, setOpenDate] = useState(false);
-  const date = [{ startDate: new Date(start), endDate: new Date(end), key: 'selection' }];
+  const dateRef = useRef(null);
+  useClickout(dateRef, setOpenDate);
 
-  let menuRef = useRef();
   useEffect(() => {
-    let handler = e => {
-      if (!menuRef.current.contains(e.target)) {
-        setOpenDate(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => {
-      document.removeEventListener('mousedown', handler);
-    };
-  });
+    dispatch(setStart(date[0].startDate.valueOf()));
+    dispatch(setEnd(date[0].endDate.valueOf()));
+  }, [date]);
 
-  return (
-    <div>
-      <div className='datePlant'>
-        <label htmlFor='headerSearchText'></label>
-        <div onClick={() => setOpenDate(!openDate)} className='headerSearchText'>
-          <div className='dateIn'>
-            <span className='icon'>
-              <FontAwesomeIcon icon={faCalendarCheck} />
-            </span>
-            <span className='dayselect'>{`${format(date[0].startDate, 'dd/MM/yyyy')}`}</span>
-            {/* Thứ */}
-            <span>{DAY_VN[new Date(start).getDay()]}</span>
+  return useMemo(() => {
+    return (
+      <div>
+        <div className='datePlant'>
+          <label htmlFor='headerSearchText'></label>
+          <div onClick={() => setOpenDate(!openDate)} className='headerSearchText'>
+            <div className='dateIn'>
+              <span className='icon'>
+                <FontAwesomeIcon icon={faCalendarCheck} />
+              </span>
+              <span className='dayselect'>{`${format(date[0].startDate, 'dd/MM/yyyy')}`}</span>
+              {/* Thứ */}
+              <span>{DAY_VN[new Date(start).getDay()]}</span>
+            </div>
+            <div className='dateOut'>
+              <span className='icon'>
+                <FontAwesomeIcon icon={faCalendarDay} />
+              </span>
+              <span className='dayselect'>{`${format(date[0].endDate, 'dd/MM/yyyy')}`}</span>
+              {/* Thứ */}
+              <span>{DAY_VN[new Date(end).getDay()]}</span>
+            </div>
           </div>
-          <div className='dateOut'>
-            <span className='icon'>
-              <FontAwesomeIcon icon={faCalendarDay} />
-            </span>
-            <span className='dayselect'>{`${format(date[0].endDate, 'dd/MM/yyyy')}`}</span>
-            {/* Thứ */}
-            <span>{DAY_VN[new Date(end).getDay()]}</span>
-          </div>
+          {openDate && (
+            <div ref={dateRef}>
+              <DateRange
+                editableDateInputs={true}
+                onChange={({ selection }) => setDate([selection])}
+                moveRangeOnFirstSelection={false}
+                ranges={date}
+                className='day'
+                minDate={new Date()}
+                maxDate={add(new Date(), { days: 90 })}
+              />
+            </div>
+          )}
         </div>
-        {openDate && (
-          <div ref={menuRef}>
-            <DateRange
-              editableDateInputs={true}
-              onChange={({ selection }) => {
-                dispatch(setStart(selection.startDate.valueOf()));
-                dispatch(setEnd(selection.endDate.valueOf()));
-              }}
-              moveRangeOnFirstSelection={false}
-              ranges={date}
-              className='day'
-              minDate={new Date()}
-              maxDate={add(new Date(), { days: 90 })}
-            />
-          </div>
-        )}
       </div>
-    </div>
-  );
+    );
+  }, [start, end, date, openDate]);
 }
 
-export default memo(DatePlant);
+export default DatePlant;

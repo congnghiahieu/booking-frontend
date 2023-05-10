@@ -1,4 +1,5 @@
 import style from './HomeSubFooter.module.css';
+import { memo } from 'react';
 
 const HomeSubFooter = () => {
   return (
@@ -44,4 +45,4 @@ const HomeSubFooter = () => {
   );
 };
 
-export default HomeSubFooter;
+export default memo(HomeSubFooter);

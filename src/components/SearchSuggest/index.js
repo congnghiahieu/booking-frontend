@@ -9,14 +9,32 @@ import {
   selectSearchField,
   selectFocus,
 } from '../../app/features/search/searchSlice';
-import SuggestItem from '../SuggestItem'
-import './SearchSuggest.css'
+import SuggestItem from '../SuggestItem';
+import './SearchSuggest.css';
+import { useGetAllHotelsQuery } from '../../app/features/api/hotelsSlice';
+import useDebounceInput from '../../hooks/useDebounceInput';
 
 const SearchSuggest = () => {
   const searchValue = useSelector(selectSearchValue);
   const searchField = useSelector(selectSearchField);
   const focus = useSelector(selectFocus);
   const [sugPlaces, setSugPlaces] = useState([]);
+  const [skip, setSkip] = useState(true);
+  const debounceValue = useDebounceInput(searchValue, 1000);
+  const {
+    data: suggestHotels,
+    isLoading,
+    isFetching,
+    isSuccess,
+  } = useGetAllHotelsQuery({ page: 1, perPage: 15, name: debounceValue }, { skip });
+
+  // console.log(skip);
+  // console.log(suggestHotels);
+
+  useEffect(() => {
+    if (searchField === SEARCH_FIELD.BY_NAME) setSkip(false);
+    else setSkip(true);
+  }, [searchField]);
 
   useEffect(() => {
     if (searchField === SEARCH_FIELD.BY_PROVINCE) {
@@ -29,15 +47,30 @@ const SearchSuggest = () => {
       });
     }
   }, [searchValue]);
+
   return (
-    (
-      <ul className='PlaceList'>
-        {sugPlaces.slice(0, 15).map(v => (
+    <ul className='PlaceList'>
+      {searchField === SEARCH_FIELD.BY_PROVINCE &&
+        sugPlaces.slice(0, 15).map(v => (
           // <li key={v} >{v}</li>
-          <SuggestItem key={v} placename={v}/>
+          <SuggestItem key={v} placename={v} />
         ))}
-      </ul>
-    )
+      {searchField === SEARCH_FIELD.BY_NAME ? (
+        !isLoading && !isFetching && isSuccess ? (
+          suggestHotels.ids.map(id => {
+            const hotel = suggestHotels.entities[id];
+            return <SuggestItem key={hotel.id} placename={hotel.name} hotel={hotel} />;
+          })
+        ) : (
+          <>
+            {console.log('is fetching data')}
+            <p>Loading...</p>
+          </>
+        )
+      ) : (
+        <></>
+      )}
+    </ul>
   );
 };
 

@@ -11,11 +11,8 @@ const initialState = hotelsApdater.getInitialState();
 export const hotelsApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getAllHotels: builder.query({
-      query: ({
-        page = QUERY.DEFAULT_PAGE,
-        perPage = QUERY.DEFAULT_PER_PAGE,
-        province = 'Hồ Chí Minh',
-      }) => `/v1/hotels?page=${page}&per_page=${perPage}&province=${province}`,
+      query: ({ page = QUERY.DEFAULT_PAGE, perPage = QUERY.DEFAULT_PER_PAGE, province, name }) =>
+        `/v1/hotels?page=${page}&per_page=${perPage}&province=${province}&name=${name}`,
       transformResponse: response => {
         const modifiedData = response.data.map(dt => {
           const modified = {

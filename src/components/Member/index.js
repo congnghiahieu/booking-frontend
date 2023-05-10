@@ -14,6 +14,7 @@ import {
   selectRoom,
   selectChilren,
 } from '../../app/features/search/searchSlice';
+import useClickout from '../../hooks/useClickout';
 
 const Member = () => {
   const dispatch = useDispatch();
@@ -22,20 +23,8 @@ const Member = () => {
   const children = useSelector(selectChilren);
 
   const [openOptions, setOpenOptions] = useState(false);
-
-  // const navigate = useNavigate();
-  let menuRef = useRef();
-  useEffect(() => {
-    let handler = e => {
-      if (!menuRef.current.contains(e.target)) {
-        setOpenOptions(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => {
-      document.removeEventListener('mousedown', handler);
-    };
-  });
+  let memberRef = useRef();
+  useClickout(memberRef, setOpenOptions);
 
   return (
     <div>
@@ -48,7 +37,7 @@ const Member = () => {
           className='MemberText'>{`${adult} adult · ${children} children · ${room} room`}</div>
       </div>
       {openOptions && (
-        <div className='options' ref={menuRef}>
+        <div className='options' ref={memberRef}>
           <div className='optionItem'>
             <span className='optionText'>Số phòng</span>
             <div className='optionCounter'>
