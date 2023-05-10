@@ -14,9 +14,9 @@
 }
 
 .point_script {
-  margin-top: 5px;
   display: flex;
-  justify-content: space-between;
+  align-items: start;
+  height: 100%;
 }
 
 .point_text,
@@ -27,7 +27,11 @@
 }
 .point_text {
   color: #4e4e4e;
+  margin-top: 8px;
+  display: flex;
 }
 .point_recent {
   color: #66be5b;
+  display: flex;
+
 }

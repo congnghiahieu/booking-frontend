@@ -9,6 +9,8 @@ import {
   selectSearchField,
   selectFocus,
 } from '../../app/features/search/searchSlice';
+import SuggestItem from '../SuggestItem'
+import './SearchSuggest.css'
 
 const SearchSuggest = () => {
   const searchValue = useSelector(selectSearchValue);
@@ -28,10 +30,11 @@ const SearchSuggest = () => {
     }
   }, [searchValue]);
   return (
-    focus && (
-      <ul>
-        {sugPlaces.slice(0, 5).map(v => (
-          <li key={v}>{v}</li>
+    (
+      <ul className='PlaceList'>
+        {sugPlaces.slice(0, 15).map(v => (
+          // <li key={v} >{v}</li>
+          <SuggestItem key={v} placename={v}/>
         ))}
       </ul>
     )

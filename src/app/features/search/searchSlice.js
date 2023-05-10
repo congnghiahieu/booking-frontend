@@ -5,7 +5,7 @@ import { SEARCH_FIELD } from '../../../utils/constants';
 export const searchSlice = createSlice({
   name: 'search',
   initialState: {
-    value: 'Hà Nội',
+    value: '',
     focus: false,
     field: SEARCH_FIELD.BY_PROVINCE,
     start: new Date().valueOf(),

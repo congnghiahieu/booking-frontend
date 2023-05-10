@@ -28,8 +28,21 @@
 
 .search_select_container {
   width: 110px;
+  border: none;
 }
 .search_select {
+  border: none;
+  height: 40px;
+  width: 120px;
+  margin-left: 14px;
+  padding-right: 10px;
+  font-size: 16px;
+  border-right:1px solid #dddfe2 ;
+}
+.search_select:focus,.search_select:active{
+  border: none;
+  outline: none;
 }
 .search_select_option {
+  height: 30px;
 }
