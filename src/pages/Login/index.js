@@ -104,7 +104,7 @@ const Login = () => {
         </span>
       </div>
       <div className='license'>
-        Khi đăng nhập, tôi đồng ý với các Điều khoản sử dụng và Chính sách bảo mật của Agoda.
+        Khi đăng nhập, tôi đồng ý với các Điều khoản sử dụng và Chính sách bảo mật của Wygo.
       </div>
     </div>
   );

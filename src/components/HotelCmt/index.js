@@ -18,30 +18,32 @@ const HotelComment = ({ hotelId }) => {
   } = useGetCmtsByHotelIdQuery({ hotelId });
   const [page, setPage] = useState(1);
 
+  // console.log(cmts);
+
   return (
     <div className={style.cmtContainer} id='hotelCmt'>
       {/* {<LoadingCmt/>} */}
       {isCmtLoad && <LoadingCmt />}
       {!isCmtLoad && isCmtErr && <Error />}
       {!isCmtLoad && isCmtOk ? (
-        <>
-          <PagingNav
-            isFetching={isCmtFetch}
-            page={page}
-            setPage={setPage}
-            totalPages={cmts.totalPages}
-          />
-          <div className={style.cmtList}>
-            {cmts.ids ? (
-              cmts.ids.map(id => {
+        cmts.ids.length ? (
+          <>
+            <PagingNav
+              isFetching={isCmtFetch}
+              page={page}
+              setPage={setPage}
+              totalPages={cmts.totalPages}
+            />
+            <div className={style.cmtList}>
+              {cmts.ids.map(id => {
                 const cmt = cmts.entities[id];
-                return <Comment cmt={cmt} key={id} />;
-              })
-            ) : (
-              <p>Không có bình luận nào để hiện thị</p>
-            )}
-          </div>
-        </>
+                return <Comment key={id} cmt={cmt} />;
+              })}
+            </div>
+          </>
+        ) : (
+          <p>Không có bình luận nào để hiện thị</p>
+        )
       ) : (
         <></>
       )}

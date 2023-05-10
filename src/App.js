@@ -30,7 +30,7 @@ function App() {
           {/* Protected Routes - required Login */}
           <Route path='/' element={<Home />} />
           <Route>
-            <Route path='hotel/view/:hotelId' element={<HotelSingle />} />
+            <Route path='hotel/view/:slug/:hotelId' element={<HotelSingle />} />
             <Route path='search' element={<SearchHotel />} />
           </Route>
           <Route>

@@ -11,15 +11,14 @@ import { useGetAllHotelsQuery } from '../../app/features/api/hotelsSlice';
 const tabs = ['Phù hợp nhất', 'Được đánh giá nhiều nhất', 'Giá thấp nhất trước'];
 const SearchHotel = () => {
   const [searchParams] = useSearchParams();
-  const city = searchParams.get('city');
+  const province = searchParams.get('province');
   const {
     data: hotels,
     isLoading,
     isFetching,
     isSuccess,
     isError,
-  } = useGetAllHotelsQuery({ page: 1, city });
-  // console.log(hotels);
+  } = useGetAllHotelsQuery({ page: 1, province });
 
   const [type, setType] = useState('Phù hợp nhất');
   const [show, setShow] = useState(false);
@@ -52,7 +51,7 @@ const SearchHotel = () => {
               const hotel = hotels.entities[id];
               return (
                 <div key={id} className={style.card}>
-                  <SlideImage key={id} />
+                  <SlideImage hotel={hotel} />
                   <HotelInfo hotel={hotel} />
                   <HotelPrice hotel={hotel} />
                 </div>

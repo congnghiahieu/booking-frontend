@@ -6,11 +6,10 @@ import { NearBy, HotelOverview, HotelOptionBar } from '../../components';
 import { Link, useParams } from 'react-router-dom';
 
 const HotelInfo = ({ hotel }) => {
-  console.log(hotel);
   return (
     <div>
       <div>
-        <HotelOptionBar />
+        <HotelOptionBar hotel={hotel} />
       </div>
       <div className={style.hotel_overview}>
         <div className={style.hotel_overview1}>
@@ -144,7 +143,7 @@ const HotelInfo = ({ hotel }) => {
             </div>
             <div className={style.hotel_booked}>
               <span className={style.booked_noti}>Phòng ở đây đang bán rất chạy!</span>
-              <p className={style.booked_number}>4 du khách đã đặt hôm nay.</p>
+              <p className={style.booked_number}>Rất nhiều khách hàng đã đặt phòng</p>
             </div>
           </div>
           <div className={style.hotel_content2}>

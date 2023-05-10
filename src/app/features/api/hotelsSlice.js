@@ -42,7 +42,7 @@ export const hotelsApiSlice = apiSlice.injectEndpoints({
     }),
     getHotelById: builder.query({
       query: hotelId => `/v1/hotels?hotel_id=${hotelId}`,
-      keepUnusedDataFor: 0,
+      keepUnusedDataFor: 60,
       transformResponse: response => {
         const modified = {
           ...response,

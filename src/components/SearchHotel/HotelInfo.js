@@ -16,11 +16,16 @@ import { useNavigate } from 'react-router-dom';
 import { memo } from 'react';
 
 const HotelInfo = ({ hotel }) => {
+  const navigate = useNavigate();
+  const onDirect = () => {
+    navigate(`/hotel/view/${hotel.slug}/${hotel.id}`);
+  };
+
   return (
     <>
       <div className={style.hotelInfor}>
         <div className={style.information}>
-          <h3>{hotel.name}</h3>
+          <h3 onClick={onDirect}>{hotel.name}</h3>
           <p>
             {Array(hotel.stars)
               .fill()
@@ -30,7 +35,9 @@ const HotelInfo = ({ hotel }) => {
           </p>
           <p id={style.one}>
             <FontAwesomeIcon icon={faLocationDot} />{' '}
-            {hotel.location.nation + ' - ' + hotel.location.city}
+            {hotel.location?.others ? `${hotel.location.others}, ` : ''}
+            {hotel.location?.district ? `${hotel.location.district}, ` : ''}
+            {hotel.location.nation + ' - ' + hotel.location.province}
           </p>
           <p id={style.four}>
             <FontAwesomeIcon icon={faLeaf} /> Du lịch bền vững

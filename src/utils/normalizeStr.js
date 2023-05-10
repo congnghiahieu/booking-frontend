@@ -3,8 +3,10 @@
  * @param {string} str string
  * @returns {string} new string after remove unnecessary white spaces
  */
-const rmWs = str => str.replace(/\s+/g, ' ').trim();
-
+const rmWs = str => {
+  if (str === null || str === undefined || str === '') return '';
+  return str.replace(/\s+/g, ' ').trim();
+};
 /**
  *
  * @param {string} str Vietnamese string with accents like (á, ạ, â, ơ, ớ, đ, Đ,...)
@@ -24,7 +26,7 @@ const removeVnAccents = str => {
  * @returns {string} new string in lowercase and no VN accents
  */
 const normalizeStr = str => {
-  return removeVnAccents(str).toLowerCase().trim();
+  return rmWs(removeVnAccents(str).toLowerCase());
 };
 
 module.exports = {

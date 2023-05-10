@@ -1,34 +1,21 @@
-import { addDays } from 'date-fns';
 import { useState, memo } from 'react';
 import './DateRange.css';
 // import { DateRangePicker } from 'react-date-range';x x
 import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css fil
-import React from 'react';
-import { format } from 'date-fns';
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { format, add } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faHotel,
-  faHouseChimneyWindow,
-  faPlane,
-  faPlaneDeparture,
-  faCalendarDays,
-  faUsers,
-  faMagnifyingGlass,
-  faCalendarCheck,
-  faCalendarDay,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faCalendarDay } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { setStart, setEnd, selectTime } from '../../app/features/search/searchSlice';
 
 function DatePlant() {
+  const dispatch = useDispatch();
+  const [start, end] = useSelector(selectTime);
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection',
-    },
-  ]);
+  const date = [{ startDate: new Date(start), endDate: new Date(end), key: 'selection' }];
+
   return (
     <div>
       <div className='datePlant'>
@@ -53,11 +40,15 @@ function DatePlant() {
         {openDate && (
           <DateRange
             editableDateInputs={true}
-            onChange={item => setDate([item.selection])}
+            onChange={({ selection }) => {
+              dispatch(setStart(selection.startDate.valueOf()));
+              dispatch(setEnd(selection.endDate.valueOf()));
+            }}
             moveRangeOnFirstSelection={false}
             ranges={date}
             className='day'
             minDate={new Date()}
+            maxDate={add(new Date(), { days: 90 })}
           />
         )}
       </div>

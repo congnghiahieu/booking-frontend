@@ -5,7 +5,7 @@ import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
 import Loading from '../Loading/Loading';
 import LoadingPost from '../Loading/LoadingPost';
 import Error from '../Error';
-import SlideImage from '../SlideImage/SlideImage1';
+import SlideImage1 from '../SlideImage/SlideImage1';
 import { memo } from 'react';
 import LoadingImg from '../Loading/LoadingImg';
 
@@ -24,7 +24,7 @@ const HotelIntro = ({ hotelId }) => {
       {!isHtLoad && isHtOk ? (
         <>
           <div className={style.slideImage}>
-            <SlideImage />
+            <SlideImage1 hotel={hotel} />
           </div>
           <HotelInfo hotel={hotel} />
         </>

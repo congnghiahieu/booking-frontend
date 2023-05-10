@@ -112,7 +112,7 @@ const HotelBooking = () => {
               </div>
               <p>
                 Thực hiện bước tiếp theo đồng nghĩa với việc bạn chấp nhận tuân theo Điều khoản sử
-                dụng và Chính sách bảo mật của Agoda.
+                dụng và Chính sách bảo mật của Wygo.
               </p>
               <button
                 onClick={prevPage}

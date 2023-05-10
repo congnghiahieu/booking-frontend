@@ -8,72 +8,56 @@ import {
   faPlaneDeparture,
   faCalendarDays,
   faUsers,
-  faMagnifyingGlass,
-  faCalendarCheck,
-  faCalendarDay,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   DatePlant,
   InputSearch,
   Member,
-  SearchSuggestPlaces,
-  HighLightPlace,
   HomeSubFooter,
   HomeSuggest,
   HomeAttrVN,
   HomeAttrForeign,
+  SearchSuggest,
 } from '../../components';
 import useTitle from '../../hooks/useTitle';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import provinvesMap from '../../utils/VI_PROVINCES_MAPPING.json';
-import { rmWs, normalizeStr } from '../../utils/normalizeStr';
-import { Link, useParams, NavLink } from 'react-router-dom';
+import { normalizeStr } from '../../utils/normalizeStr';
+import { selectSearchValue, selectTime, selectEnd } from '../../app/features/search/searchSlice';
+import { useSelector } from 'react-redux';
+
 const Home = () => {
   useTitle('Wygo.com | Official Website');
-  const navigate = useNavigate();
-  const [search, setSearch] = useState('');
-  const [focus, setFocus] = useState(false);
   const [searchErr, setSearchErr] = useState('');
-  const [norSearchVal, setNorSearchVal] = useState('');
-  const [sugPlaces, setSugPlaces] = useState([]);
+  const searchValue = useSelector(selectSearchValue);
+  const [start, end] = useSelector(selectTime);
 
-  useEffect(() => {
-    setNorSearchVal(normalizeStr(rmWs(search)));
-    setSearchErr('');
-    setSugPlaces(() => {
-      const places = [];
-      Object.keys(provinvesMap).forEach(key => {
-        if (key.includes(normalizeStr(rmWs(search)))) places.push(provinvesMap[key]);
-      });
-      return places;
-    });
-  }, [search]);
+  const navigate = useNavigate();
+
+  useEffect(() => setSearchErr(''), [searchValue]);
 
   const onSearch = () => {
-    if (!rmWs(search)) return setSearchErr('Vui lòng nhập tên tỉnh thành / thành phố bạn muốn đến');
-
-    if (!Object.keys(provinvesMap).includes(norSearchVal)) {
+    const normalized = normalizeStr(searchValue);
+    console.log('Normailized: ', normalized);
+    if (!normalized) return setSearchErr('Vui lòng nhập tên tỉnh thành / thành phố bạn muốn đến');
+    if (!Object.keys(provinvesMap).includes(normalized)) {
       return setSearchErr('Hiện tại chúng tôi chỉ hỗ trỡ tìm kiếm các tỉnh thành ở VN');
     }
-
     navigate({
       pathname: '/search',
       search: createSearchParams({
-        city: provinvesMap[norSearchVal],
-        start: new Date().valueOf(),
-        end: new Date().valueOf(),
+        province: provinvesMap[normalized],
+        start,
+        end,
       }).toString(),
     });
   };
-
-  const [type, setType] = useState('Hồ Chí Minh');
-  const [show, setShow] = useState(false);
 
   return (
     <div className={style.HOME} id='Home'>
       <div className={style.search_wrapper}>
         <div className={style.tile_script}>
-          <h1 className={style.script1}>TÌM TỔ ẤM VỚI AGODA HOMES</h1>
+          <h1 className={style.script1}>TÌM KIẾM KHÁCH SẠN VỚI WYGO</h1>
           <h2 className={style.script2}>
             Rộng rãi hơn, chân thực hơn, nhiều lý do để đi du lịch hơn.
           </h2>
@@ -126,12 +110,22 @@ const Home = () => {
             <div className={style.input_length}>
               <InputSearch />
             </div>
+            {/* Search Suggest */}
+            {searchErr && <p>{searchErr}</p>}
+            {/* Search Suggest */}
+            {/* Search Suggest */}
+            <div className={style.search_suggest}>
+              <SearchSuggest />
+            </div>
+            {/* Search Suggest */}
             <div className={style.select_option}>
               <DatePlant />
               <Member />
             </div>
           </div>
-          <button className={style.search_btn}>TÌM</button>
+          <button className={style.search_btn} onClick={onSearch}>
+            TÌM
+          </button>
         </div>
       </div>
       <div className={style.home_body}>

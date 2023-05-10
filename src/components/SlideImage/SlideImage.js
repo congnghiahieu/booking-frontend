@@ -1,84 +1,50 @@
 import { useState, memo } from 'react';
 import Modal from './Modal';
 import './style.css';
-const data = [
-  {
-    'link': 'http://placeimg.com/640/360/any',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/animals',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/arch',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/nature',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/people',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/tech',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/any',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/animals',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/arch',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/nature',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/people',
-  },
-  {
-    'link': 'http://placeimg.com/640/360/tech',
-  },
-];
+import { getViewLinkGG } from '../../utils/getViewLinkGG';
 
-const SlideImage = () => {
+const SlideImage = ({ hotel }) => {
+  const imgs = hotel.imgsGG.map(v => getViewLinkGG(v));
+  // console.log(imgs);
+
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
 
-  const handleClick = (item, index) => {
+  const handleClick = (imgId, index) => {
     setCurrentIndex(index);
-    setClickedImg(item.link);
+    setClickedImg(imgId);
   };
 
   const handelRotationRight = () => {
-    const totalLength = data.length;
+    const totalLength = imgs.length;
     if (currentIndex + 1 >= totalLength) {
       setCurrentIndex(0);
-      const newUrl = data[0].link;
+      const newUrl = imgs[0];
       setClickedImg(newUrl);
       return;
     }
     const newIndex = currentIndex + 1;
-    const newUrl = data.filter(item => {
-      return data.indexOf(item) === newIndex;
+    const newUrl = imgs.filter(imgId => {
+      return imgs.indexOf(imgId) === newIndex;
     });
-    const newItem = newUrl[0].link;
+    const newItem = newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
 
   const handelRotationLeft = () => {
-    const totalLength = data.length;
+    const totalLength = imgs.length;
     if (currentIndex === 0) {
       setCurrentIndex(totalLength - 1);
-      const newUrl = data[totalLength - 1].link;
+      const newUrl = imgs[totalLength - 1];
       setClickedImg(newUrl);
       return;
     }
     const newIndex = currentIndex - 1;
-    const newUrl = data.filter(item => {
-      return data.indexOf(item) === newIndex;
+    const newUrl = imgs.filter(item => {
+      return imgs.indexOf(item) === newIndex;
     });
-    const newItem = newUrl[0].link;
+    const newItem = newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
@@ -88,19 +54,19 @@ const SlideImage = () => {
       <img
         key={0}
         id='one'
-        src={data[0].link}
-        alt={data[0].text}
-        onClick={() => handleClick(data[0], 0)}
+        src={imgs[0]}
+        alt={`${hotel.name}`}
+        onClick={() => handleClick(imgs[0], 0)}
       />
-      {data.map((item, index) => {
+      {imgs.map((imgLink, index) => {
         if (index == 0 || index > 3) return;
         return (
           <img
             key={index}
             className='wrapper-images'
-            src={item.link}
-            alt={item.text}
-            onClick={() => handleClick(item, index)}
+            src={imgLink}
+            alt={`${hotel.name}`}
+            onClick={() => handleClick(imgLink, index)}
           />
         );
       })}

@@ -1,6 +1,10 @@
 import style from './HotelOptionBar.module.css';
+import { useState } from 'react';
+import { numFormatter } from '../../utils/formatter';
 
-function HotelOptionBar({}) {
+function HotelOptionBar({ hotel }) {
+  const [cheapest] = useState(hotel.cheapest ? hotel.cheapest : 500000);
+
   return (
     <div className={style.hotel_option}>
       <div className={style.hotel_optionbar}>
@@ -18,7 +22,7 @@ function HotelOptionBar({}) {
           <a className={style.hotel_select}>Vị trí</a>
           <a className={style.hotel_select}>Chính sách</a>
         </div>
-        <div className={style.hotel_price}>1.344.123 đ</div>
+        <div className={style.hotel_price}>{numFormatter.format(cheapest)}</div>
       </div>
     </div>
   );

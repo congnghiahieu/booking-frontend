@@ -1,7 +1,7 @@
 import { useGetServiceByHotelIdQuery } from '../../app/features/api/servicesSlice';
 import { memo } from 'react';
 import style from './HotelService.module.css';
-import HotelSuggest from '../HotelSuggest';
+import Service from '../Service';
 import Error from '../Error';
 import Loading from '../Loading/Loading';
 import LoadingPost from '../Loading/LoadingPost';
@@ -27,7 +27,7 @@ const HotelService = ({ hotelId }) => {
             {services.ids.length ? (
               services.ids.map(id => {
                 const service = services.entities[id];
-                return <HotelSuggest key={id} service={service} />;
+                return <Service key={id} service={service} />;
               })
             ) : (
               <p>Khách sạn này không có dịch vụ nào</p>

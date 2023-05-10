@@ -1,26 +1,27 @@
 import './Member.css';
-import { useState } from 'react';
-import React from 'react';
+import { useState, memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPerson } from '@fortawesome/free-solid-svg-icons';
-function Member({}) {
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  increaseAdult,
+  decreaseAdult,
+  increaseRoom,
+  decreaseRoom,
+  increaseChilren,
+  decreaseChildren,
+  selectAdult,
+  selectRoom,
+  selectChilren,
+} from '../../app/features/search/searchSlice';
+
+const Member = () => {
+  const dispatch = useDispatch();
+  const adult = useSelector(selectAdult);
+  const room = useSelector(selectRoom);
+  const children = useSelector(selectChilren);
+
   const [openOptions, setOpenOptions] = useState(false);
-  const [options, setOptions] = useState({
-    adult: 1,
-    children: 0,
-    room: 1,
-  });
-
-  // const navigate = useNavigate();
-
-  const handleOption = (name, operation) => {
-    setOptions(prev => {
-      return {
-        ...prev,
-        [name]: operation === 'i' ? options[name] + 1 : options[name] - 1,
-      };
-    });
-  };
 
   return (
     <div>
@@ -30,21 +31,33 @@ function Member({}) {
         </div>
         <div
           onClick={() => setOpenOptions(!openOptions)}
-          className='MemberText'>{`${options.adult} adult · ${options.children} children · ${options.room} room`}</div>
+          className='MemberText'>{`${adult} adult · ${children} children · ${room} room`}</div>
       </div>
       {openOptions && (
         <div className='options'>
           <div className='optionItem'>
+            <span className='optionText'>Số phòng</span>
+            <div className='optionCounter'>
+              <button disabled={room <= 1} className='btn' onClick={() => dispatch(decreaseRoom())}>
+                -
+              </button>
+              <span className='optionCounterNumber'>{room}</span>
+              <button className='btn' onClick={() => dispatch(increaseRoom())}>
+                +
+              </button>
+            </div>
+          </div>
+          <div className='optionItem'>
             <span className='optionText'>Nguời lớn</span>
             <div className='optionCounter'>
               <button
-                disabled={options.adult <= 1}
+                disabled={adult <= 1 || adult - 1 < room}
                 className='btn'
-                onClick={() => handleOption('adult', 'd')}>
+                onClick={() => dispatch(decreaseAdult())}>
                 -
               </button>
-              <span className='optionCounterNumber'>{options.adult}</span>
-              <button className='btn' onClick={() => handleOption('adult', 'i')}>
+              <span className='optionCounterNumber'>{adult}</span>
+              <button className='btn' onClick={() => dispatch(increaseAdult())}>
                 +
               </button>
             </div>
@@ -53,28 +66,13 @@ function Member({}) {
             <span className='optionText'>Trẻ em</span>
             <div className='optionCounter'>
               <button
-                disabled={options.children <= 0}
+                disabled={children <= 0}
                 className='btn'
-                onClick={() => handleOption('children', 'd')}>
+                onClick={() => dispatch(decreaseChildren())}>
                 -
               </button>
-              <span className='optionCounterNumber'>{options.children}</span>
-              <button className='btn' onClick={() => handleOption('children', 'i')}>
-                +
-              </button>
-            </div>
-          </div>
-          <div className='optionItem'>
-            <span className='optionText'>Số phòng</span>
-            <div className='optionCounter'>
-              <button
-                disabled={options.room <= 1}
-                className='btn'
-                onClick={() => handleOption('room', 'd')}>
-                -
-              </button>
-              <span className='optionCounterNumber'>{options.room}</span>
-              <button className='btn' onClick={() => handleOption('room', 'i')}>
+              <span className='optionCounterNumber'>{children}</span>
+              <button className='btn' onClick={() => dispatch(increaseChilren())}>
                 +
               </button>
             </div>
@@ -83,6 +81,6 @@ function Member({}) {
       )}
     </div>
   );
-}
+};
 
-export default Member;
+export default memo(Member);

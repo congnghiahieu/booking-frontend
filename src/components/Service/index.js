@@ -1,4 +1,4 @@
-import './HotelSuggest.css';
+import './Service.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBed,
@@ -12,20 +12,15 @@ import {
   faChildren,
   faChildReaching,
 } from '@fortawesome/free-solid-svg-icons';
-import { useRef } from 'react';
-import { BACKEND_ADDRESS } from '../../utils/constants';
+import { useRef, memo } from 'react';
 import SlideImage from '../SlideImage/SlideImage';
-import { getRan, getDiscount } from '../../utils/random';
+import { getRan, getDiscount, getReview } from '../../utils/random';
 import { numFormatter } from '../../utils/formatter';
 
-function HotelSuggest({ service }) {
-  console.log(service);
-  const hotelPoint = useRef(getRan());
-  const comment = hotelPoint.current >= 9 ? 'Trên cả tuyệt vời' : 'Tuyệt vời';
-  const discoutRate = useRef(getDiscount());
-  let oldPrice = useRef(service.prices * Math.PI);
-  let newPrice = useRef(numFormatter.format((oldPrice.current * discoutRate.current) / 100));
-  oldPrice.current = numFormatter.format(oldPrice.current);
+function Service({ service }) {
+  // console.log(service);
+
+  const review = getReview(service.point);
 
   return (
     <div className='HotelSuggest'>
@@ -36,10 +31,10 @@ function HotelSuggest({ service }) {
         <div></div>
         <span className='hotel_feedback'>
           <div className='comment'>
-            <p className='text1'>{comment}</p>
+            <p className='text1'>{review}</p>
             <p className='text2'>Chất lượng phòng ốc</p>
           </div>
-          <p className='hotel_point'>{hotelPoint.current}</p>
+          <p className='hotel_point'>{service.point}</p>
         </span>
       </div>
       <div className='hotel_sample'>
@@ -54,7 +49,7 @@ function HotelSuggest({ service }) {
             </div>
           </div> */}
           <div className='room_image'>
-            <SlideImage />
+            <SlideImage hotel={service} />
             {/* <img
               className='service_image'
               src={`${BACKEND_ADDRESS}/${service.images[0]}`}
@@ -123,12 +118,12 @@ function HotelSuggest({ service }) {
               <span className='other'>
                 <span className='subtext'>Chương trình thưởng và giảm giá khác</span>
 
-                <div className='other_subtext'>
+                {/* <div className='other_subtext'>
                   <div className='icon_dollar'>
                     <FontAwesomeIcon icon={faDollarSign} />
                   </div>
                   <span>Thưởng hoàn tiền mặt: 142.130 ₫</span>
-                </div>
+                </div> */}
               </span>
             </div>
             <div className='storage'>
@@ -167,10 +162,12 @@ function HotelSuggest({ service }) {
               </div>
             </div>
             <div className='priceD_N'>
-              <div className='discout'> – {discoutRate.current}% CHỈ HÔM NAY!</div>
+              <div className='discout'> – {service.discount}% CHỈ HÔM NAY!</div>
               <div className='price'>
-                <span className='old_price'>{oldPrice.current}</span>
-                <span className='new_price'>{newPrice.current}</span>
+                <span className='old_price'>
+                  {numFormatter.format((service.prices * 100) / (100 - service.discount))}
+                </span>
+                <span className='new_price'>{numFormatter.format(service.prices)}</span>
               </div>
               <div className='book'>
                 <button className='booking'>Đặt trước</button>
@@ -184,4 +181,4 @@ function HotelSuggest({ service }) {
   );
 }
 
-export default HotelSuggest;
+export default memo(Service);

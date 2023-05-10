@@ -5,9 +5,8 @@ const DefaultFooter = () => {
     <div className={style.defaultFooter}>
       <div className={style.footer_content}>
         <div className={style.footer_script}>
-          Mọi nội dung tại đây © 2005 – 2023 Công ty TNHH Tư nhân Agoda. Bảo Lưu Mọi Quyền.{' '}
-          <br></br>
-          Agoda.com là thành viên của Tập đoàn Booking Holdings, nhà cung cấp dịch vụ du lịch trực
+          Mọi nội dung tại đây © 2005 – 2023 Công ty TNHH Tư nhân Wygo. Bảo Lưu Mọi Quyền. <br></br>
+          Wygo.com là thành viên của Tập đoàn Booking Holdings, nhà cung cấp dịch vụ du lịch trực
           tuyến & các dịch vụ có liên quan hàng đầu thế giới.
         </div>
         <div className={style.sponsor_co}>
