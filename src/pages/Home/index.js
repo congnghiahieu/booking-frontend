@@ -1,14 +1,5 @@
 import { useEffect, useState } from 'react';
 import style from './Home.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faHotel,
-  faHouseChimneyWindow,
-  faPlane,
-  faPlaneDeparture,
-  faCalendarDays,
-  faUsers,
-} from '@fortawesome/free-solid-svg-icons';
 import {
   DatePlant,
   InputSearch,
@@ -24,16 +15,20 @@ import useTitle from '../../hooks/useTitle';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import provinvesMap from '../../utils/VI_PROVINCES_MAPPING.json';
 import { normalizeStr } from '../../utils/normalizeStr';
-import { selectSearchValue, selectTime, selectEnd } from '../../app/features/search/searchSlice';
+import { selectSearchValue, selectTime } from '../../app/features/search/searchSlice';
 import { useSelector } from 'react-redux';
+import SearchOption from '../../components/Home/SearchOption';
+import { selectCurrentToken } from '../../app/features/auth/authSlice';
 
 const Home = () => {
   useTitle('Wygo.com | Official Website');
+  const navigate = useNavigate();
+
+  const token = useSelector(selectCurrentToken);
+
   const [searchErr, setSearchErr] = useState('');
   const searchValue = useSelector(selectSearchValue);
   const [start, end] = useSelector(selectTime);
-
-  const navigate = useNavigate();
 
   useEffect(() => setSearchErr(''), [searchValue]);
 
@@ -64,45 +59,7 @@ const Home = () => {
           </h2>
         </div>
         <div className={style.search_box}>
-          <ul className={style.search_option}>
-            <li className={style.detail_list}>
-              <span className={style.tile_icon}>
-                <FontAwesomeIcon icon={faHotel} />
-              </span>
-              <div className={style.tile_act}>Khách sạn & nhà</div>
-            </li>
-            <li className={style.detail_list}>
-              <span className={style.tile_icon}>
-                <FontAwesomeIcon icon={faHouseChimneyWindow} />
-              </span>
-              <div className={style.tile_act}>Chỗ ở riêng</div>
-            </li>
-            <li className={style.detail_list}>
-              <span className={style.tile_icon}>
-                <FontAwesomeIcon icon={faPlane} />
-              </span>
-              <div className={style.tile_act}>Máy bay + K.sạn</div>
-            </li>
-            <li className={style.detail_list}>
-              <span className={style.tile_icon}>
-                <FontAwesomeIcon icon={faPlaneDeparture} />
-              </span>
-              <div className={style.tile_act}>Chuyến bay</div>
-            </li>
-            <li className={style.detail_list}>
-              <span className={style.tile_icon}>
-                <FontAwesomeIcon icon={faCalendarDays} />
-              </span>
-
-              <div className={style.tile_act}>Ở dài ngày</div>
-            </li>
-            <li className={style.detail_list}>
-              <span className={style.tile_icon}>
-                <FontAwesomeIcon icon={faUsers} />
-              </span>
-              <div className={style.tile_act}>Hoạt động</div>
-            </li>
-          </ul>
+          <SearchOption />
           <div className={style.tab_content}>
             <div className={style.DN_select}>
               <span className={style.night_select}>Chỗ ở qua đêm </span>
@@ -130,7 +87,7 @@ const Home = () => {
         </div>
       </div>
       <div className={style.home_body}>
-        <WelcomeBack />
+        {token && <WelcomeBack />}
         <HomeAttrVN />
         <HomeSuggest />
         <HomeAttrForeign />

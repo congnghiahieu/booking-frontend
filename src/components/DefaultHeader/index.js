@@ -13,8 +13,12 @@ import { NavLink, Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import DropDownItem from '../DropdownItem';
 import useClickout from '../../hooks/useClickout';
+import { useSelector } from 'react-redux';
+import { selectCurrentToken } from '../../app/features/auth/authSlice';
 
 const DefaultHeader = () => {
+  const token = useSelector(selectCurrentToken);
+
   const [open, setOpen] = useState(false);
   let menuRef = useRef();
   useClickout(menuRef, setOpen);
@@ -38,37 +42,39 @@ const DefaultHeader = () => {
         <div className={style.functiondetail}></div>
       </div>
 
-      {/* <div className={style.homelogin}>
-        <div className={style.login}>Đăng nhập</div>
-        <div className={style.signup}>Tạo tài khoản</div>
-      </div> */}
-
-      <div className={style.dropdown} ref={menuRef}>
-        <button className={style.avatar} onClick={() => setOpen(prev => !prev)}>
-          <Avatar name='Duy Ngo' size='40px' round='50px' maxInitials={1} />
-          <p>Ten</p>
-          <FontAwesomeIcon icon={faCaretDown} />
-        </button>
-        {open && (
-          <div className={style.menu}>
-            <ul>
-              <p className={style.user}>TÀI KHOẢN CỦA TÔI</p>
-              <Link to='/user/booking'>
-                <DropDownItem value={'Đơn đặt chỗ của tôi'} icon={faCalendarCheck} />
-              </Link>
-              <Link to='user/comments'>
-                <DropDownItem value={'Nhận xét của tôi'} icon={faMessage} />
-              </Link>
-              <Link to='user/profile'>
-                <DropDownItem value={'Hồ sơ của tôi của tôi'} icon={faUser} />
-              </Link>
-              <Link to='/'>
-                <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
-              </Link>
-            </ul>
-          </div>
-        )}
-      </div>
+      {!token ? (
+        <div className={style.homelogin}>
+          <div className={style.login}>Đăng nhập</div>
+          <div className={style.signup}>Tạo tài khoản</div>
+        </div>
+      ) : (
+        <div className={style.dropdown} ref={menuRef}>
+          <button className={style.avatar} onClick={() => setOpen(prev => !prev)}>
+            <Avatar name='Duy Ngo' size='40px' round='50px' maxInitials={1} />
+            <p>Ten</p>
+            <FontAwesomeIcon icon={faCaretDown} />
+          </button>
+          {open && (
+            <div className={style.menu}>
+              <ul>
+                <p className={style.user}>TÀI KHOẢN CỦA TÔI</p>
+                <Link to='/user/booking' onClick={() => setOpen(prev => !prev)}>
+                  <DropDownItem value={'Đơn đặt chỗ của tôi'} icon={faCalendarCheck} />
+                </Link>
+                <Link to='user/comments' onClick={() => setOpen(prev => !prev)}>
+                  <DropDownItem value={'Nhận xét của tôi'} icon={faMessage} />
+                </Link>
+                <Link to='user/profile' onClick={() => setOpen(prev => !prev)}>
+                  <DropDownItem value={'Hồ sơ của tôi của tôi'} icon={faUser} />
+                </Link>
+                <Link to='/' onClick={() => setOpen(prev => !prev)}>
+                  <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
+                </Link>
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

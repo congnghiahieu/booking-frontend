@@ -2,23 +2,21 @@ import style from './WelcomeBack.module.css';
 import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCheck } from '@fortawesome/free-solid-svg-icons';
-
-const user = {
-  name: 'Trung',
-  quality: 'Bronze',
-};
+import useAuth from '../../hooks/useAuth';
 
 const WelcomeBack = () => {
+  const { name } = useAuth();
+
   return (
     <div className={style.WelcomeBack}>
       <span className={style.WB_text}>
-        Chào mừng trở lại {user.name}! Quý khách là
+        Chào mừng trở lại {name}! Quý khách là
         <div className={style.vip_quality}>
           <span className={style.vip}>
             <FontAwesomeIcon icon={faStar} />
             VIP
           </span>
-          <span className={style.quality}>{user.quality}</span>
+          <span className={style.quality}> Đồng</span>
         </div>
       </span>
       <div className={style.quality_content}>

@@ -49,28 +49,32 @@ const SearchSuggest = () => {
   }, [searchValue]);
 
   return (
-    <ul className='PlaceList'>
-      {searchField === SEARCH_FIELD.BY_PROVINCE &&
-        sugPlaces.slice(0, 15).map(v => (
-          // <li key={v} >{v}</li>
-          <SuggestItem key={v} placename={v} />
-        ))}
-      {searchField === SEARCH_FIELD.BY_NAME ? (
-        !isLoading && !isFetching && isSuccess ? (
-          suggestHotels.ids.map(id => {
-            const hotel = suggestHotels.entities[id];
-            return <SuggestItem key={hotel.id} placename={hotel.name} hotel={hotel} />;
-          })
-        ) : (
-          <>
-            {console.log('is fetching data')}
-            <p>Loading...</p>
-          </>
-        )
-      ) : (
-        <></>
-      )}
-    </ul>
+    focus && (
+      <>
+        <div className='overly'></div>
+        <ul className='PlaceList'>
+          {searchField === SEARCH_FIELD.BY_PROVINCE &&
+            sugPlaces.slice(0, 15).map(v => (
+              // <li key={v} >{v}</li>
+              <SuggestItem key={v} placename={v} />
+            ))}
+          {searchField === SEARCH_FIELD.BY_NAME ? (
+            !isLoading && !isFetching && isSuccess ? (
+              suggestHotels.ids.map(id => {
+                const hotel = suggestHotels.entities[id];
+                return <SuggestItem key={hotel.id} placename={hotel.name} hotel={hotel} />;
+              })
+            ) : (
+              <>
+                <p>Loading...</p>
+              </>
+            )
+          ) : (
+            <></>
+          )}
+        </ul>
+      </>
+    )
   );
 };
 

@@ -40,7 +40,7 @@ const ProgressStep = () => {
           </div>
           <div className={style.dropdown} ref={menuRef}>
             <button className={style.avatar} onClick={handleClick}>
-              <Avatar name='Duy Ngo' size='40px' round='50px' maxInitials='1' />
+              <Avatar name='Duy Ngo' size='40px' round='50px' maxInitials={1} />
               <p>Ten</p>
               <FontAwesomeIcon icon={faCaretDown} />
             </button>

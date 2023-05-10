@@ -11,12 +11,23 @@ const useAuth = () => {
 
   if (token) {
     const decoded = jwtDecode(token);
-    const { username, name, email, address, roles, id } = decoded.UserInfo;
+    const { id, googleId, username, name, email, phone, address, avatarUrl, roles } =
+      decoded.UserInfo;
 
-    return { username, name, email, address, roles, id };
+    return { id, googleId, username, name, email, phone, address, avatarUrl, roles };
   }
 
-  return { username: '', name: '', email: '', address: {}, roles: null, id: '' };
+  return {
+    id: '',
+    googleId: '',
+    username: '',
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    avatarUrl: '',
+    roles: '',
+  };
 };
 
 export default useAuth;

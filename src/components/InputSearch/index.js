@@ -18,23 +18,22 @@ const InputSearch = () => {
 
   return (
     <div className='search_bar'>
-      
-        <select
-          className='search_select'
-          onChange={e => dispatch(setField(e.target.value))}
-          defaultValue={useSelector(selectSearchField)}>
-          {Object.values(SEARCH_FIELD).map(v => (
-            <option key={v} value={v} className='search_select_option'>
-              {v}
-            </option>
-          ))}
-        </select>
-    
+      <select
+        className='search_select'
+        onChange={e => dispatch(setField(e.target.value))}
+        defaultValue={useSelector(selectSearchField)}>
+        {Object.values(SEARCH_FIELD).map(v => (
+          <option key={v} value={v} className='search_select_option'>
+            {v}
+          </option>
+        ))}
+      </select>
       <div className='search_input'>
         <input
           id='user_input'
           type='text'
           required
+          autoComplete='off'
           value={searchValue}
           onChange={e => dispatch(setSearch(e.target.value))}
           onBlur={() => dispatch(setFocus(false))}
