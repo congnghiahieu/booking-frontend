@@ -46,9 +46,3 @@
 .Booking button:hover {
     background-color: rgba(83, 146, 249, 0.7);
 }
-
-.footer {
-    width: 100%;
-    height: 100px;
-    background-color: blue;
-}

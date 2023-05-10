@@ -8,6 +8,7 @@
   scroll-behavior: smooth;
 }
 .search_wrapper {
+  z-index: 1;
   background-image: url(./img/bg-vip-bronze.png);
   width: 100%;
   height: fit-content;
@@ -17,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 50px;
-  position: relative;
+  position: relative; 
 }
 .tile_script {
   margin-top: 20px;

@@ -1,5 +1,5 @@
 import './Member.css';
-import { useState } from 'react';
+import { useState,useEffect,useRef } from 'react';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPerson } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,18 @@ function Member({}) {
   });
 
   // const navigate = useNavigate();
+  let menuRef = useRef();
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpenOptions(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  });
 
   const handleOption = (name, operation) => {
     setOptions(prev => {
@@ -33,7 +45,7 @@ function Member({}) {
           className='MemberText'>{`${options.adult} adult · ${options.children} children · ${options.room} room`}</div>
       </div>
       {openOptions && (
-        <div className='options'>
+        <div className='options' ref={menuRef}>
           <div className='optionItem'>
             <span className='optionText'>Nguời lớn</span>
             <div className='optionCounter'>

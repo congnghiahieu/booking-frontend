@@ -2,12 +2,15 @@
   width: 100%;
   height: 62px;
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
   background-color: var(--header-background-color);
   min-width: 1200px;
   font-size: 18px;
-  overflow: hidden;
+  overflow: visible;
+  align-items: center;
+}
+.defaultHeader a{
+  text-decoration: none;
+  color:black
 }
 
 .homefunction {
@@ -29,30 +32,33 @@
   text-overflow: ellipsis;
   width: fit-content;
 }
+.active{
+  color: #488bf8 !important;
+}
+
 .functiondetail:hover {
   color: var(--login-color);
   cursor: pointer;
   transition: 0.3s;
 }
+
 .logo {
   width: 62px;
   height: 62px;
   display: flex;
-  /* background-image: url(https://play-lh.googleusercontent.com/ahJtMe0vfOlAu1XJVQ6rcaGrQBgtrEZQefHy7SXB7jpijKhu1Kkox90XDuH8RmcBOXNn); */
   background-image: url('./apple-touch-icon.png');
   background-size: 100% 100%;
   margin-right: 40px;
 }
 
 .homelogin {
-  /* display: flex;
-  justify-self:flex-end; */
   display: flex;
   justify-self: flex-start;
   align-items: center;
   overflow: hidden;
   min-width: 250px;
 }
+
 .login {
   display: inline-block;
   margin-right: 40px;
@@ -62,6 +68,7 @@
   color: var(--login-color);
   max-height: 62px;
 }
+
 .signup {
   display: block;
   line-height: 250%;
@@ -74,6 +81,7 @@
   max-height: 62px;
   overflow: clip;
 }
+
 .login:hover {
   background-color: var(--login-color);
   color: var(--header-background-color);
@@ -82,6 +90,7 @@
   transition: 0.3s;
   cursor: pointer;
 }
+
 .signup:hover {
   background-color: var(--login-color);
   color: var(--header-background-color);
@@ -96,31 +105,78 @@
   height: 100%;
   position: relative;
 
-  /* left:-30px;
-  top:62px; */
 }
+
 .hidden {
-  /* display: none; */
-  /* display: block;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  overflow: hidden;
-  top:50px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1; */
   position: absolute;
   z-index: 1400;
   will-change: transform;
   top: 0px;
   left: 0px;
-  /* transform: translate3d(877px, 46px, 0px); */
   background-color: red;
 }
+
 .hidden_detail {
-  /* display: none; */
   color: black;
-  /* padding: 12px 16px; */
   text-decoration: none;
   display: block;
 }
+.dropdown{
+  /* z-index: 5000; */
+  position: relative;
+  /* overflow: visible; */
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-left: 1px solid #d7d7db;
+  border-right: 1px solid #d7d7db;
+  padding: 0px 20px;
+  background-color: #fff;
+  border-top: none;
+  border-bottom: none;
+  /* position: absolute; */
+}
+
+.menu {
+  overflow: visible;
+  position: absolute;
+  border-radius: 4px;
+  border: 1px solid rgb(221, 223, 226);
+  width: 250px;
+  background-color: #fff;
+  right: 5px;
+  top: 50px;
+  font-size: 14px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+  z-index: 5;
+}
+
+.menu::before {
+  content: '';
+  position: absolute;
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  border-left: 1px solid rgb(221, 223, 226);
+  border-top: 1px solid rgb(221, 223, 226);
+  top: -6px;
+  right: 10px;
+}
+
+.menu ul {
+  list-style-type: none;
+}
+
+.user {
+  padding: 10px 20px;
+  background-color: rgb(248, 247, 249);
+}
+
+.menu a {
+  text-decoration: none;
+  color: black;
+}
+

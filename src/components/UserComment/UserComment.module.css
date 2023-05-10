@@ -1,40 +1,24 @@
-.Comment{
-    width: 1080px;
-    height: fit-content;
-    /* height: 100px; */
+.comment{
     display: flex;
     padding-top:10px ;
     border-top:1px solid var(--border-color);   
     margin-bottom: 40px;
     align-items: center;
+    gap:5px;
 }
-
-.user_in4{
-    padding-top:20px ;
+.hotel{
     display: flex;
-    width: 25%;
     flex-direction: column;
-    padding-left: 10px;
+    width:30%;
+    gap:5px;
 }
-.userPoint{
-    display: flex;
-  
-    font-size: 40px;
-  color: var(--btn-color);
-  margin-bottom: 5px;
-  /* font-weight: 400; */
+.hotel img{
+    height: 180px;
+    width: 200px;
+    background-color:antiquewhite;
 }
-.icon1{
-    width: 10%;
-}
-.user_info{
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.user_comment{
-    width: 75%;
+.UserComment{
+    width: 70%;
     display: flex;
     height: 100%;
     margin-top: 10px;
@@ -43,21 +27,21 @@
     margin-right: 10px;
     flex-direction: column;
 }
-.subcomment{
+.subComment{
     padding: 15px 30px;
 }
-.comment1{
+.title{
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
 }
-.comment2{
+.content{
     font-size: 14px;
     color:#7a868d;
     padding-left: 8px;
     margin-bottom: 20px;
 }
-.time_comment{
+.timeComment{
     padding-bottom: 10px;
     font-size: 14px;
     color:#7a868d;

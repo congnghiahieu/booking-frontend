@@ -10,6 +10,7 @@ import useBookingContext from '../../hooks/useBookingContext';
 import { useAddBookMutation } from '../../app/features/api/booksSlice';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import { useState } from 'react';
 
 const hotel = {
   name: 'Khách sạn Mường Thanh Sài Gòn Center',
@@ -85,10 +86,11 @@ const HotelBooking = () => {
     }
   };
 
+  // const [open, setOpen] = useState(false);
   return (
     <>
       {/* Progress */}
-      <ProgressStep />
+      <ProgressStep/>
       {/* Main form */}
       <div className={style.container}>
         <div className={style.show}>
@@ -153,8 +155,6 @@ const HotelBooking = () => {
         {/* Fixed Sidebar */}
         <Sidebar hotel={hotel} hotelId={hotelId} serviceId={serviceId} />
       </div>
-      {/* Footer */}
-      <div className={style.footer}>footer</div>
     </>
   );
 };

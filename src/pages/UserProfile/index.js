@@ -11,21 +11,24 @@ import {
 import { Link } from 'react-router-dom';
 import { useGetUserByIdQuery } from '../../app/features/api/usersSlice';
 import useAuth from '../../hooks/useAuth';
+import Information from '../../components/UserProfile/Information';
+import Payment from '../../components/UserProfile/Payment';
+import Follow from '../../components/UserProfile/Follow';
 
 const UserProfile = () => {
   // const { id } = useAuth();
   // const { data: user, isLoading, isSuccess, isError } = useGetUserByIdQuery(id);
+  
 
-  const [check, setCheck] = useState(true);
   return (
     <>
       <div className={style.container}>
         <div className={style.Sidebar}>
-          <Link to='/user/booking/a'>
+          <Link to='/user/booking'>
             <FontAwesomeIcon icon={faCalendarCheck} className='iconProfile' />
             <span>Đơn đặt chỗ của tôi</span>
           </Link>
-          <Link to='/user/comments/a'>
+          <Link to='/user/comments'>
             <FontAwesomeIcon icon={faMessage} className='iconProfile' />
             <span>Nhận xét</span>
           </Link>
@@ -35,15 +38,15 @@ const UserProfile = () => {
             <FontAwesomeIcon icon={faCaretDown} className='iconProfile' />
           </div>
           <li>
-            <a>
+            <a href="#information">
               <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Thông tin người dùng</span>
             </a>
-            <a>
+            <a href="#payment">
               <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Phương thức thanh toán</span>
             </a>
-            <a>
+            <a href="#follow">
               <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Theo dõi</span>
             </a>
@@ -51,110 +54,9 @@ const UserProfile = () => {
           <hr></hr>
         </div>
         <div className={style.Show}>
-          <div className={style.YourInfo}>
-            <h2>Thông tin người dùng</h2>
-            <div className={style.display}>
-              <div className={style.avatar}>
-                <div className={style.icon}>D</div>
-                <div className={style.name}>
-                  <h2>Họ & tên</h2>
-                  <span>Duy Ngô</span>
-                </div>
-              </div>
-              <div className={style.edit}>Chỉnh sửa</div>
-            </div>
-
-            <div className={style.display}>
-              <div className={style.name}>
-                <h2>Email</h2>
-                <span>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-              </div>
-            </div>
-            <div className={style.display}>
-              <div className={style.name}>
-                <h2>Số điện thoại</h2>
-                <span>0123123</span>
-              </div>
-              <div className={style.edit}>Chỉnh sửa</div>
-            </div>
-            <div className={style.display}>
-              <div className={style.name}>
-                <h2>Mật khẩu</h2>
-                <span>*****</span>
-              </div>
-              <div className={style.edit}>Chỉnh sửa</div>
-            </div>
-          </div>
-
-          <div className={style.YourPayment}>
-            <h2>Phương thức Payment</h2>
-            <div className={style.display}>
-              <h2>Lưu thông tin thẻ tín dụng của tôi</h2>
-              <div className={style.edit}>
-                <span>CÓ</span>
-                <label className='switch'>
-                  <input type='checkbox' />
-                  <span className='slider round'></span>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div className={style.YourFollow}>
-            <h2>Theo dõi</h2>
-            <div className={style.display}>
-              <div className={style.name}>
-                <h2>Bản tin</h2>
-                <span>
-                  <input type='radio' id='Everyday' name='news' value='Everyday' />
-                  <label htmlFor='Everyday'>Hằng ngày</label>
-                </span>
-                <span>
-                  <input type='radio' id='2times/week' name='news' value='2times/week' />
-                  <label htmlFor='2times/week'>Hai lần một tuần</label>
-                </span>
-                <span>
-                  <input type='radio' id='Everyweek' name='news' value='Everyweek' />
-                  <label htmlFor='Everyweek'>Hằng tuần</label>
-                </span>
-                <span>
-                  <input type='radio' id='Never' name='news' value='Never' />
-                  <label htmlFor='Never'>Không bao giờ</label>
-                </span>
-              </div>
-            </div>
-
-            <div className={style.display}>
-              <h2>Bạn muốn nhận thông tin nhắc nhở hỗ trợ đặt phòng</h2>
-              <div className={style.edit}>
-                <span>KHÔNG</span>
-                <label className='switch'>
-                  <input type='checkbox' />
-                  <span className='slider round'></span>
-                </label>
-              </div>
-            </div>
-            <div className={style.display}>
-              <h2>Tôi muốn nhận email về khuyến mãi</h2>
-              <div className={style.edit}>
-                <span>KHÔNG</span>
-                <label className='switch'>
-                  <input type='checkbox' />
-                  <span className='slider round'></span>
-                </label>
-              </div>
-            </div>
-            <div className={style.display}>
-              <h2>Tôi muốn biết thông tin và ưu đãi liên quan đến chuyến đi sắp tới của mình</h2>
-              <div className={style.edit}>
-                <span>CÓ</span>
-                <label className='switch'>
-                  <input type='checkbox' checked={check} onChange={e => setCheck(prev => !prev)} />
-                  <span className='slider round'></span>
-                </label>
-              </div>
-            </div>
-          </div>
+          <Information/>       
+          <Payment/>
+          <Follow/>
         </div>
       </div>
     </>

@@ -32,26 +32,28 @@
     width: fit-content;
     font-size: 14px;
 }
-.progressStep #three{
+
+.progressStep #three {
     position: absolute;
-    /* bottom: -22px; */
-    /* bottom:-50%; */
     left: 50%;
     transform: translateX(-50%);
     width: 130px;
-    /* width: fit-content; */
+
 }
-.progressStep #two{
+
+.progressStep #two {
     right: -55px;
 }
+
 .progressStep span {
     width: 200px;
     height: 7px;
     background-color: #bec2c9;
 }
+
 .progressStep span.active {
     background-color: #5392f9;
-    
+
 }
 
 .circle {
@@ -69,4 +71,45 @@
 .active {
     background-color: #5392f9;
     color: #fff;
+}
+.dropdown{
+    position: relative;
+}
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-left: 1px solid #d7d7db;
+    border-right: 1px solid #d7d7db;
+    padding: 0px 20px;
+    background-color: #fff;
+    border-top: none;
+    border-bottom: none;
+    position: absolute;
+}
+
+.menu {
+    position: absolute;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 223, 226);
+    width: 150px;
+    background-color: #fff;
+    top:50px;
+    right: -115px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+}
+.menu::before{
+    content: '';
+    position: absolute;
+    background-color: #fff;
+    width: 10px;
+    height: 10px;
+    top:-6px;
+    right:10px;
+    transform: rotate(45deg);
+    border-left:1px solid rgb(221, 223, 226);
+    border-top:1px solid rgb(221, 223, 226);
+}
+.menu ul{
+    list-style-type: none;
 }
