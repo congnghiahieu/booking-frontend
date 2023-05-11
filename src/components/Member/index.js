@@ -34,7 +34,7 @@ const Member = () => {
         </div>
         <div
           onClick={() => setOpenOptions(!openOptions)}
-          className='MemberText'>{`${adult} adult · ${children} children · ${room} room`}</div>
+          className='MemberText'>{`${room} phòng · ${room} người lớn · ${children} trẻ em`}</div>
       </div>
       {openOptions && (
         <div className='options' ref={memberRef}>

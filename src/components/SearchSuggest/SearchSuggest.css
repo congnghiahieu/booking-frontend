@@ -1,38 +1,36 @@
-.PlaceList{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 40px;
-    background-color:#fff;
-    row-gap: 20px;
-    border-radius: 12px;
-    padding: 10px 12px;
-    color:black;
-    position: relative;
-    z-index: 5;
+.PlaceList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 40px;
+  background-color: #fff;
+  row-gap: 20px;
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: black;
+  position: relative;
+  z-index: 5;
 }
-.overly{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(27, 27, 27, 0.541);
-    /* background-color: red; */
-    display: flex;
-    align-items: center;
-    z-index: 4;
+.overly {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 27, 27, 0.541);
+  display: flex;
+  align-items: center;
+  z-index: 4;
 }
-.PlaceList::before{
-    content: '';
-    position: absolute;
-    background-color: #fff;
-    width: 10px;
-    height: 10px;
-    transform: rotate(45deg);
-    border-left: 1px solid rgb(221, 223, 226);
-    border-top: 1px solid rgb(221, 223, 226);
-    top: -6px;
-    left: 30px;
-
+.PlaceList::before {
+  content: '';
+  position: absolute;
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  border-left: 1px solid rgb(221, 223, 226);
+  border-top: 1px solid rgb(221, 223, 226);
+  top: -6px;
+  left: 30px;
 }

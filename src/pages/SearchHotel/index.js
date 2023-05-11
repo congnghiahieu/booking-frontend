@@ -18,7 +18,7 @@ const SearchHotel = () => {
     isFetching,
     isSuccess,
     isError,
-  } = useGetAllHotelsQuery({ page: 1, province });
+  } = useGetAllHotelsQuery({ page: 1, province }, { refetchOnReconnect: true });
 
   const [type, setType] = useState('Phù hợp nhất');
   const [show, setShow] = useState(false);

@@ -34,7 +34,6 @@ const Home = () => {
 
   const onSearch = () => {
     const normalized = normalizeStr(searchValue);
-    console.log('Normailized: ', normalized);
     if (!normalized) return setSearchErr('Vui lòng nhập tên tỉnh thành / thành phố bạn muốn đến');
     if (!Object.keys(provinvesMap).includes(normalized)) {
       return setSearchErr('Hiện tại chúng tôi chỉ hỗ trỡ tìm kiếm các tỉnh thành ở VN');

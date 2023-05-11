@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode';
 
 /**
  *
- * @returns {{username: string, name: string, email: string, address: Object, roles: Array, id: String}}
+ * @returns {{id: string, googleId: string, username: string, name: string, email: string, phone: string, address: string, avatarUrl: string, roles: Array}}
  */
 const useAuth = () => {
   const token = useSelector(selectCurrentToken);

@@ -49,8 +49,8 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   reducerPath: 'api', // optional
   baseQuery: baseQueryWithReauth,
-  refetchOnReconnect: true,
-  refetchOnFocus: false,
+  // refetchOnReconnect: true,
+  // refetchOnFocus: false,
   tagTypes: [
     'Hotel',
     'HotelImage',

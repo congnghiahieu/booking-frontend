@@ -1,20 +1,31 @@
-import { forwardRef, useMemo, useState, useRef, useEffect } from 'react';
 import style from './Progress.module.css';
-import { useBookingContext } from '../../hooks/useContext';
-import Avatar from 'react-avatar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 import DropDownItem from '../DropdownItem';
+import MyAvatar from '../MyAvatar';
+import { useNavigate } from 'react-router-dom';
+import { useMemo, useState, useRef } from 'react';
 import useClickout from '../../hooks/useClickout';
+import { useBookingContext } from '../../hooks/useContext';
+import { useLogoutMutation } from '../../app/features/auth/authApiSlice';
 
 const ProgressStep = () => {
+  const navigate = useNavigate();
+  const [logout] = useLogoutMutation();
+
   const { page } = useBookingContext();
+
   const [open, setOpen] = useState(false);
   const menuRef = useRef();
   useClickout(menuRef, setOpen);
 
-  const handleClick = () => {
-    setOpen(prev => !prev);
+  const onLogout = async () => {
+    setOpen(false);
+    try {
+      await logout().unwrap();
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return useMemo(() => {
@@ -39,15 +50,15 @@ const ProgressStep = () => {
             </div>
           </div>
           <div className={style.dropdown} ref={menuRef}>
-            <button className={style.avatar} onClick={handleClick}>
-              <Avatar name='Duy Ngo' size='40px' round='50px' maxInitials={1} />
-              <p>Ten</p>
-              <FontAwesomeIcon icon={faCaretDown} />
+            <button className={style.avatar} onClick={() => setOpen(prev => !prev)}>
+              <MyAvatar />
             </button>
             {open && (
               <div className={style.menu}>
                 <ul>
-                  <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
+                  <div onClick={onLogout}>
+                    <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
+                  </div>
                 </ul>
               </div>
             )}

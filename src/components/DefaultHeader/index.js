@@ -8,20 +8,33 @@ import {
   faCalendarCheck,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import { useState, useRef, memo } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import Avatar from 'react-avatar';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import DropDownItem from '../DropdownItem';
+import MyAvatar from '../MyAvatar';
+import { useState, useRef, memo } from 'react';
 import useClickout from '../../hooks/useClickout';
-import { useSelector } from 'react-redux';
-import { selectCurrentToken } from '../../app/features/auth/authSlice';
+import useAuth from '../../hooks/useAuth';
+import { useLogoutMutation } from '../../app/features/auth/authApiSlice';
 
 const DefaultHeader = () => {
-  const token = useSelector(selectCurrentToken);
+  const navigate = useNavigate();
+  const [logout] = useLogoutMutation();
+
+  const { id, roles } = useAuth();
 
   const [open, setOpen] = useState(false);
   let menuRef = useRef();
   useClickout(menuRef, setOpen);
+
+  const onLogout = async () => {
+    setOpen(false);
+    try {
+      await logout().unwrap();
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className={style.defaultHeader}>
@@ -42,7 +55,7 @@ const DefaultHeader = () => {
         <div className={style.functiondetail}></div>
       </div>
 
-      {!token ? (
+      {!id ? (
         <div className={style.homelogin}>
           <Link to='/login'>
             <div className={style.login}>Đăng nhập</div>
@@ -54,9 +67,7 @@ const DefaultHeader = () => {
       ) : (
         <div className={style.dropdown} ref={menuRef}>
           <button className={style.avatar} onClick={() => setOpen(prev => !prev)}>
-            <Avatar name='Duy Ngo' size='40px' round='50px' maxInitials={1} />
-            <p>Ten</p>
-            <FontAwesomeIcon icon={faCaretDown} />
+            <MyAvatar />
           </button>
           {open && (
             <div className={style.menu}>
@@ -71,9 +82,9 @@ const DefaultHeader = () => {
                 <Link to='user/profile' onClick={() => setOpen(prev => !prev)}>
                   <DropDownItem value={'Hồ sơ của tôi của tôi'} icon={faUser} />
                 </Link>
-                <Link to='/' onClick={() => setOpen(prev => !prev)}>
+                <div onClick={onLogout}>
                   <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
-                </Link>
+                </div>
               </ul>
             </div>
           )}

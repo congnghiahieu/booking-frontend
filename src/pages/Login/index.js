@@ -64,9 +64,9 @@ const Login = () => {
 
   return (
     <div className='form-container'>
+      <h2 className='form-title'>Đăng nhập</h2>
       {isLoading && <Loading />}
       {loginErr && <p>{loginErr}</p>}
-      <h2 className='form-title'>Đăng nhập</h2>
       <form className='form'>
         <div className='form-group'>
           <label htmlFor='account'>Tên tài khoản</label>
