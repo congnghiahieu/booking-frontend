@@ -1,5 +1,5 @@
 import style from './Payment.module.css';
-import useBookingContext from '../../hooks/useBookingContext';
+import { useBookingContext } from '../../hooks/useContext';
 import FormInput from '../FormInput';
 
 const MethodsOfPayment = ['THẺ TÍN DỤNG/GHI NỢ', 'THANH TOÁN ĐIỆN TỬ'];

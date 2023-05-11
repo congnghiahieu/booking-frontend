@@ -1,7 +1,7 @@
 import Page1 from './Validation';
 import Page2 from './Payment';
 import Page3 from './Confirm';
-import useBookingContext from '../../hooks/useBookingContext';
+import { useBookingContext } from '../../hooks/useContext';
 
 const PageDisplay = () => {
   const { page } = useBookingContext();

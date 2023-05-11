@@ -10,7 +10,7 @@ import { useAddBookMutation } from '../../app/features/api/booksSlice';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { useEffect } from 'react';
-import useBookingContext from '../../hooks/useBookingContext';
+import { useBookingContext } from '../../hooks/useContext';
 import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
 import { useGetServiceByIdQuery } from '../../app/features/api/servicesSlice';
 import { useSelector } from 'react-redux';

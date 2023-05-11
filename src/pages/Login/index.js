@@ -10,7 +10,7 @@ import { Loading, GoogleIcon } from '../../components';
 import { GOOGLE_AUTH_LINK } from '../../utils/constants';
 
 const Login = () => {
-  useTitle('Login');
+  useTitle('Wygo.com | Đăng nhập');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -66,23 +66,18 @@ const Login = () => {
     <div className='form-container'>
       {isLoading && <Loading />}
       {loginErr && <p>{loginErr}</p>}
-      <h2>Login</h2>
+      <h2 className='form-title'>Đăng nhập</h2>
       <form className='form'>
         <div className='form-group'>
-          <label htmlFor='account'>Tên đăng nhập</label>
-          <input placeholder='Email' id='account' type='text' ref={usernameRef} {...attrs} />
+          <label htmlFor='account'>Tên tài khoản</label>
+          <input id='account' type='text' ref={usernameRef} {...attrs} />
         </div>
         <div className='form-group'>
           <label htmlFor='password'>Mật Khẩu</label>
-          <input
-            id='password'
-            type='password'
-            placeholder='Password'
-            onChange={e => setPassword(e.target.value)}
-          />
+          <input id='password' type='password' onChange={e => setPassword(e.target.value)} />
         </div>
         <div className='form-group-hor'>
-          <label htmlFor='persist'>Keep login session</label>
+          <label htmlFor='persist'>Duy trì phiên đăng nhập</label>
           <input id='persist' type='checkbox' checked={persist} onChange={toggle} />
         </div>
         <div className='form-group'>
@@ -92,8 +87,8 @@ const Login = () => {
         </div>
       </form>
       <div className='form-redirect'>
-        <p>Need an Account ?</p>
-        <Link to='/register'>Register new Account</Link>
+        <p>Bạn chưa có tài khoản ?</p>
+        <Link to='/register'>Tạo tài khoản</Link>
       </div>
       <div className='Google_login' onClick={onGoogleLogin}>
         <span className='Google_Icon'>

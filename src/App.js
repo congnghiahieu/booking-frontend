@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { DefaultLayout,BookingLayout} from './layout';
+import { DefaultLayout, BookingLayout } from './layout';
 import {
   Login,
   Register,
@@ -13,6 +13,7 @@ import {
 } from './pages';
 import { NotAuth } from './components';
 import BookingProvider from './context/BookingContext';
+import RegisterProvider from './context/RegisterContext';
 import LoginSuccess from './pages/Login/LoginSuccess';
 
 function App() {
@@ -24,7 +25,14 @@ function App() {
           {/* Public routes */}
           <Route element={<NotAuth />}>
             <Route path='login' element={<Login />} />
-            <Route path='register' element={<Register />} />
+            <Route
+              path='register'
+              element={
+                <RegisterProvider>
+                  <Register />
+                </RegisterProvider>
+              }
+            />
           </Route>
           <Route path='login/success' element={<LoginSuccess />} />
           {/* Protected Routes - required Login */}
@@ -42,8 +50,7 @@ function App() {
           {/* <Route path='*' element={<Missing />} /> */}
         </Route>
 
-
-        <Route path='/' element={<BookingLayout/>}>
+        <Route path='/' element={<BookingLayout />}>
           <Route
             path='hotel/booking/:hotelSlug/:serviceSlug/:hotelId/:serviceId'
             element={

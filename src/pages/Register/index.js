@@ -1,218 +1,166 @@
-import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
-import { useState, useRef, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useRegisterMutation } from '../../app/features/auth/authApiSlice';
 import useTitle from '../../hooks/useTitle';
+import { useRegisterContext } from '../../hooks/useContext';
 import { Loading, GoogleIcon } from '../../components';
-
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+import RegisterInput from '../../components/RegisterLoginInput';
 
 const Register = () => {
-  useTitle('Register');
-
-  const userRef = useRef();
-
-  const [user, setUser] = useState('');
-  const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
-
-  const [pwd, setPwd] = useState('');
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
-
-  const [matchPwd, setMatchPwd] = useState('');
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
+  useTitle('Wygo.com | Đăng ký tài khoản');
+  const navigate = useNavigate();
+  const [regis, { isLoading }] = useRegisterMutation();
+  const { formData, onDataChange, canRegis } = useRegisterContext();
 
   const [regisErr, setRegisErr] = useState('');
-  const [success, setSuccess] = useState(false);
-
-  const [regis, { isLoading }] = useRegisterMutation();
-  const canRegis = validName && validPwd && validMatch && !isLoading;
-
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
-
-  useEffect(() => {
-    setValidName(USER_REGEX.test(user));
-  }, [user]);
-
-  useEffect(() => {
-    setValidPwd(PWD_REGEX.test(pwd));
-    setValidMatch(pwd === matchPwd);
-  }, [pwd, matchPwd]);
 
   useEffect(() => {
     setRegisErr('');
-  }, [user, pwd, matchPwd]);
+  }, [formData]);
 
   const onRegis = async e => {
     e.preventDefault();
-    // if button enabled with JS hack
-    const v1 = USER_REGEX.test(user);
-    const v2 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2) {
-      setRegisErr('Invalid Entry');
+    if (!canRegis) {
+      setRegisErr('Vui lòng nhập đầy đủ thông tin');
       return;
     }
     try {
-      await regis({ username: user, password: pwd }).unwrap();
-      setSuccess(true);
-      setUser('');
-      setPwd('');
-      setMatchPwd('');
+      await regis({
+        username: formData.username.value,
+        name: formData.name.value,
+        email: formData.email.value,
+        password: formData.password.value,
+      }).unwrap();
+
+      navigate('/login');
     } catch (err) {
       if (!err.status) {
-        setRegisErr('No Server Response');
+        setRegisErr('Không có phản hồi');
       } else if (err.status === 400) {
-        setRegisErr('Missing Username or Password');
+        setRegisErr('Thiếu thông tin');
       } else if (err.status === 409) {
-        setRegisErr('Username Taken');
+        setRegisErr('Tên tài khoản đã tồn tại');
       } else {
         setRegisErr(err.data?.message);
       }
     }
   };
 
+  const inputs = [
+    {
+      id: 'username',
+      name: 'username',
+      type: 'text',
+      placeholder: 'Vui lòng nhập tên tài khoản',
+      label: 'Tên tài khoản',
+      pattern: '^[A-z][A-z0-9-_]{3,23}$',
+      required: true,
+      minLength: 4,
+      maxLength: 24,
+      title: 'Vui lòng nhập tài khoản',
+      autoComplete: 'username',
+      autoFocus: true,
+      error:
+        'Tên tài khoản từ 4 đến 24 kí tự, bắt đầu bằng chữ cái, gạch chân và gạch ngang được chấp nhận',
+    },
+    {
+      id: 'name',
+      name: 'name',
+      type: 'text',
+      placeholder: 'Vui lòng nhập họ tên',
+      label: 'Họ và tên',
+      required: true,
+      title: 'Vui lòng nhập họ và tên',
+      maxLength: 254,
+      autoComplete: 'name',
+      error: 'Vui lòng nhập họ tên',
+    },
+    {
+      id: 'email',
+      name: 'email',
+      type: 'email',
+      placeholder: 'Vui lòng nhập email',
+      label: 'Email',
+      // pattern: ,
+      required: true,
+      autoComplete: 'email',
+      maxLength: '254',
+      // disablePaste: true, // experimental
+      title: 'Vui lòng kiểm tra thông tin trong "Email"',
+      error: 'Vui lòng kiểm tra thông tin trong "Email"',
+    },
+    {
+      id: 'password',
+      name: 'password',
+      type: 'password',
+      placeholder: 'Nhập mật khẩu',
+      label: 'Mật khẩu',
+      pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$',
+      minLength: 8,
+      maxLength: 24,
+      required: true,
+      autoComplete: 'password',
+      error:
+        'Không hợp lệ. Mật khẩu từ 8 đến 24 kí tự, phải bao gồm chữ thường, chữ hoa, số và ít nhất 1 kí tự đặc biệt (!, @, #, $, %)',
+    },
+    {
+      id: 'passwordVerification',
+      name: 'passwordVerification',
+      type: 'password',
+      placeholder: 'Vui lòng nhập chính xác',
+      label: 'Nhập lại mật khẩu',
+      pattern: formData.password.value,
+      required: true,
+      autoComplete: 'off',
+      maxLength: '254',
+      disablePaste: true, // experimental
+      title: 'Vui lòng kiểm tra thông tin trong "Mật khẩu" và "Nhập lại mật khẩu" trùng khớp.',
+      error: 'Vui lòng kiểm tra thông tin trong "Mật khẩu" và "Nhập lại mật khẩu" trùng khớp.',
+    },
+  ];
+
   return (
-    <>
-      {success ? (
-        <section>
-          <h1>Đăng kí tài khoản thành công</h1>
-          <p>
-            <Link to='/login'>Chuyển tới trang đăng nhập</Link>
-          </p>
-        </section>
-      ) : (
-        <div className='form-container'>
-          {isLoading && <Loading />}
-          {regisErr && <p>{regisErr}</p>}
-          <h2>Register</h2>
-
-          <form className='form'>
-            <div className='form-group'>
-              <label htmlFor='account'>
-                Username:
-                <FontAwesomeIcon icon={faCheck} className={validName ? 'valid' : 'hide'} />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validName || !user ? 'hide' : 'invalid'}
-                />
-              </label>
-              <input
-                id='account'
-                type='text'
-                ref={userRef}
-                autoComplete='off'
-                onChange={e => setUser(e.target.value)}
-                value={user}
-                required
-                onFocus={() => setUserFocus(true)}
-                onBlur={() => setUserFocus(false)}
-              />
-              {/* Validation message */}
-              {/* TODO: Cần CSS */}
-              <p
-                id='uidnote'
-                className={userFocus && user && !validName ? 'instructions' : 'offscreen'}>
-                <FontAwesomeIcon icon={faInfoCircle} />
-                4 to 24 characters.
-                <br />
-                Must begin with a letter.
-                <br />
-                Letters, numbers, underscores, hyphens allowed.
-              </p>
+    <div className='form-container'>
+      {isLoading && <Loading />}
+      <h2 className='form-title'>Đăng ký</h2>
+      {regisErr && <p>{regisErr}</p>}
+      <form className='form'>
+        {/* Register inputs */}
+        {inputs.map(input => (
+          <RegisterInput
+            key={input.id}
+            input={input}
+            formData={formData}
+            onDataChange={onDataChange}
+          />
+        ))}
+        {/* TODO: CSS cả lúc button bị disabled */}
+        <div className='form-group'>
+          <button onClick={onRegis} disabled={!canRegis}>
+            Đăng ký
+          </button>
+        </div>
+        <div className='form-redirect'>
+          <p>Bạn đã có tài khoản ?</p>
+          <Link to='/login'>Đăng nhập</Link>
+        </div>
+        <div className='Google_login'>
+          <span className='Google_Icon'>
+            <div className='G_icon'>
+              <GoogleIcon />
             </div>
-
-            <div className='form-group'>
-              <label htmlFor='password'>
-                Password:
-                <FontAwesomeIcon icon={faCheck} className={validPwd ? 'valid' : 'hide'} />
-                <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? 'hide' : 'invalid'} />
-              </label>
-              <input
-                id='password'
-                type='password'
-                onChange={e => setPwd(e.target.value)}
-                value={pwd}
-                required
-                onFocus={() => setPwdFocus(true)}
-                onBlur={() => setPwdFocus(false)}
-              />
-              <p id='pwdnote' className={pwdFocus && !validPwd ? 'instructions' : 'offscreen'}>
-                <FontAwesomeIcon icon={faInfoCircle} />
-                8 to 24 characters.
-                <br />
-                Must include uppercase and lowercase letters, a number and a special character.
-                <br />
-                Allowed special characters: <span aria-label='exclamation mark'>!</span>{' '}
-                <span aria-label='at symbol'>@</span> <span aria-label='hashtag'>#</span>{' '}
-                <span aria-label='dollar sign'>$</span> <span aria-label='percent'>%</span>
-              </p>
-            </div>
-
-            <div className='form-group'>
-              <label htmlFor='confirm'>
-                Confirm Password:
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validMatch && matchPwd ? 'valid' : 'hide'}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validMatch || !matchPwd ? 'hide' : 'invalid'}
-                />
-              </label>
-              <input
-                id='confirm'
-                type='password'
-                onChange={e => setMatchPwd(e.target.value)}
-                value={matchPwd}
-                required
-                onFocus={() => setMatchFocus(true)}
-                onBlur={() => setMatchFocus(false)}
-              />
-              <p
-                id='confirmnote'
-                className={matchFocus && !validMatch ? 'instructions' : 'offscreen'}>
-                <FontAwesomeIcon icon={faInfoCircle} />
-                Must match the first password input field.
-              </p>
-            </div>
-
-            {/* TODO: CSS cả lúc button bị disabled */}
-            <div className='form-group'>
-              <button disabled={!canRegis} onClick={onRegis}>
-                Register
-              </button>
-            </div>
-          </form>
-
-          <div className='form-redirect'>
-            <p>Already registered ?</p>
-            <Link to='/login'>Login</Link>
-          </div>
-          <div className='Google_login'>
-            <span className='Google_Icon'>
-              <div className='G_icon'>
-                <GoogleIcon />
-              </div>
-              Google
-            </span>
-          </div>
-          <div className='HadAccount'>
+            Google
+          </span>
+        </div>
+        {/* <div className='HadAccount'>
             <p>Bạn đã có tài khoản?</p>
             <Link to='/login'>Đăng nhập</Link>
-          </div>
-          <div className='license'>
-            Khi đăng nhập, tôi đồng ý với các Điều khoản sử dụng và Chính sách bảo mật của Wygo.
-          </div>
+          </div> */}
+        <div className='license'>
+          Khi đăng ký, tôi đồng ý với các Điều khoản sử dụng và Chính sách bảo mật của Wygo.
         </div>
-      )}
-    </>
+      </form>
+    </div>
   );
 };
 

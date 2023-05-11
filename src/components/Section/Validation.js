@@ -1,5 +1,5 @@
 import style from './Validation.module.css';
-import useBookingContext from '../../hooks/useBookingContext';
+import { useBookingContext } from '../../hooks/useContext';
 import FormInput from '../FormInput';
 
 const Page1 = () => {

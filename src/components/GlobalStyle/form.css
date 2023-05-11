@@ -11,14 +11,18 @@
   max-width: 500px;
   margin: 20px auto;
   padding: 30px 40px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.form-title {
+  font-size: 40px;
+  font-weight: 400;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
   width: 100%;
 }
 
@@ -29,11 +33,12 @@
 }
 
 .form-group label {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .form-group input {
   font-size: 1.4rem;
+  font-weight: 400;
   width: 100%;
   max-width: var(--form-max-width);
   height: 45px;
@@ -62,22 +67,23 @@
   font-size: 22px;
   letter-spacing: 2px;
 }
-.form-group button:hover{
+.form-group button:hover {
   opacity: 0.7;
 }
 
 .form-group-hor {
   display: flex;
   flex-direction: row;
-  /* gap: 20px; */
+  justify-content: space-between;
 }
 
 .form-group-hor label {
-  /* flex: 1; */
+  font-size: 1.6rem;
 }
-.form-group-hor input[type="checkbox"] {
-  width: 80px;
+.form-group-hor input[type='checkbox'] {
+  width: 40px;
   height: 30px;
+  outline: none;
 }
 
 .form-redirect {
@@ -120,26 +126,25 @@
   letter-spacing: 2px;
   gap: 10px;
 }
-.Google_login:hover{
+.Google_login:hover {
   cursor: pointer;
-  width: 105%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(83,146,249,0.6) ;
+  border: 1px solid rgb(83, 146, 249, 0.6);
   transition: 0.2s;
+  transform: scale(1.1);
 }
-.G_icon{
+.G_icon {
   width: 25px;
   height: 25px;
 }
-.license{
+.license {
   display: flex;
   text-align: center;
   font-size: 14px;
- 
 }
-.HadAccount{
+.HadAccount {
   display: flex;
   background-color: var(--blue-color);
   color: white;

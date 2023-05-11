@@ -1,6 +1,6 @@
 import { forwardRef, useMemo, useState, useRef, useEffect } from 'react';
 import style from './Progress.module.css';
-import useBookingContext from '../../hooks/useBookingContext';
+import { useBookingContext } from '../../hooks/useContext';
 import Avatar from 'react-avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faSignOut } from '@fortawesome/free-solid-svg-icons';

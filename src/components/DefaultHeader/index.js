@@ -44,8 +44,12 @@ const DefaultHeader = () => {
 
       {!token ? (
         <div className={style.homelogin}>
-          <div className={style.login}>Đăng nhập</div>
-          <div className={style.signup}>Tạo tài khoản</div>
+          <Link to='/login'>
+            <div className={style.login}>Đăng nhập</div>
+          </Link>
+          <Link to='/register'>
+            <div className={style.signup}>Tạo tài khoản</div>
+          </Link>
         </div>
       ) : (
         <div className={style.dropdown} ref={menuRef}>

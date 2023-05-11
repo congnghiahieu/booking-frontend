@@ -8,9 +8,9 @@
   overflow: visible;
   align-items: center;
 }
-.defaultHeader a{
+.defaultHeader a {
   text-decoration: none;
-  color:black
+  color: black;
 }
 
 .homefunction {
@@ -32,7 +32,7 @@
   text-overflow: ellipsis;
   width: fit-content;
 }
-.active{
+.active {
   color: #488bf8 !important;
 }
 
@@ -62,24 +62,17 @@
 .login {
   display: inline-block;
   margin-right: 40px;
-  line-height: 250%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 12px;
   color: var(--login-color);
   max-height: 62px;
 }
 
 .signup {
   display: block;
-  line-height: 250%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 12px;
   color: var(--login-color);
-
   border: 1px solid var(--login-color);
   border-radius: 4px;
-  max-height: 62px;
-  overflow: clip;
 }
 
 .login:hover {
@@ -104,7 +97,6 @@
   display: inline-block;
   height: 100%;
   position: relative;
-
 }
 
 .hidden {
@@ -121,7 +113,7 @@
   text-decoration: none;
   display: block;
 }
-.dropdown{
+.dropdown {
   /* z-index: 5000; */
   position: relative;
   /* overflow: visible; */
@@ -179,4 +171,3 @@
   text-decoration: none;
   color: black;
 }
-
