@@ -50,6 +50,7 @@ export const apiSlice = createApi({
   reducerPath: 'api', // optional
   baseQuery: baseQueryWithReauth,
   refetchOnReconnect: true,
+  refetchOnFocus: false,
   tagTypes: [
     'Hotel',
     'HotelImage',

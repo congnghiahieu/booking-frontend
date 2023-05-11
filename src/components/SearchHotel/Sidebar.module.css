@@ -1,7 +1,7 @@
 .sideBar {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 20%;
     background-color: white;
 }
 
@@ -11,6 +11,7 @@
     border-top: 2px solid #dddfe2;
     display: flex;
     flex-direction: column;
+    font-size: 13px;
 }
 .filter span{
     /* display: flex; */

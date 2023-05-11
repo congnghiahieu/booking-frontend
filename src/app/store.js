@@ -14,4 +14,4 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV == 'development' ? true : false,
 });
 
-setupListeners(store.dispatch);
+// setupListeners(store.dispatch);

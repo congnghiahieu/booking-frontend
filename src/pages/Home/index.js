@@ -42,7 +42,7 @@ const Home = () => {
     navigate({
       pathname: '/search',
       search: createSearchParams({
-        province: provinvesMap[normalized],
+        province: provinvesMap[normalized].name,
         start,
         end,
       }).toString(),

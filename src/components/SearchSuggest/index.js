@@ -28,8 +28,7 @@ const SearchSuggest = () => {
     isSuccess,
   } = useGetAllHotelsQuery({ page: 1, perPage: 15, name: debounceValue }, { skip });
 
-  // console.log(skip);
-  // console.log(suggestHotels);
+  console.log(suggestHotels);
 
   useEffect(() => {
     if (searchField === SEARCH_FIELD.BY_NAME) setSkip(false);
@@ -49,20 +48,19 @@ const SearchSuggest = () => {
   }, [searchValue]);
 
   return (
-    focus && (
+     focus && (
       <>
         <div className='overly'></div>
         <ul className='PlaceList'>
           {searchField === SEARCH_FIELD.BY_PROVINCE &&
             sugPlaces.slice(0, 15).map(v => (
-              // <li key={v} >{v}</li>
-              <SuggestItem key={v} placename={v} />
+              <SuggestItem key={v.name} placename={v.name} imgId={v.img}/>
             ))}
           {searchField === SEARCH_FIELD.BY_NAME ? (
             !isLoading && !isFetching && isSuccess ? (
               suggestHotels.ids.map(id => {
                 const hotel = suggestHotels.entities[id];
-                return <SuggestItem key={hotel.id} placename={hotel.name} hotel={hotel} />;
+                return <SuggestItem key={hotel.id} placename={hotel.name} imgId={hotel.imgsGG[0]} />;
               })
             ) : (
               <>
