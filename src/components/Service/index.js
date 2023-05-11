@@ -47,21 +47,8 @@ function Service({ service }) {
       <div className='hotel_sample'>
         <div className='room_type'>
           <span className='room_text'>Loại Phòng</span>
-          {/* <div className='room_image'>
-            TODO service image
-            <div className='big_image'></div>
-            <div className='small_image'>
-              <div></div>
-              <div></div>
-            </div>
-          </div> */}
           <div className='room_image'>
             <SlideImage hotel={service} />
-            {/* <img
-              className='service_image'
-              src={`${BACKEND_ADDRESS}/${service.images[0]}`}
-              alt='service preview'
-            /> */}
           </div>
           <span className='more'>Xem ảnh và chi tiết</span>
           {/* TODO service image */}

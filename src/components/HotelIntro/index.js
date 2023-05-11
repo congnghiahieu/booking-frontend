@@ -23,9 +23,7 @@ const HotelIntro = ({ hotelId }) => {
       {!isHtLoad && isHtErr && <Error />}
       {!isHtLoad && isHtOk ? (
         <>
-          <div className={style.slideImage}>
-            <SlideImage1 hotel={hotel} />
-          </div>
+          <SlideImage1 hotel={hotel} />
           <HotelInfo hotel={hotel} />
         </>
       ) : (

@@ -51,7 +51,9 @@ const SearchHotel = () => {
               const hotel = hotels.entities[id];
               return (
                 <div key={id} className={style.card}>
-                  <SlideImage hotel={hotel} />
+                  <div className={style.hotelImage}>
+                    <SlideImage hotel={hotel} />
+                  </div>
                   <HotelInfo hotel={hotel} />
                   <HotelPrice hotel={hotel} />
                 </div>

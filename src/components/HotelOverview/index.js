@@ -1,4 +1,6 @@
 import style from './HotelOverview.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faStar} from "@fortawesome/free-solid-svg-icons"
 
 function HotelOverview({ hotel }) {
   return (
@@ -16,7 +18,14 @@ function HotelOverview({ hotel }) {
         <div className={style.hotel_text}>
           <div className={style.hotel_header}>
             <p>{hotel.name}</p>
-            <span className={style.hotel_star}></span>
+            {/* <span className={style.hotel_star}></span> */}
+            <p>
+            {Array(hotel.stars)
+              .fill()
+              .map((_, i) => {
+                return <FontAwesomeIcon key={i} icon={faStar} className='star' />;
+              })}
+          </p>
           </div>
           <p className={style.hotel_location}>
             {hotel.location?.others ? `${hotel.location.others}, ` : ''}
