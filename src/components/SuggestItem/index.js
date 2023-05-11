@@ -3,13 +3,16 @@ import { getViewLinkGG } from '../../utils/getViewLinkGG';
 import { useDispatch } from 'react-redux';
 import { setSearch, setFocus } from '../../app/features/search/searchSlice';
 
-const SuggestItem = ({ placename, hotel }) => {
+const SuggestItem = ({ placename, imgId }) => {
   const dispatch = useDispatch();
-  const imgLink = hotel ? getViewLinkGG(hotel.imgsGG[0]) : '';
+  const imgLink =getViewLinkGG(imgId);
 
   return (
     <div className={style.SuggestItem}>
-      <img src={imgLink} />
+      <div className={style.img}>
+        <img src={imgLink} />
+      </div>
+
       <span
         className={style.province}
         onMouseDown={() => {

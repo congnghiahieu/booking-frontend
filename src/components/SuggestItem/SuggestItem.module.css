@@ -1,19 +1,24 @@
 .SuggestItem{
     width: 100%;
-    height: 30px;
+    height: 50px;
     display: flex;
     color: black;
 }
-img{
-    width: 50px;
-    height: 30px;
-    
+.img{
+    width: 70px;
+    height: 100%;
+}
+.img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 .province{
     display: flex;
     align-items: center;
     margin-left: 10px;
     font-size: 14px;
+    flex: 1;
 }
 .SuggestItem:hover{
     color: var(--btn-color);

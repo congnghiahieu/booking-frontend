@@ -1,4 +1,5 @@
 import style from './SearchOption.module.css';
+import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHotel,
@@ -53,4 +54,4 @@ const SearchOption = () => {
     </>
   );
 };
-export default SearchOption;
+export default memo(SearchOption);

@@ -20,7 +20,7 @@ const HotelPrice = ({ hotel }) => {
 
         <div className={style.discount}>
           <p>GIẢM {discount}%</p>
-          <span>Giá mỗi đêm rẻ nhất từ</span>
+          <span id={style.one}>Giá mỗi đêm rẻ nhất từ</span>
           <span id={style.orginalPrice}>
             {numFormatter.format((cheapest * 100) / (100 - discount))}
           </span>

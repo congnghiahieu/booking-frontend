@@ -52,7 +52,7 @@ const HotelInfo = ({ hotel }) => {
             <FontAwesomeIcon icon={faHandHoldingDollar} />
             Thưởng hoàn tiền mặt:
           </p>
-          <hr />
+          {/* <hr /> */}
         </div>
 
         <div className={style.famous}>

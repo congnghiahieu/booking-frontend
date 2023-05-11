@@ -1,68 +1,262 @@
 {
-  "an giang": "An Giang",
-  "ba ria-vung tau": "Bà Rịa-Vũng Tàu",
-  "ba ria": "Bà Rịa",
-  "vung tau": "Vũng Tàu",
-  "bac lieu": "Bạc Liêu",
-  "bac can": "Bắc Cạn",
-  "bac giang": "Bắc Giang",
-  "bac ninh": "Bắc Ninh",
-  "ben tre": "Bến Tre",
-  "binh duong": "Bình Dương",
-  "binh dinh": "Bình Định",
-  "binh phuoc": "Bình Phước",
-  "binh thuan": "Bình Thuận",
-  "ca mau": "Cà Mau",
-  "cao bang": "Cao Bằng",
-  "can tho": "Cần Thơ",
-  "da nang": "Đà Nẵng",
-  "dak lak": "Đắk Lắk",
-  "dak nong": "Đắk Nông",
-  "dien bien": "Điện Biên",
-  "dong nai": "Đồng Nai",
-  "dong thap": "Đồng Tháp",
-  "gia lai": "Gia Lai",
-  "ha giang": "Hà Giang",
-  "ha nam": "Hà Nam",
-  "ha noi": "Hà Nội",
-  "ha tay": "Hà Tây",
-  "ha tinh": "Hà Tĩnh",
-  "hai duong": "Hải Dương",
-  "hai phong": "Hải Phòng",
-  "hau giang": "Hậu Giang",
-  "hoa binh": "Hòa Bình",
-  "ho chi minh": "Hồ Chí Minh",
-  "hung yen": "Hưng Yên",
-  "khanh hoa": "Khánh Hòa",
-  "kien giang": "Kiên Giang",
-  "kon tum": "Kon Tum",
-  "lai chau": "Lai Châu",
-  "lang son": "Lạng Sơn",
-  "lao cai": "Lào Cai",
-  "lam dong": "Lâm Đồng",
-  "long an": "Long An",
-  "nam dinh": "Nam Định",
-  "nghe an": "Nghệ An",
-  "ninh binh": "Ninh Bình",
-  "ninh thuan": "Ninh Thuận",
-  "phu tho": "Phú Thọ",
-  "phu yen": "Phú Yên",
-  "quang binh": "Quảng Bình",
-  "quang nam": "Quảng Nam",
-  "quang ngai": "Quảng Ngãi",
-  "quang ninh": "Quảng Ninh",
-  "quang tri": "Quảng Trị",
-  "soc trang": "Sóc Trăng",
-  "son la": "Sơn La",
-  "tay ninh": "Tây Ninh",
-  "thai binh": "Thái Bình",
-  "thai nguyen": "Thái Nguyên",
-  "thanh hoa": "Thanh Hoá",
-  "thua thien-hue": "Thừa Thiên-Huế",
-  "tien giang": "Tiền Giang",
-  "tra vinh": "Trà Vinh",
-  "tuyen quang": "Tuyên Quang",
-  "vinh long": "Vĩnh Long",
-  "vinh phuc": "Vĩnh Phúc",
-  "yen bai": "Yên Bái"
+  "an giang": {
+    "name": "An Giang",
+    "img": "1nUaypUO4Do0m6PbYYwUIaG6w62oLXVc0"
+  },
+  "ba ria": {
+    "name": "Bà Rịa",
+    "img": "145wsVOz6hjIq1n99K_3Jbb29BtDDKEkw"
+  },
+  "vung tau": {
+    "name": "Vũng Tàu",
+    "img": "13eY4y882WijwB4g3jX-D_n0q0jCEp5P8"
+  },
+  "bac lieu": {
+    "name": "Bạc Liêu",
+    "img": "1X2lWK6x7Z09hAiW2mBqIHQVUzJ64WI26"
+  },
+  "bac can": {
+    "name": "Bắc Cạn",
+    "img": "12hlF_IMuqVZ47MbIW-O6Ni-sfkZOKBT_"
+  },
+  "bac giang": {
+    "name": "Bắc Giang",
+    "img": "1ZneeP8aJvE6Y9uOAAJS8JFcLB2a7FeDx"
+  },
+  "bac ninh": {
+    "name": "Bắc Ninh",
+    "img": "1t_UsjEAFS8eFpv6ceEGtd3VO34vxdyG4"
+  },
+  "ben tre": {
+    "name": "Bến Tre",
+    "img": "10slhi5lwxZcC4KDCMyPdhH2Y49MFjF0i"
+  },
+  "binh duong": {
+    "name": "Bình Dương",
+    "img": "1UfPCPEHgqIMpqCItwsBtptY14LAYOfra"
+  },
+  "binh dinh": {
+    "name": "Bình Định",
+    "img": "10bn2LOr3attPFh9jkUVZbMmjLFAFP_ru"
+  },
+  "binh phuoc": {
+    "name": "Bình Phước",
+    "img": "14Dctd0yySWYzV38NuM2q6Pf8nc2RZLSt"
+  },
+  "binh thuan": {
+    "name": "Bình Thuận",
+    "img": "1KV__lo34l0KNALUmJNwFaPspQh0J694o"
+  },
+  "ca mau": {
+    "name": "Cà Mau",
+    "img": "1PTkrQd7OjqCic3n7YxohNG4sjGYtWwwL"
+  },
+  "cao bang": {
+    "name": "Cao Bằng",
+    "img": "16Sn8LBzAnoU9woLW5f65U_BYcplFxvCh"
+  },
+  "can tho": {
+    "name": "Cần Thơ",
+    "img": "1U6-8kiMSknG9oM8CKZpqIngQ5l-CAbbc"
+  },
+  "da nang": {
+    "name": "Đà Nẵng",
+    "img": "1vsmsm8oqMKu4alpgtCBj9I3-DHkan4c9"
+  },
+  "dak lak": {
+    "name": "Đắk Lắk",
+    "img": "1a6YX-QjHxKY7CILLcyURYf4UsBQdBT3S"
+  },
+  "dak nong": {
+    "name": "Đắk Nông",
+    "img": "10lfjhk3-tLpcVNu0F0u0d6cfVy9gltXl"
+  },
+  "dien bien": {
+    "name": "Điện Biên",
+    "img": "1l78Lvy_Ebd5pI5wxcmYItJ3RdRcjIMVI"
+  },
+  "dong nai": {
+    "name": "Đồng Nai",
+    "img": "14g4SaOSocTm-pneING91R1l-x9cBhuKy"
+  },
+  "dong thap": {
+    "name": "Đồng Tháp",
+    "img": "1VWB-CC8Cvw4LVTPyH4QKzFOgp3D8B9YQ"
+  },
+  "gia lai": {
+    "name": "Gia Lai",
+    "img": "1sZ4rBXycSa1C6tc6wI8qULKuVSyJoPJf"
+  },
+  "ha giang": {
+    "name": "Hà Giang",
+    "img": "1q9IEk2HALnanZuX_MFzUiMBID4QLcfi4"
+  },
+  "ha nam": {
+    "name": "Hà Nam",
+    "img": "1I8gg1mtW9eqc9iBoNr8Pg5rOS_WXW_fG"
+  },
+  "ha noi": {
+    "name": "Hà Nội",
+    "img": "1ZW48unIQ9Nno7-_2oIl5Hg8u7TgnrKu3"
+  },
+  "ha tay": {
+    "name": "Hà Tây",
+    "img": "1tOV7c4JlcPluiDL-RWaHW38JpGWvnWGI"
+  },
+  "ha tinh": {
+    "name": "Hà Tĩnh",
+    "img": "1sYPbyS1ZvylagScNlQN1ukJfB-1Amg2u"
+  },
+  "hai duong": {
+    "name": "Hải Dương",
+    "img": "1FYBav6gLecbCl5KRHrJ6juD7X4ENZZ5V"
+  },
+  "hai phong": {
+    "name": "Hải Phòng",
+    "img": "1wtBrbIHYTdx-sZZfmmcZOwZKl-RGCxr0"
+  },
+  "hau giang": {
+    "name": "Hậu Giang",
+    "img": "1aCJNk7AQosC0gdPAzXbHjHRR4Q3vcGN5"
+  },
+  "hoa binh": {
+    "name": "Hòa Bình",
+    "img": "1mOg87XO3_a3ZxQ2QxI80npNT-6ILE0LA"
+  },
+  "ho chi minh": {
+    "name": "Hồ Chí Minh",
+    "img": "16MXVQ4J44rAiWVObzWBNK-ojtOWH2I6w"
+  },
+  "hung yen": {
+    "name": "Hưng Yên",
+    "img": "1xr3yBVDjCMezapIDRgeAmWFt95nZCEUl"
+  },
+  "khanh hoa": {
+    "name": "Khánh Hòa",
+    "img": "17rkLl7Ry2LSgqzTUlX2MW0YuV46ev9Gz"
+  },
+  "kien giang": {
+    "name": "Kiên Giang",
+    "img": "1kmrjK6EvQQYkfdB1qxBkU32-xKm2sWXA"
+  },
+  "kon tum": {
+    "name": "Kon Tum",
+    "img": "1bFAM17gS-gMIDFGSG7higM6nQvrJdPcQ"
+  },
+  "lai chau": {
+    "name": "Lai Châu",
+    "img": "1wC0Tdzlcaxzz1OT4KhpKu58hwBtmvclc"
+  },
+  "lang son": {
+    "name": "Lạng Sơn",
+    "img": "1_fCmTVzzfIecW8HN_V6PS-rPbRdbnh3I"
+  },
+  "lao cai": {
+    "name": "Lào Cai",
+    "img": "1ZSZFM821hEzBXtlb5TMZrSex8tjeqg40"
+  },
+  "lam dong": {
+    "name": "Lâm Đồng",
+    "img": "1ggIsoLsbvWIwLFUHbaxER2WTL9hZl_Xs"
+  },
+  "long an": {
+    "name": "Long An",
+    "img": "1DmoVPniblRkAC6suy12ovGYwC7z28TGR"
+  },
+  "nam dinh": {
+    "name": "Nam Định",
+    "img": "1AMf990qHs1JgJNcqWn25NOI_rJ-6LrOM"
+  },
+  "nghe an": {
+    "name": "Nghệ An",
+    "img": "1HhopmY3iTjqO0hYaqk3-3U_Pbcv0pumL"
+  },
+  "ninh binh": {
+    "name": "Ninh Bình",
+    "img": "1bkCD53q3hX42fk7ZenMwULRyXj8ap8nu"
+  },
+  "ninh thuan": {
+    "name": "Ninh Thuận",
+    "img": "1gzYzYvRGraNjylCNk-unfgd4OvxuHq41"
+  },
+  "phu tho": {
+    "name": "Phú Thọ",
+    "img": "11ihc1oHl0Tisjw6dNCGZVLCwmXe6TfEv"
+  },
+  "phu yen": {
+    "name": "Phú Yên",
+    "img": "1hppWKkYoxsU56DdPPpIm2_-tvDxt_9Fl"
+  },
+  "quang binh": {
+    "name": "Quảng Bình",
+    "img": "1mpQ_xFE0waFa6nilYUrMsD6kYnaX1jo9"
+  },
+  "quang nam": {
+    "name": "Quảng Nam",
+    "img": "1qDDSmhFV6p6HTsYE3CenmZ0cMyG3QNsY"
+  },
+  "quang ngai": {
+    "name": "Quảng Ngãi",
+    "img": "1lNQzTv29_iKBv_pjI2roOT1OShzCaSj1"
+  },
+  "quang ninh": {
+    "name": "Quảng Ninh",
+    "img": "1fJ4owJWsY5xaDwyHRPSbgN_RrpvlgebJ"
+  },
+  "quang tri": {
+    "name": "Quảng Trị",
+    "img": "1H0kjpoLWlmcXq5HLEAiFn_DovSxbR0cT"
+  },
+  "soc trang": {
+    "name": "Sóc Trăng",
+    "img": "1VkMFkBordoXHQujdm0QFMhUtgccrrR1w"
+  },
+  "son la": {
+    "name": "Sơn La",
+    "img": "1layL4rjjI42o3Bt0zTAtYm_8naHuzHly"
+  },
+  "tay ninh": {
+    "name": "Tây Ninh",
+    "img": "1p2Ts1aq4H8ReLu_kXYIpFpq_sxrtnArm"
+  },
+  "thai binh": {
+    "name": "Thái Bình",
+    "img": "1Wm7usdOz-t-S3SkfuTRzteo2zUGPakO4"
+  },
+  "thai nguyen": {
+    "name": "Thái Nguyên",
+    "img": "1JRoapng0yAO8AFIUYFk5n-z2nphsxsLK"
+  },
+  "thanh hoa": {
+    "name": "Thanh Hoá",
+    "img": "1SriLX2_Bk0dlECT2pHHpuG4qktcTJtBv"
+  },
+  "thua thien-hue ": {
+    "name": "Thừa Thiên-Huế",
+    "img": "1W57kQKY_7Cgjle8dSzB59VZ_172t47_4"
+  },
+  "tien giang": {
+    "name": "Tiền Giang",
+    "img": "1DGoF7awErZABXiWijw5V3kjaN1D6Dyv7"
+  },
+  "tra vinh": {
+    "name": "Trà Vinh",
+    "img": "13HoZYNr8DGCEqe20EmS3Pr7wxFYxHjoj"
+  },
+  "tuyen quang": {
+    "name": "Tuyên Quang",
+    "img": "1v9GzsY3MdVbab7J3jYOQxoRbD0SX-309"
+  },
+  "vinh long": {
+    "name": "Vĩnh Long",
+    "img": "1RFLnlRcbPDWcFWI2dJlrbfA8cIR5lai5"
+  },
+  "vinh phuc": {
+    "name": "Vĩnh Phúc",
+    "img": "1jnizb6R7E1d2NC9bb0po9cWI5Et4iO_t"
+  },
+  "yen bai": {
+    "name": "Yên Bái",
+    "img": "12KzYagLvAoGhi4hn9J7W3hz7hymKIFGR"
+  }
 }

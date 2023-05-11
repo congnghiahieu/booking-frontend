@@ -4,7 +4,7 @@
     padding: 0 10px;
     border-left: 1px solid;
     border-color: #dddfe2;
-    width: 25%;
+    width: 20%;
     justify-content: space-between;
 }
 
@@ -21,9 +21,12 @@
     align-items: flex-end;
     letter-spacing: 1px;
 }
-
+.comment h4{
+    font-weight: 500;
+    font-size: 14px;
+}
 .comment span {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .point {
@@ -46,14 +49,16 @@
 }
 
 .discount p {
-    background-color: rgb(249, 216, 216);
-    color: rgb(180, 36, 36);
+    background-color: rgb(225, 45, 45);
+    color: #fff;
     padding: 4px 8px;
-    border-radius: 2px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 12px;
 }
-
+.discount #one{
+    font-size: 12px;
+}
 .discount #orginalPrice {
     font-weight: 600;
     font-size: 18px;
