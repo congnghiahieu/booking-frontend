@@ -39,7 +39,7 @@ const DefaultHeader = () => {
   return (
     <div className={style.defaultHeader}>
       <div className={style.homefunction}>
-        <div className={style.logo}></div>
+        <Link to='/' className={style.logo}></Link>
         <nav className={style.functiondetail}>
           <NavLink to={'/'} className={({ isActive }) => (isActive ? `${style.active}` : '')}>
             Home

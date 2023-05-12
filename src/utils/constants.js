@@ -35,6 +35,25 @@ const BACKEND_ADDRESS = 'http://localhost:8000';
 const DRIVE_API_ADDRESS = '';
 const GOOGLE_AUTH_LINK = 'http://localhost:8000/v1/auth/google';
 
+const SORT_TYPE = {
+  MOST_FIT: 'Phù hợp nhất',
+  MOST_STAR: 'Nhiều sao nhất',
+  MOST_CMT: 'Đánh giá nhiều nhất',
+  MOTST_CHEAP: 'Giá thấp nhất trước',
+  MOST_EXPENSIVE: 'Giá cao nhất trước',
+};
+const TABS = Object.values(SORT_TYPE);
+
+const TYPES_OF_HOTEL = ['HomeStay', 'Resort', 'Hotel'];
+const RANGE_OF_PRICES = [
+  { start: 0, end: 500000, operator: '-' },
+  { start: 500000, end: 1000000, operator: '-' },
+  { start: 1000000, end: 1500000, operator: '-' },
+  { start: 1500000, end: 2000000, operator: '-' },
+  { start: 2000000, end: undefined, operator: '>' },
+];
+const LIST_STARS = [5, 4, 3, 2, 1];
+
 export {
   QUERY,
   BACKEND_ADDRESS,
@@ -44,4 +63,9 @@ export {
   GOOGLE_AUTH_LINK,
   SEARCH_FIELD,
   DAY_VN,
+  SORT_TYPE,
+  TABS,
+  TYPES_OF_HOTEL,
+  RANGE_OF_PRICES,
+  LIST_STARS,
 };

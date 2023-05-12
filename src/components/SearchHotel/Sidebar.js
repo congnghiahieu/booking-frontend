@@ -2,81 +2,86 @@ import { memo } from 'react';
 import style from './Sidebar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { numFormatter } from '../../utils/formatter';
+import { LIST_STARS, RANGE_OF_PRICES, TYPES_OF_HOTEL } from '../../utils/constants';
 
-const Sidebar = () => {
-  const TypeOfHotels = ['HomeStay', 'Resort', 'Hotel'];
+const Sidebar = ({ setFilterStar, setFilterPrices }) => {
+  const onFilterPricesChange = range => {
+    setFilterPrices(prev => {
+      const existIndex = prev.findIndex(existRange => {
+        return existRange.start === range.start;
+      });
+      if (existIndex == -1) {
+        return [...prev, range];
+      }
+
+      return prev.filter(existRange => existRange.start !== range.start);
+    });
+  };
+
+  const onFilterStarChange = star => {
+    setFilterStar(prev => {
+      if (!prev.includes(star)) {
+        return [...prev, star];
+      }
+      return prev.filter(v => v !== star);
+    });
+  };
+
   return (
     <>
       <div className={style.sideBar}>
         <div className={style.filter}>
           <h3 style={{ color: '#5a5b5b' }}>Giá mỗi đêm</h3>
-          <span>
-            <input type='checkbox' name='5' />
-            <label htmlFor='5' /> 500 - 1000
-          </span>
-          <span>
-            <input type='checkbox' name='4' />
-            <label htmlFor='4' /> 1000 - 1500
-          </span>
-          <span>
-            <input type='checkbox' name='3' />
-            <label htmlFor='3' /> 1500 - 2000
-          </span>
-          <span>
-            <input type='checkbox' name='2' />
-            <label htmlFor='2' /> 2000 +
-          </span>
+          {RANGE_OF_PRICES.map((range, i) => {
+            return (
+              <span key={range.start} className={style.checkbox_container}>
+                <input
+                  type='checkbox'
+                  id={range.start}
+                  onChange={() => onFilterPricesChange(range)}
+                />
+                <label htmlFor={range.start}>
+                  {i != RANGE_OF_PRICES.length - 1 ? (
+                    // Not final element
+                    <span>
+                      {range.start != undefined ? numFormatter.format(range.start) : ''}{' '}
+                      {range.operator} {range.end ? numFormatter.format(range.end) : ''}{' '}
+                    </span>
+                  ) : (
+                    <span>
+                      {range.operator} {numFormatter.format(range.start)}
+                    </span>
+                  )}
+                </label>
+              </span>
+            );
+          })}
         </div>
         <div className={style.filter}>
           <h3 style={{ color: '#5a5b5b' }}>Xếp hạng sao</h3>
-          <span>
-            <input type='checkbox' name='5' />
-            <label htmlFor='5'>
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-            </label>
-          </span>
-          <span>
-            <input type='checkbox' name='4' />
-            <label htmlFor='4'>
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-            </label>
-          </span>
-          <span>
-            <input type='checkbox' name='3' />
-            <label htmlFor='3'>
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-            </label>
-          </span>
-          <span>
-            <input type='checkbox' name='2' />
-            <label htmlFor='2'>
-              <FontAwesomeIcon icon={faStar} className='star' />
-              <FontAwesomeIcon icon={faStar} className='star' />
-            </label>
-          </span>
-          <span>
-            <input type='checkbox' name='1' />
-            <label htmlFor='1'>
-              <FontAwesomeIcon icon={faStar} className='star' />
-            </label>
-          </span>
-          <span>
+          {LIST_STARS.map(star => {
+            return (
+              <span key={star} className={style.checkbox_container}>
+                <input type='checkbox' id={star} onChange={() => onFilterStarChange(star)} />
+                <label htmlFor={star}>
+                  {Array(star)
+                    .fill()
+                    .map((v, i) => (
+                      <FontAwesomeIcon key={`${v}${i}`} icon={faStar} className='star' />
+                    ))}
+                </label>
+              </span>
+            );
+          })}
+          {/* <span>
             <input type='checkbox' name='none' />
             <label htmlFor='none' /> Chưa xếp hạng
-          </span>
+          </span> */}
         </div>
         <div className={style.filter}>
           <h3 style={{ color: '#5a5b5b' }}>Loại hình nơi ở</h3>
-          {TypeOfHotels.map(type => {
+          {TYPES_OF_HOTEL.map(type => {
             return (
               <span key={type}>
                 <input type='checkbox' name={type} />

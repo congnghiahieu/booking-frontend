@@ -1,69 +1,70 @@
 .container {
-    /* padding-top:10px; */
-    display: flex;
-    background-color: #fff;
-    width: 100vw;
-    /* height: 100vh; */
-    gap: 15px;
-    padding: 0 18%;
-    /* overflow: auto; */
+  /* padding-top:10px; */
+  display: flex;
+  background-color: #fff;
+  width: 100vw;
+  /* height: 100vh; */
+  gap: 15px;
+  padding: 0 18%;
+  /* overflow: auto; */
 }
 
 .show {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 80%;
-    padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+  padding: 20px 0;
 }
 
 .suggesstion {
-    display: flex;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid;
-    border-color: #dddfe2;
-    height: 50px;
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #dddfe2;
+  height: 50px;
 }
 
 .vl {
-    display: flex;
-    justify-content: center;
-    width: 15%;
-    height: 100%;
-    align-items: center;
-    background-color: rgb(248, 247, 249);
+  display: flex;
+  justify-content: center;
+  width: 15%;
+  height: 100%;
+  align-items: center;
+  background-color: rgb(248, 247, 249);
 }
 
 .options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 28.3%;
-    border-left: 1px solid;
-    border-color: #dddfe2;
-    padding: 0 10px;
-    background-color: #fff;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid;
+  border-color: #dddfe2;
+  padding: 0 10px;
+  background-color: #fff;
+  font-size: 1.3rem;
 }
 
 .options:hover {
-    color: #5392f9;
-    cursor: pointer;
+  color: #5392f9;
+  cursor: pointer;
 }
 
 .card {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-    border: 1px solid;
-    border-color: #dddfe2;
-    display: flex;
-    background-color: #fff;
-    border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+  border: 1px solid;
+  border-color: #dddfe2;
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 .card:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .3);
-    background-color: #ebf0fc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  background-color: #ebf0fc;
 }
-.hotelImage{
-    width: 30%;
+.hotelImage {
+  width: 30%;
 }
