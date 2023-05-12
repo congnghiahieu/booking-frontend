@@ -5,6 +5,7 @@ import Sidebar from '../../components/SearchHotel/Sidebar.js';
 import HotelInfo from '../../components/SearchHotel/HotelInfo.js';
 import HotelPrice from '../../components/SearchHotel/HotelPrice';
 import SlideImage from '../../components/SlideImage/SlideImage';
+import HomeSubFooter from '../../components/HomeSubFooter';
 import { useSearchParams } from 'react-router-dom';
 import { useGetAllHotelsQuery } from '../../app/features/api/hotelsSlice';
 import { SORT_TYPE, TABS } from '../../utils/constants';

@@ -10,6 +10,7 @@ import {
   UserComments,
   UserProfile,
   SearchHotel,
+  Cart,
 } from './pages';
 import { NotAuth } from './components';
 import BookingProvider from './context/BookingContext';
@@ -49,6 +50,8 @@ function App() {
           </Route>
           {/* <Route path='*' element={<Missing />} /> */}
         </Route>
+
+        <Route path='/cart' element={<Cart />} />
 
         <Route path='/' element={<BookingLayout />}>
           <Route
