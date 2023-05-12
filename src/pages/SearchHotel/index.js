@@ -148,6 +148,7 @@ const SearchHotel = () => {
           )}
         </div>
       </div>
+      <HomeSubFooter />
     </>
   );
 };
