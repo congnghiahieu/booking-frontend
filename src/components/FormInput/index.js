@@ -18,7 +18,6 @@ const FormInput = ({ input, formData, onDataChange }) => {
   ) : (
     <></>
   );
-
   return (
     <div className='form-input'>
       <label htmlFor={id} className='form-label'>
