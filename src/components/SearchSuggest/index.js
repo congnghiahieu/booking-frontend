@@ -46,7 +46,7 @@ const SearchSuggest = () => {
   }, [searchValue]);
 
   return (
-    focus && (
+   focus && (
       <>
         <div className='overly'></div>
         <ul className='PlaceList'>

@@ -8,6 +8,8 @@
   padding: 10px 12px;
   color: black;
   position: relative;
+  min-width: 800px;
+  max-width: 984px;
   z-index: 5;
 }
 .overly {
@@ -23,7 +25,7 @@
   z-index: 4;
 }
 .PlaceList::before {
-  content: '';
+  content: "";
   position: absolute;
   background-color: #fff;
   width: 10px;
