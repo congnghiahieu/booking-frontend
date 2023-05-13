@@ -45,9 +45,9 @@ const UserComments = () => {
               cmts.map(cmt => <UserComment key={cmt.id} cmt={cmt} />)
             ) : (
               <>
-                <span>Bạn chưa có bình luận nào</span>
+                <p>Bạn chưa có bình luận nào</p>
                 <Link to='/'>
-                  <button>Đặt phòng ngay</button>
+                  <button id={style.one}>Đặt phòng ngay</button>
                 </Link>
               </>
             )
