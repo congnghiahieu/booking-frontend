@@ -1,7 +1,6 @@
 import style from './DefaultHeader.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCaretDown,
   faHouseCircleCheck,
   faSignOut,
   faMessage,
@@ -15,6 +14,7 @@ import { useState, useRef, memo } from 'react';
 import useClickout from '../../hooks/useClickout';
 import useAuth from '../../hooks/useAuth';
 import { useLogoutMutation } from '../../app/features/auth/authApiSlice';
+import Cart from '../Cart/Cart';
 
 const DefaultHeader = () => {
   const navigate = useNavigate();
@@ -65,30 +65,33 @@ const DefaultHeader = () => {
           </Link>
         </div>
       ) : (
-        <div className={style.dropdown} ref={menuRef}>
-          <button className={style.avatar} onClick={() => setOpen(prev => !prev)}>
-            <MyAvatar />
-          </button>
-          {open && (
-            <div className={style.menu}>
-              <ul>
-                <p className={style.user}>TÀI KHOẢN CỦA TÔI</p>
-                <Link to='/user/booking' onClick={() => setOpen(prev => !prev)}>
-                  <DropDownItem value={'Đơn đặt chỗ của tôi'} icon={faCalendarCheck} />
-                </Link>
-                <Link to='user/comments' onClick={() => setOpen(prev => !prev)}>
-                  <DropDownItem value={'Nhận xét của tôi'} icon={faMessage} />
-                </Link>
-                <Link to='user/profile' onClick={() => setOpen(prev => !prev)}>
-                  <DropDownItem value={'Hồ sơ của tôi'} icon={faUser} />
-                </Link>
-                <div onClick={onLogout}>
-                  <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
-                </div>
-              </ul>
-            </div>
-          )}
-        </div>
+        <>
+          <Cart />
+          <div className={style.dropdown} ref={menuRef}>
+            <button className={style.avatar} onClick={() => setOpen(prev => !prev)}>
+              <MyAvatar />
+            </button>
+            {open && (
+              <div className={style.menu}>
+                <ul>
+                  <p className={style.user}>TÀI KHOẢN CỦA TÔI</p>
+                  <Link to='/user/booking' onClick={() => setOpen(prev => !prev)}>
+                    <DropDownItem value={'Đơn đặt chỗ của tôi'} icon={faCalendarCheck} />
+                  </Link>
+                  <Link to='user/comments' onClick={() => setOpen(prev => !prev)}>
+                    <DropDownItem value={'Nhận xét của tôi'} icon={faMessage} />
+                  </Link>
+                  <Link to='user/profile' onClick={() => setOpen(prev => !prev)}>
+                    <DropDownItem value={'Hồ sơ của tôi'} icon={faUser} />
+                  </Link>
+                  <div onClick={onLogout}>
+                    <DropDownItem value={'Đăng xuất'} icon={faSignOut} />
+                  </div>
+                </ul>
+              </div>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
