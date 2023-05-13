@@ -9,3 +9,4 @@ export { default as UserProfile } from './UserProfile';
 export { default as Missing } from './Missing';
 export { default as SearchHotel } from './SearchHotel';
 export { default as Cart } from './Cart';
+export { default as ErrorPage } from './ErrorPage';
