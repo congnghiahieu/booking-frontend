@@ -2,20 +2,21 @@ import { useState } from 'react';
 import style from './UserBooking.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../components/UserBooking/Card';
-import {
-  faUser,
-  faCalendarCheck,
-  faMessage,
-} from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCalendarCheck, faMessage } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { useGetUserByIdQuery } from '../../app/features/api/usersSlice';
+import { useGetBooksByUserIdQuery } from '../../app/features/api/booksSlice';
+import { BOOK_STATUS_LIST, BOOK_STATUS } from '../../utils/constants';
 import useAuth from '../../hooks/useAuth';
 
-const BookingState = ['Sắp tới', 'Hoàn tất', 'Đã hủy'];
 const UserBooking = () => {
-  const [state, setState] = useState('Sắp tới');
-  // const { id } = useAuth();
-  // const { data: user, isLoading, isSuccess, isError } = useGetUserByIdQuery(id);
+  const [state, setState] = useState(BOOK_STATUS.INCOMMING);
+  const { id } = useAuth();
+  const {
+    data: books,
+    isLoading,
+    isSuccess,
+  } = useGetBooksByUserIdQuery({ userId: id, populate: true });
+  console.log(books);
 
   return (
     <>
@@ -38,7 +39,7 @@ const UserBooking = () => {
         <div className={style.Show}>
           <div>
             <div className={style.BookingState}>
-              {BookingState.map(ele => {
+              {BOOK_STATUS_LIST.map(ele => {
                 return (
                   <span
                     key={ele}
@@ -58,11 +59,21 @@ const UserBooking = () => {
             </div>
           </div>
           <div className={style.hotelBooking}>
-            {/* <span>Bạn đéo có khách sạn sắp tới nào</span>
-            <Link to='/'>
-              <button> Đặt phòng ngay</button>
-            </Link> */}
-            <Card/>
+            {isLoading && <p>Loading...</p>}
+            {!isLoading && isSuccess ? (
+              books.length ? (
+                books.map(book => <Card key={book.id} book={book} />)
+              ) : (
+                <>
+                  <span>Bạn chưa có khách sạn sắp tới nào</span>
+                  <Link to='/'>
+                    <button> Đặt phòng ngay</button>
+                  </Link>
+                </>
+              )
+            ) : (
+              <p>Error...</p>
+            )}
           </div>
         </div>
       </div>

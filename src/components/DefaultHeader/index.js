@@ -80,7 +80,7 @@ const DefaultHeader = () => {
                   <DropDownItem value={'Nhận xét của tôi'} icon={faMessage} />
                 </Link>
                 <Link to='user/profile' onClick={() => setOpen(prev => !prev)}>
-                  <DropDownItem value={'Hồ sơ của tôi của tôi'} icon={faUser} />
+                  <DropDownItem value={'Hồ sơ của tôi'} icon={faUser} />
                 </Link>
                 <div onClick={onLogout}>
                   <DropDownItem value={'Đăng xuất'} icon={faSignOut} />

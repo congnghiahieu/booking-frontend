@@ -11,10 +11,11 @@ const initialState = cmtsApdater.getInitialState();
 export const cmtsApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getCmtsByUserId: builder.query({
-      query: ({ userId, page = QUERY.DEFAULT_PAGE, perPage = QUERY.DEFAULT_PER_PAGE }) =>
-        `/v1/cmts?user_id=${userId}&page=${page}&per_page=${perPage}`,
+      query: ({ userId, populate, page = QUERY.DEFAULT_PAGE, perPage = QUERY.DEFAULT_PER_PAGE }) =>
+        `/v1/cmts?user_id=${userId}&page=${page}&per_page=${perPage}&populate=${populate}`,
       transformResponse: response => {
-        const modifiedData = response.data.map(dt => {
+        console.log(response);
+        const modifiedData = response.map(dt => {
           const modified = {
             ...dt,
             id: dt._id,
@@ -23,18 +24,22 @@ export const cmtsApiSlice = apiSlice.injectEndpoints({
           return modified;
         });
 
-        // Normalizing data
-        const cmtList = cmtsApdater.setAll(initialState, modifiedData);
+        // // Normalizing data
+        // const cmtList = cmtsApdater.setAll(initialState, modifiedData);
 
-        return {
-          ...cmtList,
-          total: response.total,
-          totalPages: response.total_page,
-          curTotal: response.cur_total,
-        };
+        // return {
+        //   ...cmtList,
+        //   total: response.total,
+        //   totalPages: response.total_page,
+        //   curTotal: response.cur_total,
+        // };
+        return modifiedData;
       },
       providesTags: (result, error, arg) => {
-        return [{ type: 'Comment', id: arg }, ...result.ids.map(id => ({ type: 'Comment', id }))];
+        return [
+          { type: 'Comment', id: arg.userId },
+          ...result.map(dt => ({ type: 'Comment', id: dt.id })),
+        ];
       },
     }),
     getCmtsByHotelId: builder.query({

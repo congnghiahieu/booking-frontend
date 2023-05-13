@@ -11,10 +11,10 @@ const initialState = booksAdapter.getInitialState();
 export const booksApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getBooksByUserId: builder.query({
-      query: ({ userId, page = QUERY.DEFAULT_PAGE, perPage = QUERY.DEFAULT_PER_PAGE }) =>
-        `/v1/books?user_id=${userId}&page=${page}&per_page=${perPage}&populate=true`,
+      keepUnusedDataFor: 60,
+      query: ({ userId, populate }) => `/v1/books?user_id=${userId}&populate=${populate}`,
       transformResponse: response => {
-        const modifiedData = response.data.map(dt => {
+        const modifiedData = response.map(dt => {
           const modified = {
             ...dt,
             id: dt._id,
@@ -23,17 +23,13 @@ export const booksApiSlice = apiSlice.injectEndpoints({
           return modified;
         });
 
-        // Normalizing data
-        const bookList = booksAdapter.setAll(initialState, modifiedData);
-        return {
-          ...bookList,
-          total: response.total,
-          totalPages: response.total_page,
-          curTotal: response.cur_total,
-        };
+        return modifiedData;
       },
       providesTags: (result, error, arg) => {
-        return [{ type: 'Book', id: arg }, ...result.ids.map(id => ({ type: 'Book', id }))];
+        return [
+          { type: 'Book', id: arg.userId },
+          ...result.map(dt => ({ type: 'Book', id: dt.id })),
+        ];
       },
     }),
     addBook: builder.mutation({

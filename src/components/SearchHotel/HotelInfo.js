@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { memo } from 'react';
+import { hotelLocationFormat } from '../../utils/formatter';
 
 const HotelInfo = ({ hotel }) => {
   const navigate = useNavigate();
@@ -34,10 +35,7 @@ const HotelInfo = ({ hotel }) => {
               })}
           </p>
           <p id={style.one}>
-            <FontAwesomeIcon icon={faLocationDot} />{' '}
-            {hotel.location?.others ? `${hotel.location.others}, ` : ''}
-            {hotel.location?.district ? `${hotel.location.district}, ` : ''}
-            {hotel.location.nation + ' - ' + hotel.location.province}
+            <FontAwesomeIcon icon={faLocationDot} /> {hotelLocationFormat(hotel.location)}
           </p>
           <p id={style.four}>
             <FontAwesomeIcon icon={faLeaf} /> Du lịch bền vững

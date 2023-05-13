@@ -43,9 +43,9 @@ function App() {
             <Route path='search' element={<SearchHotel />} />
           </Route>
           <Route>
-            <Route path='user/profile' element={<UserProfile />} />
-            <Route path='user/comments' element={<UserComments />} />
             <Route path='user/booking' element={<UserBooking />} />
+            <Route path='user/comments' element={<UserComments />} />
+            <Route path='user/profile' element={<UserProfile />} />
             {/* <Route path='user/comments' element={<UserBooking />} /> */}
           </Route>
           {/* <Route path='*' element={<Missing />} /> */}

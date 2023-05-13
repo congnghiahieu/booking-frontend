@@ -1,26 +1,29 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import style from './InputSearchStyle.css';
+import './InputSearchStyle.css';
 import { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setSearch,
   setFocus,
   setField,
-  selectSearchValue,
+  selectSearch,
   selectSearchField,
 } from '../../app/features/search/searchSlice';
 import { SEARCH_FIELD } from '../../utils/constants';
 
 const InputSearch = () => {
   const dispatch = useDispatch();
-  const searchValue = useSelector(selectSearchValue);
+  const [searchValue] = useSelector(selectSearch);
 
   return (
     <div className='search_bar'>
       <select
         className='search_select'
-        onChange={e => dispatch(setField(e.target.value))}
+        onChange={e => {
+          dispatch(setField(e.target.value));
+          dispatch(setSearch(''));
+        }}
         defaultValue={useSelector(selectSearchField)}>
         {Object.values(SEARCH_FIELD).map(v => (
           <option key={v} value={v} className='search_select_option'>

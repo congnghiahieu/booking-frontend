@@ -14,11 +14,11 @@ import useAuth from '../../hooks/useAuth';
 import Information from '../../components/UserProfile/Information';
 import Payment from '../../components/UserProfile/Payment';
 import Follow from '../../components/UserProfile/Follow';
+import LoadingImg from '../../components/Loading/LoadingImg';
 
 const UserProfile = () => {
-  // const { id } = useAuth();
-  // const { data: user, isLoading, isSuccess, isError } = useGetUserByIdQuery(id);
-
+  const { id } = useAuth();
+  const { data: user, isLoading, isSuccess, isError } = useGetUserByIdQuery(id);
 
   return (
     <>
@@ -38,26 +38,30 @@ const UserProfile = () => {
             <FontAwesomeIcon icon={faCaretDown} className='iconProfile' />
           </div>
           <li>
-            <a href="#information">
+            <a href='#information'>
               <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Thông tin người dùng</span>
             </a>
-            <a href="#payment">
+            <a href='#payment'>
               <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Phương thức thanh toán</span>
             </a>
-            <a href="#follow">
+            <a href='#follow'>
               <FontAwesomeIcon icon={faCircle} className='iconCircle' />
               <span>Theo dõi</span>
             </a>
           </li>
           <hr></hr>
         </div>
-        <div className={style.Show}>
-          <Information />
-          <Payment />
-          <Follow />
-        </div>
+        {isLoading && <LoadingImg />}
+        {!isLoading && isError && <p>Lỗi khi lấy data</p>}
+        {!isLoading && isSuccess && (
+          <div className={style.Show}>
+            <Information user={user} />
+            <Payment />
+            <Follow />
+          </div>
+        )}
       </div>
     </>
   );

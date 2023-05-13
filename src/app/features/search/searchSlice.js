@@ -6,8 +6,13 @@ export const searchSlice = createSlice({
   name: 'search',
   initialState: {
     value: '',
+    err: '',
     focus: false,
     field: SEARCH_FIELD.BY_PROVINCE,
+    hotelLink: {
+      id: '',
+      slug: '',
+    },
     start: new Date().valueOf(),
     end: add(new Date(), { days: 1 }).valueOf(),
     adult: 1,
@@ -18,11 +23,17 @@ export const searchSlice = createSlice({
     setSearch: (state, action) => {
       state.value = action.payload;
     },
+    setSearchErr: (state, action) => {
+      state.err = action.payload;
+    },
     setFocus: (state, action) => {
       state.focus = action.payload;
     },
     setField: (state, action) => {
       state.field = action.payload;
+    },
+    setHotelLink: (state, action) => {
+      state.hotelLink = action.payload;
     },
     setStart: (state, action) => {
       state.start = action.payload;
@@ -65,8 +76,10 @@ export const searchSlice = createSlice({
 
 export const {
   setSearch,
+  setSearchErr,
   setFocus,
   setField,
+  setHotelLink,
   setStart,
   setEnd,
   increaseAdult,
@@ -77,9 +90,10 @@ export const {
   decreaseChildren,
 } = searchSlice.actions;
 
-export const selectSearchValue = state => state.search.value;
+export const selectSearch = state => [state.search.value, state.search.err];
 export const selectSearchField = state => state.search.field;
 export const selectFocus = state => state.search.focus;
+export const selectHotelLink = state => state.search.hotelLink;
 export const selectTime = state => [state.search.start, state.search.end];
 export const selectAdult = state => state.search.adult;
 export const selectRoom = state => state.search.room;

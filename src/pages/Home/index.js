@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import style from './Home.module.css';
 import {
   DatePlant,
@@ -9,44 +9,25 @@ import {
   HomeAttrVN,
   HomeAttrForeign,
   SearchSuggest,
+  SearchButton,
   WelcomeBack,
 } from '../../components';
 import useTitle from '../../hooks/useTitle';
-import { createSearchParams, useNavigate } from 'react-router-dom';
-import provinvesMap from '../../utils/VI_PROVINCES_MAPPING.json';
-import { normalizeStr } from '../../utils/normalizeStr';
-import { selectSearchValue, selectTime } from '../../app/features/search/searchSlice';
-import { useSelector } from 'react-redux';
+import { setSearchErr, selectSearch } from '../../app/features/search/searchSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchOption from '../../components/Home/SearchOption';
 import { selectCurrentToken } from '../../app/features/auth/authSlice';
 
 const Home = () => {
   useTitle('Wygo.com | Official Website');
-  const navigate = useNavigate();
 
+  const dispatch = useDispatch();
   const token = useSelector(selectCurrentToken);
+  const [searchValue, searchErr] = useSelector(selectSearch);
 
-  const [searchErr, setSearchErr] = useState('');
-  const searchValue = useSelector(selectSearchValue);
-  const [start, end] = useSelector(selectTime);
-
-  useEffect(() => setSearchErr(''), [searchValue]);
-
-  const onSearch = () => {
-    const normalized = normalizeStr(searchValue);
-    if (!normalized) return setSearchErr('Vui lòng nhập tên tỉnh thành / thành phố bạn muốn đến');
-    if (!Object.keys(provinvesMap).includes(normalized)) {
-      return setSearchErr('Hiện tại chúng tôi chỉ hỗ trỡ tìm kiếm các tỉnh thành ở VN');
-    }
-    navigate({
-      pathname: '/search',
-      search: createSearchParams({
-        province: provinvesMap[normalized].name,
-        start,
-        end,
-      }).toString(),
-    });
-  };
+  useEffect(() => {
+    dispatch(setSearchErr(''));
+  }, [searchValue, dispatch]);
 
   return (
     <div className={style.HOME} id='Home'>
@@ -80,9 +61,7 @@ const Home = () => {
               <Member />
             </div>
           </div>
-          <button className={style.search_btn} onClick={onSearch}>
-            TÌM
-          </button>
+          <SearchButton className={style.search_btn} />
         </div>
       </div>
       <div className={style.home_body}>

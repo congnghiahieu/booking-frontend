@@ -1,7 +1,7 @@
 import './Comment.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSuitcase, faBed, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
-import { dtFormat } from '../../utils/formatter';
+import { getVnDateFormat } from '../../utils/formatter';
 
 function Comment({ cmt }) {
   return (
@@ -30,7 +30,7 @@ function Comment({ cmt }) {
           <div className='comment1'>"{cmt.title}”</div>
           <div className='comment2'>{cmt.content}</div>
           <div className='time_comment'>
-            Đã nhận xét vào {dtFormat.format(new Date(cmt.createdAt))}
+            Đã nhận xét vào {getVnDateFormat(cmt.createdAt).withoutWeekDay}
           </div>
         </div>
       </div>

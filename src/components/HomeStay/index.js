@@ -3,19 +3,29 @@ import { getViewLinkGG } from '../../utils/getViewLinkGG';
 import { faStar, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setSearch, setField } from '../../app/features/search/searchSlice';
+import { SEARCH_FIELD } from '../../utils/constants';
 import { numFormatter } from '../../utils/formatter';
 
 function HomeStay({ hotel }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onDirect = () => {
-    navigate('/search');
+    dispatch(setSearch(hotel.name));
+    dispatch(setField(SEARCH_FIELD.BY_NAME));
+    navigate(`/hotel/view/${hotel.slug}/${hotel.id}`, { preventScrollReset: false });
   };
 
   return (
     <div className={style.HomeStay} onClick={onDirect}>
       <div className={style.HomeStay_img}>
-        <img className={style.Img_homeStay} src={`${getViewLinkGG(hotel.imgsGG[0])}`} />
+        <img
+          className={style.Img_homeStay}
+          src={`${getViewLinkGG(hotel.imgsGG[0])}`}
+          alt={hotel.name}
+        />
         <div className={style.HomeStay_point}>{hotel.point}</div>
       </div>
       <div className={style.HomeStay_name}>{hotel.name}</div>

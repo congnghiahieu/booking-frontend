@@ -1,25 +1,22 @@
-import React from "react";
-import style from "./UserEdit.module.css"
+import React, { useState } from 'react';
+import style from './UserEdit.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUser,
-  faCalendarCheck,
-  faMessage,
-} from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCalendarCheck, faMessage } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import UserComment from "../../components/UserComment/UserComment";
+import UserComment from '../../components/UserComment/UserComment';
+import { useGetCmtsByUserIdQuery } from '../../app/features/api/cmtsSlice';
+import useAuth from '../../hooks/useAuth';
+
 const UserComments = () => {
-  // const cmt =
-  // {
-  //   point: '9',
-  //   user: {
-  //     name: 'Duy Ngo',
-  //     nation: 'Viet Nam',
-  //   },
-  //   title: 'Tren ca tuyet voi',
-  //   content: 'Phong rat dep ',
-  //   createdAt: '09.05/2023',
-  // }
+  const { id } = useAuth();
+  const [page, setPage] = useState(1);
+  const {
+    data: cmts,
+    isLoading,
+    isSuccess,
+  } = useGetCmtsByUserIdQuery({ userId: id, page: 1, populate: true });
+
+  console.log(cmts);
 
   return (
     <>
@@ -42,14 +39,25 @@ const UserComments = () => {
         </div>
         <div className={style.Show}>
           <p className={style.yourComment}>Đánh giá của bạn</p>
-          <UserComment/>
-          <UserComment/>
-          <UserComment/>
+          {isLoading && <p>Loading...</p>}
+          {!isLoading && isSuccess ? (
+            cmts.length ? (
+              cmts.map(cmt => <UserComment key={cmt.id} cmt={cmt} />)
+            ) : (
+              <>
+                <span>Bạn chưa có bình luận nào</span>
+                <Link to='/'>
+                  <button>Đặt phòng ngay</button>
+                </Link>
+              </>
+            )
+          ) : (
+            <p>Error...</p>
+          )}
         </div>
-
       </div>
     </>
-  )
+  );
 };
 
 export default UserComments;

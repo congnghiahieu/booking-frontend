@@ -32,3 +32,4 @@ export { default as HomeAttrForeign } from './HomeAttrForeign';
 export { default as SearchSuggest } from './SearchSuggest';
 export { default as WelcomeBack } from './WelcomBack';
 export { default as SuggestItem } from './SuggestItem';
+export { default as SearchButton } from './SearchButton';

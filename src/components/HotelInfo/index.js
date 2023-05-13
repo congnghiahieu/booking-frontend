@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faStar, faPersonWalking, faCar } from '@fortawesome/free-solid-svg-icons';
 import style from './HotelInfo.module.css';
 import { NearBy, HotelOverview, HotelOptionBar } from '../../components';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const HotelInfo = ({ hotel }) => {
   return (

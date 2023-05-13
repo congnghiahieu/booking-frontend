@@ -1,12 +1,12 @@
 import style from './Sidebar.module.css';
 import { useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faUserFriends, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { getViewLinkGG } from '../../utils/getViewLinkGG';
 import { getDiscount } from '../../utils/random';
 import { selectTime, selectRoom } from '../../app/features/search/searchSlice';
 import { useSelector } from 'react-redux';
-import { dtFormat, numFormatter } from '../../utils/formatter';
+import { getVnDateFormat, numFormatter, hotelLocationFormat } from '../../utils/formatter';
 import { differenceInDays } from 'date-fns';
 
 const Sidebar = ({ hotel, service }) => {
@@ -31,18 +31,15 @@ const Sidebar = ({ hotel, service }) => {
                 <span>GIẢM GIÁ</span>
               </div>
               <h3 className={style.cardTitle}>{hotel.name}</h3>
-              <p className={style.cardText}>
-                {hotel.location?.others ? `${hotel.location.others}, ` : ''}
-                {hotel.location?.district ? `${hotel.location.district}, ` : ''}
-                {hotel.location.nation + ' - ' + hotel.location.province}
-              </p>
+              <p className={style.cardText}>{hotelLocationFormat(hotel.location)}</p>
             </div>
           </div>
         </div>
 
         <div className={style.card}>
           <h4>
-            {dtFormat.format(new Date(start))} - {dtFormat.format(new Date(end))} - {dateDif} ngày
+            {getVnDateFormat(start).withoutWeekDay} - {getVnDateFormat(end).withoutWeekDay} -{' '}
+            {dateDif} ngày
           </h4>
           <h4>
             {room} Phòng x {service.name}

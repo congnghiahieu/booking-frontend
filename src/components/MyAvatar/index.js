@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import Avatar from 'react-avatar';
 
 const MyAvatar = () => {
-  const { name, username } = useAuth();
+  const { name, username, googleId } = useAuth();
 
   const shortName = () => {
     if (!name) return '';
@@ -17,7 +17,14 @@ const MyAvatar = () => {
 
   return (
     <>
-      <Avatar name={displayName} size='40px' round='50px' maxInitials={1} />
+      <Avatar
+        name={displayName}
+        size='40px'
+        round='50px'
+        alt='Avatar'
+        maxInitials={1}
+        googleId={googleId || ''}
+      />
       <p>{displayName}</p>
       <FontAwesomeIcon icon={faCaretDown} />
     </>

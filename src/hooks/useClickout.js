@@ -13,7 +13,7 @@ const useClickout = (modalRef, setOpen) => {
 
     document.body.addEventListener('mousedown', onClickOutside);
     return () => document.removeEventListener('mousedown', onClickOutside);
-  }, []);
+  }, [modalRef, setOpen]);
 };
 
 export default useClickout;

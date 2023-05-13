@@ -11,7 +11,7 @@
   background-color: white;
   scroll-behavior: smooth;
 }
-.HotelSingle_main{
+.HotelSingle_main {
   width: 1080px;
 }
 
@@ -317,12 +317,12 @@
   box-shadow: none;
   margin: 0px;
 }
-.hotel_point{
-    font-size: 22px;
-    font-family: 400;
+.hotel_point {
+  font-size: 22px;
+  font-family: 400;
 }
-.hotel_nearby{
-    border-radius: 4px;
+.hotel_nearby {
+  border-radius: 4px;
   border-color: rgb(221, 223, 226);
   border-style: solid;
   border-width: 1px;
@@ -330,24 +330,24 @@
   box-shadow: none;
   margin: 0px;
 }
-.feedback_position{
+.feedback_position {
   margin-bottom: 10px;
 }
 
-.hotel_point1{
+.hotel_point1 {
   margin-bottom: 20px;
 }
-.icon2{
+.icon2 {
   width: 18px;
   height: 18px;
   margin-left: 5px;
   margin-right: 10px;
 }
-.text3{
+.text3 {
   display: flex;
   margin-top: 5px;
 }
-.parking{
+.parking {
   padding-top: 8px;
   padding-bottom: 8px;
   border-bottom: 2px groove;
@@ -355,10 +355,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.free{
+.free {
   color: #32a923;
 }
-.more a{
+.more a {
   text-decoration: none;
   color: white;
   display: flex;
@@ -368,38 +368,36 @@
   padding: 8px;
   border: 2px groove;
   background-color: #20274d;
-
 }
 
-.hotel_booking{
-    display: flex;
-    width: 100%;
-    /* height: -moz-fit-content; */
-    height: fit-content;
-    background-color: white;
-    justify-content: center;
-    margin-top: 10px;
+.hotel_booking {
+  display: flex;
+  width: 100%;
+  /* height: -moz-fit-content; */
+  height: fit-content;
+  background-color: white;
+  justify-content: center;
+  margin-top: 10px;
 }
-.hotel_subbook{
+.hotel_subbook {
   display: flex;
   flex-direction: column;
   width: 1080px;
   margin-bottom: 10px;
 }
 
-.book_header{
+.book_header {
   font-size: 26px;
   font-weight: 500;
   padding-bottom: 15px;
   border-bottom: 2px groove;
 }
-.comment{
+.comment {
   display: flex;
   width: 100%;
   justify-content: center;
   margin-bottom: 20px;
-  
 }
-.subcomment{
+.subcomment {
   width: 1080px;
 }

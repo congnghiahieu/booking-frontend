@@ -1,6 +1,6 @@
 import { apiSlice } from './apiSlice';
 import { createEntityAdapter } from '@reduxjs/toolkit';
-import { QUERY } from '../../../utils/constants';
+import { QUERY, SORT_TYPE } from '../../../utils/constants';
 
 const hotelsApdater = createEntityAdapter({
   sortComparer: (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt),
@@ -52,5 +52,65 @@ export const hotelsApiSlice = apiSlice.injectEndpoints({
     }),
   }),
 });
+
+export const selectFilteredIds = (data, type, filterStar, filterPrices) => {
+  let newIds = data.ids.slice(0);
+
+  // Sort
+  switch (type) {
+    case SORT_TYPE.MOST_CMT:
+      newIds.sort((a, b) => {
+        const cmtA = data.entities[a].cmtSum;
+        const cmtB = data.entities[b].cmtSum;
+        return cmtA - cmtB;
+      });
+      break;
+    case SORT_TYPE.MOST_STAR:
+      newIds.sort((a, b) => {
+        const starA = data.entities[a].stars;
+        const starB = data.entities[b].stars;
+        return starB - starA;
+      });
+      break;
+    case SORT_TYPE.MOTST_CHEAP:
+      newIds.sort((a, b) => {
+        const pricesA = data.entities[a].cheapest || 500000;
+        const pricesB = data.entities[b].cheapest || 500000;
+        return pricesA - pricesB;
+      });
+      break;
+    case SORT_TYPE.MOST_EXPENSIVE:
+      newIds.sort((a, b) => {
+        const pricesA = data.entities[a].cheapest || 500000;
+        const pricesB = data.entities[b].cheapest || 500000;
+        return pricesB - pricesA;
+      });
+      break;
+    default:
+      break;
+  }
+
+  // Filter star
+  if (filterStar.length !== 0) {
+    newIds = newIds.filter(id => {
+      const hotelStar = data.entities[id].stars;
+      return filterStar.includes(hotelStar);
+    });
+  }
+  // Filter prices
+  if (filterPrices.length !== 0) {
+    newIds = newIds.filter(id => {
+      const hotelPrices = data.entities[id].cheapest || 500000;
+      return filterPrices.some(range => {
+        // start <= hotel price <= end
+        if (hotelPrices < range.start) return false;
+        if (!range.end) return true;
+        return hotelPrices <= range.end;
+      });
+    });
+  }
+
+  return newIds;
+};
 
 export const { useGetAllHotelsQuery, useGetHotelByIdQuery } = hotelsApiSlice;

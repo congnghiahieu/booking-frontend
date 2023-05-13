@@ -4,13 +4,6 @@ const QUERY = {
   LIMIT_PER_PAGE: 100,
 };
 
-const BOOK_STATUS = {
-  CANCELED: 'Đã huỷ',
-  FINISHED: 'Hoàn tất',
-  INPROCESS: 'Đang diễn ra',
-  ONOGING: 'Sắp tới',
-};
-
 const TRANS_TYPES = {
   BOOKING: 'Đặt phòng',
   TOP_UP: 'Nạp tiền',
@@ -54,11 +47,19 @@ const RANGE_OF_PRICES = [
 ];
 const LIST_STARS = [5, 4, 3, 2, 1];
 
+const BOOK_STATUS = {
+  INCOMMING: 'Sắp tới',
+  FINISHED: 'Hoàn tất',
+  CANCELED: 'Đã huỷ',
+  // INPROCESS: 'Đang diễn ra',
+};
+
+const BOOK_STATUS_LIST = Object.values(BOOK_STATUS);
+
 export {
   QUERY,
   BACKEND_ADDRESS,
   DRIVE_API_ADDRESS,
-  BOOK_STATUS,
   TRANS_TYPES,
   GOOGLE_AUTH_LINK,
   SEARCH_FIELD,
@@ -68,4 +69,6 @@ export {
   TYPES_OF_HOTEL,
   RANGE_OF_PRICES,
   LIST_STARS,
+  BOOK_STATUS,
+  BOOK_STATUS_LIST,
 };
