@@ -49,9 +49,11 @@ function App() {
             {/* <Route path='user/comments' element={<UserBooking />} /> */}
           </Route>
           {/* <Route path='*' element={<Missing />} /> */}
+
+          <Route path='/cart' element={<Cart />} />
         </Route>
 
-        <Route path='/cart' element={<Cart />} />
+        
 
         <Route path='/' element={<BookingLayout />}>
           <Route
