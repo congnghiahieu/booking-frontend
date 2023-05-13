@@ -33,10 +33,10 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         delete modified._id;
         return modified;
       },
-      providesTags: (result, error, arg) => [{ type: 'User', id: arg }],
+      providesTags: (result, error, arg) => [{ type: 'Fav', id: arg }],
     }),
     getCartByUserId: builder.query({
-      query: userId => `/v1/users/cart?user_id=${userId}`,
+      query: ({ userId, populate }) => `/v1/users/cart?user_id=${userId}&populate=${populate}`,
       keepUnusedDataFor: 60,
       transformResponse: response => {
         const modified = {
@@ -46,7 +46,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         delete modified._id;
         return modified;
       },
-      providesTags: (result, error, arg) => [{ type: 'User', id: arg }],
+      providesTags: (result, error, arg) => [{ type: 'Cart', id: arg.userId }],
     }),
     addFav: builder.mutation({
       query: ({ userId, hotelId }) => ({

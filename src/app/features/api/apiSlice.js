@@ -55,6 +55,8 @@ export const apiSlice = createApi({
     'Hotel',
     'HotelImage',
     'User',
+    'Fav',
+    'Cart',
     'Comment',
     'Transaction',
     'Book',
