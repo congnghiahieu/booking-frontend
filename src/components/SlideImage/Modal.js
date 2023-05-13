@@ -19,14 +19,10 @@ const Modal = ({
       <div className="overlay dismiss" onClick={handleClick}>
         <img src={clickedImg} alt="bigger pic" />
         <div onClick={handelRotationLeft} className="overlay-arrows_left">
-          <div >
             <FontAwesomeIcon icon={faChevronLeft} />
-          </div>
         </div>
         <div onClick={handelRotationRight} className="overlay-arrows_right">
-          <div>
             <FontAwesomeIcon icon={faChevronRight} />
-          </div>
         </div>
       </div>
     </>

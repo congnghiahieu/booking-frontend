@@ -11,6 +11,7 @@ import {
   UserProfile,
   SearchHotel,
   Cart,
+  ErrorPage,
 } from './pages';
 import { NotAuth } from './components';
 import BookingProvider from './context/BookingContext';
@@ -48,12 +49,12 @@ function App() {
             <Route path='user/profile' element={<UserProfile />} />
             {/* <Route path='user/comments' element={<UserBooking />} /> */}
           </Route>
+          <Route path='/error' element={<ErrorPage />} />
+
           {/* <Route path='*' element={<Missing />} /> */}
 
           <Route path='/cart' element={<Cart />} />
         </Route>
-
-        
 
         <Route path='/' element={<BookingLayout />}>
           <Route
