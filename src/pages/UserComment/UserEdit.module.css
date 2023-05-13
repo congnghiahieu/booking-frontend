@@ -49,4 +49,17 @@
 }
 .Show .yourComment {
     padding: 30px 0;
+    font-weight: 500;
+    font-size: 20px;
+}
+.Show #one{
+    padding:12px;
+    background-color: rgb(83, 146, 249);
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.Show #one:hover{
+   opacity: 0.7;
 }

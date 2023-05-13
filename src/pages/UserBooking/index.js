@@ -65,9 +65,9 @@ const UserBooking = () => {
                 books.map(book => <Card key={book.id} book={book} />)
               ) : (
                 <>
-                  <span>Bạn chưa có khách sạn sắp tới nào</span>
+                  <p>Bạn chưa có khách sạn sắp tới nào</p>
                   <Link to='/'>
-                    <button> Đặt phòng ngay</button>
+                    <button id={style.booking}> Đặt phòng ngay</button>
                   </Link>
                 </>
               )

@@ -11,21 +11,22 @@ const UserComment = ({ cmt }) => {
   return (
     <>
       <div className={style.comment}>
+        <Link to={`/hotel/view/${hotel.slug}/${hotel._id}`}>
+          <h3>{hotel.name}</h3>
+        </Link>
         <div className={style.hotel}>
-          <Link to={`/hotel/view/${hotel.slug}/${hotel._id}`}>
-            <h3>{hotel.name}</h3>
-          </Link>
           <img alt={hotel.name} src={getViewLinkGG(hotel.imgsGG[0])} />
-        </div>
-        <div className={style.UserComment}>
-          <div className={style.subComment}>
-            <div className={style.title}>{cmt.title}</div>
-            <div className={style.content}>{cmt.content}</div>
-            <div className={style.timeComment}>
-              Đã nhận xét vào {getVnDateFormat(cmt.updatedAt).withoutWeekDay}
+          <div className={style.UserComment}>
+            <div className={style.subComment}>
+              <div className={style.title}>{cmt.title}</div>
+              <div className={style.content}>{cmt.content}</div>
+              <div className={style.timeComment}>
+                Đã nhận xét vào {getVnDateFormat(cmt.updatedAt).withoutWeekDay}
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </>
   );
