@@ -13,7 +13,7 @@ import {
   Cart,
   ErrorPage,
 } from './pages';
-import { NotAuth } from './components';
+import { NotAuth, RequiredAuth, PersistLogin } from './components';
 import BookingProvider from './context/BookingContext';
 import RegisterProvider from './context/RegisterContext';
 import LoginSuccess from './pages/Login/LoginSuccess';
@@ -23,8 +23,12 @@ function App() {
     <main className='App'>
       <Routes>
         {/* Default Layout */}
+        <Route element={<NotAuth />}>
+          <Route path='login/success' element={<LoginSuccess />} />
+        </Route>
+
         <Route path='/' element={<DefaultLayout />}>
-          {/* Public routes */}
+          {/* Need No Auth route */}
           <Route element={<NotAuth />}>
             <Route path='login' element={<Login />} />
             <Route
@@ -36,35 +40,40 @@ function App() {
               }
             />
           </Route>
-          <Route path='login/success' element={<LoginSuccess />} />
-          {/* Protected Routes - required Login */}
-          <Route path='/' element={<Home />} />
-          <Route>
-            <Route path='hotel/view/:hotelSlug/:hotelId' element={<HotelSingle />} />
-            <Route path='search' element={<SearchHotel />} />
-          </Route>
-          <Route>
-            <Route path='user/booking' element={<UserBooking />} />
-            <Route path='user/comments' element={<UserComments />} />
-            <Route path='user/profile' element={<UserProfile />} />
-            {/* <Route path='user/comments' element={<UserBooking />} /> */}
-          </Route>
-          <Route path='/error' element={<ErrorPage />} />
 
-          {/* <Route path='*' element={<Missing />} /> */}
+          {/* Public route */}
+          <Route element={<PersistLogin />}>
+            <Route path='/' element={<Home />} />
+            <Route>
+              <Route path='hotel/view/:hotelSlug/:hotelId' element={<HotelSingle />} />
+              <Route path='search' element={<SearchHotel />} />
+            </Route>
+            <Route path='/error' element={<ErrorPage />} />
 
-          <Route path='/cart' element={<Cart />} />
+            {/* Protected */}
+            <Route element={<RequiredAuth />}>
+              <Route path='user/booking' element={<UserBooking />} />
+              <Route path='user/comments' element={<UserComments />} />
+              <Route path='user/profile' element={<UserProfile />} />
+              <Route path='/cart' element={<Cart />} />
+            </Route>
+          </Route>
         </Route>
 
-        <Route path='/' element={<BookingLayout />}>
-          <Route
-            path='hotel/booking/:hotelSlug/:serviceSlug/:hotelId/:serviceId'
-            element={
-              <BookingProvider>
-                <HotelBooking />
-              </BookingProvider>
-            }
-          />
+        {/* Protected */}
+        <Route element={<PersistLogin />}>
+          <Route element={<RequiredAuth />}>
+            <Route path='/' element={<BookingLayout />}>
+              <Route
+                path='hotel/booking/:hotelSlug/:serviceSlug/:hotelId/:serviceId'
+                element={
+                  <BookingProvider>
+                    <HotelBooking />
+                  </BookingProvider>
+                }
+              />
+            </Route>
+          </Route>
         </Route>
 
         {/* Catch all - replace with 404 component if you want */}

@@ -33,7 +33,7 @@ const DefaultHeader = () => {
       await logout().unwrap();
       navigate('/');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

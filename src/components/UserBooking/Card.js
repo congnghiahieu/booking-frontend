@@ -1,4 +1,5 @@
 import style from './Card.module.css';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { getViewLinkGG } from '../../utils/getViewLinkGG';
@@ -23,7 +24,7 @@ const Card = ({ book }) => {
     try {
       await updateBook({ bookId: book.id, flag: BOOK_STATUS.CANCELED }).unwrap();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -31,12 +32,14 @@ const Card = ({ book }) => {
     <>
       <div className={style.card}>
         <div className={style.booking}>
-          <img className={style.img} src={getViewLinkGG(hotel.imgsGG[0])} />
+          <img className={style.img} src={getViewLinkGG(hotel.imgsGG[0])} alt={hotel.name} />
           <div className={style.info}>
             <p className={`${style.check} ${!book.isCanceled ? '' : style.cancel}`}>
               {!book.isCanceled ? 'Đã xác nhận đặt phòng' : 'Đã xác nhận huỷ phòng'}
             </p>
-            <h4>{hotel.name}</h4>
+            <h4>
+              <Link to={`/hotel/view/${hotel.slug}/${hotel._id}`}>{hotel.name}</Link>
+            </h4>
             <span>Mã số đặt phòng: </span>
             <span className={style.number}>{book.id}</span>
             <div className={`${style.state} ${!book.isCanceled ? '' : style.cancel}`}>

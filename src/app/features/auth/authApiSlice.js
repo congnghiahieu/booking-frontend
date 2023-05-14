@@ -33,11 +33,11 @@ export const authApiSlice = apiSlice.injectEndpoints({
         try {
           await queryFulfilled;
           dispatch(clearCrendentials());
-          // setTimeout(() => {
-          dispatch(apiSlice.util.resetApiState());
-          // }, 1000);
+          setTimeout(() => {
+            dispatch(apiSlice.util.resetApiState());
+          }, 1000);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       },
     }),
@@ -47,13 +47,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          const { accessToken } = data;
-          dispatch(setCredentials({ accessToken }));
-        } catch (err) {
-          console.log(err);
-        }
+        const { data } = await queryFulfilled;
+        const { accessToken } = data;
+        dispatch(setCredentials({ accessToken }));
       },
     }),
   }),

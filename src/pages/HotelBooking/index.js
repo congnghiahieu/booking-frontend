@@ -14,7 +14,7 @@ import { useBookingContext } from '../../hooks/useContext';
 import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
 import { useGetServiceByIdQuery } from '../../app/features/api/servicesSlice';
 import { useSelector } from 'react-redux';
-import { selectTime } from '../../app/features/search/searchSlice';
+import { selectTime, selectRoom } from '../../app/features/search/searchSlice';
 import { differenceInDays } from 'date-fns';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 
@@ -23,6 +23,7 @@ const HotelBooking = () => {
   const { id } = useSelector(selectUserInfo);
   const { hotelId, serviceId } = useParams();
   const [start, end] = useSelector(selectTime);
+  const room = useSelector(selectRoom);
   const {
     page,
     setPage,
@@ -85,16 +86,17 @@ const HotelBooking = () => {
         card: cardInfo,
         value,
         transType: TRANS_TYPES.BOOKING,
+        room,
       };
 
       await addBook(submitData).unwrap();
       setPage(2);
     } catch (err) {
       if (!err.status) {
-        console.log('No Server Response');
+        // console.log('No Server Response');
       } else {
-        console.log(err.data.message);
-        console.log(err.status);
+        // console.log(err.data.message);
+        // console.log(err.status);
       }
     }
   };
@@ -135,21 +137,21 @@ const HotelBooking = () => {
                     onClick={prevPage}
                     type='button'
                     className={`button ${prevHide}`}
-                    disabled={disablePrev}>
+                    disabled={disablePrev || isAddLoad}>
                     Quay lại bước trước
                   </button>
                   <button
                     onClick={nextPage}
                     type='button'
                     className={`button ${nextHide}`}
-                    disabled={disableNext}>
+                    disabled={disableNext || isAddLoad}>
                     {!disableNext ? 'Bước tiếp theo' : 'Vui lòng hoàn thiện thông tin'}
                   </button>
                   <button
                     onClick={onSubmit}
                     type='button'
                     className={`button ${submitHide}`}
-                    disabled={!canSubmit}>
+                    disabled={!canSubmit || isAddLoad}>
                     {canSubmit ? 'Đặt phòng' : 'Vui lòng hoàn thiện thông tin'}
                   </button>
                   {formData.cusEmail.value && page === 1 && (

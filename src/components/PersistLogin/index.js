@@ -1,63 +1,38 @@
-import { Outlet, Navigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useRefreshMutation } from '../../app/features/auth/authApiSlice';
 import useLocalCheckbox from '../../hooks/useLocalCheckbox';
 import { useSelector } from 'react-redux';
 import { selectCurrentToken } from '../../app/features/auth/authSlice';
+import LoadingLogin from '../Loading/LoadingLogin';
 
 const PersistLogin = () => {
+  const navigate = useNavigate();
   const [persist] = useLocalCheckbox('persist-login', false);
   const token = useSelector(selectCurrentToken);
-  const effectRan = useRef(false);
-
-  const [trueSuccess, setTrueSuccess] = useState(false);
-
-  const [refresh, { isUninitialized, isLoading, isSuccess, isError, error }] = useRefreshMutation();
+  const [refresh, { isLoading, isSuccess }] = useRefreshMutation();
 
   useEffect(() => {
-    if (effectRan.current === true || process.env.NODE_ENV !== 'development') {
-      // React 18 Strict Mode
+    const verifyRefreshToken = async () => {
+      // console.log('verifying refresh token');
+      try {
+        //const response =
+        await refresh().unwrap();
+      } catch (err) {
+        navigate('/login');
+      }
+    };
 
-      const verifyRefreshToken = async () => {
-        // console.log('verifying refresh token');
-        try {
-          await refresh();
-          //const { accessToken } = response.data
-          setTrueSuccess(true);
-        } catch (err) {
-          console.error(err);
-        }
-      };
-
-      if (!token && persist) verifyRefreshToken();
-    }
-
-    return () => (effectRan.current = true);
-
+    if (!token && persist) verifyRefreshToken();
     // eslint-disable-next-line
   }, []);
 
   let content;
   if (!persist) {
-    // persist: no
-    console.log('no persist');
     content = <Outlet />;
   } else if (isLoading) {
-    //persist: yes, token: no
-    console.log('loading');
-    content = <p>Loading...</p>;
-  } else if (isError) {
-    //persist: yes, token: no
-    console.log('error');
-    content = <Navigate to='/' />;
-  } else if (isSuccess && trueSuccess) {
-    //persist: yes, token: yes
-    console.log('success');
-    content = <Outlet />;
-  } else if (token && isUninitialized) {
-    //persist: yes, token: yes
-    console.log('token and uninit');
-    console.log(isUninitialized);
+    content = <LoadingLogin />;
+  } else if (!isLoading && isSuccess) {
     content = <Outlet />;
   }
 

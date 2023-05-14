@@ -23,7 +23,7 @@ const CartItem = ({ cartItem }) => {
     try {
       await delCart({ userId: id, serviceId: cartItem._id }).unwrap();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

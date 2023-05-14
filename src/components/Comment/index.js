@@ -18,11 +18,11 @@ function Comment({ cmt }) {
         </p>
         <p className='user_info'>
           <FontAwesomeIcon icon={faBed} className='icon1' />
-          <span>Căn hộ Deluxe</span>
+          <span>Căn hộ Suite Executive</span>
         </p>
         <p className='user_info'>
           <FontAwesomeIcon icon={faCalendarDays} className='icon1' />
-          <span>Đã ở 1 đêm vào tháng tư 2023</span>
+          <span>Đã ở 1 đêm vào tháng 5 2023</span>
         </p>
       </div>
       <div className='user_comment'>

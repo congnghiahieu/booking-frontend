@@ -1,7 +1,8 @@
+import style from './HotelInfo.module.css';
 import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getReview } from '../../utils/random';
 import { faCheck, faStar, faPersonWalking, faCar } from '@fortawesome/free-solid-svg-icons';
-import style from './HotelInfo.module.css';
 import { NearBy, HotelOverview, HotelOptionBar, FeedBackPoint } from '../../components';
 import { Link } from 'react-router-dom';
 
@@ -151,7 +152,9 @@ const HotelInfo = ({ hotel }) => {
             <div className={style.hotel_nearby}>
               <div className={style.feedback_position}>
                 <div className={style.hotel_point1}>
-                  <span className={style.hotel_point}>9,2 Trên cả tuyệt vời</span>
+                  <span className={style.hotel_point}>
+                    {hotel.point + ' ' + getReview(hotel.point)}
+                  </span>
                   <p>Điểm đánh giá vị trí</p>
                 </div>
                 <div className={style.text3}>

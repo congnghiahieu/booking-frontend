@@ -25,6 +25,8 @@ export { default as HighLightPlace } from './HighLightPlace';
 export { default as HomeStay } from './HomeStay';
 export { default as PointBar } from './PointBar';
 export { default as NotAuth } from './NotAuth';
+export { default as RequiredAuth } from './RequiredAuth';
+export { default as PersistLogin } from './PersistLogin';
 export { default as VNHighLight } from './VNHighLight';
 export { default as HomeSubFooter } from './HomeSubFooter';
 export { default as HomeAttrVN } from './HomeAttrVN';

@@ -5,7 +5,7 @@ import { getViewLinkGG } from '../../utils/getViewLinkGG';
 
 const SlideImage = ({ hotel }) => {
   const imgs = hotel.imgsGG.map(v => getViewLinkGG(v));
-  // console.log(imgs);
+  // // console.log(imgs);
 
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -59,7 +59,7 @@ const SlideImage = ({ hotel }) => {
         onClick={() => handleClick(imgs[0], 0)}
       />
       {imgs.map((imgLink, index) => {
-        if (index == 0 || index > 3) return;
+        if (index === 0 || index > 3) return;
         return (
           <img
             key={index}

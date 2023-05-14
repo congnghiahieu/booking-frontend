@@ -1,10 +1,9 @@
-import React from 'react';
+import { useState } from 'react';
 import {
   InputSearch,
   Member,
   DatePlant,
   HomeSubFooter,
-  SearchHeader,
   SearchSuggest,
   SearchButton,
 } from '../../components';

@@ -1,8 +1,6 @@
 import HotelInfo from '../HotelInfo';
 import style from './HotelIntro.module.css';
 import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
-import Loading from '../Loading/Loading';
-import LoadingPost from '../Loading/LoadingPost';
 import Error from '../Error';
 import SlideImage1 from '../SlideImage/SlideImage1';
 import { memo } from 'react';
@@ -33,7 +31,7 @@ const HotelIntro = ({ hotelId }) => {
               <HotelInfo hotel={hotel} />
             </>
           ) : (
-            <Navigate to='/error' />
+            <Navigate to='/error' replace={true} />
           )}
         </>
       ) : (
