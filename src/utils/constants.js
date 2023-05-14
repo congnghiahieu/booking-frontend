@@ -25,10 +25,10 @@ const DAY_VN = {
 };
 
 const BACKEND_ADDRESS = 'http://localhost:8000';
-// const BACKEND_ADDRESS = 'https://api-wygo.pagekite.me/';
+// const BACKEND_ADDRESS = 'https://wygo-api.onrender.com';
 // const DRIVE_API_ADDRESS = '';
 const GOOGLE_AUTH_LINK = 'http://localhost:8000/v1/auth/google';
-// const GOOGLE_AUTH_LINK = `https://api-wygo.pagekite.me/v1/auth/google`;
+// const GOOGLE_AUTH_LINK = `https://wygo-api.onrender.com/v1/auth/google`;
 
 const SORT_TYPE = {
   MOST_FIT: 'Phù hợp nhất',
@@ -61,7 +61,6 @@ const BOOK_STATUS_LIST = Object.values(BOOK_STATUS);
 export {
   QUERY,
   BACKEND_ADDRESS,
-  DRIVE_API_ADDRESS,
   TRANS_TYPES,
   GOOGLE_AUTH_LINK,
   SEARCH_FIELD,

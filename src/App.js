@@ -42,39 +42,39 @@ function App() {
           </Route>
 
           {/* Public route */}
-          <Route element={<PersistLogin />}>
-            <Route path='/' element={<Home />} />
-            <Route>
-              <Route path='hotel/view/:hotelSlug/:hotelId' element={<HotelSingle />} />
-              <Route path='search' element={<SearchHotel />} />
-            </Route>
-            <Route path='/error' element={<ErrorPage />} />
+          {/* <Route element={<PersistLogin />}> */}
+          <Route path='/' element={<Home />} />
+          <Route>
+            <Route path='hotel/view/:hotelSlug/:hotelId' element={<HotelSingle />} />
+            <Route path='search' element={<SearchHotel />} />
+          </Route>
+          <Route path='/error' element={<ErrorPage />} />
 
-            {/* Protected */}
-            <Route element={<RequiredAuth />}>
-              <Route path='user/booking' element={<UserBooking />} />
-              <Route path='user/comments' element={<UserComments />} />
-              <Route path='user/profile' element={<UserProfile />} />
-              <Route path='/cart' element={<Cart />} />
-            </Route>
+          {/* Protected */}
+          <Route element={<RequiredAuth />}>
+            <Route path='user/booking' element={<UserBooking />} />
+            <Route path='user/comments' element={<UserComments />} />
+            <Route path='user/profile' element={<UserProfile />} />
+            <Route path='/cart' element={<Cart />} />
           </Route>
         </Route>
+        {/* </Route> */}
 
         {/* Protected */}
-        <Route element={<PersistLogin />}>
-          <Route element={<RequiredAuth />}>
-            <Route path='/' element={<BookingLayout />}>
-              <Route
-                path='hotel/booking/:hotelSlug/:serviceSlug/:hotelId/:serviceId'
-                element={
-                  <BookingProvider>
-                    <HotelBooking />
-                  </BookingProvider>
-                }
-              />
-            </Route>
+        {/* <Route element={<PersistLogin />}> */}
+        <Route element={<RequiredAuth />}>
+          <Route path='/' element={<BookingLayout />}>
+            <Route
+              path='hotel/booking/:hotelSlug/:serviceSlug/:hotelId/:serviceId'
+              element={
+                <BookingProvider>
+                  <HotelBooking />
+                </BookingProvider>
+              }
+            />
           </Route>
         </Route>
+        {/* </Route> */}
 
         {/* Catch all - replace with 404 component if you want */}
         <Route path='*' element={<Navigate to='/' replace />} />

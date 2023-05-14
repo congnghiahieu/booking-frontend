@@ -7,11 +7,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import ScrollToTop from './components/ScrollToTop';
-// import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
-// if (process.env.NODE_ENV == 'production') {
-//   disableReactDevTools();
-// }
+if (process.env.NODE_ENV == 'production') {
+  disableReactDevTools();
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

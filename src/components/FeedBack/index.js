@@ -37,7 +37,7 @@ const FeedBack = ({ hotelId }) => {
               </span>
               <div className={style.point_list}>
                 <div className={style.overall}>
-                  <div className={style.overall_point}>{hotel.point}</div>
+                  <div className={style.overall_point}>{hotel.point.toFixed(1)}</div>
                   <div className={style.overall_script}>
                     <p className={style.overall_text}>{getReview(hotel.point)}</p>
                     <p className={style.overall_subtext}>
@@ -50,8 +50,8 @@ const FeedBack = ({ hotelId }) => {
                     </p>
                   </div>
                 </div>
-                {point.map(p => (
-                  <div key={p} className={style.point_detail}>
+                {point.map((p, i) => (
+                  <div key={i} className={style.point_detail}>
                     <p className={style.detail_point}>{p}</p>
                     <span className={style.detail_type}>Sự thoải mái và chất lượng phòng</span>
                   </div>

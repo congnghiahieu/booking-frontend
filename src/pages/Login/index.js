@@ -76,10 +76,10 @@ const Login = () => {
           <label htmlFor='password'>Mật Khẩu</label>
           <input id='password' type='password' onChange={e => setPassword(e.target.value)} />
         </div>
-        <div className='form-group-hor'>
+        {/* <div className='form-group-hor'>
           <label htmlFor='persist'>Duy trì phiên đăng nhập</label>
           <input id='persist' type='checkbox' checked={persist} onChange={toggle} />
-        </div>
+        </div> */}
         <div className='form-group'>
           <button disabled={!canLogin} onClick={onLogin}>
             Đăng nhập

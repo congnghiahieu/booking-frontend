@@ -11,7 +11,7 @@ export const store = configureStore({
     [searchSlice.name]: searchSlice.reducer,
   },
   middleware: gDM => gDM().concat(apiSlice.middleware),
-  devTools: process.env.NODE_ENV == 'development' ? true : false,
+  devTools: false,
 });
 
 setupListeners(store.dispatch);
