@@ -1,6 +1,18 @@
 .container {
-    /* display: flex; */
-    width: 100%;
-    padding: 10px 25%;
+  /* display: flex; */
+  width: 100%;
+  padding: 10px 25%;
 }
 
+.card {
+  margin: 10px 0px 20px 0;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  font-size: 2rem;
+  font-weight: 400;
+}

@@ -1,14 +1,14 @@
 import style from './HotelBooking.module.css';
 import PageDisplay from '../../components/Section/PageDisplay';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faUserFriends, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { TRANS_TYPES } from '../../utils/constants';
 import Sidebar from '../../components/HotelBooking/Sidebar';
 import ProgressStep from '../../components/HotelBooking/ProgressStep';
 import LoadingImg from '../../components/Loading/LoadingImg';
 import { useAddBookMutation } from '../../app/features/api/booksSlice';
-import { useParams } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import { useParams, Navigate } from 'react-router-dom';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 import { useEffect } from 'react';
 import { useBookingContext } from '../../hooks/useContext';
 import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
@@ -16,9 +16,11 @@ import { useGetServiceByIdQuery } from '../../app/features/api/servicesSlice';
 import { useSelector } from 'react-redux';
 import { selectTime } from '../../app/features/search/searchSlice';
 import { differenceInDays } from 'date-fns';
+import useDynamicTitle from '../../hooks/useDynamicTitle';
 
 const HotelBooking = () => {
-  const { id } = useAuth();
+  useDynamicTitle('Đơn đặt phòng', 'Đừng quên đặt phòng của bạn', 'Wygo.com | Official Website');
+  const { id } = useSelector(selectUserInfo);
   const { hotelId, serviceId } = useParams();
   const [start, end] = useSelector(selectTime);
   const {
@@ -62,11 +64,10 @@ const HotelBooking = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log(formData);
     try {
       // Get customer info and card info
-      let cusInfo;
-      let cardInfo;
+      let cusInfo = {};
+      let cardInfo = {};
       Object.keys(formData).forEach(key => {
         if (key.startsWith('cus')) {
           cusInfo[key] = formData[key].value;
@@ -87,12 +88,14 @@ const HotelBooking = () => {
       };
       console.log(submitData);
 
-      // await addBook(submitData).unwrap();
-      // setPage(2);
+      await addBook(submitData).unwrap();
+      setPage(2);
     } catch (err) {
-      console.log(err);
       if (!err.status) {
         console.log('No Server Response');
+      } else {
+        console.log(err.data.message);
+        console.log(err.status);
       }
     }
   };
@@ -100,7 +103,7 @@ const HotelBooking = () => {
   return (
     <>
       {isHtLoad || (isSvLoad && <LoadingImg />)}
-      {isHtErr || (isSvErr && <p>Fetch lỗi</p>)}
+      {(isHtErr || isSvErr) && <Navigate to='/error' />}
       {isHtOk && isSvOk && (
         <>
           {/* Progress */}
@@ -111,7 +114,7 @@ const HotelBooking = () => {
               {/* Multipage form */}
               <PageDisplay />
               {/* Redirect button */}
-              {page != 2 && (
+              {page !== 2 && (
                 <div className={style.Booking}>
                   <div>
                     <input
@@ -150,7 +153,7 @@ const HotelBooking = () => {
                     disabled={!canSubmit}>
                     {canSubmit ? 'Đặt phòng' : 'Vui lòng hoàn thiện thông tin'}
                   </button>
-                  {formData.cusEmail.value && page == 1 && (
+                  {formData.cusEmail.value && page === 1 && (
                     <div>
                       <hr />
                       <FontAwesomeIcon icon={faEnvelope} />

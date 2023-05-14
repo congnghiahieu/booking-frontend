@@ -2,10 +2,11 @@ import style from './WelcomeBack.module.css';
 import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCheck } from '@fortawesome/free-solid-svg-icons';
-import useAuth from '../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 
 const WelcomeBack = () => {
-  const { name } = useAuth();
+  const { name } = useSelector(selectUserInfo);
 
   return (
     <div className={style.WelcomeBack}>

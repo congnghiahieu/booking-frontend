@@ -45,7 +45,7 @@ const Sidebar = ({ hotel, service }) => {
             {room} Phòng x {service.name}
           </h4>
           <div className={style.feedBack}>
-            <p className={style.point}>{hotel.point}</p>
+            <p className={style.point}>{service.point}</p>
             <div className={style.comment}>
               <p id={style.one}>Vô cùng sạch sẽ</p>
               <p id={style.two}>Từ {hotel.cmtSum} bài viết</p>

@@ -2,6 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { add } from 'date-fns';
 import { SEARCH_FIELD } from '../../../utils/constants';
 
+const initialHotelLink = {
+  id: '',
+  slug: '',
+};
+
 export const searchSlice = createSlice({
   name: 'search',
   initialState: {
@@ -22,6 +27,7 @@ export const searchSlice = createSlice({
   reducers: {
     setSearch: (state, action) => {
       state.value = action.payload;
+      state.hotelLink = initialHotelLink;
     },
     setSearchErr: (state, action) => {
       state.err = action.payload;
@@ -31,6 +37,8 @@ export const searchSlice = createSlice({
     },
     setField: (state, action) => {
       state.field = action.payload;
+      state.value = '';
+      state.hotelLink = initialHotelLink;
     },
     setHotelLink: (state, action) => {
       state.hotelLink = action.payload;

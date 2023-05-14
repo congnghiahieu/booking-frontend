@@ -22,6 +22,16 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: (result, error, arg) => [{ type: 'User', id: arg }],
     }),
+    updateUser: builder.mutation({
+      query: userInfo => ({
+        url: '/v1/users/update_info',
+        method: 'PUT',
+        body: {
+          ...userInfo,
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.id }],
+    }),
     getFavByUserId: builder.query({
       query: userId => `/v1/users/fav?user_id=${userId}`,
       keepUnusedDataFor: 60,
@@ -57,7 +67,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
           hotelId: hotelId,
         },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.userId }],
+      invalidatesTags: (result, error, arg) => [{ type: 'Fav', id: arg.userId }],
     }),
     addCart: builder.mutation({
       query: ({ userId, serviceId }) => ({
@@ -68,7 +78,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
           serviceId: serviceId,
         },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.userId }],
+      invalidatesTags: (result, error, arg) => [{ type: 'Cart', id: arg.userId }],
     }),
     deleteFav: builder.mutation({
       query: ({ userId, hotelId }) => ({
@@ -79,7 +89,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
           hotelId: hotelId,
         },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.userId }],
+      invalidatesTags: (result, error, arg) => [{ type: 'Fav', id: arg.userId }],
     }),
     deleteCart: builder.mutation({
       query: ({ userId, serviceId }) => ({
@@ -90,7 +100,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
           serviceId: serviceId,
         },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.userId }],
+      invalidatesTags: (result, error, arg) => [{ type: 'Cart', id: arg.userId }],
     }),
   }),
 });
@@ -99,6 +109,7 @@ export const {
   useGetUserByIdQuery,
   useGetFavByUserIdQuery,
   useGetCartByUserIdQuery,
+  useUpdateUserMutation,
   useAddFavMutation,
   useAddCartMutation,
   useDeleteFavMutation,

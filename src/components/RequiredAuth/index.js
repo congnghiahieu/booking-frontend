@@ -1,9 +1,10 @@
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 
 const RequireAuth = ({ allowedRoles }) => {
   const location = useLocation();
-  const { roles } = useAuth();
+  const { roles } = useSelector(selectUserInfo);
 
   const content = roles.some(role => allowedRoles.includes(role)) ? (
     <Outlet />

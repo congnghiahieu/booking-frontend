@@ -10,8 +10,8 @@ const ATTRACTIVE_PLACES_VN = [
     img: '12_P_NdfQrXKHa2pxNncwefddqV9giXRu',
   },
   { name: 'Hà Nội', img: '1K6SO4JAoUq3rWkczraQ3OACwRna4Lc6G' },
-  { name: 'Đà Lạt', img: '1wPcD5bSDX0LbFNnC5XbMmLT1DEPwecUe' },
-  { name: 'Nha Trang', img: '19Heq8IexHzUI3WGu2EFvcCtaCo0vZO_s' },
+  { name: 'Quảng Ninh', img: '1fJ4owJWsY5xaDwyHRPSbgN_RrpvlgebJ' },
+  { name: 'Khánh Hoà', img: '19Heq8IexHzUI3WGu2EFvcCtaCo0vZO_s' },
 ];
 
 const HomeAttrVN = () => {

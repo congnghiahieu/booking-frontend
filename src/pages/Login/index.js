@@ -47,11 +47,11 @@ const Login = () => {
       navigate(from, { replace: true });
     } catch (err) {
       if (!err.status) {
-        setLoginErr('No Server Response');
+        setLoginErr('Không có phản hồi');
       } else if (err.status === 400) {
-        setLoginErr('Missing Username or Password');
+        setLoginErr('Thiếu thông tin');
       } else if (err.status === 401) {
-        setLoginErr('Unauthorized');
+        setLoginErr('Mật khẩu hoặc tên tài khoản không chính xác');
       } else {
         setLoginErr(err.data?.message);
       }

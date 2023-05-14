@@ -1,11 +1,12 @@
 import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import useAuth from '../../hooks/useAuth';
 import Avatar from 'react-avatar';
+import { useSelector } from 'react-redux';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 
 const MyAvatar = () => {
-  const { name, username, googleId } = useAuth();
+  const { name, username, googleId } = useSelector(selectUserInfo);
 
   const shortName = () => {
     if (!name) return '';

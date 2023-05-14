@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import style from './UserProfile.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,14 +9,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { useGetUserByIdQuery } from '../../app/features/api/usersSlice';
-import useAuth from '../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 import Information from '../../components/UserProfile/Information';
 import Payment from '../../components/UserProfile/Payment';
 import Follow from '../../components/UserProfile/Follow';
 import LoadingImg from '../../components/Loading/LoadingImg';
 
 const UserProfile = () => {
-  const { id } = useAuth();
+  const { id } = useSelector(selectUserInfo);
   const { data: user, isLoading, isSuccess, isError } = useGetUserByIdQuery(id);
 
   return (

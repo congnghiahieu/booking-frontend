@@ -22,7 +22,6 @@ const InputSearch = () => {
         className='search_select'
         onChange={e => {
           dispatch(setField(e.target.value));
-          dispatch(setSearch(''));
         }}
         defaultValue={useSelector(selectSearchField)}>
         {Object.values(SEARCH_FIELD).map(v => (

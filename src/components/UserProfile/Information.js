@@ -3,32 +3,39 @@ import RePassword from './RePassword';
 import RePhoneNumber from './RePhoneNumber';
 import { useState } from 'react';
 import style from './UserProfile.module.css';
+import useInput from '../../hooks/useInput';
+
 const Information = ({ user }) => {
-  const [name, setName] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState(false);
-  const [password, setPassWord] = useState(false);
+  const [showName, setShowName] = useState(false);
+  const [name, nameAttrs, nameReset] = useInput(user.name);
+
+  const [showPhone, setShowPhone] = useState(false);
+  const [phone, phoneAttrs, phoneReset] = useInput(user.contact.phone);
+
+  const [showPwd, setShowPwd] = useState(false);
+
   function handleClick(e) {
     if (e.target.id == 'name') {
-      setName(true);
+      setShowName(true);
     }
     if (e.target.id == 'phoneNumber') {
-      setPhoneNumber(true);
+      setShowPhone(true);
     }
     if (e.target.id == 'password') {
-      setPassWord(true);
+      setShowPwd(true);
     }
   }
   return (
     <>
       <div id='information' className={style.YourInfo}>
         <h2>Thông tin người dùng</h2>
-        {!name && (
+        {!showName && (
           <div className={style.display}>
             <div className={style.avatar}>
               <div className={style.icon}>D</div>
               <div className={style.name}>
                 <h2>Họ & tên</h2>
-                <span>{user.name}</span>
+                <span>{name}</span>
               </div>
             </div>
             <div id='name' className={style.edit} onClick={handleClick}>
@@ -36,38 +43,40 @@ const Information = ({ user }) => {
             </div>
           </div>
         )}
-        {name && <Rename setName={setName} />}
+        {showName && <Rename setShowName={setShowName} input={[name, nameAttrs, nameReset]} />}
         <div className={style.display}>
           <div className={style.name}>
             <h2>Email</h2>
             <span>{user.contact.email}</span>
           </div>
         </div>
-        {!phoneNumber ? (
+        {!showPhone ? (
           <div className={style.display}>
             <div className={style.name}>
               <h2>Số điện thoại</h2>
-              <span>{user.contact.phone || ''}</span>
+              <span>{phone}</span>
             </div>
             <div id='phoneNumber' className={style.edit} onClick={handleClick}>
               Chỉnh sửa
             </div>
           </div>
         ) : (
-          <RePhoneNumber setPhoneNumber={setPhoneNumber} />
+          <RePhoneNumber setShowPhone={setShowPhone} input={[phone, phoneAttrs, phoneReset]} />
         )}
-        {!password && (
+        {!showPwd && (
           <div className={style.display}>
             <div className={style.name}>
               <h2>Mật khẩu</h2>
               <span>*****</span>
             </div>
-            <div id='password' className={style.edit} onClick={handleClick}>
-              Chỉnh sửa
-            </div>
+            {user.id && !user.googleId && (
+              <div id='password' className={style.edit} onClick={handleClick}>
+                Chỉnh sửa
+              </div>
+            )}
           </div>
         )}
-        {password && <RePassword setPassWord={setPassWord} />}
+        {showPwd && <RePassword setShowPwd={setShowPwd} />}
       </div>
     </>
   );

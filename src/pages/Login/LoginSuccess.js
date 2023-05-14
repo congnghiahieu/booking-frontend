@@ -1,4 +1,3 @@
-import { Loading } from '../../components';
 import { useEffect } from 'react';
 import { useRefreshMutation } from '../../app/features/auth/authApiSlice';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -21,11 +20,7 @@ const LoginSuccess = () => {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    <div>
-      <Loading />
-    </div>
-  );
+  return <div>Loading...</div>;
 };
 
 export default LoginSuccess;

@@ -101,7 +101,7 @@ const Register = () => {
       required: true,
       autoComplete: 'password',
       error:
-        'Không hợp lệ. Mật khẩu từ 8 đến 24 kí tự, phải bao gồm chữ thường, chữ hoa, số và ít nhất 1 kí tự đặc biệt (!, @, #, $, %)',
+        'Không hợp lệ. Mật khẩu từ 8 đến 24 kí tự, phải bao gồm chữ thường, chữ hoa, số và ít nhất 1 trong các kí tự đặc biệt (!, @, #, $, %)',
     },
     {
       id: 'passwordVerification',

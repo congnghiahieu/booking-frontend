@@ -1,10 +1,9 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { useRefreshMutation } from '../../app/features/auth/authApiSlice';
 import useLocalCheckbox from '../../hooks/useLocalCheckbox';
 import { useSelector } from 'react-redux';
 import { selectCurrentToken } from '../../app/features/auth/authSlice';
-import Loading from '../Loading';
 
 const PersistLogin = () => {
   const [persist] = useLocalCheckbox('persist-login', false);
@@ -20,7 +19,7 @@ const PersistLogin = () => {
       // React 18 Strict Mode
 
       const verifyRefreshToken = async () => {
-        console.log('verifying refresh token');
+        // console.log('verifying refresh token');
         try {
           await refresh();
           //const { accessToken } = response.data
@@ -46,16 +45,11 @@ const PersistLogin = () => {
   } else if (isLoading) {
     //persist: yes, token: no
     console.log('loading');
-    content = <Loading />;
+    content = <p>Loading...</p>;
   } else if (isError) {
     //persist: yes, token: no
     console.log('error');
-    content = (
-      <p className='errmsg'>
-        {`${error?.data?.message} - `}
-        <Link to='/login'>Please login again</Link>.
-      </p>
-    );
+    content = <Navigate to='/' />;
   } else if (isSuccess && trueSuccess) {
     //persist: yes, token: yes
     console.log('success');

@@ -5,18 +5,17 @@ import { faUser, faCalendarCheck, faMessage } from '@fortawesome/free-solid-svg-
 import { Link } from 'react-router-dom';
 import UserComment from '../../components/UserComment/UserComment';
 import { useGetCmtsByUserIdQuery } from '../../app/features/api/cmtsSlice';
-import useAuth from '../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 
 const UserComments = () => {
-  const { id } = useAuth();
+  const { id } = useSelector(selectUserInfo);
   const [page, setPage] = useState(1);
   const {
     data: cmts,
     isLoading,
     isSuccess,
   } = useGetCmtsByUserIdQuery({ userId: id, page: 1, populate: true });
-
-  console.log(cmts);
 
   return (
     <>
@@ -40,8 +39,9 @@ const UserComments = () => {
         <div className={style.Show}>
           <p className={style.yourComment}>Đánh giá của bạn</p>
           {isLoading && <p>Loading...</p>}
-          {!isLoading && isSuccess ? (
-            cmts.length ? (
+          {!isLoading &&
+            isSuccess &&
+            (cmts.length ? (
               cmts.map(cmt => <UserComment key={cmt.id} cmt={cmt} />)
             ) : (
               <>
@@ -50,10 +50,7 @@ const UserComments = () => {
                   <button id={style.one}>Đặt phòng ngay</button>
                 </Link>
               </>
-            )
-          ) : (
-            <p>Error...</p>
-          )}
+            ))}
         </div>
       </div>
     </>

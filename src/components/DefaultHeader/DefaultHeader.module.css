@@ -46,9 +46,9 @@
   width: 62px;
   height: 62px;
   display: flex;
-  background-image: url('./apple-touch-icon.png');
+  background-image: url('../../../public/logo.png');
   background-size: 100% 100%;
-  margin-right: 40px;
+  margin: 0 20px;
 }
 
 .homelogin {

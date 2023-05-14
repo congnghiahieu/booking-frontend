@@ -6,17 +6,17 @@ import { faUser, faCalendarCheck, faMessage } from '@fortawesome/free-solid-svg-
 import { Link } from 'react-router-dom';
 import { useGetBooksByUserIdQuery } from '../../app/features/api/booksSlice';
 import { BOOK_STATUS_LIST, BOOK_STATUS } from '../../utils/constants';
-import useAuth from '../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 
 const UserBooking = () => {
   const [state, setState] = useState(BOOK_STATUS.INCOMMING);
-  const { id } = useAuth();
+  const { id } = useSelector(selectUserInfo);
   const {
     data: books,
     isLoading,
     isSuccess,
   } = useGetBooksByUserIdQuery({ userId: id, populate: true });
-  console.log(books);
 
   return (
     <>

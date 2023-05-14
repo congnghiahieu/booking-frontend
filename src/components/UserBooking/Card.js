@@ -5,8 +5,6 @@ import { getViewLinkGG } from '../../utils/getViewLinkGG';
 import { getVnDateFormat } from '../../utils/formatter';
 
 const Card = ({ book }) => {
-  console.log(book);
-
   const hotel = book.hotelId;
   const service = book.serviceId;
 

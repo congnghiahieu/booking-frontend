@@ -14,7 +14,6 @@ export const cmtsApiSlice = apiSlice.injectEndpoints({
       query: ({ userId, populate, page = QUERY.DEFAULT_PAGE, perPage = QUERY.DEFAULT_PER_PAGE }) =>
         `/v1/cmts?user_id=${userId}&page=${page}&per_page=${perPage}&populate=${populate}`,
       transformResponse: response => {
-        console.log(response);
         const modifiedData = response.map(dt => {
           const modified = {
             ...dt,

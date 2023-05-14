@@ -1,115 +1,119 @@
 .header {
-    width: 100%;
-    height: 100px;
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 8px 2px;
-    padding: 20px 20%;
-    margin-bottom: 16px;
-    display: flex;
-    justify-content: space-evenly;
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 8px 2px;
+  padding: 20px 20%;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.logo {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  background-image: url('../../../public/logo.png');
+  background-size: 100% 100%;
 }
 
 .progress {
-    position: relative;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  position: relative;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .progressStep {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .progressStep p {
-    position: absolute;
-    bottom: -22px;
-    right: -35px;
-    width: fit-content;
-    font-size: 14px;
+  position: absolute;
+  bottom: -22px;
+  right: -35px;
+  width: fit-content;
+  font-size: 14px;
 }
 
 .progressStep #three {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 130px;
-
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
 }
 
 .progressStep #two {
-    right: -55px;
+  right: -55px;
 }
 
 .progressStep span {
-    width: 200px;
-    height: 7px;
-    background-color: #bec2c9;
+  width: 200px;
+  height: 7px;
+  background-color: #bec2c9;
 }
 
 .progressStep span.active {
-    background-color: #5392f9;
-
+  background-color: #5392f9;
 }
 
 .circle {
-    display: flex;
-    justify-content: center;
-    background-color: #bec2c9;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    color: black;
+  display: flex;
+  justify-content: center;
+  background-color: #bec2c9;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  color: black;
 }
-
 
 .active {
-    background-color: #5392f9;
-    color: #fff;
+  background-color: #5392f9;
+  color: #fff;
 }
-.dropdown{
-    position: relative;
+.dropdown {
+  position: relative;
 }
 .avatar {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    border-left: 1px solid #d7d7db;
-    border-right: 1px solid #d7d7db;
-    padding: 0px 20px;
-    background-color: #fff;
-    border-top: none;
-    border-bottom: none;
-    position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-left: 1px solid #d7d7db;
+  border-right: 1px solid #d7d7db;
+  padding: 0px 20px;
+  background-color: #fff;
+  border-top: none;
+  border-bottom: none;
+  position: absolute;
 }
 
 .menu {
-    position: absolute;
-    border-radius: 4px;
-    border: 1px solid rgb(221, 223, 226);
-    width: 150px;
-    background-color: #fff;
-    top:50px;
-    right: -115px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+  position: absolute;
+  border-radius: 4px;
+  border: 1px solid rgb(221, 223, 226);
+  width: 150px;
+  background-color: #fff;
+  top: 50px;
+  right: -115px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
 }
-.menu::before{
-    content: '';
-    position: absolute;
-    background-color: #fff;
-    width: 10px;
-    height: 10px;
-    top:-6px;
-    right:10px;
-    transform: rotate(45deg);
-    border-left:1px solid rgb(221, 223, 226);
-    border-top:1px solid rgb(221, 223, 226);
+.menu::before {
+  content: '';
+  position: absolute;
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  top: -6px;
+  right: 10px;
+  transform: rotate(45deg);
+  border-left: 1px solid rgb(221, 223, 226);
+  border-top: 1px solid rgb(221, 223, 226);
 }
-.menu ul{
-    list-style-type: none;
+.menu ul {
+  list-style-type: none;
 }

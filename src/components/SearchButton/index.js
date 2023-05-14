@@ -29,7 +29,7 @@ const SearchButton = ({ className }) => {
       if (!normalized)
         return dispatch(setSearchErr('Vui lòng nhập tên tỉnh thành / thành phố bạn muốn đến'));
       if (!Object.keys(provinvesMap).includes(normalized)) {
-        return dispatch(setSearchErr('Hiện tại chúng tôi chỉ hỗ trỡ tìm kiếm các tỉnh thành ở VN'));
+        return dispatch(setSearchErr('Hiện tại chúng tôi chỉ hỗ trợ tìm kiếm các tỉnh thành ở VN'));
       }
 
       const transformed = provinvesMap[normalized].name;
@@ -44,9 +44,22 @@ const SearchButton = ({ className }) => {
         }).toString(),
       });
     }
+
     // Else search by name, direct to hotel single page
     if (!normalized) return dispatch(setSearchErr('Vui lòng nhập tên khách sạn bạn muốn đến'));
-    return navigate(`/hotel/view/${hotelLink.slug}/${hotelLink.id}`);
+    // If user choose (click) one of suggested hotels
+    if (hotelLink.slug && hotelLink.id) {
+      return navigate(`/hotel/view/${hotelLink.slug}/${hotelLink.id}`);
+    }
+    // If user type hotel name
+    return navigate({
+      pathname: '/search',
+      search: createSearchParams({
+        name: searchValue,
+        start,
+        end,
+      }).toString(),
+    });
   };
 
   return (

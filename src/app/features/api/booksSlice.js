@@ -41,6 +41,7 @@ export const booksApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: (result, error, arg) => [
         { type: 'Book', id: arg.userId },
         { type: 'Book', id: arg.hotelId },
+        { type: 'Book', id: arg.serviceId },
       ],
     }),
     updateBookById: builder.mutation({

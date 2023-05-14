@@ -4,10 +4,11 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import CardItem from '../../components/Cart/CartItem';
 import { useGetCartByUserIdQuery } from '../../app/features/api/usersSlice';
-import useAuth from '../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 
 const Cart = () => {
-  const { id } = useAuth();
+  const { id } = useSelector(selectUserInfo);
   const { data, isLoading, isSuccess } = useGetCartByUserIdQuery({ userId: id, populate: true });
   console.log(data);
 
@@ -15,10 +16,10 @@ const Cart = () => {
     <>
       <div className={style.container}>
         <div className={style.card}>
-          <h3>
+          <div className={style.title}>
             <FontAwesomeIcon icon={faCartShopping} />
             <span>Giỏ hàng của quý khách</span>
-          </h3>
+          </div>
         </div>
         {isLoading && <p>Loading...</p>}
         {!isLoading && isSuccess ? (

@@ -2,7 +2,7 @@ import style from './Progress.module.css';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 import DropDownItem from '../DropdownItem';
 import MyAvatar from '../MyAvatar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useMemo, useState, useRef } from 'react';
 import useClickout from '../../hooks/useClickout';
 import { useBookingContext } from '../../hooks/useContext';
@@ -32,7 +32,7 @@ const ProgressStep = () => {
     return (
       <>
         <div className={style.header}>
-          <img src='' />
+          <Link to='/' className={style.logo}></Link>
           <div className={style.progress}>
             <div className={style.progressStep}>
               <div className={`${style.circle} ${page >= 0 ? style.active : ''}`}>1</div>

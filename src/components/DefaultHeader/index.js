@@ -12,7 +12,8 @@ import DropDownItem from '../DropdownItem';
 import MyAvatar from '../MyAvatar';
 import { useState, useRef, memo } from 'react';
 import useClickout from '../../hooks/useClickout';
-import useAuth from '../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { selectUserInfo } from '../../app/features/auth/authSlice';
 import { useLogoutMutation } from '../../app/features/auth/authApiSlice';
 import Cart from '../Cart/Cart';
 
@@ -20,7 +21,7 @@ const DefaultHeader = () => {
   const navigate = useNavigate();
   const [logout] = useLogoutMutation();
 
-  const { id, roles } = useAuth();
+  const { id } = useSelector(selectUserInfo);
 
   const [open, setOpen] = useState(false);
   let menuRef = useRef();

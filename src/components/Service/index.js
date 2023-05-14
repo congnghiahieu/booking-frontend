@@ -8,20 +8,19 @@ import {
   faShower,
   faSink,
   faCheck,
-  faDollarSign,
   faChildren,
   faChildReaching,
 } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useRef, memo } from 'react';
+import { memo } from 'react';
 import SlideImage from '../SlideImage/SlideImage';
-import { getRan, getDiscount, getReview } from '../../utils/random';
+import { getReview } from '../../utils/random';
 import { numFormatter } from '../../utils/formatter';
+import AddButton from '../Cart/AddButton';
 
 function Service({ service }) {
   const navigate = useNavigate();
   const { hotelSlug, hotelId } = useParams();
-  const onAddToCart = async () => {};
 
   const onDirectToBook = () => {
     navigate(`/hotel/booking/${hotelSlug}/${service.slug}/${hotelId}/${service.id}`);
@@ -161,7 +160,7 @@ function Service({ service }) {
                 <button className='booking' onClick={onDirectToBook}>
                   Đặt trước
                 </button>
-                <button className='push_list'>Thêm vào giỏ hàng</button>
+                <AddButton className='push_list' serviceId={service.id} />
               </div>
             </div>
           </div>

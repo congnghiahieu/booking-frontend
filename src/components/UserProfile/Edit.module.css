@@ -1,57 +1,86 @@
 .replace {
-    display: flex;
-    color: #5a5b5b;
-    margin-bottom: 10px;
-    padding: 24px 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1);
-    justify-content: space-between;
-    gap: 30px;
-    flex-direction: column;
+  display: flex;
+  color: #5a5b5b;
+  margin-bottom: 10px;
+  padding: 24px 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  gap: 30px;
+  flex-direction: column;
 }
 
 .replace label {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .replace input {
-    margin-top: 10px;
-    height: 40px;
-    width: 400px;
-    padding: 10px 5px;
-    border: 1px solid rgb(206, 208, 212)
+  margin-top: 10px;
+  height: 40px;
+  width: 400px;
+  padding: 10px 5px;
+  border: 1px solid rgb(206, 208, 212);
 }
 
 .replace input:focus {
-    border-color: rgb(83, 146, 249);
-    outline: 0px;
-    box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset, rgb(83, 146, 249) 0px 0px 6px;
+  border-color: rgb(83, 146, 249);
+  outline: 0px;
+  box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset, rgb(83, 146, 249) 0px 0px 6px;
 }
 
 .replace button {
-    margin-right: 10px;
-    padding: 10px 40px;
-    border: none;
-    background-color: #fff;
-    font-size: 18px;
-    border-radius: 2px;
-    font-weight: 500;
+  margin-right: 10px;
+  padding: 10px 40px;
+  border: none;
+  background-color: #fff;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.replace .note {
+  font-size: 1.4rem;
+}
+
+.replace .err {
+  font-size: 1.2rem;
+  color: #e12d2d;
+}
+
+.replace .success {
+  font-size: 1.2rem;
+  color: #28a745;
 }
 
 .replace .discard {
-    color: #2196F3;
+  color: #2196f3;
 }
 
 .replace .discard:hover {
-    color: #fff;
-    background-color: #2196F3;
+  color: #fff;
+  background-color: #2196f3;
 }
 
 .replace .save {
-    color: #fff;
-    background-color: #2196F3;
+  color: #fff;
+  background-color: #2196f3;
 }
 
 .replace .save:hover {
-    opacity: 0.7;
+  opacity: 0.7;
+}
+
+.replace .discard:disabled,
+.save:disabled {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.replace .discard:disabled:hover,
+.save:disabled:hover {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  opacity: 1;
 }

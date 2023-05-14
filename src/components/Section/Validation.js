@@ -53,7 +53,7 @@ const Page1 = () => {
       type: 'text',
       placeholder: 'Nhập số điện thoại',
       label: 'Số điện thoại',
-      pattern: '(84|0[3|5|7|8|9])+([0-9]{8})\\b',
+      pattern: '(84|0[3|5|7|8|9])+([0-9]{8})',
       required: true,
       autoComplete: 'tel',
       error: 'Số điện thoại không hợp lệ',
