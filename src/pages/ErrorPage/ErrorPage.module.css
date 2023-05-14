@@ -6,7 +6,7 @@
   align-items: center;
 }
 .error_content {
-  width: 1080px;
+  width: fit-content;
   display: flex;
   height: fit-content;
   padding: 40px 0px;
@@ -18,10 +18,12 @@
   height: 66px;
   margin-top: 10px;
   gap: 10px;
+  width: 100%;
+  justify-content: center;
 }
 
 .inputsearch {
-  width: 600px;
+  width: 500px;
 }
 .dateplant {
   min-width: 400px !important;
@@ -49,4 +51,21 @@
 
 .subfooter {
   width: 100%;
+}
+
+.search_btn {
+  min-width: 130px;
+  width: fit-content;
+  height: 100%;
+  padding: 11px 0;
+  font-size: 18px;
+  font-weight: 200;
+  color: white;
+  background-color: var(--btn-color);
+  border: none;
+  border-radius: 12px;
+}
+.search_btn:hover {
+  opacity: 0.7;
+  transition: 0.2s;
 }

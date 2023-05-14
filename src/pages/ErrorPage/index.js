@@ -1,5 +1,13 @@
-import { useState } from 'react';
-import { InputSearch, Member, DatePlant, HomeSubFooter, SearchSuggest } from '../../components';
+import React from 'react';
+import {
+  InputSearch,
+  Member,
+  DatePlant,
+  HomeSubFooter,
+  SearchHeader,
+  SearchSuggest,
+  SearchButton,
+} from '../../components';
 import { selectSearch } from '../../app/features/search/searchSlice';
 import { useSelector } from 'react-redux';
 import style from './ErrorPage.module.css';
@@ -26,6 +34,7 @@ const ErrorPage = () => {
             <DatePlant />
           </div>
           <Member />
+          <SearchButton className={style.search_btn} />
         </div>
       </div>
 
