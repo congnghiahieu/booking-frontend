@@ -4,30 +4,38 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useRef, memo } from 'react';
 import { getRan, getDiscount } from '../../utils/random';
 import { PointBar } from '../../components';
-
-function FeedBack({ hotelName, hotelPoint }) {
-  var comment = '';
-  if (hotelPoint > '9') {
-    comment = 'Trên cả tuyệt vời';
-  } else if (hotelPoint > '8') {
-    comment = 'Tuyệt vời';
-  }
-  const point = useRef(getRan());
+import { getReview } from '../../utils/random';
+import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
+import LoadingImg from '../Loading/LoadingImg';
+import {Error} from '../../components';
+function FeedBack({ hotelId }) {
+  const {
+    data: hotel,
+    isLoading: isHtLoad,
+    isSuccess: isHtOk,
+    isError: isHtErr,
+  } = useGetHotelByIdQuery(hotelId);
+  // const point = useRef(getRan());
 
   return (
-    <div className={style.feedback}>
+    <>
+    {isHtLoad && <LoadingImg/>}
+    {!isHtLoad && isHtErr && <Error />}
+    {!isHtLoad && isHtOk ? (
+        <>
+          <div className={style.feedback}>
       <div className={style.feedback_content}>
         <span className={style.feedback_header}>
           <span className={style.feedback_h1}>
-            Bài đánh giá {hotelName} - Cuộc sống quý phái từ khách thật
+            Bài đánh giá {hotel.name} - Cuộc sống quý phái từ khách thật
           </span>
           <p className={style.feedback_h2}>Đánh giá tổng thể</p>
         </span>
         <div className={style.point_list}>
           <div className={style.overall}>
-            <div className={style.overall_point}>{hotelPoint}</div>
+            <div className={style.overall_point}>{hotel.point}</div>
             <div className={style.overall_script}>
-              <p className={style.overall_text}>{comment}</p>
+              <p className={style.overall_text}>{getReview(hotel.point)}</p>
               <p className={style.overall_subtext}>
                 Dựa trên 515 bài đánh giá
                 <FontAwesomeIcon icon={faCheck} color='#59a923' className={style.icon_green} />
@@ -51,10 +59,10 @@ function FeedBack({ hotelName, hotelPoint }) {
           <div className={style.agoda_point}>
             <span className={style.feedback_h2}>Điểm số qua Agoda</span>
             <p className={style.point_on10}>
-              {hotelPoint}
+              {hotel.point}
               <span className={style.on10}>/10</span>
             </p>
-            <p className={style.overall_text}>{comment}</p>
+            <p className={style.overall_text}>{getReview(hotel.point)}</p>
             <p className={style.overall_subtext1}>
               <FontAwesomeIcon icon={faCheck} color='#59a923' className={style.icon_green} />
               Dựa trên 515 bài đánh giá
@@ -75,6 +83,11 @@ function FeedBack({ hotelName, hotelPoint }) {
         </div>
       </div>
     </div>
-  );
-}
+        </>
+      ) : (
+        <></>
+      )}
+    </>
+  )
+};
 export default memo(FeedBack);

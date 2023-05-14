@@ -48,9 +48,9 @@ const UserComments = () => {
             ) : (
               <>
                 <p>Bạn chưa có bình luận nào</p>
-                <Link to='/'>
+                {/* <Link to='/'>
                   <button id={style.one}>Đặt phòng ngay</button>
-                </Link>
+                </Link> */}
               </>
             ))}
         </div>

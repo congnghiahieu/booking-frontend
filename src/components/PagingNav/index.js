@@ -1,4 +1,5 @@
 import PagingButton from '../PagingButton';
+import style from "./PagingNav.module.css"
 
 const PagingNav = ({ isFetching, page, setPage, totalPages }) => {
   const lastPage = () => setPage();
@@ -9,11 +10,11 @@ const PagingNav = ({ isFetching, page, setPage, totalPages }) => {
     .map((_, index) => index + 1);
 
   return (
-    <div className='paging-nav'>
+    <div className={style.pagingNav}>
       <button
         onClick={firstPage}
         disabled={isFetching || page === 1 || totalPages < 1}
-        className='paging-btn'>
+        className={style.pagingBtn}>
         &lt;&lt;
       </button>
 
@@ -24,7 +25,7 @@ const PagingNav = ({ isFetching, page, setPage, totalPages }) => {
       <button
         onClick={lastPage}
         disabled={isFetching || page === totalPages || totalPages < 1}
-        className='paging-btn'>
+        className={style.pagingBtn}>
         &gt;&gt;
       </button>
     </div>
