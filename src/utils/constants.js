@@ -51,7 +51,7 @@ const BOOK_STATUS = {
   INCOMMING: 'Sắp tới',
   FINISHED: 'Hoàn tất',
   CANCELED: 'Đã huỷ',
-  // INPROCESS: 'Đang diễn ra',
+  // INPROGRESS: 'Đang diễn ra',
 };
 
 const BOOK_STATUS_LIST = Object.values(BOOK_STATUS);

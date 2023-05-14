@@ -15,6 +15,7 @@ const UserComments = () => {
     data: cmts,
     isLoading,
     isSuccess,
+    isError,
   } = useGetCmtsByUserIdQuery({ userId: id, page: 1, populate: true });
 
   return (
@@ -39,6 +40,7 @@ const UserComments = () => {
         <div className={style.Show}>
           <p className={style.yourComment}>Đánh giá của bạn</p>
           {isLoading && <p>Loading...</p>}
+          {!isLoading && isError && <p>Error...</p>}
           {!isLoading &&
             isSuccess &&
             (cmts.length ? (

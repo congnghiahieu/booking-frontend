@@ -16,7 +16,19 @@ const UserBooking = () => {
     data: books,
     isLoading,
     isSuccess,
-  } = useGetBooksByUserIdQuery({ userId: id, populate: true });
+    isError,
+  } = useGetBooksByUserIdQuery(
+    { userId: id, populate: true },
+    {
+      selectFromResult: result => {
+        const { data } = result;
+        if (data) {
+          console.log(data);
+        }
+        return result;
+      },
+    },
+  );
 
   return (
     <>
@@ -60,8 +72,10 @@ const UserBooking = () => {
           </div>
           <div className={style.hotelBooking}>
             {isLoading && <p>Loading...</p>}
-            {!isLoading && isSuccess ? (
-              books.length ? (
+            {!isLoading && isError && <p>Error...</p>}
+            {!isLoading &&
+              isSuccess &&
+              (books.length ? (
                 books.map(book => <Card key={book.id} book={book} />)
               ) : (
                 <>
@@ -70,10 +84,7 @@ const UserBooking = () => {
                     <button id={style.booking}> Đặt phòng ngay</button>
                   </Link>
                 </>
-              )
-            ) : (
-              <p>Error...</p>
-            )}
+              ))}
           </div>
         </div>
       </div>

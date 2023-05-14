@@ -14,6 +14,7 @@ export const booksApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 60,
       query: ({ userId, populate }) => `/v1/books?user_id=${userId}&populate=${populate}`,
       transformResponse: response => {
+        console.log(response);
         const modifiedData = response.map(dt => {
           const modified = {
             ...dt,
