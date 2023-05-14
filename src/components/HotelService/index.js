@@ -17,8 +17,8 @@ const HotelService = ({ hotelId }) => {
 
   return (
     <div className={style.svContainer} id='hotelSuggest'>
-      {<LoadingImg />}
-      {/* {isSvLoad && <LoadingPost />} */}
+      {/* {<LoadingImg />} */}
+      {isSvLoad && <LoadingImg />}
       {!isSvLoad && isSvErr && <Error />}
       {!isSvLoad && isSvOk ? (
         <>

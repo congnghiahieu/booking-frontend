@@ -1,14 +1,15 @@
-import HotelInfo from '../HotelInfo';
-import style from './HotelIntro.module.css';
-import { useGetHotelByIdQuery } from '../../app/features/api/hotelsSlice';
-import Loading from '../Loading/Loading';
-import LoadingPost from '../Loading/LoadingPost';
-import Error from '../Error';
-import SlideImage1 from '../SlideImage/SlideImage1';
-import { memo } from 'react';
-import LoadingImg from '../Loading/LoadingImg';
-import useTitle from '../../hooks/useTitle';
-import { hotelLocationFormat } from '../../utils/formatter';
+import HotelInfo from "../HotelInfo";
+import style from "./HotelIntro.module.css";
+import { useGetHotelByIdQuery } from "../../app/features/api/hotelsSlice";
+import Loading from "../Loading/Loading";
+import LoadingPost from "../Loading/LoadingPost";
+import Error from "../Error";
+import SlideImage1 from "../SlideImage/SlideImage1";
+import { memo } from "react";
+import LoadingImg from "../Loading/LoadingImg";
+import useTitle from "../../hooks/useTitle";
+import { Navigate } from "react-router-dom";
+import { hotelLocationFormat } from "../../utils/formatter";
 
 const HotelIntro = ({ hotelId }) => {
   const {
@@ -18,7 +19,11 @@ const HotelIntro = ({ hotelId }) => {
     isError: isHtErr,
   } = useGetHotelByIdQuery(hotelId);
 
-  useTitle(hotel ? `${hotel.name} - ${hotelLocationFormat(hotel.location)}` : 'Wygo.com');
+  useTitle(
+    hotel
+      ? `${hotel.name} - ${hotelLocationFormat(hotel.location)}`
+      : "Wygo.com"
+  );
 
   return (
     <div className={style.introContainer}>
@@ -26,8 +31,14 @@ const HotelIntro = ({ hotelId }) => {
       {!isHtLoad && isHtErr && <Error />}
       {!isHtLoad && isHtOk ? (
         <>
-          <SlideImage1 hotel={hotel} />
-          <HotelInfo hotel={hotel} />
+          {hotel ? (
+            <>
+              <SlideImage1 hotel={hotel} />
+              <HotelInfo hotel={hotel} />
+            </>
+          ) : (
+            <Navigate to="/error" />
+          )}
         </>
       ) : (
         <></>
