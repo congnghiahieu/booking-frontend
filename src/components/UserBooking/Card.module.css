@@ -13,7 +13,7 @@
 }
 .img {
   width: 30%;
-  background-color: #5392f9;
+  background-color: gray;
 }
 .info {
   padding: 20px 0px;
@@ -30,6 +30,12 @@
   font-weight: 500;
   margin-bottom: 10px;
 }
+
+.info .check.cancel {
+  border: 1px solid #e12d2d;
+  color: #e12d2d;
+}
+
 .info h4 {
   font-size: 16px;
   margin-bottom: 10px;
@@ -41,6 +47,13 @@
   margin-top: 10px;
   color: rgb(40, 135, 28);
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.state.cancel {
+  color: #e12d2d;
 }
 
 .info #one {

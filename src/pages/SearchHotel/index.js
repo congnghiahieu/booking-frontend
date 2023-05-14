@@ -61,8 +61,6 @@ const SearchHotel = () => {
     },
   );
 
-  console.log(hotels);
-
   return (
     <>
       <SearchHeader />
@@ -87,8 +85,11 @@ const SearchHotel = () => {
               );
             })}
           </div>
-          {(!isLoading || !isFetching) && isSuccess ? (
-            hotels?.ids?.length ? (
+          {isLoading || (isFetching && <Loading />)}
+          {!isLoading &&
+            !isFetching &&
+            isSuccess &&
+            (hotels?.ids?.length ? (
               hotels.ids.map(id => {
                 const hotel = hotels.entities[id];
                 return (
@@ -105,10 +106,7 @@ const SearchHotel = () => {
               <Navigate to='/error' replace={true} />
             ) : (
               <p>Không tìm thấy kết quả phù hợp</p>
-            )
-          ) : (
-            <Loading />
-          )}
+            ))}
         </div>
       </div>
       <HomeSubFooter />

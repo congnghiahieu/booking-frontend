@@ -1,167 +1,166 @@
-.WelcomeBack{
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+.WelcomeBack {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
-.WB_text{
-    width: 80%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    font-size: 24px;
-    letter-spacing: 0.5px;
-   
+.WB_text {
+  width: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  letter-spacing: 0.5px;
 }
-.vip_quality{
-    display: flex;
-    width: fit-content;
-    margin-left: 3px;
-    font-size: 12px;
-    font-weight: 300;
-   
+.vip_quality {
+  display: flex;
+  width: fit-content;
+  margin-left: 3px;
+  font-size: 12px;
+  font-weight: 300;
 }
-.vip{
-    background-color: #1d2129 ;
-    color: white;
-    display: flex;
-    width: 50px;
-    justify-content: space-evenly;
-    
-    padding: 0px 5px;
-    align-items: center;
-}
-.quality{
-    display: flex;
-    background: linear-gradient(90deg, rgb(231, 172, 140) 0%, rgb(207, 125, 78) 100%);
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    padding: 0px 5px;
-}
-.quality_content{
-    width: 100%;
-    height: 250px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
-    border-radius: 8px;
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    padding: 12px 16px;
-}
-.quality_frame{
-    height: 150px;
-    min-width: 280px;
-    border-radius: 8px;
-    background-color: rgb(42, 42, 58);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.quality_text1{
-    color: white;
-    padding: 12px;
-    font-size: 20px;
-    width: 100%;
-    display: block;
-    font-weight: 500;
+.vip {
+  background-color: #1d2129;
+  color: white;
+  display: flex;
+  width: 50px;
+  justify-content: space-evenly;
 
+  padding: 0px 5px;
+  align-items: center;
 }
-.quality_color1{
-    width: 197px;
-    height: 100px;
-    position: absolute;
-    top: 45px;
-    right: -103px;
-    background-color: rgb(207, 125, 78);
-    transform: rotate(290deg);
+.quality {
+  display: flex;
+  background: linear-gradient(90deg, rgb(231, 172, 140) 0%, rgb(207, 125, 78) 100%);
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  padding: 0px 5px;
 }
-.quality_color2{
-    width: 198px;
-    height: 100px;
-    position: absolute;
-    top: 45px;
-    right: -111px;
-    background: linear-gradient(90deg, rgb(231, 172, 140) 0%, rgb(207, 125, 78) 100%);
-    transform: rotate(290deg);
+.quality_content {
+  width: 100%;
+  height: 250px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 12px 16px;
 }
-.quality_subtext1{
-    color: white;
-    font-size: 14px;
-    padding: 5px 10px;
+.quality_frame {
+  height: 150px;
+  min-width: 280px;
+  border-radius: 8px;
+  background-color: rgb(42, 42, 58);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.quality_text{
-    padding: 12px;
-    width: 70%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.quality_text1 {
+  color: white;
+  padding: 12px;
+  font-size: 20px;
+  width: 100%;
+  display: block;
+  font-weight: 500;
 }
-.text_passage{
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
+.quality_color1 {
+  width: 197px;
+  height: 100px;
+  position: absolute;
+  top: 45px;
+  right: -103px;
+  background-color: rgb(207, 125, 78);
+  transform: rotate(290deg);
 }
-.quality_text ul{
-    list-style-type: none;
-    font-weight: 500;
-    font-size: 12px;
+.quality_color2 {
+  width: 198px;
+  height: 100px;
+  position: absolute;
+  top: 45px;
+  right: -111px;
+  background: linear-gradient(90deg, rgb(231, 172, 140) 0%, rgb(207, 125, 78) 100%);
+  transform: rotate(290deg);
+}
+.quality_subtext1 {
+  color: white;
+  font-size: 14px;
+  padding: 5px 10px;
+}
+.quality_text {
+  padding: 12px;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.text_passage {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.quality_text ul {
+  list-style-type: none;
+  font-weight: 500;
+  font-size: 12px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
-.quality_text li{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
+.quality_text li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
 }
-.quality_process{
-    display: flex;
-    align-items: center;
+.quality_process {
+  display: flex;
+  align-items: center;
 }
 
-.process{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    justify-content: space-around;
+.process {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-around;
 }
 
-.quality_color3{
-    padding: 8px;
-    background-color: #1d2129;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.quality_color3 {
+  padding: 8px;
+  background-color: #1d2129;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.process_barBS, .process_barSG, .process_barGP{
-    height: 4px;
-    background-color: #e2e8f4;;
-    display: flex;
-    border-radius: 10px;
+.process_barBS,
+.process_barSG,
+.process_barGP {
+  height: 4px;
+  background-color: #e2e8f4;
+  display: flex;
+  border-radius: 10px;
 }
-.process_barBS{
-    width: 80px;
+.process_barBS {
+  width: 80px;
 }
-.process_barSG{
-    width: 120px;
+.process_barSG {
+  width: 120px;
 }
-.process_barGP{
-    width: 200px;
+.process_barGP {
+  width: 200px;
 }
-.text4{
-    font-size: 10px;
-    color: #cfcfcf ;
+.text4 {
+  font-size: 10px;
+  color: #cfcfcf;
 }

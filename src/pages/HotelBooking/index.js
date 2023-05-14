@@ -86,7 +86,6 @@ const HotelBooking = () => {
         value,
         transType: TRANS_TYPES.BOOKING,
       };
-      console.log(submitData);
 
       await addBook(submitData).unwrap();
       setPage(2);
@@ -157,7 +156,6 @@ const HotelBooking = () => {
                     <div>
                       <hr />
                       <FontAwesomeIcon icon={faEnvelope} />
-
                       <span>
                         {' '}
                         Chúng tôi sẽ gửi xác nhận phòng qua địa chỉ email{' '}

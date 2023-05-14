@@ -10,7 +10,6 @@ import { selectUserInfo } from '../../app/features/auth/authSlice';
 const Cart = () => {
   const { id } = useSelector(selectUserInfo);
   const { data, isLoading, isSuccess } = useGetCartByUserIdQuery({ userId: id, populate: true });
-  console.log(data);
 
   return (
     <>

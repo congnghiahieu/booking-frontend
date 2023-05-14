@@ -2,8 +2,11 @@ import style from './Confirm.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useBookingContext } from '../../hooks/useContext';
 
 const Page3 = () => {
+  const { formData } = useBookingContext();
+
   return (
     <>
       <div className={style.container}>
@@ -12,8 +15,8 @@ const Page3 = () => {
         <h1>Đặt phòng thành công !</h1>
         <p>Cảm ơn bạn đã sử dụng dịch vụ đặt phòng của chúng tôi</p>
         <p>
-          Bộ phận phụ trách sẽ chủ động liên hệ cho anh(chị) trong thời gian sớm nhất có thể. Trong
-          trường hợp cần gấp vui lòng liên hệ Hotline:0327892024{' '}
+          Vui lòng kiểm tra địa chỉ email <strong>{formData.cusEmail.value}</strong> thường xuyên để
+          nhận được thông báo mới nhất của chúng tôi
         </p>
         <p>Chân thành cảm ơn </p>
         <div className={style.button}>

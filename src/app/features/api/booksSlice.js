@@ -14,7 +14,6 @@ export const booksApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 60,
       query: ({ userId, populate }) => `/v1/books?user_id=${userId}&populate=${populate}`,
       transformResponse: response => {
-        console.log(response);
         const modifiedData = response.map(dt => {
           const modified = {
             ...dt,
@@ -46,15 +45,15 @@ export const booksApiSlice = apiSlice.injectEndpoints({
       ],
     }),
     updateBookById: builder.mutation({
-      query: ({ id, flag }) => ({
+      query: ({ bookId, flag }) => ({
         url: `/v1/books/update_info`,
         method: 'PUT',
         body: {
-          id,
+          id: bookId,
           flag,
         },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'Book', id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: 'Book', id: arg.bookId }],
     }),
   }),
 });

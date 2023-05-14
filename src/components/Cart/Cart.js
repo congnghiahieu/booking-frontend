@@ -14,7 +14,7 @@ const Cart = () => {
       <FontAwesomeIcon icon={faCartShopping} />
       <div className={style.quantity}>
         {isLoading && <span>...</span>}
-        {!isLoading && isSuccess && data.cart.length !== 0 && <span>{data.cart.length}</span>}
+        {!isLoading && isSuccess && <span>{data.cart.length}</span>}
       </div>
     </Link>
   );

@@ -2,11 +2,10 @@ import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faStar, faPersonWalking, faCar } from '@fortawesome/free-solid-svg-icons';
 import style from './HotelInfo.module.css';
-import { NearBy, HotelOverview, HotelOptionBar,FeedBackPoint } from '../../components';
+import { NearBy, HotelOverview, HotelOptionBar, FeedBackPoint } from '../../components';
 import { Link } from 'react-router-dom';
 
 const HotelInfo = ({ hotel }) => {
-  console.log(hotel)
   return (
     <div>
       <div>
@@ -148,7 +147,7 @@ const HotelInfo = ({ hotel }) => {
             </div>
           </div>
           <div className={style.hotel_content2}>
-            <FeedBackPoint hotel={hotel}/>
+            <FeedBackPoint hotel={hotel} />
             <div className={style.hotel_nearby}>
               <div className={style.feedback_position}>
                 <div className={style.hotel_point1}>

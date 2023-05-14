@@ -46,7 +46,7 @@ const ProgressStep = () => {
             <div className={style.progressStep}>
               <span className={page >= 2 ? style.active : ''}></span>
               <div className={`${style.circle} ${page >= 2 ? style.active : ''}`}>3</div>
-              <p id={style.two}>Đã xác nhận đặt phòng!</p>
+              <p id={style.two}>Xác nhận đặt phòng!</p>
             </div>
           </div>
           <div className={style.dropdown} ref={menuRef}>

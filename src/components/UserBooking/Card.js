@@ -3,8 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { getViewLinkGG } from '../../utils/getViewLinkGG';
 import { getVnDateFormat } from '../../utils/formatter';
+import { useUpdateBookByIdMutation } from '../../app/features/api/booksSlice';
+import { BOOK_STATUS } from '../../utils/constants';
 
 const Card = ({ book }) => {
+  const [updateBook, { isLoading }] = useUpdateBookByIdMutation();
+
   const hotel = book.hotelId;
   const service = book.serviceId;
 
@@ -15,25 +19,34 @@ const Card = ({ book }) => {
   const start = getVnDateFormat(book.period.start);
   const end = getVnDateFormat(book.period.end);
 
+  const onCancel = async () => {
+    try {
+      await updateBook({ bookId: book.id, flag: BOOK_STATUS.CANCELED }).unwrap();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <div className={style.card}>
         <div className={style.booking}>
           <img className={style.img} src={getViewLinkGG(hotel.imgsGG[0])} />
           <div className={style.info}>
-            <p className={style.check}>Đã xác nhận đặt phòng</p>
+            <p className={`${style.check} ${!book.isCanceled ? '' : style.cancel}`}>
+              {!book.isCanceled ? 'Đã xác nhận đặt phòng' : 'Đã xác nhận huỷ phòng'}
+            </p>
             <h4>{hotel.name}</h4>
             <span>Mã số đặt phòng: </span>
             <span className={style.number}>{book.id}</span>
-            <div className={style.state}>
-              <FontAwesomeIcon
-                icon={faCircleCheck}
-                style={{ color: book.isPaid ? '#28871c' : '#e12d2d' }}
-              />
+            <div className={`${style.state} ${!book.isCanceled ? '' : style.cancel}`}>
+              <FontAwesomeIcon icon={faCircleCheck} />
               {status}
             </div>
             <p id={style.one}>{service.name}</p>
-            <p className={style.delete}>Miễn phí hủy phòng</p>
+            <p className={style.delete}>
+              {!book.isCanceled ? 'Miễn phí huỷ phòng' : 'Phòng đã bị huỷ'}
+            </p>
           </div>
           <div className={style.time}>
             <div className={style.checking}>
@@ -58,10 +71,16 @@ const Card = ({ book }) => {
             </div>
           </div>
         </div>
-        <hr></hr>
-        <div className={style.setting}>
-          <button>Huỷ đặt phòng</button>
-        </div>
+        {!book.isCanceled && (
+          <>
+            <hr></hr>
+            <div className={style.setting}>
+              <button onClick={onCancel} disabled={isLoading}>
+                Huỷ đặt phòng
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

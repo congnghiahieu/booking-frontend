@@ -14,7 +14,6 @@ const CartItem = ({ cartItem }) => {
   const navigate = useNavigate();
   const [delCart, { isLoading }] = useDeleteCartMutation();
   const hotel = cartItem.hotelId;
-  console.log(cartItem);
 
   const onDirect = () => {
     navigate(`/hotel/booking/${hotel.slug}/${cartItem.slug}/${hotel._id}/${cartItem._id}`);
@@ -51,10 +50,10 @@ const CartItem = ({ cartItem }) => {
           </div>
         </div>
         <div className={style.payment}>
-          <button id={style.booking} onClick={onDirect}>
+          <button id={style.booking} onClick={onDirect} disabled={isLoading}>
             Đặt phòng ngay
           </button>
-          <button id={style.delete} onClick={onDelete}>
+          <button id={style.delete} onClick={onDelete} disabled={isLoading}>
             Xóa bỏ
           </button>
         </div>
