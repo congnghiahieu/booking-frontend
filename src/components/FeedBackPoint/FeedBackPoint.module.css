@@ -1,0 +1,13 @@
+.hotel_feedback {
+    border-radius: 4px;
+    border-color: rgb(221, 223, 226);
+    border-style: solid;
+    border-width: 1px;
+    padding: 16px;
+    box-shadow: none;
+    margin: 0px;
+  }
+  .hotel_point {
+    font-size: 22px;
+    font-weight: 400;
+  }
