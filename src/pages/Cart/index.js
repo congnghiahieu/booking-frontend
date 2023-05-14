@@ -27,9 +27,9 @@ const Cart = () => {
             data.cart.map(cartItem => <CardItem key={cartItem._id} cartItem={cartItem} />)
           ) : (
             <>
-              <span>Bạn chưa có khách sạn sắp tới nào</span>
+              <p>Bạn chưa có khách sạn sắp tới nào</p>
               <Link to='/'>
-                <button> Đặt phòng ngay</button>
+                <button id={style.one} > Đặt phòng ngay</button>
               </Link>
             </>
           )

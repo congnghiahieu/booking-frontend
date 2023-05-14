@@ -9,11 +9,11 @@ const HotelInfo = ({ hotel }) => {
   console.log(hotel)
   return (
     <div>
-      <div>
+      <div className={style.OptionBar}>
         <HotelOptionBar hotel={hotel} />
       </div>
-      <div className={style.hotel_overview}>
-        <div className={style.hotel_overview1}>
+      <div className={style.hotel_overview} >
+        <div className={style.hotel_overview1 } id='General'>
           <div className={style.hotel_content1}>
             <HotelOverview hotel={hotel} />
             <div className={style.hotel_highlight}>
