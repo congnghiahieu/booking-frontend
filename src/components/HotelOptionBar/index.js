@@ -11,15 +11,15 @@ function HotelOptionBar({ hotel }) {
     <div className={style.hotel_option}>
       <div className={style.hotel_optionbar}>
         <div className={style.hotel_selectoption}>
-          {/* <Link to='/'>
+          <a href='#General'>
             <div className={style.hotel_select}>Tổng quan</div>
-          </Link>
-          <Link to='#TypeOfRoom'>
+          </a>
+          <a href='#hotelSuggest'>
             <div className={style.hotel_select}>Phòng nghỉ</div>
-          </Link>
-          <Link to='#Feedback'>
+          </a>
+          <a href='#Feedback'>
             <div className={style.hotel_select}>Đánh giá</div>
-          </Link> */}
+          </a>
           <div className={style.hotel_select}>Tiện ích</div>
           <div className={style.hotel_select}>Vị trí</div>
           <div className={style.hotel_select}>Chính sách</div>

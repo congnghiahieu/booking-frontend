@@ -120,6 +120,10 @@
   margin-top: 5px;
   font-size: 18px;
 } */
+/* .OptionBar{
+  position: sticky;
+  top:80px;
+} */
 .hotel_highlight {
   border-radius: 4px;
   border-color: rgb(221, 223, 226);
