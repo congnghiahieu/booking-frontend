@@ -19,7 +19,7 @@ const HotelIntro = ({ hotelId }) => {
   } = useGetHotelByIdQuery(hotelId);
 
   useTitle(hotel ? `${hotel.name} - ${hotelLocationFormat(hotel.location)}` : 'Wygo.com');
-
+  console.log(hotel)
   return (
     <div className={style.introContainer}>
       {isHtLoad && <LoadingImg />}

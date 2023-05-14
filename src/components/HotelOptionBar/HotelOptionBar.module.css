@@ -24,6 +24,11 @@
   align-items: center;
   height: 100%;
 }
+.hotel_selectoption a{
+  text-decoration: none;
+  color:black;
+  height: 100%;
+}
 .hotel_select {
   display: flex;
   width: fit-content;

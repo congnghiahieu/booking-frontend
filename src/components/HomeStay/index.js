@@ -26,7 +26,7 @@ function HomeStay({ hotel }) {
           src={`${getViewLinkGG(hotel.imgsGG[0])}`}
           alt={hotel.name}
         />
-        <div className={style.HomeStay_point}>{hotel.point}</div>
+        <div className={style.HomeStay_point}>{hotel.point.toFixed(1)}</div>
       </div>
       <div className={style.HomeStay_name}>{hotel.name}</div>
       <div className={style.HomeStay_location_star}>

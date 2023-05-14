@@ -30,7 +30,8 @@
 .user_info{
     display: flex;
     align-items: center;
-    margin-top: 5px;
+    margin-top: 7px;
+    font-size: 14px;
 }
 
 .user_comment{
