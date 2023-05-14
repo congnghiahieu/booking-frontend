@@ -1,8 +1,6 @@
 import style from './HotelOptionBar.module.css';
 import { useState } from 'react';
 import { numFormatter } from '../../utils/formatter';
-import { Link } from 'react-router-dom';
-
 
 function HotelOptionBar({ hotel }) {
   const [cheapest] = useState(hotel.cheapest ? hotel.cheapest : 500000);

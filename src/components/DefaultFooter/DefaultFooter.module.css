@@ -42,11 +42,11 @@
 }
 
 .company_name1 {
-  background-image: url(./agoda-logo-black-removebg-preview.png);
+  background-image: url(../../../public/agoda-logo-black-removebg-preview.png);
   background-size: 100% 100%;
 }
 .company_name2 {
-  background-image: url(./tải_xuống__1_-removebg-preview.png);
+  background-image: url(../../../public/tải_xuống__1_-removebg-preview.png);
   margin-top: 10px;
   background-size: 100% 70%;
   background-repeat: no-repeat;
@@ -54,26 +54,26 @@
 }
 
 .company_name3 {
-  background-image: url(./Kayak-Logo-removebg-preview.png);
+  background-image: url(../../../public/Kayak-Logo-removebg-preview.png);
   margin-top: -20px;
   background-size: 100% 135%;
   background-repeat: no-repeat;
 }
 .company_name4 {
-  background-image: url(./rentalcarscom2723-removebg-preview.png);
+  background-image: url(../../../public/rentalcarscom2723-removebg-preview.png);
   margin-top: -30px;
   background-size: 100% 140%;
   background-repeat: no-repeat;
   align-content: center;
 }
 .company_name5 {
-  background-image: url(./Booking.Com-logo-removebg-preview.png);
+  background-image: url(../../../public/Booking.Com-logo-removebg-preview.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   align-content: center;
 }
 .company_name6 {
-  background-image: url(./opentable-vector-logo-removebg-preview.png);
+  background-image: url(../../../public/opentable-vector-logo-removebg-preview.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   align-content: center;
