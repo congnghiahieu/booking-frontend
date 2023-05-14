@@ -6,6 +6,7 @@ import {
   HomeSubFooter,
   SearchHeader,
   SearchSuggest,
+  SearchButton,
 } from '../../components';
 import { selectSearch } from '../../app/features/search/searchSlice';
 import { useSelector } from 'react-redux';
@@ -27,8 +28,8 @@ const ErrorPage = () => {
           <div className={style.dateplant}>
             <DatePlant />
           </div>
-
           <Member />
+          <SearchButton className={style.search_btn} />
         </div>
       </div>
 
