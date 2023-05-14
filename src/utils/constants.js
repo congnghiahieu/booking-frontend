@@ -24,11 +24,11 @@ const DAY_VN = {
   6: 'Thứ 7',
 };
 
-// const BACKEND_ADDRESS = 'http://localhost:8000';
-const BACKEND_ADDRESS = 'https://api-wygo.pagekite.me/';
-const DRIVE_API_ADDRESS = '';
-// const GOOGLE_AUTH_LINK = 'http://localhost:8000/v1/auth/google';
-const GOOGLE_AUTH_LINK = `https://api-wygo.pagekite.me/v1/auth/google`;
+const BACKEND_ADDRESS = 'http://localhost:8000';
+// const BACKEND_ADDRESS = 'https://api-wygo.pagekite.me/';
+// const DRIVE_API_ADDRESS = '';
+const GOOGLE_AUTH_LINK = 'http://localhost:8000/v1/auth/google';
+// const GOOGLE_AUTH_LINK = `https://api-wygo.pagekite.me/v1/auth/google`;
 
 const SORT_TYPE = {
   MOST_FIT: 'Phù hợp nhất',
