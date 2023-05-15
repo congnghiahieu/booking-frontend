@@ -9,7 +9,7 @@ import { store } from './app/store';
 import ScrollToTop from './components/ScrollToTop';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
   disableReactDevTools();
 }
 

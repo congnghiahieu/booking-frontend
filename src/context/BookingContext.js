@@ -1,4 +1,6 @@
 import { createContext, useState } from 'react';
+import { selectUserInfo } from '../app/features/auth/authSlice';
+import { useSelector } from 'react-redux';
 
 export const BookingContext = createContext({});
 
@@ -10,14 +12,15 @@ const starter = {
 
 const BookingProvider = ({ children }) => {
   const [page, setPage] = useState(0);
+  const { name, email } = useSelector(selectUserInfo);
   const [formData, setFormData] = useState({
     cusName: {
-      valid: false,
-      value: '',
+      valid: true,
+      value: name,
     },
     cusEmail: {
-      valid: false,
-      value: '',
+      valid: true,
+      value: email,
     },
     cusEmailVerification: {
       valid: false,
@@ -61,13 +64,15 @@ const BookingProvider = ({ children }) => {
         break;
       case 'files':
         value = e.target.files;
+        break;
       default:
         value = e.target.value;
+        break;
     }
 
     const valid = e.target.checkValidity();
     /* Kiểm tra email và confirm email có match không*/
-    if (name == 'cusEmail') {
+    if (name === 'cusEmail') {
       const match = value === formData.cusEmailVerification.value;
       setFormData(prevData => ({
         ...prevData,

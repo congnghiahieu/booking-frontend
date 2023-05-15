@@ -59,7 +59,7 @@ const FeedBack = ({ hotelId }) => {
               </div>
               <div className={style.point}>
                 <div className={style.agoda_point}>
-                  <span className={style.feedback_h2}>Điểm số qua Agoda</span>
+                  <span className={style.feedback_h2}>Điểm số qua Wygo</span>
                   <p className={style.point_on10}>
                     {hotel.point}
                     <span className={style.on10}>/10</span>

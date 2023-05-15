@@ -50,13 +50,9 @@ const SlideImage1 = ({ hotel }) => {
 
   return (
     <div className='wrapper1'>
-      <img
-        id='two'
-        src={imgs[0]}
-        alt={hotel.name}
-        onClick={() => handleClick(imgs[0], 0)} />
+      <img id='two' src={imgs[0]} alt={hotel.name} onClick={() => handleClick(imgs[0], 0)} />
       {imgs.map((imgLink, index) => {
-        if (index == 0 || index > 6) return;
+        if (index === 0 || index > 6) return;
         return (
           <img
             key={index}

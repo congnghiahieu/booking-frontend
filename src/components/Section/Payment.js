@@ -1,7 +1,6 @@
 import style from './Payment.module.css';
 import { useBookingContext } from '../../hooks/useContext';
 import FormInput from '../FormInput';
-import { useEffect,useState } from 'react';
 
 const MethodsOfPayment = ['THẺ TÍN DỤNG/GHI NỢ', 'THANH TOÁN ĐIỆN TỬ'];
 const AMEX_CARD_REGEX = '^3[47][0-9]{13}$';
@@ -51,12 +50,12 @@ const Page2 = () => {
       inputMode: 'numeric',
       required: true,
       // pattern: '[0-9]{4}',
-      pattern:"([0-9]{2}[/]?){2}",
+      pattern: '([0-9]{2}[/]?){2}',
       autoComplete: 'cc-expiry',
       maxLength: 5,
       title: 'Vui lòng nhập ngày hết hạn thẻ tín dụng hợp lệ',
       error: 'Vui lòng nhập ngày hết hạn thẻ tín dụng hợp lệ',
-      onKeyUp:formatString,
+      onKeyUp: formatString,
     },
     {
       id: 'cardCvc',
@@ -80,24 +79,37 @@ const Page2 = () => {
     if (allowedKeys.indexOf(code) !== -1) {
       return;
     }
-  
-    event.target.value = event.target.value.replace(
-      /^([1-9]\/|[2-9])$/g, '0$1/' // 3 > 03/
-    ).replace(
-      /^(0[1-9]|1[0-2])$/g, '$1/' // 11 > 11/
-    ).replace(
-      /^([0-1])([3-9])$/g, '0$1/$2' // 13 > 01/3
-    ).replace(
-      /^(0?[1-9]|1[0-2])([0-9]{2})$/g, '$1/$2' // 141 > 01/41
-    ).replace(
-      /^([0]+)\/|[0]+$/g, '0' // 0/ > 0 and 00 > 0
-    ).replace(
-      /[^\d\/]|^[\/]*$/g, '' // To allow only digits and `/`
-    ).replace(
-      /\/\//g, '/' // Prevent entering more than 1 `/`
-    );
-  }
 
+    event.target.value = event.target.value
+      .replace(
+        /^([1-9]\/|[2-9])$/g,
+        '0$1/', // 3 > 03/
+      )
+      .replace(
+        /^(0[1-9]|1[0-2])$/g,
+        '$1/', // 11 > 11/
+      )
+      .replace(
+        /^([0-1])([3-9])$/g,
+        '0$1/$2', // 13 > 01/3
+      )
+      .replace(
+        /^(0?[1-9]|1[0-2])([0-9]{2})$/g,
+        '$1/$2', // 141 > 01/41
+      )
+      .replace(
+        /^([0]+)\/|[0]+$/g,
+        '0', // 0/ > 0 and 00 > 0
+      )
+      .replace(
+        /[^\d\/]|^[\/]*$/g,
+        '', // To allow only digits and `/`
+      )
+      .replace(
+        /\/\//g,
+        '/', // Prevent entering more than 1 `/`
+      );
+  }
 
   return (
     <>
@@ -129,12 +141,12 @@ const Page2 = () => {
                 <div className={style.info}>
                   {/* <label htmlFor='TimeDate'>Ngày hết hạn</label>
                   <input name='TimeDate'></input> */}
-                  <FormInput input={inputs[2]} formData={formData} onDataChange={onDataChange}/>
+                  <FormInput input={inputs[2]} formData={formData} onDataChange={onDataChange} />
                 </div>
                 <div className={style.info}>
                   {/* <label htmlFor='CVC'>Mã bảo mật CVC</label>
                   <input name='CVC'></input> */}
-                  <FormInput input={inputs[3]} formData={formData} onDataChange={onDataChange}/>
+                  <FormInput input={inputs[3]} formData={formData} onDataChange={onDataChange} />
                 </div>
               </div>
             </div>

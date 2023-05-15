@@ -75,7 +75,7 @@ const SearchHotel = () => {
                   key={tab}
                   className={style.options}
                   style={
-                    tab == type
+                    tab === type
                       ? { backgroundColor: '#5392f9', color: '#fff' }
                       : { backgroundColor: 'white' }
                   }

@@ -1,5 +1,4 @@
 import './NearBy.css';
-import { json } from 'react-router-dom';
 
 function NearBy({
   TileNear,

@@ -17,11 +17,11 @@ const RegisterProvider = ({ children }) => {
       value: '',
     },
     password: {
-      value: false,
+      valid: false,
       value: '',
     },
     passwordVerification: {
-      value: false,
+      valid: false,
       value: '',
     },
   });
@@ -36,13 +36,15 @@ const RegisterProvider = ({ children }) => {
         break;
       case 'files':
         value = e.target.files;
+        break;
       default:
         value = e.target.value;
+        break;
     }
 
     const valid = e.target.checkValidity();
     /* Kiểm tra email và confirm email có match không*/
-    if (name == 'password') {
+    if (name === 'password') {
       const match = value === formData.passwordVerification.value;
       setFormData(prevData => ({
         ...prevData,

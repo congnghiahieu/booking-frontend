@@ -5,6 +5,7 @@ import useTitle from '../../hooks/useTitle';
 import { useRegisterContext } from '../../hooks/useContext';
 import { Loading, GoogleIcon } from '../../components';
 import RegisterInput from '../../components/RegisterLoginInput';
+import { GOOGLE_AUTH_LINK } from '../../utils/constants';
 
 const Register = () => {
   useTitle('Wygo.com | Đăng ký tài khoản');
@@ -44,6 +45,10 @@ const Register = () => {
         setRegisErr(err.data?.message);
       }
     }
+  };
+
+  const onGoogleLogin = async () => {
+    window.open(GOOGLE_AUTH_LINK, '_self');
   };
 
   const inputs = [
@@ -144,7 +149,7 @@ const Register = () => {
           <p>Bạn đã có tài khoản ?</p>
           <Link to='/login'>Đăng nhập</Link>
         </div>
-        <div className='Google_login'>
+        <div className='Google_login' onClick={onGoogleLogin}>
           <span className='Google_Icon'>
             <div className='G_icon'>
               <GoogleIcon />

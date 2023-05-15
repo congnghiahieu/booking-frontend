@@ -1,6 +1,4 @@
 import style from './UserComment.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSuitcase, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { getVnDateFormat } from '../../utils/formatter';
 import { getViewLinkGG } from '../../utils/getViewLinkGG';
 import { Link } from 'react-router-dom';
@@ -26,7 +24,6 @@ const UserComment = ({ cmt }) => {
             </div>
           </div>
         </div>
-
       </div>
     </>
   );

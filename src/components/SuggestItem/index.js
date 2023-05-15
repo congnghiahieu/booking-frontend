@@ -16,7 +16,7 @@ const SuggestItem = ({ placename, imgId, hotel, isHotel }) => {
   return (
     <div className={style.SuggestItem} onMouseDown={onSetLink}>
       <div className={style.img}>
-        <img src={imgLink} />
+        <img src={imgLink} alt={placename} />
       </div>
       <span className={style.province}>{placename}</span>
     </div>

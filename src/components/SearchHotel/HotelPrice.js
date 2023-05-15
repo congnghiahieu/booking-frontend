@@ -1,6 +1,6 @@
-import { useRef, memo, useState } from 'react';
+import { memo, useState } from 'react';
 import style from './HotelPrice.module.css';
-import { getRan, getDiscount, getReview } from '../../utils/random';
+import { getDiscount, getReview } from '../../utils/random';
 import { numFormatter } from '../../utils/formatter';
 
 const HotelPrice = ({ hotel }) => {

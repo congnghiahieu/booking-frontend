@@ -11,7 +11,7 @@ const Sidebar = ({ setFilterStar, setFilterPrices }) => {
       const existIndex = prev.findIndex(existRange => {
         return existRange.start === range.start;
       });
-      if (existIndex == -1) {
+      if (existIndex === -1) {
         return [...prev, range];
       }
 
@@ -42,10 +42,10 @@ const Sidebar = ({ setFilterStar, setFilterPrices }) => {
                   onChange={() => onFilterPricesChange(range)}
                 />
                 <label htmlFor={range.start}>
-                  {i != RANGE_OF_PRICES.length - 1 ? (
+                  {i !== RANGE_OF_PRICES.length - 1 ? (
                     // Not final element
                     <span>
-                      {range.start != undefined ? numFormatter.format(range.start) : ''}{' '}
+                      {range.start !== undefined ? numFormatter.format(range.start) : ''}{' '}
                       {range.operator} {range.end ? numFormatter.format(range.end) : ''}{' '}
                     </span>
                   ) : (

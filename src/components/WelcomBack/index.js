@@ -28,7 +28,7 @@ const WelcomeBack = () => {
           </span>
           <div className={style.quality_color1}></div>
           <div className={style.quality_color2}></div>
-          <span className={style.quality_subtext1}>Welcome Agoda VIP Member</span>
+          <span className={style.quality_subtext1}>Welcome Wygo VIP Member</span>
         </div>
         <div className={style.quality_text}>
           <span className={style.text_passage}>

@@ -30,7 +30,7 @@ const HomeSuggest = () => {
               key={city}
               className={style.options}
               style={
-                city == curProvince
+                city === curProvince
                   ? { borderBottom: '2px solid #5392f9', color: '#5392f9' }
                   : { backgroundColor: 'white' }
               }

@@ -15,13 +15,13 @@ const Information = ({ user }) => {
   const [showPwd, setShowPwd] = useState(false);
 
   function handleClick(e) {
-    if (e.target.id == 'name') {
+    if (e.target.id === 'name') {
       setShowName(true);
     }
-    if (e.target.id == 'phoneNumber') {
+    if (e.target.id === 'phoneNumber') {
       setShowPhone(true);
     }
-    if (e.target.id == 'password') {
+    if (e.target.id === 'password') {
       setShowPwd(true);
     }
   }
