@@ -24,9 +24,9 @@ const DAY_VN = {
   6: 'Thứ 7',
 };
 
-const BACKEND_ADDRESS = 'http://localhost:8000';
+const BACKEND_ADDRESS = 'https://wygo-api.onrender.com';
 // const DRIVE_API_ADDRESS = '';
-const GOOGLE_AUTH_LINK = 'http://localhost:8000/v1/auth/google';
+const GOOGLE_AUTH_LINK = 'https://wygo-api.onrender.com/v1/auth/google';
 
 const SORT_TYPE = {
   MOST_FIT: 'Phù hợp nhất',
