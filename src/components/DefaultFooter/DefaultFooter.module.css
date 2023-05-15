@@ -19,7 +19,7 @@
 .footer_script {
   width: 100%;
   text-align: center;
-  margin-top: 80px;
+  margin-top: 20px;
   color: var(--footer-color);
   margin-bottom: 20px;
   font-size: 18px;
@@ -35,15 +35,23 @@
 }
 
 .company {
-  display: grid;
+  /* display: grid;
   width: 60%;
   grid-template-columns: 150px 150px 150px 150px 150px 150px;
-  gap: 70px;
+  gap: 70px; */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  margin-top: 20px;
 }
 
 .company_name1 {
-  background-image: url(../../../public/agoda-logo-black-removebg-preview.png);
+  background-image: url(../../../public/logo.png);
   background-size: 100% 100%;
+  width: 100px;
+  height: 100%;
+  display: flex;
 }
 .company_name2 {
   background-image: url(../../../public/tải_xuống__1_-removebg-preview.png);
@@ -86,7 +94,7 @@
   height: fit-content;
   text-align: center;
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 10px;
   bottom: 0px;
   align-items: flex-end;
   color: var(--footer-color);
