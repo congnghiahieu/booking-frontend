@@ -24,7 +24,7 @@ function App() {
       <Routes>
         {/* Default Layout */}
         <Route element={<NotAuth />}>
-          <Route path='login/success' element={<LoginSuccess />} />
+          <Route path='/login/success' element={<LoginSuccess />} />
         </Route>
 
         <Route path='/' element={<DefaultLayout />}>
